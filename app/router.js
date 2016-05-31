@@ -6,8 +6,6 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('directories');
-  this.route('user');
   this.route('excursion');
   this.route('search');
 });

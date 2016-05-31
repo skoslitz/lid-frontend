@@ -13,6 +13,6 @@ export default JSONAPISerializer.extend({
 	          content: payload.page.content
 	        }
 	      }
-	    }
+	    };
   	}
 });
