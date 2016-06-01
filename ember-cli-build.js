@@ -7,6 +7,7 @@ module.exports = function(defaults) {
     // Add options here
   });
 
+  app.import('bower_components/milligram/dist/milligram.min.css');
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //

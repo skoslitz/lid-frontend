@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Pfad</th>
+    </tr>
+  </thead>
+  <tbody>
+   	{{#each model as |excursion|}}
+		<tr>
+			<td>{{excursion.id}}</td>
+			<td>{{excursion.name}}</td>
+			<td>{{excursion.path}}</td>
+		</tr>
+	{{/each}}
+  </tbody>
+</table>
+
+
