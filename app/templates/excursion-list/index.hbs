@@ -1,7 +1,9 @@
+<strong>{{model.length}}</strong> Exkursionen
+<button {{action "push"}} class="button button-clear">Push</button>
 <table>
   <thead>
     <tr>
-      <th>Id</th>
+      <th>Link</th>
       <th>Name</th>
       <th>Pfad</th>
     </tr>
@@ -9,7 +11,7 @@
   <tbody>
    	{{#each model as |excursion|}}
 		<tr>
-			<td>{{excursion.id}}</td>
+			<td>{{#link-to 'excursion.show' excursion.name}}Link{{/link-to}}</td> 
 			<td>{{excursion.name}}</td>
 			<td>{{excursion.path}}</td>
 		</tr>
@@ -17,4 +19,4 @@
   </tbody>
 </table>
 
-
+{{outlet}}

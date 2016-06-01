@@ -2,6 +2,18 @@ import DS from 'ember-data';
 
 export default DS.JSONSerializer.extend({
   normalizeResponse(store, primaryModelClass, payload, id, requestType) {
-  	return this._super(store, primaryModelClass, payload.data, id, requestType);
-  }
+	    return {
+	      data: {
+	        id: payload.page.metadata.id,
+	        type: primaryModelClass.modelName,
+	        attributes: {
+	          path: payload.page.path,
+	          title: payload.page.metadata.title,
+	          date: payload.page.metadata.date,
+	          vgWort: payload.page.metadata.vg_wort_code,
+	          content: payload.page.content
+	        }
+	      }
+	    };
+  	}
 });

@@ -6,9 +6,12 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-	this.route('excursions', function() {
-	});
-  	this.route('search');
+  this.route('excursion-list', function() {});
+  this.route('excursion', function() {
+  	this.route('show', {path: '/show/:name'});
+  	this.route('new');
+  });
+  this.route('search');  
 });
 
 export default Router;
