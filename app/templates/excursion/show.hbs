@@ -1,6 +1,13 @@
 <h4>Metadaten (Frontmatter)</h4>
-<p>Titel: {{model.title}}</p>
-<hr>
-<h4>Content</h4>
-<textarea name="content" id="" cols="30" rows="150">{{model.content}}</textarea>
+<div layout="" layout-sm="column">
+	{{paper-input flex=70 label="Titel" value=model.title onChange=""}}
+	{{paper-input flex=30 label="Id" value=model.id onChange=""}}
+</div>
 
+
+<h4>Content</h4>
+
+{{trix-editor class="trix-editor-wrapper"
+              editorClass="trix-editor"
+              value=model.content
+              trix-change=(action "handleTrixAction") }}

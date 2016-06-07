@@ -1,11 +1,16 @@
-<div class="container">
-	
-	<h4>
-	{{#link-to "index"}}Home{{/link-to}} |
-	{{#link-to "excursion-list"}}Exkursionen{{/link-to}} |	
-	</h4>
-	<hr>
+{{#paper-toolbar}}
+  {{#paper-toolbar-tools}}
+    <h2>{{#link-to "index"}}LiD Online CMS{{/link-to}}</h2>
+	<span class="flex"></span>
+    {{#paper-button raised=true}}
+    	{{#link-to "excursion-list"}}Exkursionen{{/link-to}}
+    {{/paper-button}}
+  {{/paper-toolbar-tools}}
+{{/paper-toolbar}}
 
-	{{outlet}}
-	
+<div class="layout-column flex layout-align-space-around-center">
+	<div class="flex">
+		{{outlet}}	
+	</div>
 </div>
+
