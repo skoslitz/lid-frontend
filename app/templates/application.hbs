@@ -1,16 +1,25 @@
+<div class="container">
+
 {{#paper-toolbar}}
   {{#paper-toolbar-tools}}
-    <h2>{{#link-to "index"}}LiD Online CMS{{/link-to}}</h2>
-	<span class="flex"></span>
-    {{#paper-button raised=true}}
-    	{{#link-to "excursion-list"}}Exkursionen{{/link-to}}
-    {{/paper-button}}
+    <span class="flex-20">
+      <h2>{{#link-to "index"}}LiD Online CMS{{/link-to}}</h2>
+    </span>    
+    <span class="flex-60">
+      {{#paper-button}}
+       {{#link-to "excursion-list"}}Exkursionen auflisten{{/link-to}}
+      {{/paper-button}}      
+    </span>    
+	<span class="flex-20"></span>   
   {{/paper-toolbar-tools}}
 {{/paper-toolbar}}
 
-<div class="layout-column flex layout-align-space-around-center">
-	<div class="flex">
-		{{outlet}}	
-	</div>
+<div layout="row">
+	<div class="flex-10"></div>
+  <div class="flex-80">
+    {{outlet}}
+  </div>   
+  <div class="flex-10"></div>
 </div>
 
+</div>

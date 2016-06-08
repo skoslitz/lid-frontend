@@ -1,22 +1,31 @@
-<strong>{{model.length}}</strong> Exkursionen
-<button {{action "push"}} class="button button-clear">Push</button>
-<table>
-  <thead>
-    <tr>
-      <th>Link</th>
-      <th>Name</th>
-      <th>Pfad</th>
-    </tr>
-  </thead>
-  <tbody>
-   	{{#each model as |excursion|}}
-		<tr>
-			<td>{{#link-to 'excursion.show' excursion.name}}Link{{/link-to}}</td> 
-			<td>{{excursion.name}}</td>
-			<td>{{excursion.path}}</td>
-		</tr>
-	{{/each}}
-  </tbody>
-</table>
+{{#paper-card as |card|}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline}}<strong>{{model.length}}</strong> Exkursionen{{/text.headline}}   
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.content}}
+    <table>
+      <thead>
+        <tr>
+          <th>Link</th>
+          <th>Name</th>
+          <th>Pfad</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |excursion|}}
+        <tr>
+          <td>{{#link-to 'excursion.show' excursion.name}}Link{{/link-to}}</td> 
+          <td>{{excursion.name}}</td>
+          <td>{{excursion.path}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  {{/card.content}}
+{{/paper-card}}
 
 {{outlet}}
+
+

@@ -1,13 +1,30 @@
-<h4>Metadaten (Frontmatter)</h4>
-<div layout="" layout-sm="column">
-	{{paper-input flex=70 label="Titel" value=model.title onChange=""}}
-	{{paper-input flex=30 label="Id" value=model.id onChange=""}}
-</div>
+{{#paper-card as |card|}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline}}Metadaten (Frontmatter){{/text.headline}}   
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.content}}
+    <div layout="" layout-sm="column">
+		{{paper-input flex=70 label="Titel" value=model.title onChange=""}}
+		{{paper-input flex=30 label="Id" value=model.id onChange=""}}
+	</div>
+  {{/card.content}}
+{{/paper-card}}
 
-
-<h4>Content</h4>
-
-{{trix-editor class="trix-editor-wrapper"
+{{#paper-card as |card|}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline}}Content{{/text.headline}}   
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.content}}
+   {{trix-editor class="trix-editor-wrapper"
               editorClass="trix-editor"
               value=model.content
               trix-change=(action "handleTrixAction") }}
+  {{/card.content}}
+{{/paper-card}}
+
+
+
