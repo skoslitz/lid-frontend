@@ -19,6 +19,11 @@ You will need the following things properly installed on your computer.
 * change into the new directory
 * `npm install`
 * `bower install`
+* make sure lid-backend(content api) is running
+ 
+**NOTE**: if bower or npm installation procedures run into problems, try this
+- `sudo bower update -a`
+- fix permissions with `sudo -R 777 /path/node_modules` etc.
 
 ## Running / Development
 
