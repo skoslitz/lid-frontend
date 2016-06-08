@@ -6,7 +6,7 @@ export default Ember.Route.extend({
 			console.log("button action!")
 		}
 	},
-	model(params) {
-    	return this.store.findRecord('excursion', '78_E_503-gruenau.md'); 
+	model: function(params) {
+    	return this.store.findRecord('excursion', params.name); 
   	}
 });
