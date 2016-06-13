@@ -6,9 +6,13 @@
   {{/card.title}}
   {{#card.content}}
     <div layout="" layout-sm="column">
-		{{paper-input flex=70 label="Titel" value=model.title onChange=""}}
-		{{paper-input flex=30 label="Id" value=model.id onChange=""}}
-	</div>
+		  {{paper-input flex=70 label="Titel" value=model.title onChange=""}}
+		  {{paper-input flex=30 label="Id" value=model.id onChange=""}}
+	  </div>
+    <div layout="" layout-sm="column">
+      {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=""}}
+      
+    </div>
   {{/card.content}}
 {{/paper-card}}
 

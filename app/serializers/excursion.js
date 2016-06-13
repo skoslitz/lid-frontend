@@ -10,6 +10,7 @@ export default DS.JSONSerializer.extend({
 	          path: payload.page.path,
 	          title: payload.page.metadata.title,
 	          date: payload.page.metadata.date,
+	          description: payload.page.metadata.description,
 	          vgWort: payload.page.metadata.vg_wort_code,
 	          content: payload.page.content
 	        }
