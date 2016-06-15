@@ -5,7 +5,7 @@
 {{#paper-card as |card|}}
   {{#card.title as |title|}}
     {{#title.text as |text|}}
-      {{#text.headline}}<strong>{{model.length}}</strong> Exkursionen{{/text.headline}}   
+      {{#text.headline}}<strong>{{model.length}}</strong> Themen{{/text.headline}}   
     {{/title.text}}
   {{/card.title}}
   {{#card.content}}
@@ -18,11 +18,11 @@
         </tr>
       </thead>
       <tbody>
-        {{#each model as |excursion|}}
+        {{#each model as |thema|}}
         <tr>
-          <td>{{#link-to 'excursion.show' excursion.name}}Link{{/link-to}}</td> 
-          <td>{{excursion.name}}</td>
-          <td>{{excursion.path}}</td>
+          <td>{{#link-to 'topic.show' thema.name}}Link{{/link-to}}</td> 
+          <td>{{thema.name}}</td>
+          <td>{{thema.path}}</td>
         </tr>
         {{/each}}
       </tbody>

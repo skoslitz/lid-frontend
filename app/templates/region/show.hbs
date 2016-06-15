@@ -1,0 +1,46 @@
+<div layout="row">
+  <div class="flex-50">
+    {{#paper-card as |card|}}
+      {{#card.title as |title|}}
+        {{#title.text as |text|}}
+          {{#text.headline}}Exkursionen{{/text.headline}}   
+        {{/title.text}}
+      {{/card.title}}
+      {{#card.content}}
+        {{#link-to "excursion-list"}}Exkursionen auflisten{{/link-to}}       
+      {{/card.content}}
+    {{/paper-card}}
+  </div>
+  
+  <div class="flex-50">
+    {{#paper-card as |card|}}
+      {{#card.title as |title|}}
+        {{#title.text as |text|}}
+          {{#text.headline}}Themen{{/text.headline}}
+        {{/title.text}}
+      {{/card.title}}
+      {{#card.content}}       
+        {{#link-to "topic-list"}}Themen auflisten{{/link-to}}    
+      {{/card.content}}
+    {{/paper-card}}
+  </div>
+</div>
+
+{{#paper-card as |card|}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.subhead}}Frontmatter{{/text.subhead}}   
+      {{#text.headline}}Metadaten{{/text.headline}}   
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.content}}
+    <div layout="" layout-sm="column">
+		  {{paper-input flex=70 label="Titel" value=model.title onChange=""}}
+		  {{paper-input flex=30 label="Bandnummer" value=model.id onChange=""}}
+	  </div>
+    <div layout="" layout-sm="column">
+      {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=""}}
+      
+    </div>
+  {{/card.content}}
+{{/paper-card}}

@@ -13,7 +13,11 @@
       {{/card.title}}
 
       {{#card.content}}
-
+        {{#card.actions}}
+         {{#paper-button}}
+          {{#link-to 'region.show' region.name}}Bandinformationen{{/link-to}}
+         {{/paper-button}}         
+        {{/card.actions}}        
       {{/card.content}}
 
     {{/paper-card}}

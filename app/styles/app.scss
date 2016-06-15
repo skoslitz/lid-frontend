@@ -1,8 +1,19 @@
+$primary: "indigo";
+$accent: "pink";
+$warn: "red";
+$background: "grey";
+$link: "light-blue";
+
+$dark: false;
+$default-color: '500';
+
+$foreground: "foreground-dark";
+
+$base-background-color: white;
+$base-color: rgba(0, 0, 0, 0.87);
+
 @import 'ember-paper';
 
-body {
-	background-color: gainsboro
-}
 
 /* a, a:visited {
     color: #06c;
