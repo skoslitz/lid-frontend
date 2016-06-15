@@ -1,0 +1,23 @@
+<div layout="column">
+  {{#each model as |region|}}
+  
+  <div class="flex-60">
+  
+    {{#paper-card as |card|}}
+    
+      {{#card.title as |title|}}
+        {{#title.text as |text|}}
+          {{#text.subhead}}Bandnummer {{ region.edition }} {{/text.subhead}}   
+          {{#text.headline}}{{ region.name }}{{/text.headline}}         
+        {{/title.text}}
+      {{/card.title}}
+
+      {{#card.content}}
+
+      {{/card.content}}
+
+    {{/paper-card}}
+  </div>   
+
+  {{/each}}
+</div>
