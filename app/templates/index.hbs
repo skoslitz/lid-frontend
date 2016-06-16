@@ -14,7 +14,7 @@
           {{paper-input flex=70 label="Titel" value=model.title onChange=(action (mut name))}}
           {{#card.actions}}
            {{#paper-button}}
-            {{#link-to 'region.show' region.name}}Erstellen{{/link-to}}
+            {{#link-to 'region.edit' region.name}}Erstellen{{/link-to}}
            {{/paper-button}}         
           {{/card.actions}}
         {{/card.content}}
@@ -36,7 +36,7 @@
         {{#card.content}}
           {{#card.actions}}
            {{#paper-button}}
-            {{#link-to 'region.show' region.name}}Bandinformationen{{/link-to}}
+            {{#link-to 'region.edit' region.name}}Bandinformationen{{/link-to}}
            {{/paper-button}}         
           {{/card.actions}}        
         {{/card.content}}
