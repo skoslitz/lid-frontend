@@ -8,7 +8,7 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('region',  function() {
   	this.route('show', {path: '/show/:name'});
-  	//this.route('new');
+  	this.route('new');
   });
   this.route('topic-list', function() {});
   this.route('topic',  function() {

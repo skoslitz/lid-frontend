@@ -3,11 +3,12 @@
     {{#paper-card as |card|}}
       {{#card.title as |title|}}
         {{#title.text as |text|}}
-          {{#text.headline}}Exkursionen{{/text.headline}}   
+          {{#text.headline}}<mark>Anzahl</mark> Exkursionen{{/text.headline}}   
         {{/title.text}}
       {{/card.title}}
       {{#card.content}}
-        {{#link-to "excursion-list"}}Exkursionen auflisten{{/link-to}}       
+        {{#link-to "excursion-list"}}Exkursionen auflisten{{/link-to}}  
+        {{#link-to "excursion.new"}}Exkursion erstellen{{/link-to}}       
       {{/card.content}}
     {{/paper-card}}
   </div>
@@ -16,11 +17,12 @@
     {{#paper-card as |card|}}
       {{#card.title as |title|}}
         {{#title.text as |text|}}
-          {{#text.headline}}Themen{{/text.headline}}
+          {{#text.headline}}<mark>Anzahl</mark> Themen{{/text.headline}}
         {{/title.text}}
       {{/card.title}}
       {{#card.content}}       
-        {{#link-to "topic-list"}}Themen auflisten{{/link-to}}    
+        {{#link-to "topic-list"}}Themen auflisten{{/link-to}}
+        {{#link-to "topic.new"}}Thema erstellen{{/link-to}}           
       {{/card.content}}
     {{/paper-card}}
   </div>
@@ -39,8 +41,7 @@
 		  {{paper-input flex=30 label="Bandnummer" value=model.id onChange=""}}
 	  </div>
     <div layout="" layout-sm="column">
-      {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=""}}
-      
+      {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=""}}      
     </div>
   {{/card.content}}
 {{/paper-card}}
