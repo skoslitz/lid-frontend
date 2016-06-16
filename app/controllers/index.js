@@ -1,16 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	queryParams: ['sortBy', 'sortAscending'],
-	sortAscending: true,
-	sortBy: 'editon',	
+	newModel: {},
 	actions: {
-		setSortBy: function(fieldName) {
-			this.set('sortBy', fieldName);
-			this.toggleProperty('sortAscending');
-			console.log('Sorting by ', fieldName);
-			console.log('Sorting Asc?: ', this.get('sortAscending'));
-			return false;
-		}
+	    save(){
+	      let region = this.store.createRecord('region', this.get("newModel"))
+	      this.set("newModel", {})
+	      region.save().then(()=>{
+	        this.transitionToRoute('region.edit', region)
+	      })	      
+	    }
 	}
 });

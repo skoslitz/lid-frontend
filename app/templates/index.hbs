@@ -10,12 +10,10 @@
           {{/title.text}}
         {{/card.title}}
         {{#card.content}}          
-          {{paper-input flex=40 label="Bandnummer" value=model.id onChange=(action (mut name))}}
-          {{paper-input flex=70 label="Titel" value=model.title onChange=(action (mut name))}}
+          {{paper-input flex=40 label="Bandnummer" value=newModel.id required="true" required-errortext="Wichtig!" onChange=null}}
+          {{paper-input flex=70 label="Titel" value=newModel.title onChange=(action (mut name))}}
           {{#card.actions}}
-           {{#paper-button}}
-            {{#link-to 'region.edit' region.name}}Erstellen{{/link-to}}
-           {{/paper-button}}         
+            {{#paper-button onClick=(action "save")}}Erstellen{{/paper-button}}           
           {{/card.actions}}
         {{/card.content}}
       {{/paper-card}}
@@ -35,9 +33,9 @@
 
         {{#card.content}}
           {{#card.actions}}
-           {{#paper-button}}
-            {{#link-to 'region.edit' region.name}}Bandinformationen{{/link-to}}
-           {{/paper-button}}         
+            {{#link-to 'region.edit' region.name}} 
+              {{#paper-button}}Bandinformationen{{/paper-button}}         
+            {{/link-to}}
           {{/card.actions}}        
         {{/card.content}}
 

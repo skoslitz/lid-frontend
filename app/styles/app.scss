@@ -1,4 +1,4 @@
-$primary: "indigo";
+$primary: "deep-orange";
 $accent: "pink";
 $warn: "red";
 $background: "grey";
@@ -14,6 +14,9 @@ $base-color: rgba(0, 0, 0, 0.87);
 
 @import 'ember-paper';
 
+.paper-right {
+	margin-left: auto;
+}
 
 /* a, a:visited {
     color: #06c;

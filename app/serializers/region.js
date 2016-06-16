@@ -11,6 +11,7 @@ export default DS.JSONSerializer.extend({
 	          title: payload.page.metadata.title,
 	          date: payload.page.metadata.date,
 	          description: payload.page.metadata.kurzbeschreibung,
+	          bundesland: payload.page.metadata.bundesland,
 	          content: payload.page.content
 	        }
 	      }
