@@ -6,15 +6,19 @@
     {{/title.text}}
   {{/card.title}}
   {{#card.content}}
-
+  
     <div layout="" layout-sm="column">
 		  {{paper-input flex=70 label="Titel" value=model.title onChange=""}}
 		  {{paper-input flex=30 label="Datum (JJJJ-MM-TT)" value=model.date onChange=""}}
 	  </div>
+
+    <div layout="" layout-sm="column">
+      {{paper-input flex=100 label="Untertitel" value=model.subtitle onChange=""}} 
+    </div>
     
     <div layout="" layout-sm="column">
-      {{paper-input flex=70 label="Untertitel" value=model.subtitle onChange=""}} 
-      {{paper-input flex=30 label="AutorIn" value=model.author onChange=""}}     
+      {{paper-input flex=70 label="AutorIn" value=model.author onChange=""}}   
+      {{paper-input flex=30 label="Id" value=model.id onChange=""}}        
     </div>
     
     <div layout="" layout-sm="column">
@@ -22,13 +26,13 @@
     </div>
 
     <div layout="" layout-sm="column">
+      {{paper-input flex=60 label="VG Wort Code" value=model.vgWort onChange=""}}      
       
     </div>
-
-    <div layout="" layout-sm="column">
-      {{paper-input flex=60 label="VG Wort Code" value=model.vgWort onChange=""}}      
-      {{paper-input flex=40 label="Id" value=model.id onChange=""}}      
-    </div>
+    
+    {{#each model.categories as |category|}}
+      {{paper-checkbox label=category value=model.categories onChange=""}}
+    {{/each}}
   
   
   {{/card.content}}

@@ -11,6 +11,6 @@ export default DS.Model.extend({
 	content: DS.attr("string"),
 	cover: DS.attr("string"),
 	coverSrc: DS.attr("string"),
-	coverName: DS.attr("string")
-	//categories: DS.hasMany('category', {async: true }),
+	coverName: DS.attr("string"),
+	categories: DS.attr('array')
 });

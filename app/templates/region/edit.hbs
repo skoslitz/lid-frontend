@@ -39,8 +39,11 @@
 
     <div layout="row" layout-sm="column">      
       {{paper-input flex=60 label="Umfang" value=model.extent onChange=""}}      
-      {{paper-input flex=40 label="Bundesland" value=model.bundesland onChange=""}}    
     </div>
+
+    {{#each model.bundesland as |bundesland|}}
+      {{paper-checkbox label=bundesland value=model.bundesland onChange=""}}
+    {{/each}}
     
   {{/card.content}}
 {{/paper-card}}

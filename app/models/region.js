@@ -15,7 +15,7 @@ export default DS.Model.extend({
 	pagination: DS.attr("number"),
 	extent: DS.attr("array"),
 	publisher: DS.attr("string"),
-	bundesland: DS.attr("string"),
+	bundesland: DS.attr("array"),
 	content: DS.attr("string"),
 	excursions: DS.hasMany("excursion"),
 	//topics: DS.hasMany("topic")
