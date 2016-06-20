@@ -9,9 +9,19 @@ export default DS.JSONSerializer.extend({
 	        attributes: {
 	          path: payload.page.path,
 	          title: payload.page.metadata.title,
-	          date: payload.page.metadata.date,
+	          subtitle: payload.page.metadata.untertitel,
 	          description: payload.page.metadata.kurzbeschreibung,
-	          bundesland: payload.page.metadata.bundesland,
+	          date: payload.page.metadata.date,
+	          dateOfPublication: payload.page.metadata.erscheinungsjahr,
+	          editor: payload.page.metadata.herausgeber,
+	          editorInstitut: payload.page.metadata.herausgeberinstitut,
+	          isbn: payload.page.metadata.isbn,
+	          location: payload.page.metadata.ort,	  
+	          editionTitle: payload.page.metadata.reihentitel,
+	          pagination: payload.page.metadata.seitenzahl,
+	          extent: payload.page.metadata.umfang,        
+	          publisher: payload.page.metadata.verlag,	          
+	          bundesland: payload.page.metadata.bundesland,	          
 	          content: payload.page.content
 	        }
 	      }

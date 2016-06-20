@@ -12,6 +12,46 @@
 		  {{paper-input flex=30 label="Bandnummer" value=model.id onChange=""}}
 	  </div>
 
+    <div layout="row" layout-sm="column">
+      {{paper-input flex=100 label="Untertitel" value=model.subtitle onChange=""}}
+    </div>
+
+    <div layout="row" layout-sm="column">
+      {{paper-input flex=70 label="Reihentitel" value=model.editionTitle onChange=""}}
+      {{paper-input flex=30 label="Erscheinungsjahr" value=model.dateOfPublication onChange=""}}
+    </div>
+
+    <div layout="row" layout-sm="column">
+      {{paper-input flex=70 label="Herausgeber" value=model.editor onChange=""}}
+      {{paper-input flex=30 label="ISBN" value=model.isbn onChange=""}}
+    </div>
+
+    <div layout="row" layout-sm="column">
+      {{paper-input flex=100 label="Herausgeberinstitut" value=model.editorInstitut onChange=""}}
+    </div>
+
+
+    <div layout="row" layout-sm="column">
+      {{paper-input flex=30 label="Verlag" value=model.publisher onChange=""}}
+      {{paper-input flex=30 label="Ort" value=model.location onChange=""}}
+      {{paper-input flex=30 label="Seitenzahl" value=model.pagination onChange=""}}      
+    </div>
+
+    <div layout="row" layout-sm="column">      
+      {{paper-input flex=60 label="Umfang" value=model.extent onChange=""}}      
+      {{paper-input flex=40 label="Bundesland" value=model.bundesland onChange=""}}    
+    </div>
+    
+  {{/card.content}}
+{{/paper-card}}
+
+{{#paper-card as |card|}}
+  {{#card.content}}
+
+    <div layout="" layout-sm="column">
+      {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=""}}
+    </div>
+
   {{/card.content}}
 {{/paper-card}}
 
@@ -44,25 +84,3 @@
     {{/paper-card}}
   </div>
 </div>
-
-{{#paper-card as |card|}}
-  {{#card.title as |title|}}
-    {{#title.text as |text|}}
-      {{#text.headline}}Metadaten{{/text.headline}}
-    {{/title.text}}
-  {{/card.title}}
-  {{#card.content}}
-
-    <div layout="row" layout-sm="column">
-
-      {{paper-input flex=70 label="Bundesland" value=model.bundesland onChange=""}}
-
-    </div>
-
-    <div layout="" layout-sm="column">
-      {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=""}}
-    </div>
-
-  {{/card.content}}
-{{/paper-card}}
-
