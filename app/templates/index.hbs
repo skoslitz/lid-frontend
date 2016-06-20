@@ -19,7 +19,7 @@
       {{/paper-card}}
   </div>     
 
-  {{#each model as |region|}}
+  {{#each (reverse model) as |region|}}
     <div class="flex-33">
     
       {{#paper-card as |card|}}
