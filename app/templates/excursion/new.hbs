@@ -1,6 +1,25 @@
-<h3>Neue Exkursion erstellen</h3>
-<h4>Metadaten (Frontmatter)</h4>
-<hr>
-<h4>Content</h4>
+{{#paper-card as |card|}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.subhead}}Neue Exkursion{{/text.subhead}}   
+      {{#text.headline}}Metadaten{{/text.headline}}   
+    {{/title.text}}
+  {{/card.title}}
+  {{#card.content}}
+    <mark>Name der Exkursion</mark>
+    <code>`${Band_Id}_E_${Exkursionsnummer}-${Titel_der_Exkursion}.md`</code>
+    <br>
+    <mark>Pfad</mark>
+    <code>exkursionen/`${ model.name }` => path</code>
+    <br>
+    <mark>Metaangaben</mark>
+    <code>Serializer: model Eigenschaften => page[meta] </code>
+    <br>
+    <mark>Content</mark>
+    <code>Serializer: model.content => page[content]</code>
+    <br>
+    <code>Model Id {{ model.id }}</code>
+   {{/card.content}}
+{{/paper-card}}
 
 

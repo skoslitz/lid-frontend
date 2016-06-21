@@ -10,15 +10,15 @@ Router.map(function() {
   	this.route('edit', {path: '/edit/:name'});
   	this.route('new');
   });
-  this.route('topic-list', function() {});
+  this.route('topic-list', {path: '/topic-list/:id'}, function() {});
   this.route('topic',  function() {
     this.route('edit', {path: '/edit/:name'});
-    this.route('new');
+    this.route('new', {path: '/:id/new'});
   });
-  this.route('excursion-list', function() {});
+  this.route('excursion-list', {path: '/excursion-list/:id'}, function() {});
   this.route('excursion',  function() {
   	this.route('edit', {path: '/edit/:name'});
-  	this.route('new');
+  	this.route('new', {path: '/:id/new'});
   });
   this.route('search');  
 });

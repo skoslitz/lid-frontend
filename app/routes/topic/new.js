@@ -6,7 +6,14 @@ export default Ember.Route.extend({
 			console.log("button action!")
 		}
 	},
-	model() {
-    	return ""
+	model(params) {
+    	
+    	let d = new Date();
+    	let today = `${ d.getFullYear() }-${ d.getMonth() + 1 }-${ d.getDate() }`
+    	
+    	return this.store.createRecord('topic', {
+    		bandId: params.id,
+    		date: today
+    	}) 
   	}
 });

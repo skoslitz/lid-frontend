@@ -6,7 +6,7 @@ export default Ember.Route.extend({
 			console.log("button action!")
 		}
 	},
-	model() {
-    	return ""
+	model(params) {
+    	return params
   	}
 });
