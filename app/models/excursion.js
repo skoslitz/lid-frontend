@@ -6,5 +6,6 @@ export default DS.Model.extend({
 	date: DS.attr("string"),
 	description: DS.attr("string"),
 	vgWort: DS.attr("string"),
-	content: DS.attr("string")
+	content: DS.attr("string"),
+	region: DS.belongsTo('region')
 });

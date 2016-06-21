@@ -12,5 +12,6 @@ export default DS.Model.extend({
 	cover: DS.attr("string"),
 	coverSrc: DS.attr("string"),
 	coverName: DS.attr("string"),
-	categories: DS.attr('array')
+	categories: DS.attr('array'),
+	region: DS.belongsTo('region')
 });

@@ -18,5 +18,5 @@ export default DS.Model.extend({
 	bundesland: DS.attr("array"),
 	content: DS.attr("string"),
 	excursions: DS.hasMany("excursion"),
-	//topics: DS.hasMany("topic")
+	topics: DS.hasMany("topic")
 });
