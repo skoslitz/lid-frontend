@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.JSONSerializer.extend({
-  normalizeResponse(store, primaryModelClass, payload, id, requestType) {
+ 	normalizeResponse(store, primaryModelClass, payload, id, requestType) {
 	    return {
 	      data: {
 	        id: payload.page.metadata.id,
@@ -23,5 +23,10 @@ export default DS.JSONSerializer.extend({
 	        }
 	      }
 	    };
-  	}
+  	},
+  	keyForRelationship(key, relationship) {
+	if (relationship === 'belongsTo') {
+		return `edition`;
+	}
+  }
 });

@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
+	// Attributes
 	path: DS.attr("string"),
 	title: DS.attr("string"),
 	subtitle: DS.attr("string"),
@@ -13,5 +14,7 @@ export default DS.Model.extend({
 	coverSrc: DS.attr("string"),
 	coverName: DS.attr("string"),
 	categories: DS.attr('array'),
+	
+	// Associations
 	region: DS.belongsTo('region')
 });
