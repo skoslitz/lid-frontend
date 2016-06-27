@@ -1,45 +1,45 @@
-<div class="layout-row layout-wrap">
+<div class="layout-row layout-wrap">  
 
-  <div class="flex-33">
-    
-      {{#paper-card as |card|}}
-        {{#card.title as |title|}}
-          {{#title.text as |text|}}
-            {{#text.subhead}}Neuer Band{{/text.subhead}}   
-            {{#text.headline}}Metadaten{{/text.headline}}   
-          {{/title.text}}
-        {{/card.title}}
-        {{#card.content}}          
-          {{paper-input flex=40 label="Bandnummer" value=newModel.id required="true" required-errortext="Wichtig!" onChange=null}}
-          {{paper-input flex=70 label="Titel" value=newModel.title onChange=(action (mut name))}}
-          {{#card.actions}}
-            {{#paper-button onClick=(action "save")}}Erstellen{{/paper-button}}           
-          {{/card.actions}}
-        {{/card.content}}
-      {{/paper-card}}
+  {{!-- Neuer Band --}}
+  <div class="flex-50">
+      
+    {{#paper-card as |card|}}
+      {{#card.title as |title|}}
+        {{#title.text as |text|}}
+          {{#text.subhead}}Neuer Band{{/text.subhead}}   
+          {{#text.headline}}Metadaten{{/text.headline}}   
+        {{/title.text}}
+      {{/card.title}}
+      {{#card.content}}          
+        {{paper-input flex=40 label="Bandnummer" value=newModel.id required="true" required-errortext="Wichtig!" onChange=null}}
+        {{paper-input flex=70 label="Titel" value=newModel.title onChange=(action (mut name))}}
+        {{#card.actions}}
+          {{#paper-button onClick=(action "save")}}Erstellen{{/paper-button}}           
+        {{/card.actions}}
+      {{/card.content}}
+    {{/paper-card}}
+
   </div>     
 
-  {{#each (reverse model) as |region|}}
-    <div class="flex-33">
+  {{!-- Bestehende Bände --}}
+  {{#each ( chunk 5 (reverse model) ) as |regionchunk|}}
     
-      {{#paper-card as |card|}}
+    <div class="flex-50">
       
-        {{#card.title as |title|}}
-          {{#title.text as |text|}}
-            {{#text.subhead}}Bandnummer {{ region.edition }} {{/text.subhead}}   
-            {{#text.headline}}{{ region.name }}{{/text.headline}}         
-          {{/title.text}}
-        {{/card.title}}
-
-        {{#card.content}}
-          {{#card.actions}}
+      {{#paper-card as |card|}}
+        {{#card.content}}          
+          {{#each regionchunk as |region|}}
             {{#link-to 'region.edit' region.name}} 
-              {{#paper-button}}Bandinformationen{{/paper-button}}         
-            {{/link-to}}
-          {{/card.actions}}        
+              <h3> {{ region.name }} </h3> 
+            {{/link-to}}            
+          {{/each}}        
         {{/card.content}}
-
       {{/paper-card}}
-    </div>   
+    
+    </div>       
   {{/each}}
-</div>
+
+
+    
+</div>     
+
