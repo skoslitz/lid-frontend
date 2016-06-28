@@ -1,11 +1,14 @@
-<div class="layout-row layout-align-center-center">  
+<div class="layout-row layout-align-center-center">
 
   {{!-- Neuer Band --}}
+  <div class="flex-66"></div>
+  <div class="flex-33">
   {{#paper-button raised=true onClick=(action "openPromptDialog")}}Neuen Band erstellen{{/paper-button}}
+  </div>
 
   {{#if showPromptDialog}}
     {{#paper-dialog fullscreen=fullscreen onClose=(action "closePromptDialog" "cancel") origin=dialogOrigin clickOutsideToClose=true}}
-      
+
       {{#paper-toolbar}}
         <div class="md-toolbar-tools">
           <h2>Neuer Band</h2>
@@ -29,29 +32,44 @@
     {{/paper-dialog}}
   {{/if}}
 
-</div>  
+</div>
 
-<div class="layout-row layout-wrap">   
+<div class="layout-row layout-wrap">
+
+  <div class="flex-25"></div>
+  <div class="flex-75">
+    {{#each (reverse model)  as |region|}}
+      <h5 class="regionchunk">{{#link-to 'region.edit' region.fileName }}
+             <strong>{{ region.id }}</strong> {{ region.name }}
+            {{/link-to}}  </h5>
+    {{/each}}
+
+  </div>
+
+{{!-----  -------------------------}}
+{{!-----  Deprecated card layout --}}
+{{!-----  -------------------------}}
+
 
   {{!-- Bestehende Bände --}}
-  {{#each ( chunk 5 (reverse model) ) as |regionchunk|}}
-    
+{{!--   {{#each ( chunk 5 (reverse model) ) as |regionchunk|}}
+
     <div class="flex-50">
-      
+
       {{#paper-card as |card|}}
-        {{#card.content class="regionchunk"}}          
+        {{#card.content class="regionchunk"}}
           {{#each regionchunk as |region|}}
-            {{#link-to 'region.edit' region.fileName }} 
-             <strong>{{ region.id }}</strong> {{ region.name }}  
-            {{/link-to}}          
-          {{/each}}        
+            {{#link-to 'region.edit' region.fileName }}
+             <strong>{{ region.id }}</strong> {{ region.name }}
+            {{/link-to}}
+          {{/each}}
         {{/card.content}}
       {{/paper-card}}
-    
-    </div>       
-  {{/each}}
+
+    </div>
+  {{/each}} --}}
 
 
-    
-</div>     
+
+</div>
 
