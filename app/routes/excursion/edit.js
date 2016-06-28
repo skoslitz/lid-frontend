@@ -7,6 +7,6 @@ export default Ember.Route.extend({
 		}
 	},
 	model: function(params) {
-    	return this.store.findRecord('excursion', params.name); 
+    	return this.store.findRecord('excursion', params.fileName);
   	}
 });

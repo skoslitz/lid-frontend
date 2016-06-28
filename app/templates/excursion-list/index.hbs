@@ -1,34 +1,26 @@
 <div class="layout-row">
-  {{#paper-button disabled="true"}}<mark>Zurück zur Region|Band Button</mark>{{/paper-button}}
+
+  <div class="flex-66"></div>
+  <div class="flex-33">
+    {{#paper-button disabled="true"}}<mark>Zurück zur Region|Band Button</mark>{{/paper-button}}
+  </div>
+
 </div>
 
-{{#paper-card as |card|}}
-  {{#card.title as |title|}}
-    {{#title.text as |text|}}
-      {{#text.headline}}<strong>{{model.length}}</strong> Exkursionen{{/text.headline}}   
-    {{/title.text}}
-  {{/card.title}}
-  {{#card.content}}
-    <table>
-      <thead>
-        <tr>
-          <th>Link</th>
-          <th>Name</th>
-          <th>Pfad</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each model as |excursion|}}
-        <tr>
-          <td>{{#link-to 'excursion.edit' excursion.name}}Link{{/link-to}}</td> 
-          <td>{{excursion.name}}</td>
-          <td>{{excursion.path}}</td>
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
-  {{/card.content}}
-{{/paper-card}}
+<div class="layout-row layout-wrap">
+
+  <div class="flex-25"></div>
+  <div class="flex-75">
+    {{#each model  as |excursion|}}
+      <h5 class="regionchunk">{{#link-to 'excursion.edit' excursion.fileName }}
+             <strong>{{ excursion.id }}</strong> {{ excursion.name }}
+            {{/link-to}}  </h5>
+    {{/each}}
+
+  </div>
+ </div>
+
+
 
 {{outlet}}
 
