@@ -16,8 +16,8 @@
 
       {{#paper-dialog-content}}
         <h5>Metadaten</h5>
-        {{paper-input flex=100 label="Bandnummer" value=newModel.id required="true" required-errortext="Wichtig!" onChange=null}}
-        {{paper-input flex=100 label="Titel" value=newModel.title onChange=(action (mut name))}}
+        {{paper-input flex=100 label="Bandnummer" value=id required="true" required-errortext="Wichtig!" onChange=null}}
+        {{paper-input flex=100 label="Titel" value=title onChange=(action (mut name))}}
       {{/paper-dialog-content}}
 
       {{#paper-dialog-actions class="layout-row"}}
