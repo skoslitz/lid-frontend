@@ -7,7 +7,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('region',  function() {
-  	this.route('edit', {path: '/edit/:name'});
+  	this.route('edit', {path: '/edit/:fileName'});
   	this.route('new');
   });
   this.route('topic-list', {path: '/topic-list/:id'}, function() {});

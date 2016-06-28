@@ -18,10 +18,17 @@ $base-color: rgba(0, 0, 0, 0.87);
 	margin-left: auto;
 }
 
-
-/* a, a:visited {
+// region list
+.regionchunk > a, .regionchunk > a:visited {
     color: #06c;
-} */
+    display: block;
+    font-size: 1em;
+    -webkit-margin-before: 1.67em;
+    -webkit-margin-after: 1.67em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    //font-weight: bold;
+} 
 
 // loading page style
 #load {
