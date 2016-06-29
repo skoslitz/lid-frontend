@@ -2,49 +2,49 @@
   {{#card.title as |title|}}
     {{#title.text as |text|}}
       {{#text.subhead}}Frontmatter{{/text.subhead}}
-      {{#text.headline}}{{model.title}}{{/text.headline}}
+      {{#text.headline}}{{model.region.title}}{{/text.headline}}
     {{/title.text}}
   {{/card.title}}
   {{#card.content}}
 
     <div layout="row" layout-sm="column">
-		  {{paper-input flex=70 label="Titel" value=model.title onChange=""}}
-		  {{paper-input flex=30 label="Bandnummer" value=model.id onChange=""}}
+		  {{paper-input flex=70 label="Titel" value=model.region.title onChange=""}}
+		  {{paper-input flex=30 label="Bandnummer" value=model.region.id onChange=""}}
 	  </div>
 
     <div layout="row" layout-sm="column">
-      {{paper-input flex=100 label="Untertitel" value=model.subtitle onChange=""}}
+      {{paper-input flex=100 label="Untertitel" value=model.region.subtitle onChange=""}}
     </div>
 
     <div layout="row" layout-sm="column">
-      {{paper-input flex=70 label="Reihentitel" value=model.editionTitle onChange=""}}
-      {{paper-input flex=30 label="Erscheinungsjahr" value=model.dateOfPublication onChange=""}}
+      {{paper-input flex=70 label="Reihentitel" value=model.region.editionTitle onChange=""}}
+      {{paper-input flex=30 label="Erscheinungsjahr" value=model.region.dateOfPublication onChange=""}}
     </div>
 
     <div layout="row" layout-sm="column">
-      {{paper-input flex=70 label="Herausgeber" value=model.editor onChange=""}}
-      {{paper-input flex=30 label="ISBN" value=model.isbn onChange=""}}
+      {{paper-input flex=70 label="Herausgeber" value=model.region.editor onChange=""}}
+      {{paper-input flex=30 label="ISBN" value=model.region.isbn onChange=""}}
     </div>
 
     <div layout="row" layout-sm="column">
-      {{paper-input flex=100 label="Herausgeberinstitut" value=model.editorInstitut onChange=""}}
+      {{paper-input flex=100 label="Herausgeberinstitut" value=model.region.editorInstitut onChange=""}}
     </div>
 
 
     <div layout="row" layout-sm="column">
-      {{paper-input flex=30 label="Verlag" value=model.publisher onChange=""}}
-      {{paper-input flex=30 label="Ort" value=model.location onChange=""}}
-      {{paper-input flex=30 label="Seitenzahl" value=model.pagination onChange=""}}      
+      {{paper-input flex=30 label="Verlag" value=model.region.publisher onChange=""}}
+      {{paper-input flex=30 label="Ort" value=model.region.location onChange=""}}
+      {{paper-input flex=30 label="Seitenzahl" value=model.region.pagination onChange=""}}
     </div>
 
-    <div layout="row" layout-sm="column">      
-      {{paper-input flex=60 label="Umfang" value=model.extent onChange=""}}      
+    <div layout="row" layout-sm="column">
+      {{paper-input flex=60 label="Umfang" value=model.region.extent onChange=""}}
     </div>
 
-    {{#each model.bundesland as |bundesland|}}
-      {{paper-checkbox label=bundesland value=model.bundesland onChange=""}}
+    {{#each model.region.bundesland as |bundesland|}}
+      {{paper-checkbox label=bundesland value=model.region.bundesland onChange=""}}
     {{/each}}
-    
+
   {{/card.content}}
 {{/paper-card}}
 
@@ -52,7 +52,7 @@
   {{#card.content}}
 
     <div layout="" layout-sm="column">
-      {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=""}}
+      {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.region.description onChange=""}}
     </div>
 
   {{/card.content}}
@@ -63,12 +63,12 @@
     {{#paper-card as |card|}}
       {{#card.title as |title|}}
         {{#title.text as |text|}}
-          {{#text.headline}}23 Exkursionen{{/text.headline}}
+          {{#text.headline}}{{model.excursion.length}} Exkursionen{{/text.headline}}
         {{/title.text}}
       {{/card.title}}
       {{#card.content}}
-        {{#link-to "excursion-list" model.id}}Exkursionen auflisten{{/link-to}}
-        {{#link-to "excursion.new" model.id}}Exkursion erstellen{{/link-to}}
+        {{#link-to "excursion-list" model.region.id}}Exkursionen auflisten{{/link-to}}
+        {{#link-to "excursion.new" model.region.id}}Exkursion erstellen{{/link-to}}
       {{/card.content}}
     {{/paper-card}}
   </div>
@@ -77,7 +77,7 @@
     {{#paper-card as |card|}}
       {{#card.title as |title|}}
         {{#title.text as |text|}}
-          {{#text.headline}}<mark>Anzahl</mark> Themen{{/text.headline}}
+          {{#text.headline}}{{model.topic.length}} Themen{{/text.headline}}
         {{/title.text}}
       {{/card.title}}
       {{#card.content}}

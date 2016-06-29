@@ -1,19 +1,22 @@
 <div class="container">
 
-{{#paper-toolbar}}
-  {{#paper-toolbar-tools}}
-    {{!-- <h2>{{#link-to "index"}}Landschaften in Deutschland <em>Online</em>{{/link-to}}</h2> --}}
-    {{#link-to "index"}}
-    <h2>
-      LiD Online Editor
-      {{ model}}
-    </h2>
-    {{/link-to}}
-    <div class="paper-right">
-      {{paper-icon "person"}}
-    </div>
-  {{/paper-toolbar-tools}}
-{{/paper-toolbar}}
+
+  {{#paper-toolbar class="app-bar"}}
+    {{#paper-toolbar-tools}}
+      {{!-- <h2>{{#link-to "index"}}Landschaften in Deutschland <em>Online</em>{{/link-to}}</h2> --}}
+      {{#link-to "index"}}
+      <h2>
+        LiD Online Editor
+        {{ model}}
+      </h2>
+      {{/link-to}}
+      <div class="paper-right">
+        {{paper-icon "person"}}
+      </div>
+    {{/paper-toolbar-tools}}
+  {{/paper-toolbar}}
+
+
 
 <div class="layout-row layout-align-center layout-margin">
     <div class="flex-10"></div>
