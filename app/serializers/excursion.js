@@ -12,7 +12,8 @@ export default DS.JSONSerializer.extend({
 	          date: payload.page.metadata.date,
 	          description: payload.page.metadata.description,
 	          vgWort: payload.page.metadata.vg_wort_code,
-	          content: payload.page.content
+	          content: payload.page.content,
+	          assets: payload.page.relationships.assets
 	        }
 	      }
 	    };

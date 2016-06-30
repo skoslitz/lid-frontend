@@ -14,10 +14,11 @@ export default DS.Model.extend({
 	location: DS.attr("string"),	
 	editionTitle: DS.attr("string"),
 	pagination: DS.attr("number"),
-	extent: DS.attr("array"),
+	extent: DS.attr("array"),	
 	publisher: DS.attr("string"),
 	bundesland: DS.attr("array"),
 	content: DS.attr("string"),
+	assets: DS.attr("string"),
 
 	// Associations
 	excursions: DS.hasMany("excursion"),

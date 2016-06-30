@@ -8,7 +8,8 @@ export default DS.RESTAdapter.extend({
   	},
   	createRecord: function(store, type, snapshot) {
     var data = this.serialize(snapshot, { includeId: true });
-    var url = 'http://localhost:1313/api/page/regionen';
+    // build url dynamic with data.path -----| newRegion.path
+    var url = 'http://localhost:1313/api/page/regionen/99-beispiel.md';
 
     return new Ember.RSVP.Promise(function(resolve, reject) {
       Ember.$.ajax({

@@ -5,7 +5,8 @@
   <div class="flex-33">
   {{#paper-button raised=true onClick=(action "openPromptDialog")}}Neuen Band erstellen{{/paper-button}}
   </div>
-
+  
+  {{!-- Band erstellen Dialog --}}
   {{#if showPromptDialog}}
     {{#paper-dialog fullscreen=fullscreen onClose=(action "closePromptDialog" "cancel") origin=dialogOrigin clickOutsideToClose=true}}
 
@@ -19,14 +20,18 @@
 
       {{#paper-dialog-content}}
         <h5>Metadaten</h5>
-        {{paper-input flex=100 label="Bandnummer" value=id required="true" required-errortext="Wichtig!" onChange=null}}
-        {{paper-input flex=100 label="Titel" value=title onChange=(action (mut name))}}
+        <div layout="row">
+          {{paper-input flex=100 value=region.id label="Bandnummer" required="true" required-errortext="Wichtig!" onChange=(action (mut region.id ))}}  
+        </div>
+        <div layout="row">
+          {{paper-input flex=100 value=region.title label="Titel" onChange=(action (mut region.title))}}  
+        </div>        
       {{/paper-dialog-content}}
 
       {{#paper-dialog-actions class="layout-row"}}
         <span class="flex"></span>
         {{#paper-button primary=true onClick=(action "closePromptDialog" "cancel")}}Abbrechen{{/paper-button}}
-        {{#paper-button primary=true onClick=(action "closePromptDialog" "ok" newModel)}}Band erstellen{{/paper-button}}
+        {{#paper-button primary=true onClick=(action "saveRegion" )}}Band erstellen{{/paper-button}}
       {{/paper-dialog-actions}}
 
     {{/paper-dialog}}
@@ -40,6 +45,7 @@
 
   <div class="flex-25"></div>
   <div class="flex-75">
+
     {{#each (reverse model)  as |region|}}
       <h5 class="regionchunk">{{#link-to 'region.edit' region.fileName }}
              <strong>{{ region.id }}</strong> {{ region.name }}
@@ -47,31 +53,5 @@
     {{/each}}
 
   </div>
-
-{{!-----  -------------------------}}
-{{!-----  Deprecated card layout --}}
-{{!-----  -------------------------}}
-
-
-  {{!-- Bestehende Bände --}}
-{{!--   {{#each ( chunk 5 (reverse model) ) as |regionchunk|}}
-
-    <div class="flex-50">
-
-      {{#paper-card as |card|}}
-        {{#card.content class="regionchunk"}}
-          {{#each regionchunk as |region|}}
-            {{#link-to 'region.edit' region.fileName }}
-             <strong>{{ region.id }}</strong> {{ region.name }}
-            {{/link-to}}
-          {{/each}}
-        {{/card.content}}
-      {{/paper-card}}
-
-    </div>
-  {{/each}} --}}
-
-
-
 </div>
 

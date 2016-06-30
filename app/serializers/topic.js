@@ -19,6 +19,7 @@ export default DS.JSONSerializer.extend({
 	          cover: payload.page.metadata.titelbild,
 	          coverSrc: payload.page.metadata.titelbild_quelle,
 	          coverName: payload.page.metadata.titelbild_titel,
+	          assets: payload.page.relationships.assets
 
 	        }
 	      }

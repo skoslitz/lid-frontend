@@ -22,7 +22,8 @@ export default DS.JSONSerializer.extend({
 	          extent: payload.page.metadata.umfang,        
 	          publisher: payload.page.metadata.verlag,	          
 	          bundesland: payload.page.metadata.bundesland,	          
-	          content: payload.page.content
+	          content: payload.page.content,
+	          assets: payload.page.relationships.assets
 	        }
 	      }
 	    };
