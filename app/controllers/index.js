@@ -37,13 +37,13 @@ export default Ember.Controller.extend({
 				content: ""
 			});
 
-/*			newRegion.save().then((response) => {
-			 	this.set('responseMessage', `Neuer Band (Nummer: ${response.get('id')} wurde gespeichert ) `);
+			newRegion.save().then((response) => {
+			 	//this.set('responseMessage', `Neuer Band (Nummer: ${response.get('id')} wurde gespeichert ) `);
 
 				this.set('region.id', '');
 				this.set('region.title', '');
 				this.set('showPromptDialog', false);
-			});*/
+			});
 
 	    }
 	}

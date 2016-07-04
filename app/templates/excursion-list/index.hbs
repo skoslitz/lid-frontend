@@ -12,9 +12,12 @@
   <div class="flex-25"></div>
   <div class="flex-75">
     {{#each model  as |excursion|}}
-      <h5 class="regionchunk">{{#link-to 'excursion.edit' excursion.fileName }}
-             <strong>{{ excursion.id }}</strong> {{ excursion.name }}
-            {{/link-to}}  </h5>
+      <h5 class="regionchunk">
+        {{#link-to 'excursion.edit' excursion.fileName }}
+          <strong>{{ excursion.id }}</strong> {{ excursion.name }}
+        {{/link-to}}
+      </h5>
+      <p class="edit-date">Aktualisiert am <span>{{excursion.modTime}}</span></p>
     {{/each}}
 
   </div>

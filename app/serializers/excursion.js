@@ -13,7 +13,7 @@ export default DS.JSONSerializer.extend({
 	          description: payload.page.metadata.description,
 	          vgWort: payload.page.metadata.vg_wort_code,
 	          content: payload.page.content,
-	          assets: payload.page.relationships.assets
+	          assets: payload.page.links.assets
 	        }
 	      }
 	    };

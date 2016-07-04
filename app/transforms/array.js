@@ -1,6 +1,6 @@
 import DS from 'ember-data';
 
-DS.ArrayTransform = DS.Transform.extend({
+export default DS.Transform.extend({
   deserialize: function(serialized) {
     return (Ember.typeOf(serialized) == "array")
         ? serialized 
@@ -20,5 +20,3 @@ DS.ArrayTransform = DS.Transform.extend({
     }
   }
 });
-
-App.register("transform:array", DS.ArrayTransform);
