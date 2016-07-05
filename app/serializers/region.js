@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.JSONSerializer.extend({
-  normalizeResponse(store, primaryModelClass, payload, id, requestType) {
+  	normalizeResponse(store, primaryModelClass, payload, id, requestType) {
 	    return {
 	      data: {
 	        id: payload.page.metadata.bandnummer,
@@ -27,5 +27,20 @@ export default DS.JSONSerializer.extend({
 	        }
 	      }
 	    };
-  	}
+  	},
+  	serializeIntoHash(hash, typeClass, snapshot) {
+		hash["page"] = this.serialize(snapshot);
+	},
+	serialize(snapshot) {
+		let serializedData = {
+			"path": snapshot.attr("path"),
+			"content": snapshot.attr("content"),
+			"metadata": {
+				"title": snapshot.attr("title"),
+				"bandnummer": snapshot.attr("bandnummer")
+			}
+		};
+			
+		return serializedData;
+	}
 });

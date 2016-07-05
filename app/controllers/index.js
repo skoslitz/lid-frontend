@@ -18,9 +18,9 @@ export default Ember.Controller.extend({
 			const regionName = this.get('region.title');
 
 			const newRegion = this.store.createRecord('region', {
-				id: regionId,
+				bandnummer: regionId,
 				title: regionName,
-				path: "regionen/99-Ein-Beispielband.md",			
+				path: `regionen/${regionId}-${regionName}.md`,
 				subtitle: "",
 				description: "",
 				date: "",
@@ -33,8 +33,8 @@ export default Ember.Controller.extend({
 				pagination: 100,
 				extent: [],
 				publisher: "",
-				bundesland: [],
-				content: ""
+				bundesland: ["Sachsen", "Thüringen"],
+				content: "some content text"
 			});
 
 			newRegion.save().then((response) => {
@@ -43,6 +43,8 @@ export default Ember.Controller.extend({
 				this.set('region.id', '');
 				this.set('region.title', '');
 				this.set('showPromptDialog', false);
+				// TODO: make this work
+				//this.transitionToRoute('edit', "region","99-beispiel.md");
 			});
 
 	    }
