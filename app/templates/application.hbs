@@ -1,20 +1,10 @@
 <div class="container">
+  <div class="layout-row layout-margin nav-logo-text">  
+    {{#link-to "index"}}
+      <h1><img src="/img/LiD-online_logo_wi_transpi.png" class="lid-icon" alt="LiD">Online Editor</h1>
+    {{/link-to}}
 
-
-  {{#paper-toolbar class="app-bar"}}
-    {{#paper-toolbar-tools}}
-      {{!-- <h2>{{#link-to "index"}}Landschaften in Deutschland <em>Online</em>{{/link-to}}</h2> --}}
-      {{#link-to "index"}}
-      <h2>
-        LiD Online Editor
-        {{ model}}
-      </h2>
-      {{/link-to}}
-      <div class="paper-right">
-        {{paper-icon "person"}}
-      </div>
-    {{/paper-toolbar-tools}}
-  {{/paper-toolbar}}
+  </div>
 
 
 
