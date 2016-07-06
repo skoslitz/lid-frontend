@@ -1,16 +1,11 @@
-<div class="layout-row">
-
-  <div class="flex-66"></div>
-  <div class="flex-33">
-    {{#paper-button disabled="true"}}<mark>Zurück zur Region|Band Button</mark>{{/paper-button}}
-  </div>
-
+<div class="layout-row layout-align-end">
+  {{#paper-button disabled="true"}}<mark>Zurück zur Region|Band Button</mark>{{/paper-button}}
 </div>
 
 <div class="layout-row layout-wrap">
 
-  <div class="flex-25"></div>
-  <div class="flex-75">
+  <div class="flex-33"></div>
+  <div class="flex-66">
     {{#each model  as |excursion|}}
       <h5 class="regionchunk">
         {{#link-to 'excursion.edit' excursion.fileName }}

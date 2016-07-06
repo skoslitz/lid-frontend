@@ -1,35 +1,46 @@
-{{#paper-card as |card|}}
-  {{#card.title as |title|}}
-    {{#title.text as |text|}}
-      {{#text.subhead}}Frontmatter{{/text.subhead}}   
-      {{#text.headline}}Metadaten{{/text.headline}}   
-    {{/title.text}}
-  {{/card.title}}
-  {{#card.content}}
-    <div layout="" layout-sm="column">
-		  {{paper-input flex=70 label="Titel" value=model.title onChange=""}}
-		  {{paper-input flex=30 label="Id" value=model.id onChange=""}}
-	  </div>
-    <div layout="" layout-sm="column">
-      {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=""}}
-      
-    </div>
-  {{/card.content}}
-{{/paper-card}}
+<div class="layout-row layout-align-end">
+    {{#paper-button raised=true onClick=(action "showRelatedRegion")}}zur Bandübersicht{{/paper-button}}
+    {{#paper-button raised=true onClick=(action "updateExcursion")}}Exkursion aktualisieren{{/paper-button}}
+</div>
 
-{{#paper-card as |card|}}
-  {{#card.title as |title|}}
-    {{#title.text as |text|}}
-      {{#text.headline}}Content{{/text.headline}}   
-    {{/title.text}}
-  {{/card.title}}
-  {{#card.content}}
-   {{trix-editor class="trix-editor-wrapper"
-              editorClass="trix-editor"
-              value=model.content
-              trix-change=(action "handleTrixAction") }}
-  {{/card.content}}
-{{/paper-card}}
+<div class="layout-row layout-wrap">
+  
+  <div class="flex-20"></div>  
+  <div class="flex-80">
 
+    {{#paper-card as |card|}}
+      {{#card.title as |title|}}
+        {{#title.text as |text|}}
+          {{#text.subhead}}Frontmatter{{/text.subhead}}   
+          {{#text.headline}}Metadaten{{/text.headline}}   
+        {{/title.text}}
+      {{/card.title}}
+      {{#card.content}}
+        <div layout="" layout-sm="column">
+    		  {{paper-input flex=70 label="Titel" value=model.title onChange=""}}
+    		  {{paper-input flex=30 label="Id" value=model.id onChange=""}}
+    	  </div>
+        <div layout="" layout-sm="column">
+          {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=""}}
+          
+        </div>
+      {{/card.content}}
+    {{/paper-card}}
 
+    {{#paper-card as |card|}}
+      {{#card.title as |title|}}
+        {{#title.text as |text|}}
+          {{#text.headline}}Content{{/text.headline}}   
+        {{/title.text}}
+      {{/card.title}}
+      {{#card.content}}
+       {{trix-editor class="trix-editor-wrapper"
+                  editorClass="trix-editor"
+                  value=model.content
+                  trix-change=(action "handleTrixAction") }}
+      {{/card.content}}
+    {{/paper-card}}
+
+  </div>  
+</div>  
 

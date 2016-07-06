@@ -1,10 +1,7 @@
-<div class="layout-row layout-align-center-center">
-
-  {{!-- Neuer Band --}}
-  <div class="flex-66"></div>
-  <div class="flex-33">
-  {{#paper-button raised=true onClick=(action "openPromptDialog")}}Neuen Band erstellen{{/paper-button}}
-  </div>
+<div class="layout-row layout-align-end">  
+  {{#paper-button raised=true onClick=(action "openPromptDialog")}}Webseitenkonfiguration{{/paper-button}}  
+  {{#paper-button raised=true onClick=(action "openPromptDialog")}}Webseite aktualisieren{{/paper-button}}  
+  {{#paper-button raised=true onClick=(action "openPromptDialog")}}Neuen Band erstellen{{/paper-button}}  
   
   {{!-- Band erstellen Dialog --}}
   {{#if showPromptDialog}}
@@ -42,9 +39,9 @@
 
 {{!-- Bestehende Bände --}}
 <div class="layout-row layout-wrap">
-
-  <div class="flex-25"></div>
-  <div class="flex-75">
+  
+  <div class="flex-33"></div>  
+  <div class="flex-66">
 
     {{#each (reverse model)  as |region|}}
       <h5 class="regionchunk">{{#link-to 'region.edit' region.fileName }}

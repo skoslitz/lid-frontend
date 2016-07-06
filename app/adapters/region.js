@@ -10,15 +10,14 @@ export default DS.RESTAdapter.extend({
     	return "regionen";
   },
   createRecord: function(store, type, snapshot) {
-      // build url dynamic with data.path -----| newRegion.path
-      let url = `${this.host}/${this.namespace}/regionen/99-beispiel.md`;
+      let url = `${this.host}/${this.namespace}/${snapshot.attr('path')}`;
       let data = {};
       let serializer = store.serializerFor(type.modelName);
       serializer.serializeIntoHash(data, type, snapshot);
       return $.ajax({
-      type: 'POST',
-      url: url,
-      data: JSON.stringify(data)
+        type: 'POST',
+        url: url,
+        data: JSON.stringify(data)
       });
   }
 });

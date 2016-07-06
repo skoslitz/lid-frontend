@@ -38,13 +38,10 @@ export default Ember.Controller.extend({
 			});
 
 			newRegion.save().then((response) => {
-			 	//this.set('responseMessage', `Neuer Band (Nummer: ${response.get('id')} wurde gespeichert ) `);
-
 				this.set('region.id', '');
 				this.set('region.title', '');
 				this.set('showPromptDialog', false);
-				// TODO: make this work
-				//this.transitionToRoute('edit', "region","99-beispiel.md");
+				this.transitionToRoute('region.edit', `${regionId}-${regionName}.md`);				
 			});
 
 	    }
