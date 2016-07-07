@@ -1,0 +1,37 @@
+<div class="layout-row layout-align-end">  
+  {{#paper-button raised=true onClick=(action "showRegions")}}Regionenübersicht{{/paper-button}}  
+  {{#paper-button warn=true raised=true onClick=(action "updateConfig")}}Konfiguration aktualisieren{{/paper-button}}  
+</div>
+
+<div class="layout-row layout-wrap">
+  
+  <div class="flex-20"></div>  
+  <div class="flex-80">
+	
+	{{#each model as |config|}}
+
+	    {{#paper-card as |card|}}
+	      {{#card.title as |title|}}
+	        {{#title.text as |text|}}
+	          {{#text.subhead}}Webseitenkonfiguration{{/text.subhead}}
+	          {{#text.headline}}{{config.title}}{{/text.headline}}
+	        {{/title.text}}
+	      {{/card.title}}
+	      {{#card.content}}
+
+	      <div layout="row" layout-sm="column">
+	    	  <h3>URL: <span class="mono">{{config.baseurl}}</span></h3>
+		  </div>
+
+		  <div layout="row" layout-sm="column">
+	    	  {{paper-input flex=70 label="Copyright" value=config.copyright onChange=""}}
+		  </div>
+
+	      
+
+	      {{/card.content}}
+	    {{/paper-card}}
+	{{/each}}
+
+  </div>  
+</div> 

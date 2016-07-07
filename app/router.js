@@ -21,6 +21,7 @@ Router.map(function() {
   	this.route('new', {path: '/:id/new'});
   });
   this.route('search');
+  this.route('config');
 });
 
 export default Router;

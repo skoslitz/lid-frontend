@@ -44,6 +44,9 @@ export default Ember.Controller.extend({
 				this.transitionToRoute('region.edit', `${regionId}-${regionName}.md`);				
 			});
 
+	    },
+	    showConfig() {
+	    	this.transitionToRoute('config');	
 	    }
 	}
 });
