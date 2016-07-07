@@ -45,7 +45,7 @@
 
     {{#each (reverse model)  as |region|}}
       <h5 class="regionchunk">{{#link-to 'region.edit' region.fileName }}
-             <strong>{{ region.id }}</strong> {{ region.name }}
+             <strong>{{ region.edition }}</strong> {{ region.name }}
             {{/link-to}}  </h5>
     {{/each}}
 

@@ -4,10 +4,12 @@ export default DS.JSONSerializer.extend({
   	normalizeResponse(store, primaryModelClass, payload, id, requestType) {
 	    return {
 	      data: {
-	        id: payload.page.metadata.bandnummer,
+	        id: payload.page.id,
 	        type: primaryModelClass.modelName,
 	        attributes: {
 	          path: payload.page.path,
+	          filename: payload.page.filename,
+	          bandnummer: payload.page.metadata.bandnummer,
 	          title: payload.page.metadata.title,
 	          subtitle: payload.page.metadata.untertitel,
 	          description: payload.page.metadata.kurzbeschreibung,
@@ -39,6 +41,10 @@ export default DS.JSONSerializer.extend({
 				"title": snapshot.attr("title"),
 				"bandnummer": snapshot.attr("bandnummer")
 			}
+		};
+
+		if (snapshot.id) {
+			serializedData.id = snapshot.id;
 		};
 			
 		return serializedData;
