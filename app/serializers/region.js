@@ -7,8 +7,7 @@ export default DS.JSONSerializer.extend({
 	        id: payload.page.id,
 	        type: primaryModelClass.modelName,
 	        attributes: {
-	          path: payload.page.path,
-	          filename: payload.page.filename,
+	          path: payload.page.path,	          
 	          bandnummer: payload.page.metadata.bandnummer,
 	          title: payload.page.metadata.title,
 	          subtitle: payload.page.metadata.untertitel,

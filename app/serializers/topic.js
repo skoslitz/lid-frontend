@@ -4,11 +4,10 @@ export default DS.JSONSerializer.extend({
  	normalizeResponse(store, primaryModelClass, payload, id, requestType) {
 	    return {
 	      data: {
-	        id: payload.page.metadata.id,
+	        id: payload.page.id,
 	        type: primaryModelClass.modelName,
 	        attributes: {
 	          path: payload.page.path,
-	          filename: payload.page.filename,
 	          title: payload.page.metadata.title,
 	          subtitle: payload.page.metadata.subtitle,
 	          date: payload.page.metadata.date,
