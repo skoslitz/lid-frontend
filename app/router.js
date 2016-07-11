@@ -7,17 +7,17 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('region',  function() {
-  	this.route('edit', {path: '/edit/:fileName'});
+  	this.route('edit', {path: '/edit/:id'});
   	this.route('new');
   });
   this.route('topic-list', {path: '/topic-list/:id'}, function() {});
   this.route('topic',  function() {
-    this.route('edit', {path: '/edit/:fileName'});
+    this.route('edit', {path: '/edit/:id'});
     this.route('new', {path: '/:id/new'});
   });
   this.route('excursion-list', {path: '/excursion-list/:id'}, function() {});
   this.route('excursion',  function() {
-  	this.route('edit', {path: '/edit/:fileName'});
+  	this.route('edit', {path: '/edit/:id'});
   	this.route('new', {path: '/:id/new'});
   });
   this.route('search');

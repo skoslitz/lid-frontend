@@ -8,7 +8,7 @@
   <div class="flex-66">
     {{#each model  as |excursion|}}
       <h5 class="regionchunk">
-        {{#link-to 'excursion.edit' excursion.fileName }}
+        {{#link-to 'excursion.edit' excursion.id }}
           <strong>{{ excursion.id }}</strong> {{ excursion.name }}
         {{/link-to}}
       </h5>

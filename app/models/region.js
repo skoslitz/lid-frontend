@@ -3,7 +3,6 @@ import DS from 'ember-data';
 export default DS.Model.extend({
 	// Attributes
 	path: DS.attr("string"),
-	filename: DS.attr("string"),
 	bandnummer: DS.attr("number"),
 	title: DS.attr("string"),
 	subtitle: DS.attr("string"),

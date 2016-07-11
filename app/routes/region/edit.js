@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 	model: function(params) {
       	let model = {}
-      	model.region = this.store.findRecord('region', params.fileName);
+      	model.region = this.store.findRecord('region', params.id);
       	model.excursion = this.store.findAll('excursion-list');
     	model.topic = this.store.findAll('topic-list');
       	return model

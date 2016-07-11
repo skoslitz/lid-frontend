@@ -44,7 +44,7 @@
   <div class="flex-66">
 
     {{#each (reverse model)  as |region|}}
-      <h5 class="regionchunk">{{#link-to 'region.edit' region.fileName }}
+      <h5 class="regionchunk">{{#link-to 'region.edit' region.id }}
              <strong>{{ region.edition }}</strong> {{ region.name }}
             {{/link-to}}  </h5>
     {{/each}}
