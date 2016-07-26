@@ -6,6 +6,5 @@ export default DS.Model.extend({
 	path: DS.attr("string"),
 	isDir: DS.attr("boolean"),
 	size: DS.attr("number"),
-	modTime: DS.attr("string"),
-	edition: DS.attr("string")  
+	modTime: DS.attr("string")
 });

@@ -8,7 +8,7 @@ export default DS.Model.extend({
 	subtitle: DS.attr("string"),
 	description: DS.attr("string"),
 	date: DS.attr("string"),
-	dateOfPublication: DS.attr("string"),
+	dateOfPublication: DS.attr("number"),
 	editor: DS.attr("string"),
 	editorInstitut: DS.attr("string"),
 	isbn: DS.attr("string"),
@@ -19,8 +19,7 @@ export default DS.Model.extend({
 	publisher: DS.attr("string"),
 	bundesland: DS.attr("array"),
 	content: DS.attr("string"),
-	assets: DS.attr("string"),
-
+	
 	// Associations
 	excursions: DS.hasMany("excursion"),
 	topics: DS.hasMany("topic")

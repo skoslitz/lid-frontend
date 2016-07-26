@@ -1,6 +1,25 @@
 import DS from 'ember-data';
 
-export default DS.JSONSerializer.extend({
+export default DS.JSONAPISerializer.extend({
+  	normalize(modelClass, resourceHash, prop) {
+  		resourceHash.attributes.bandnummer = `${resourceHash.attributes.metadata.bandnummer}`
+  		resourceHash.attributes.title = `${resourceHash.attributes.metadata.title}`
+  		resourceHash.attributes.subtitle = `${resourceHash.attributes.metadata.untertitel}`
+  		resourceHash.attributes.description = `${resourceHash.attributes.metadata.kurzbeschreibung}`
+  		resourceHash.attributes.date = `${resourceHash.attributes.metadata.date}`
+  		resourceHash.attributes.dateOfPublication = `${resourceHash.attributes.metadata.erscheinungsjahr}`
+  		resourceHash.attributes.editor = `${resourceHash.attributes.metadata.herausgeber}`
+  		resourceHash.attributes.editorInstitut = `${resourceHash.attributes.metadata.herausgeberinstitut}`
+  		resourceHash.attributes.isbn = `${resourceHash.attributes.metadata.isbn}`
+  		resourceHash.attributes.location = `${resourceHash.attributes.metadata.ort}`
+  		resourceHash.attributes.editionTitle = `${resourceHash.attributes.metadata.reihentitel}`
+  		resourceHash.attributes.pagination = `${resourceHash.attributes.metadata.seitenzahl}`
+  		resourceHash.attributes.extent = `${resourceHash.attributes.metadata.umfang}`
+  		resourceHash.attributes.publisher = `${resourceHash.attributes.metadata.verlag}`
+  		resourceHash.attributes.bundesland = `${resourceHash.attributes.metadata.bundesland}`
+  		return this._super(...arguments)
+  	}
+/*
   	normalizeResponse(store, primaryModelClass, payload, id, requestType) {
 	    return {
 	      data: {
@@ -47,5 +66,5 @@ export default DS.JSONSerializer.extend({
 		};
 			
 		return serializedData;
-	}
+	}*/
 });
