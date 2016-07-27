@@ -1,26 +1,23 @@
 import DS from 'ember-data';
 
-export default DS.JSONSerializer.extend({
-    normalizeResponse(store, primaryModelClass, payload, id, requestType) {
-	    return {
-	      data: {
-	        id: payload.page.id,
-	        type: primaryModelClass.modelName,
-	        attributes: {
-	          path: payload.page.path,	          
-	          title: payload.page.metadata.title,
-	          date: payload.page.metadata.date,
-	          description: payload.page.metadata.description,
-	          vgWort: payload.page.metadata.vg_wort_code,
-	          content: payload.page.content,
-	          assets: payload.page.links.assets
-	        }
-	      }
-	    };
-  	},
-    keyForRelationship(key, relationship) {
-		if (relationship === 'belongsTo') {
-			return `edition`;
-		}
-  }
+export default DS.JSONAPISerializer.extend({
+  	normalize(modelClass, resourceHash, prop) {
+  		resourceHash.attributes.autor = `${resourceHash.attributes.metadata.autor}`
+  		resourceHash.attributes.bildnachweise = `${resourceHash.attributes.metadata.bildnachweise}`
+  		resourceHash.attributes.centroid = `${resourceHash.attributes.metadata.centroid}`
+  		resourceHash.attributes.date = `${resourceHash.attributes.metadata.date}`
+  		resourceHash.attributes.description = `${resourceHash.attributes.metadata.description}`
+  		resourceHash.attributes.exkursion = `${resourceHash.attributes.metadata.exkursion}`
+  		resourceHash.attributes.exkursionsende = `${resourceHash.attributes.metadata.exkursionsende}`
+  		resourceHash.attributes.exkursionslaenge = `${resourceHash.attributes.metadata.exkursionslaenge}`
+  		resourceHash.attributes.exkursionsstart = `${resourceHash.attributes.metadata.exkursionsstart}`
+  		resourceHash.attributes.exkursionsstationen = `${resourceHash.attributes.metadata.exkursionsstationen}`
+  		resourceHash.attributes.exkursionstypen = `${resourceHash.attributes.metadata.exkursionstypen}`
+  		resourceHash.attributes.fremdexkursion = `${resourceHash.attributes.metadata.fremdexkursion}`
+  		resourceHash.attributes.title = `${resourceHash.attributes.metadata.title}`
+  		resourceHash.attributes["vg-wort-code"] = `${resourceHash.attributes.metadata.vg_wort_code}`
+  		resourceHash.attributes.vorschaubild = `${resourceHash.attributes.metadata.vorschaubild}`
+  		resourceHash.attributes.zoomstufe = `${resourceHash.attributes.metadata.zoomstufe}`
+  		return this._super(...arguments)
+  	}
 });

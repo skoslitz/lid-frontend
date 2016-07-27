@@ -78,8 +78,10 @@
             {{/title.text}}
           {{/card.title}}
           {{#card.content}}
-            {{#link-to "excursion-list" model.region.id}}Exkursionen auflisten{{/link-to}}
             {{#link-to "excursion.new" model.region.id}}Exkursion erstellen{{/link-to}}
+            {{#if model.excursion.length }}
+              {{#link-to "excursion-list" model.region.id}}Exkursionen auflisten{{/link-to}}
+            {{/if}}
           {{/card.content}}
         {{/paper-card}}
       </div>
@@ -92,8 +94,11 @@
             {{/title.text}}
           {{/card.title}}
           {{#card.content}}
-            {{#link-to "topic-list" model.id}}Themen auflisten{{/link-to}}
-            {{#link-to "topic.new" model.id}}Thema erstellen{{/link-to}}
+              {{#link-to "topic.new" model.region.id}}Thema erstellen{{/link-to}}
+            {{#if model.topic.length }}
+              {{#link-to "topic-list" model.region.id}}Themen auflisten{{/link-to}}
+            {{/if}}
+              
           {{/card.content}}
         {{/paper-card}}
       </div>
