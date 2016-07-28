@@ -59,6 +59,12 @@ html, body {
 	color: color("light-green", '500');
 }
 
+// trix editor toolbar
+.sticky-trix-toolbar {
+	position: fixed;
+	top: 0px;
+}
+
 
 
 // loading page style
