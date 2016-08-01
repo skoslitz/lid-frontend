@@ -8,7 +8,7 @@
   <div class="flex-20"></div>  
   <div class="flex-80">
 
-    {{#paper-card as |card|}}
+    {{#paper-card class="meta-editor" as |card|}}
       {{#card.title as |title|}}
         {{#title.text as |text|}}
           {{#text.subhead}}Frontmatter{{/text.subhead}}   
@@ -27,19 +27,8 @@
       {{/card.content}}
     {{/paper-card}}
 
-    {{#paper-card as |card|}}
-      {{#card.title as |title|}}
-        {{#title.text as |text|}}
-          {{#text.headline}}Content{{/text.headline}}   
-        {{/title.text}}
-      {{/card.title}}
-      {{#card.content}}
-       {{trix-editor class="trix-editor-wrapper"
-                  editorClass="trix-editor"
-                  value=model.content
-                  trix-change=(action "handleTrixAction") }}
-      {{/card.content}}
-    {{/paper-card}}
+    {{#content-editor model=model}}
+    {{/content-editor}}
 
   </div>  
 </div>  

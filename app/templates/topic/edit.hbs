@@ -1,56 +1,35 @@
-{{#paper-card as |card|}}
-  {{#card.title as |title|}}
-    {{#title.text as |text|}}
-      {{#text.subhead}}Frontmatter{{/text.subhead}}   
-      {{#text.headline}}Metadaten{{/text.headline}}   
-    {{/title.text}}
-  {{/card.title}}
-  {{#card.content}}
+<div class="layout-row layout-align-end">
+    {{#paper-button raised=true onClick=(action "showRelatedRegion")}}zur Bandübersicht{{/paper-button}}
+    {{#paper-button warn=true raised=true onClick=(action "updateExcursion")}}Exkursion aktualisieren{{/paper-button}}
+</div>
+
+<div class="layout-row layout-wrap">
   
-    <div layout="" layout-sm="column">
-		  {{paper-input flex=70 label="Titel" value=model.title onChange=""}}
-		  {{paper-input flex=30 label="Datum (JJJJ-MM-TT)" value=model.date onChange=""}}
-	  </div>
+  <div class="flex-20"></div>  
+  <div class="flex-80">
 
-    <div layout="" layout-sm="column">
-      {{paper-input flex=100 label="Untertitel" value=model.subtitle onChange=""}} 
-    </div>
-    
-    <div layout="" layout-sm="column">
-      {{paper-input flex=70 label="AutorIn" value=model.author onChange=""}}   
-      {{paper-input flex=30 label="Id" value=model.id onChange=""}}        
-    </div>
-    
-    <div layout="" layout-sm="column">
-      {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=""}}      
-    </div>
+    {{#paper-card class="meta-editor" as |card|}}
+      {{#card.title as |title|}}
+        {{#title.text as |text|}}
+          {{#text.subhead}}Frontmatter{{/text.subhead}}   
+          {{#text.headline}}Metadaten{{/text.headline}}   
+        {{/title.text}}
+      {{/card.title}}
+      {{#card.content}}
+        <div layout="" layout-sm="column">
+          {{paper-input flex=70 label="Titel" value=model.title onChange=""}}
+          {{paper-input flex=30 label="Id" value=model.id onChange=""}}
+        </div>
+        <div layout="" layout-sm="column">
+          {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=""}}
+          
+        </div>
+      {{/card.content}}
+    {{/paper-card}}
 
-    <div layout="" layout-sm="column">
-      {{paper-input flex=60 label="VG Wort Code" value=model.vgWort onChange=""}}      
-      
-    </div>
-    
-    {{#each model.categories as |category|}}
-      {{paper-checkbox label=category value=model.categories onChange=""}}
-    {{/each}}
-  
-  
-  {{/card.content}}
-{{/paper-card}}
+    {{#content-editor model=model}}
+    {{/content-editor}}
 
-{{#paper-card as |card|}}
-  {{#card.title as |title|}}
-    {{#title.text as |text|}}
-      {{#text.headline}}Content{{/text.headline}}   
-    {{/title.text}}
-  {{/card.title}}
-  {{#card.content}}
-   {{trix-editor class="trix-editor-wrapper"
-              editorClass="trix-editor"
-              value=model.content
-              trix-change=(action "handleTrixAction") }}
-  {{/card.content}}
-{{/paper-card}}
-
-
+  </div>  
+</div>  
 
