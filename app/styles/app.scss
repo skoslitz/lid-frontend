@@ -60,6 +60,10 @@ html, body {
 }
 
 // trix editor toolbar
+.content-editor {
+	display: block;
+ }
+
 .sticky-trix-toolbar {
 	position: fixed;
 	top: 0px;

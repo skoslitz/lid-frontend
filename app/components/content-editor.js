@@ -24,6 +24,10 @@ export default Ember.Component.extend({
 		handleTrixAction() {
 			let element = document.querySelector("trix-editor");
 			console.log(element.editor.getDocument().toString());			
+		},
+		insertShortcode() {
+			let element = document.querySelector("trix-editor");
+			element.editor.insertString("Hello")
 		}				
 	}
 });
