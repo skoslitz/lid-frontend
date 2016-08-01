@@ -9,7 +9,7 @@
     {{#each model  as |excursion|}}
       <h5 class="regionchunk">
         {{#link-to 'excursion.edit' excursion.id }}
-          <strong>{{ excursion.id }}</strong> {{ excursion.name }}
+          <strong>{{ excursion.id }}</strong> 
         {{/link-to}}
       </h5>
       <p class="edit-date">Aktualisiert am <span>{{excursion.modTime}}</span></p>
