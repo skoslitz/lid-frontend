@@ -1,18 +1,22 @@
 <div class="container">
-  <div class="layout-row layout-margin nav-logo-text">  
-    {{#link-to "index"}}
-      <h1><img src="/img/LiD-online_logo_wi_transpi.png" class="lid-icon" alt="LiD">Online Editor</h1>
-    {{/link-to}}
+	
+	{{!-- Navbar --}}
+	<div class="layout-row layout-margin nav-logo-text">  
 
-  </div>
+	{{#link-to "index"}}
+	  <h1><img src="/img/LiD-online_logo_wi_transpi.png" class="lid-icon" alt="LiD">Online Editor</h1>
+	{{/link-to}}
 
+	</div>
+	
+	{{!-- Main --}}
+	<div class="layout-row layout-margin">
+	    
+	    <div class="flex-100">
+	      {{outlet}}
+	    </div>
+	    
+	
+	</div>
 
-
-<div class="layout-row layout-margin">
-    <div class="flex-90">
-      {{outlet}}
-    </div>
-    <div class="flex-10"></div>
-</div>
-
-</div>
+</div> {{!-- end container --}}

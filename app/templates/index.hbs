@@ -1,8 +1,11 @@
-<div class="layout-row layout-align-end">  
-  {{#paper-button raised=true onClick=(action "showConfig")}}Webseitenkonfiguration{{/paper-button}}  
-  {{#paper-button warn=true raised=true onClick=(action "openPromptDialog")}}Webseite aktualisieren{{/paper-button}}  
-  {{#paper-button accent=true raised=true onClick=(action "openPromptDialog")}}Neuen Band erstellen{{/paper-button}}  
-  
+{{!-- Editor dock --}}
+<div class="layout-row layout-align-center">
+  <div class="editor-dock">
+    {{#paper-button raised=true onClick=(action "showConfig")}}Webseitenkonfiguration{{/paper-button}}  
+    {{#paper-button warn=true raised=true onClick=(action "openPromptDialog")}}Webseite aktualisieren{{/paper-button}}  
+    {{#paper-button accent=true raised=true onClick=(action "openPromptDialog")}}Neuen Band erstellen{{/paper-button}} 
+  </div>  
+    
   {{!-- Band erstellen Dialog --}}
   {{#if showPromptDialog}}
     {{#paper-dialog fullscreen=fullscreen onClose=(action "closePromptDialog" "cancel") origin=dialogOrigin clickOutsideToClose=true}}
@@ -38,7 +41,7 @@
 
 
 {{!-- Bestehende Bände --}}
-<div class="layout-row layout-wrap">
+<div class="layout-row layout-align-center">
   
   <div class="flex-33"></div>  
   <div class="flex-66">
