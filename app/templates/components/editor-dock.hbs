@@ -1,23 +1,47 @@
 {{!-- Editor dock --}}
 <div class="flex-20">
   <div class="editor-dock">
-    {{#paper-button primary=true fab=true onClick=(action "openPromptDialog")}}P{{/paper-button}} 
+
+    {{#paper-button primary=true fab=true onClick=(action "openPromptDialog")}}
+      {{paper-icon "file upload"}}
+    {{/paper-button}} 
     <br>
-    {{#paper-button fab=true onClick=(action "openPromptDialog")}}C{{/paper-button}}
+    
+    {{#paper-button fab=true onClick=(action "openPromptDialog")}}
+      {{paper-icon "pageview"}}      
+    {{/paper-button}}
     <br>
+
+    {{#paper-button fab=true onClick=(action "openPromptDialog")}}
+      {{paper-icon "checkcircle"}}
+    {{/paper-button}}    
+    <br>
+
+    {{#paper-button fab=true raised=true onClick=(action "openPromptDialog")}}
+      {{paper-icon "help outline"}}
+    {{/paper-button}}    
+    <br>
+    
     {{#if createRegion}}
-    	{{#paper-button accent=true raised=true onClick=(action "openPromptDialog")}}Neuen Band erstellen{{/paper-button}}
+    	{{#paper-button raised=true onClick=(action "openPromptDialog")}}Neuen Band erstellen{{/paper-button}}
     	<br>  
     {{/if}} 
 	
     {{#if createTopic}}
-    	{{#paper-button accent=true raised=true onClick=(action "openPromptDialog")}}Neues Thema erstellen{{/paper-button}}   
+    	{{#paper-button raised=true onClick=(action "openPromptDialog")}}Neues Thema erstellen{{/paper-button}}   
     	<br>
     {{/if}}  
 	
     {{#if createExcursion}}
-    	{{#paper-button accent=true raised=true onClick=(action "openPromptDialog")}}Neue Exkursion erstellen{{/paper-button}}   
+    	{{#paper-button raised=true onClick=(action "openPromptDialog")}}Neue Exkursion erstellen{{/paper-button}}   
     {{/if}}  
+
+    {{#if deletePage}}
+      {{#paper-button warn=true fab=true onClick=(action "openPromptDialog")}}
+        {{paper-icon "delete forever"}}
+        <br>
+      {{/paper-button}}
+    {{/if}}
     
   </div>  
     

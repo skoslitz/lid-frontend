@@ -4,6 +4,7 @@ export default Ember.Component.extend({
 	createRegion: false,
 	createTopic: false,
 	createExcursion: false,
+	deletePage: false,
 	showPromptDialog : false,
 	actions: {
 		openPromptDialog(){
