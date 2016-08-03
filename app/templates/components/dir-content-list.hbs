@@ -1,20 +1,26 @@
-{{#paper-card class="list-content" as |card|}}
-      
-    <h1 class="centered">{{contentType}} Liste</h1>
-      
+{{#paper-card as |card|}}
+
+    <h1 class="centered padding-top">{{contentType}} Liste</h1>
+    <div class="centered">
+    {{#paper-button raised=true primary=true}}
+      Erstelle eine neue Region/Thema/Exkursion
+    {{/paper-button}}
+    </div>
+
 	{{#card.content}}
 
 	    {{!-- Bestehende Bände --}}
+	    <div class="list-content">
 	    {{#each model  as |m|}}
-	      
+
 	      	<h4 class="regionchunk">
 	      	{{#link-to editURL m.id }}
-	        	<strong>{{ m.name }}</strong> 
+	        	<strong>{{ m.name }}</strong>
 	        {{/link-to}}
 	    	</h4>
 			<p class="edit-date">Aktualisiert am <span>{{m.modTime}}</span></p>
 	    {{/each}}
-
+			</div>
 	{{/card.content}}
 
 {{/paper-card}}
