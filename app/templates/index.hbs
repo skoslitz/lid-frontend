@@ -1,21 +1,10 @@
 {{!-- placeholder  --}}
-<div class="flex-30"></div>
+<div class="flex-20"></div>
 
-{{!-- Region list --}}
-<div class="flex-50">
-
-    {{!-- Bestehende Bände --}}
-    {{#each (reverse model)  as |region|}}
-      <h5 class="regionchunk">{{#link-to 'region.edit' region.id }}
-             <strong>{{ region.edition }}</strong> {{ region.name }}
-            {{/link-to}}  </h5>
-    {{/each}}
+<div class="flex-60">
+	{{#dir-content-list model=(reverse model) editURL="region.edit" contentType="Regionen"}}
+	{{/dir-content-list}}
 </div>  
-
 
 {{#editor-dock createRegion=true}}
 {{/editor-dock}}
-   
-
-
-

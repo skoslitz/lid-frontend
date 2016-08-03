@@ -1,24 +1,11 @@
 {{!-- placeholder  --}}
-<div class="flex-30"></div>
+<div class="flex-20"></div>
 
-{{!-- Region list --}}
-<div class="flex-50">
-
-    {{!-- Bestehende Exkursionen --}}
-    {{#each model  as |excursion|}}
-      <h5 class="regionchunk">
-        {{#link-to 'excursion.edit' excursion.id }}
-          <strong>{{ excursion.id }}</strong> 
-        {{/link-to}}
-      </h5>
-      <p class="edit-date">Aktualisiert am <span>{{excursion.modTime}}</span></p>
-    {{/each}}
+{{!-- Exkursionen list --}}
+<div class="flex-60">
+	{{#dir-content-list model=model editURL="excursion.edit" contentType="Exkursionen"}}
+	{{/dir-content-list}}
 </div>  
-
-
+ 
 {{#editor-dock createExcursion=true}}
 {{/editor-dock}}
-
-
-
-

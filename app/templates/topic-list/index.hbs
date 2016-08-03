@@ -1,20 +1,11 @@
 {{!-- placeholder  --}}
-<div class="flex-30"></div>
+<div class="flex-20"></div>
 
-{{!-- Region list --}}
-<div class="flex-50">
-
-    {{!-- Bestehende Exkursionen --}}
-    {{#each model  as |topic|}}
-      <h5 class="regionchunk">
-        {{#link-to 'topic.edit' topic.id }}
-          <strong>{{ topic.id }}</strong>
-        {{/link-to}}
-      </h5>
-      <p class="edit-date">Aktualisiert am <span>{{topic.modTime}}</span></p>
-    {{/each}}
-</div>  
-
+{{!-- Topic list --}}
+<div class="flex-60">
+	{{#dir-content-list model=(reverse model) editURL="topic.edit" contentType="Themen"}}
+	{{/dir-content-list}}
+</div>   
 
 {{#editor-dock createTopic=true}}
 {{/editor-dock}}

@@ -44,6 +44,10 @@ html, body {
 	font-family: monospace;
 }
 
+.centered {
+	text-align: center;
+}
+
 // region list
 .regionchunk > a, .regionchunk > a:visited {
     color: #06c;
@@ -55,6 +59,7 @@ html, body {
     -webkit-margin-end: 0px;
     //font-weight: bold;
 }
+
 
 // content list edit date
 .edit-date {

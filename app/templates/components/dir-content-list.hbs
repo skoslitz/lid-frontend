@@ -1,0 +1,20 @@
+{{#paper-card class="list-content" as |card|}}
+      
+    <h1 class="centered">{{contentType}} Liste</h1>
+      
+	{{#card.content}}
+
+	    {{!-- Bestehende Bände --}}
+	    {{#each model  as |m|}}
+	      
+	      	<h4 class="regionchunk">
+	      	{{#link-to editURL m.id }}
+	        	<strong>{{ m.name }}</strong> 
+	        {{/link-to}}
+	    	</h4>
+			<p class="edit-date">Aktualisiert am <span>{{m.modTime}}</span></p>
+	    {{/each}}
+
+	{{/card.content}}
+
+{{/paper-card}}
