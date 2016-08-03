@@ -48,6 +48,10 @@ html, body {
 	text-align: center;
 }
 
+.padding-top {
+	padding-top: 4%;
+}
+
 // region list
 .regionchunk > a, .regionchunk > a:visited {
     color: #06c;
@@ -58,6 +62,12 @@ html, body {
     -webkit-margin-start: 0px;
     -webkit-margin-end: 0px;
     //font-weight: bold;
+}
+
+// dir list content
+.list-content {
+	padding-left: 20%;
+	padding-top: 5%;
 }
 
 
