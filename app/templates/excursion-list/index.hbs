@@ -1,11 +1,10 @@
-<div class="layout-row layout-align-end">
-  {{#paper-button disabled="true"}}<mark>Zurück zur Region|Band Button</mark>{{/paper-button}}
-</div>
+{{!-- placeholder  --}}
+<div class="flex-30"></div>
 
-<div class="layout-row layout-wrap">
+{{!-- Region list --}}
+<div class="flex-50">
 
-  <div class="flex-33"></div>
-  <div class="flex-66">
+    {{!-- Bestehende Exkursionen --}}
     {{#each model  as |excursion|}}
       <h5 class="regionchunk">
         {{#link-to 'excursion.edit' excursion.id }}
@@ -14,12 +13,12 @@
       </h5>
       <p class="edit-date">Aktualisiert am <span>{{excursion.modTime}}</span></p>
     {{/each}}
-
-  </div>
- </div>
+</div>  
 
 
+{{#editor-dock createExcursion=true}}
+{{/editor-dock}}
 
-{{outlet}}
+
 
 

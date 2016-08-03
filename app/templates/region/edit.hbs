@@ -1,13 +1,8 @@
-<div class="layout-row layout-align-end">
-    {{#paper-button accent=true raised=true onClick=(action "updateRegion")}}Exkursion hinzufügen{{/paper-button}}
-    {{#paper-button accent=true raised=true onClick=(action "updateRegion")}}Themenbeitrag hinzufügen{{/paper-button}}
-    {{#paper-button warn=true raised=true onClick=(action "updateRegion")}}Band aktualisieren{{/paper-button}}
-</div>
+{{!-- placeholder  --}}
+<div class="flex-10"></div>
 
-<div class="layout-row layout-wrap">
-  
-  <div class="flex-20"></div>  
-  <div class="flex-80">
+{{!-- Region list --}}
+<div class="flex-70">
     
     {{!-- Info Themen/Exkursionen --}}
     <div layout="row">
@@ -106,6 +101,8 @@
 
       {{/card.content}}
     {{/paper-card}}
-
-  </div>  
+  
 </div>  
+
+{{#editor-dock createRegion=false}}
+{{/editor-dock}}

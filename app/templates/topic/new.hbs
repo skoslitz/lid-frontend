@@ -1,63 +1,67 @@
-{{#paper-card as |card|}}
-  {{#card.title as |title|}}
-    {{#title.text as |text|}}
-      {{#text.subhead}}Neues Thema{{/text.subhead}}   
-      {{#text.headline}}Metadaten{{/text.headline}}   
-    {{/title.text}}
-  {{/card.title}}
-  {{#card.content}}
-    <mark>Name des Themas</mark>
-    <code>`${Band_Id}_B_${Themennummer}-${Titel_des_Beitrags}.md`</code>
-    <br>
-    <mark>Pfad</mark>
-    <code>themen/`${ model.name }` => path</code>
-    <br>
-    <mark>Metaangaben</mark>
-    <code>Serializer: model Eigenschaften => page[meta] </code>
-    <br>
-    <mark>Content</mark>
-    <code>Serializer: model.content => page[content]</code>
-    <br>
-    <code>Model Id {{ model.bandId }}</code>
-   {{/card.content}}
-{{/paper-card}}
+{{!-- placeholder  --}}
+<div class="flex-10"></div>
 
-{{#paper-card as |card|}}
-  {{#card.title as |title|}}
-    {{#title.text as |text|}}
-      {{#text.subhead}}Frontmatter{{/text.subhead}}   
-      {{#text.headline}}Metadaten{{/text.headline}}   
-    {{/title.text}}
-  {{/card.title}}
-  {{#card.content}}
-  
-    <div layout="" layout-sm="column">
-		  {{paper-input flex=70 label="Titel" value=model.title onChange=""}}
-		  {{paper-input flex=30 label="Datum" value=model.date onChange=""}}
-	  </div>
+{{!-- Excursion edit --}}
+<div class="flex-70">
 
-    <div layout="" layout-sm="column">
-      {{paper-input flex=100 label="Untertitel" value=model.subtitle onChange=""}} 
-    </div>
-    
-    <div layout="" layout-sm="column">
-      {{paper-input flex=70 label="AutorIn" value=model.author onChange=""}}   
-      {{paper-input flex=30 label="Id" value=model.id onChange=""}}        
-    </div>
-    
-    <div layout="" layout-sm="column">
-      {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=""}}      
-    </div>
+    {{#paper-card as |card|}}
+        {{#card.title as |title|}}
+          {{#title.text as |text|}}
+            {{#text.subhead}}Frontmatter{{/text.subhead}}   
+            {{#text.headline}}Metadaten{{/text.headline}}   
+          {{/title.text}}
+        {{/card.title}}
+        {{#card.content}}
+        
+          <div layout="" layout-sm="column">
+            {{paper-input flex=70 label="Titel" value=model.title onChange=""}}
+            {{paper-input flex=30 label="Datum" value=model.date onChange=""}}
+          </div>
 
-    <div layout="" layout-sm="column">
-      {{paper-input flex=60 label="VG Wort Code" value=model.vgWort onChange=""}}      
-      
-    </div>
-    
-    {{#each model.categories as |category|}}
-      {{paper-checkbox label=category value=model.categories onChange=""}}
-    {{/each}}
-  
-  
-  {{/card.content}}
-{{/paper-card}}
+          <div layout="" layout-sm="column">
+            {{paper-input flex=100 label="Untertitel" value=model.subtitle onChange=""}} 
+          </div>
+          
+          <div layout="" layout-sm="column">
+            {{paper-input flex=70 label="AutorIn" value=model.author onChange=""}}   
+            {{paper-input flex=30 label="Id" value=model.id onChange=""}}        
+          </div>
+          
+          <div layout="" layout-sm="column">
+            {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=""}}      
+          </div>
+
+          <div layout="" layout-sm="column">
+            {{paper-input flex=60 label="VG Wort Code" value=model.vgWort onChange=""}}      
+            
+          </div>
+          
+          {{#each model.categories as |category|}}
+            {{paper-checkbox label=category value=model.categories onChange=""}}
+          {{/each}}
+          
+          <mark>Name des Themas</mark>
+          <code>`${Band_Id}_B_${Themennummer}-${Titel_des_Beitrags}.md`</code>
+          <br>
+          <mark>Pfad</mark>
+          <code>themen/`${ model.name }` => path</code>
+          <br>
+          <mark>Metaangaben</mark>
+          <code>Serializer: model Eigenschaften => page[meta] </code>
+          <br>
+          <mark>Content</mark>
+          <code>Serializer: model.content => page[content]</code>
+          <br>
+          <code>Model Id {{ model.bandId }}</code>
+        
+        {{/card.content}}
+    {{/paper-card}}
+
+    {{#content-editor model=model}}
+    {{/content-editor}}
+ 
+</div>  
+
+{{#editor-dock}}
+{{/editor-dock}}
+

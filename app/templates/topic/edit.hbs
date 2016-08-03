@@ -1,12 +1,8 @@
-<div class="layout-row layout-align-end">
-    {{#paper-button raised=true onClick=(action "showRelatedRegion")}}zur Bandübersicht{{/paper-button}}
-    {{#paper-button warn=true raised=true onClick=(action "updateExcursion")}}Exkursion aktualisieren{{/paper-button}}
-</div>
+{{!-- placeholder  --}}
+<div class="flex-10"></div>
 
-<div class="layout-row layout-wrap">
-  
-  <div class="flex-20"></div>  
-  <div class="flex-80">
+{{!-- Excursion edit --}}
+<div class="flex-70">
 
     {{#paper-card class="meta-editor" as |card|}}
       {{#card.title as |title|}}
@@ -29,7 +25,9 @@
 
     {{#content-editor model=model}}
     {{/content-editor}}
-
-  </div>  
+ 
 </div>  
+
+{{#editor-dock}}
+{{/editor-dock}}
 
