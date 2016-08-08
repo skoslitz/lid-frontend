@@ -1,11 +1,21 @@
 {{#paper-card as |card|}}
 
     <h1 class="centered padding-top">{{contentType}} Liste</h1>
-    <div class="centered">
-    {{#paper-button raised=true primary=true}}
-      Erstelle eine neue Region/Thema/Exkursion
-    {{/paper-button}}
-    </div>
+    
+	{{#if createRegion}}
+	    {{#create-region model=model}}
+	    {{/create-region}}
+    {{/if}}
+
+    {{#if createTopic}}
+    	{{#create-topic model=model}}
+	    {{/create-topic}}
+    {{/if}}
+
+    {{#if createExcursion}}
+    	{{#create-excursion model=model}}
+	    {{/create-excursion}}
+    {{/if}}
 
 	{{#card.content}}
 
@@ -24,3 +34,4 @@
 	{{/card.content}}
 
 {{/paper-card}}
+

@@ -22,20 +22,6 @@
     {{/paper-button}}    
     <br>
     
-    {{#if createRegion}}
-    	{{#paper-button raised=true onClick=(action "openPromptDialog")}}Neuen Band erstellen{{/paper-button}}
-    	<br>  
-    {{/if}} 
-	
-    {{#if createTopic}}
-    	{{#paper-button raised=true onClick=(action "openPromptDialog")}}Neues Thema erstellen{{/paper-button}}   
-    	<br>
-    {{/if}}  
-	
-    {{#if createExcursion}}
-    	{{#paper-button raised=true onClick=(action "openPromptDialog")}}Neue Exkursion erstellen{{/paper-button}}   
-    {{/if}}  
-
     {{#if deletePage}}
       {{#paper-button warn=true fab=true onClick=(action "openPromptDialog")}}
         {{paper-icon "delete forever"}}

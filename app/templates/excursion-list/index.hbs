@@ -3,9 +3,9 @@
 
 {{!-- Exkursionen list --}}
 <div class="flex-60">
-	{{#dir-content-list model=model editURL="excursion.edit" contentType="Exkursionen"}}
+	{{#dir-content-list createExcursion=true model=model editURL="excursion.edit" contentType="Exkursionen"}}
 	{{/dir-content-list}}
 </div>  
  
-{{#editor-dock createExcursion=true}}
+{{#editor-dock}}
 {{/editor-dock}}

@@ -2,9 +2,11 @@
 <div class="flex-20"></div>
 
 <div class="flex-60">
-	{{#dir-content-list model=(reverse model) editURL="region.edit" contentType="Regionen"}}
+
+	{{#dir-content-list createRegion=true model=(reverse model) editURL="region.edit" contentType="Regionen"}}
 	{{/dir-content-list}}
+
 </div>  
 
-{{#editor-dock createRegion=true}}
+{{#editor-dock}}
 {{/editor-dock}}

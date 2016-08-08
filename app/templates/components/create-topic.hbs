@@ -1,0 +1,36 @@
+<div class="centered">
+    {{#paper-button raised=true primary=true onClick=(action "openPromptDialog") }}
+      Erstelle ein neues Thema
+    {{/paper-button}}
+</div>
+
+{{!-- Create Topic --}}
+	{{#if showPromptDialog}}
+		{{#paper-dialog fullscreen=fullscreen onClose=(action "closePromptDialog" "cancel") origin=dialogOrigin clickOutsideToClose=true}}
+
+		  {{#paper-toolbar}}
+		    <div class="md-toolbar-tools">
+		      <h2>Neues Thema</h2>
+		      <span class="flex"></span>
+		      {{#paper-button iconButton=true onClick=(action "closePromptDialog" "cancel")}}{{paper-icon icon="close"}}{{/paper-button}}
+		    </div>
+		  {{/paper-toolbar}}
+
+		  {{#paper-dialog-content}}
+		    <h5>Metadaten</h5>
+		    <div layout="row">
+		      {{paper-input flex=100 value=model.id label="Id" required="true" required-errortext="Wichtig!" onChange=(action (mut model.id ))}}  
+		    </div>
+		    <div layout="row">
+		      {{paper-input flex=100 value=model.title label="Titel" onChange=(action (mut model.title))}}  
+		    </div>        
+		  {{/paper-dialog-content}}
+
+		  {{#paper-dialog-actions class="layout-row"}}
+		    <span class="flex"></span>
+		    {{#paper-button primary=true onClick=(action "closePromptDialog" "cancel")}}Abbrechen{{/paper-button}}
+		    {{#paper-button primary=true onClick=(action "saveContent" )}}Thema erstellen{{/paper-button}}
+		  {{/paper-dialog-actions}}
+
+		{{/paper-dialog}}
+	{{/if}}

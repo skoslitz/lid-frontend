@@ -3,9 +3,9 @@
 
 {{!-- Topic list --}}
 <div class="flex-60">
-	{{#dir-content-list model=(reverse model) editURL="topic.edit" contentType="Themen"}}
+	{{#dir-content-list createTopic=true model=(reverse model) editURL="topic.edit" contentType="Themen"}}
 	{{/dir-content-list}}
 </div>   
 
-{{#editor-dock createTopic=true}}
+{{#editor-dock}}
 {{/editor-dock}}
