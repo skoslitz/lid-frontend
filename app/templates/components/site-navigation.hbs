@@ -1,0 +1,19 @@
+{{!-- Site nav dock --}}
+  <div class="site-nav">
+    
+      {{#paper-button fab=true mini=true raised=true onClick=(action "historyBack")}}
+        {{paper-icon "arrow back"}}
+      {{/paper-button}}    
+      <br>
+          
+    	{{#paper-button fab=true mini=true raised=true onClick=(action "relatedRegion")}}
+    		{{paper-icon "book"}}
+    	{{/paper-button}}
+    	<br>
+
+      {{#paper-button fab=true mini=true raised=true onClick=(action "regionList")}}
+        {{paper-icon "apps"}}
+      {{/paper-button}}
+      <br>
+    
+  </div>    

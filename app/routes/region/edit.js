@@ -1,7 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	model: function(params) {
+	actions: {
+     regionList() {
+      this.transitionTo('/');
+    },
+  },   
+  model: function(params) {
       	let model = {}
       	model.region = this.store.findRecord('region', params.id);
       	model.excursion = this.store.query('excursion-list', {

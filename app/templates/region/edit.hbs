@@ -1,5 +1,8 @@
 {{!-- placeholder  --}}
-<div class="flex-20"></div>
+<div class="flex-20">
+  {{#site-navigation showRegionListAction="regionList"}}
+  {{/site-navigation}}    
+</div>
 
 {{!-- Region list --}}
 <div class="flex-60">
@@ -45,7 +48,7 @@
       {{#card.title as |title|}}
         {{#title.text as |text|}}
           {{#text.subhead}}Frontmatter{{/text.subhead}}
-          {{#text.headline}}{{model.region.title}}{{/text.headline}}
+          {{#text.headline}}Band {{model.region.title}}{{/text.headline}}
         {{/title.text}}
       {{/card.title}}
       {{#card.content}}
