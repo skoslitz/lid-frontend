@@ -5,14 +5,8 @@
         {{/title.text}}
       {{/card.title}}
       {{#card.content}}
-       {{!-- <div class="content-editor-toolbar">
-         <div class="button_groups">
-           <span class="button_group">
-             <button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
-           </span>
-         </div>
-       </div> --}}
-       {{trix-editor class="trix-editor-wrapper"
+        {{content-editor-toolbar}} 
+        {{trix-editor class="trix-editor-wrapper"
                   editorClass="trix-editor"
                   value=model.content
                   trix-change=(action "handleTrixAction") }}
