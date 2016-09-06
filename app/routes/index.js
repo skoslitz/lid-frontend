@@ -11,10 +11,8 @@ export default Ember.Route.extend({
 		savePage(page) {
 			console.log("get savePage action from component", page)
 		},
-		saveRegion() {
-	    	let regionId = this.get('model.id');
-			let regionName = this.get('model.title');
-			console.log(regionId, regionName)
+		saveRegion(regionId, regionName) {
+	    	console.log("Route receive action with", regionId, regionName)
 			let newRegion = this.store.createRecord('region', {
 				bandnummer: regionId,
 				title: regionName,

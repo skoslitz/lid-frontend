@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.JSONAPISerializer.extend({
-  	normalize(modelClass, resourceHash, prop) {
+  	/*normalize(modelClass, resourceHash, prop) {
   		resourceHash.attributes.bandnummer = `${resourceHash.attributes.metadata.bandnummer}`
   		resourceHash.attributes.title = `${resourceHash.attributes.metadata.title}`
   		resourceHash.attributes.subtitle = `${resourceHash.attributes.metadata.untertitel}`
