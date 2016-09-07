@@ -19,8 +19,8 @@ export default Ember.Component.extend({
 	    openHelper() {
 
 	    },
-	    deletePage() {
-
+	    deletePage(model) {
+	    	this.sendAction('deletePageAction', model);		
 	    },		
 	}
 });

@@ -30,5 +30,12 @@ export default DS.JSONAPIAdapter.extend({
         url: url,
         data: JSON.stringify(data)
       });
+  },
+  deleteRecord(store, type, snapshot) {
+      let url = `${this.host}/${this.namespace}/${snapshot.attr('path')}`;
+      return $.ajax({
+        type: 'DELETE',
+        url: url
+      });
   }
 });

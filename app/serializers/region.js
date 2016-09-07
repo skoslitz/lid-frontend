@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.JSONAPISerializer.extend({
-  	/*normalize(modelClass, resourceHash, prop) {
+  	normalize(modelClass, resourceHash, prop) {
   		resourceHash.attributes.bandnummer = `${resourceHash.attributes.metadata.bandnummer}`
   		resourceHash.attributes.title = `${resourceHash.attributes.metadata.title}`
   		resourceHash.attributes.subtitle = `${resourceHash.attributes.metadata.untertitel}`
@@ -18,20 +18,21 @@ export default DS.JSONAPISerializer.extend({
   		resourceHash.attributes.publisher = `${resourceHash.attributes.metadata.verlag}`
   		resourceHash.attributes.bundesland = `${resourceHash.attributes.metadata.bundesland}`
   		return this._super(...arguments)
-  	}
-	
-	/*  	
+  	},
   	serializeIntoHash(hash, typeClass, snapshot) {
 		hash["page"] = this.serialize(snapshot);
 	},
 	serialize(snapshot) {
 		let serializedData = {
-			"path": snapshot.attr("path"),
-			"content": snapshot.attr("content"),
-			"metadata": {
-				"title": snapshot.attr("title"),
-				"bandnummer": snapshot.attr("bandnummer")
-			}
+			"attributes": {
+				"path": snapshot.attr("path"),
+				"metadata": {
+					"title": snapshot.attr("title"),
+					"bandnummer": snapshot.attr("bandnummer"),
+					"kurzbeschreibung": snapshot.attr("description")
+				},
+				"content": snapshot.attr("content")
+			}			
 		};
 
 		if (snapshot.id) {
@@ -39,5 +40,5 @@ export default DS.JSONAPISerializer.extend({
 		};
 			
 		return serializedData;
-	}*/
+	}
 });

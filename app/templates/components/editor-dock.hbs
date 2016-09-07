@@ -23,7 +23,7 @@
     <br>
     
     {{#if deletePage}}
-      {{#paper-button warn=true fab=true onClick=(action "deletePage")}}
+      {{#paper-button warn=true fab=true onClick=(action "deletePage" model)}}
         {{paper-icon "delete forever"}}
         <br>
       {{/paper-button}}

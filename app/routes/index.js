@@ -14,11 +14,12 @@ export default Ember.Route.extend({
 		saveRegion(regionId, regionName) {
 	    	console.log("Route receive action with", regionId, regionName)
 			let newRegion = this.store.createRecord('region', {
+				id: `${regionId}-${regionName}.md`,
 				bandnummer: regionId,
 				title: regionName,
 				path: `regionen/${regionId}-${regionName}.md`,
 				subtitle: "",
-				description: "",
+				description: "some text",
 				date: "",
 				dateOfPublication: "",
 				editor: "",
@@ -34,8 +35,6 @@ export default Ember.Route.extend({
 			});
 
 			newRegion.save().then((response) => {
-				this.set('model.id', '');
-				this.set('model.title', '');
 				this.set('showPromptDialog', false);
 				this.transitionToRoute('region.edit', `${regionId}-${regionName}.md`);			
 			});
