@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+	
 	actions: {
 		publishSite() {
 			console.log("get action from component")
@@ -41,6 +42,6 @@ export default Ember.Route.extend({
 	    },
 	},
 	model() {
-    	return this.store.findAll('region-list'); 
+    	return this.store.findAll('region-list', { reload: true }); 
   	}
 });
