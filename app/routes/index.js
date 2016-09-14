@@ -1,7 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-	
+	model() {
+    	return this.store.findAll('region-list', { reload: true }); 
+  	},
 	actions: {
 		publishSite() {
 			console.log("get action from component")
@@ -13,8 +15,10 @@ export default Ember.Route.extend({
 			console.log("get savePage action from component", page)
 		},
 		saveRegion(regionId, regionName) {
-	    	console.log("Route receive action with", regionId, regionName)
-			let newRegion = this.store.createRecord('region', {
+	    	console.log("Route receive action with", regionId, regionName);
+
+	    	var store = this.get('store');
+	    	var newRegion = store.createRecord('region', {
 				id: `${regionId}-${regionName}.md`,
 				bandnummer: regionId,
 				title: regionName,
@@ -35,13 +39,17 @@ export default Ember.Route.extend({
 				content: "some content text"
 			});
 
-			newRegion.save().then((response) => {
-				this.set('showPromptDialog', false);
-				this.transitionToRoute('region.edit', `${regionId}-${regionName}.md`);			
-			});
+	    	var self = this;
+
+			function transitionToPost(regionId, regionName) {
+			  self.transitionToRoute('region.edit', `${regionId}-${regionName}.md`);
+			};
+
+			function failure(reason) {
+			  console.log(reason);
+			};
+
+			newRegion.save().then(transitionToPost).catch(failure);
 	    },
-	},
-	model() {
-    	return this.store.findAll('region-list', { reload: true }); 
-  	}
+	}	
 });
