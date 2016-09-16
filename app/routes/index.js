@@ -42,14 +42,14 @@ export default Ember.Route.extend({
 	    	var self = this;
 
 			function transitionToPost(regionId, regionName) {
-			  self.transitionToRoute('region.edit', `${regionId}-${regionName}.md`);
+			  self.transitionTo('region.edit', `${regionId}-${regionName}.md`);
 			};
 
 			function failure(reason) {
 			  console.log(reason);
 			};
 
-			newRegion.save().then(transitionToPost).catch(failure);
+			newRegion.save().then(transitionToPost(regionId, regionName)).catch(failure);
 	    },
 	}	
 });

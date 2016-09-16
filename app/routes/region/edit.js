@@ -2,9 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model: function(params) {
-      console.log("model hook from route");
+      console.log("model hook from route --> ", params);
       let model = {}
-      model.region = this.store.findRecord('region', params.id, { reload: true });
+      model.region = this.store.findRecord('region', params.id);
       model.excursion = this.store.query('excursion-list', {
         id: params.id
       });
