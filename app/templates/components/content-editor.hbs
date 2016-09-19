@@ -9,6 +9,7 @@
         {{trix-editor class="trix-editor-wrapper"
                   editorClass="trix-editor"
                   value=model.content
-                  trix-change=(action "handleTrixAction") }}
+                  trix-change=(action "handleTrixAction")
+                  trix-attachment-add=(action "handleTrixAttachmentAdd") }}                 
       {{/card.content}}
 {{/paper-card}}
