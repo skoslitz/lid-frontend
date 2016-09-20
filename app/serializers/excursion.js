@@ -17,7 +17,8 @@ export default DS.JSONAPISerializer.extend({
   		resourceHash.attributes.title = `${resourceHash.attributes.metadata.title}`
   		resourceHash.attributes["vg-wort-code"] = `${resourceHash.attributes.metadata.vg_wort_code}`
   		resourceHash.attributes.vorschaubild = `${resourceHash.attributes.metadata.vorschaubild}`
-  		resourceHash.attributes.zoomstufe = `${resourceHash.attributes.metadata.zoomstufe}`
+      resourceHash.attributes.zoomstufe = `${resourceHash.attributes.metadata.zoomstufe}`
+      resourceHash.attributes.images = `${resourceHash.relationships.bilder}`
   		return this._super(...arguments)
   	}
 });

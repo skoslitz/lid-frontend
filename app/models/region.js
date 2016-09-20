@@ -23,5 +23,6 @@ export default DS.Model.extend({
 	
 	// Associations
 	excursions: DS.hasMany('excursion'),
-	topics: DS.hasMany('topic')
+	topics: DS.hasMany('topic'),
+	images: DS.attr('array')
 });

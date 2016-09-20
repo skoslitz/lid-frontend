@@ -16,5 +16,6 @@ export default DS.Model.extend({
 	categories: DS.attr('array'),
 	
 	// Associations
-	region: DS.belongsTo('region')
+	region: DS.belongsTo('region'),
+	images: DS.attr('array')
 });

@@ -10,5 +10,6 @@ export default DS.Model.extend({
 	content: DS.attr('string'),
 	
 	// Associations
-	region: DS.belongsTo('region')
+	region: DS.belongsTo('region'),
+	images: DS.attr('array')
 });

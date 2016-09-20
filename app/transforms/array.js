@@ -2,6 +2,17 @@ import DS from 'ember-data';
 
 export default DS.Transform.extend({
   deserialize: function(serialized) {
+        console.log(Ember.typeOf(serialized));
+        return serialized.split(',').map(function(item) {
+            return jQuery.trim(item);
+        });        
+    },  
+  serialize: function(deserialized) {
+        return deserialized;
+  } 
+
+  // previous version
+  /*deserialize: function(serialized) {
     return (Ember.typeOf(serialized) == "array") ? serialized : [];
   },
 
@@ -16,5 +27,5 @@ export default DS.Transform.extend({
     } else {
         return [];
     }
-  }
+  }*/
 });

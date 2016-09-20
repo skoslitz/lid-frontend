@@ -18,12 +18,6 @@ export default Ember.Component.extend({
 			let element = document.querySelector("trix-editor");
 			// model.content = element.editor.getDocument().toString()
 			// console.log(element.editor.getDocument().toString());			
-		},
-		handleTrixAttachmentAdd(jqEvent) {
-		    var attachment = jqEvent.originalEvent.attachment;
-		    if (attachment.file) {
-		      console.log("File was attached", attachment.file);		      
-		    }
-		},				
+		}						
 	}
 });

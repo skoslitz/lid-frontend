@@ -9,7 +9,21 @@
         {{trix-editor class="trix-editor-wrapper"
                   editorClass="trix-editor"
                   value=model.content
-                  trix-change=(action "handleTrixAction")
-                  trix-attachment-add=(action "handleTrixAttachmentAdd") }}                 
+                  trix-change=(action "handleTrixAction") }}                 
+      {{/card.content}}
+{{/paper-card}}
+
+
+{{!-- only for developing purposes --}}
+{{#paper-card as |card|}}
+      {{#card.title as |title|}}
+        {{#title.text as |text|}}
+          {{#text.headline}}Abbildungen{{/text.headline}}   
+        {{/title.text}}
+      {{/card.title}}
+      {{#card.content}}
+                  {{#each model.images as |m|}}
+                  <img src="{{m}}" alt="" width="700px">                                     
+                  {{/each}}
       {{/card.content}}
 {{/paper-card}}
