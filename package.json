@@ -37,6 +37,7 @@
     "ember-composable-helpers": "0.26.2",
     "ember-data": "^2.5.0",
     "ember-export-application-global": "^1.0.5",
+    "ember-image-slider": "0.0.4",
     "ember-load-initializers": "^0.5.1",
     "ember-paper": "git://github.com/miguelcobain/ember-paper.git#9681a3f8d8a672b25221b1a06dd974bd1275d04f",
     "ember-resolver": "^2.0.3",

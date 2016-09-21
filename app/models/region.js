@@ -20,9 +20,10 @@ export default DS.Model.extend({
 	publisher: DS.attr('string'),
 	bundesland: DS.attr('array'),
 	content: DS.attr('string'),
+	images: DS.attr(''),
 	
 	// Associations
 	excursions: DS.hasMany('excursion'),
-	topics: DS.hasMany('topic'),
-	images: DS.attr('array')
+	topics: DS.hasMany('topic')
+	
 });
