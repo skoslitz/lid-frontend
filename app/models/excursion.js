@@ -8,8 +8,8 @@ export default DS.Model.extend({
 	description: DS.attr('string'),
 	vgWortCode: DS.attr('string'),
 	content: DS.attr('string'),
-	images: DS.attr('object'),
-	
+	images: DS.attr(),
+		
 	// Associations
 	region: DS.belongsTo('region')	
 });

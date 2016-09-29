@@ -13,15 +13,6 @@
       {{/card.content}}
 {{/paper-card}}
 
-
-{{!-- only for developing purposes 
-{{#ember-image-slider
-    content=model.images
-    limit=40
-    shouldDisplayArrows=true}}
-    <div>This image has width:{{image.width}}</div>
-{{/ember-image-slider}}--}}
-
 {{#paper-card as |card|}}
       {{#card.title as |title|}}
         {{#title.text as |text|}}
@@ -29,8 +20,12 @@
         {{/title.text}}
       {{/card.title}}
       {{#card.content}}
-                  {{#each model.images as |m|}}
-                  <img src="{{m.src}}" alt="" width="700px">                                     
-                  {{/each}}
+          {{#ember-image-slider
+              content=model.images
+              limit=40
+              shouldDisplayArrows=true}}
+              <div>This image has width:{{images.width}}</div>
+          {{/ember-image-slider}}         
       {{/card.content}}
 {{/paper-card}}
+
