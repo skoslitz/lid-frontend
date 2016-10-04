@@ -15,10 +15,12 @@ export default Ember.Route.extend({
       return model
   },
   actions: {
-     regionList() {
+    //site nav actions
+    regionList() {
       this.transitionTo('/');
     },
-    deleteInfo(model) {
+    // editor dock actions
+    deletePage(model) {
       let store = this.get('store');
       store.findRecord('region', model).then(function(region) {
         //store.unloadRecord(region);
@@ -27,6 +29,9 @@ export default Ember.Route.extend({
       });
       
       this.transitionTo('index');
+    },
+    updatePage(model) {
+      console.log('updateRegion action');
     }
   },  
 });

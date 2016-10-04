@@ -11,16 +11,26 @@ export default Ember.Component.extend({
 	      	console.log("send previewSite Action to bubble up ...")
 			this.sendAction('previewSiteAction');
 	    },
-	    savePage() {
-	    	let page = {"id": "78_B_187-title.md"}
-	    	console.log("send savePage Action to bubble up ...")
-			this.sendAction('savePageAction', page);
-	    },
 	    openHelper() {
 
 	    },
 	    deleteRegion(model) {
 	    	this.sendAction('deleteRegionAction', model);		
-	    },		
+	    },
+	    updateRegion(model) {
+	    	this.sendAction('updateRegionAction', model);		
+	    },
+	    deleteTopic(model) {
+	    	this.sendAction('deleteTopicAction', model);		
+	    },
+	    updateTopic(model) {
+	    	this.sendAction('updateTopicAction', model);		
+	    },	
+	    deleteExcursion(model) {
+	    	this.sendAction('deleteExcursionAction', model);		
+	    },
+	    updateExcursion(model) {
+	    	this.sendAction('updateExcursionAction', model);		
+	    }	
 	}
 });
