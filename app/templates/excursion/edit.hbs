@@ -1,7 +1,7 @@
 {{!-- placeholder  --}}
 <div class="flex-20">
   {{#site-navigation showRegionListAction="regionList"}}
-  {{/site-navigation}}    
+  {{/site-navigation}}
 </div>
 
 {{!-- Excursion edit --}}
@@ -10,8 +10,8 @@
     {{#paper-card class="meta-editor" as |card|}}
       {{#card.title as |title|}}
         {{#title.text as |text|}}
-          {{#text.subhead}}Frontmatter{{/text.subhead}}   
-          {{#text.headline}}Metadaten{{/text.headline}}   
+          {{#text.subhead}}Frontmatter{{/text.subhead}}
+          {{#text.headline}}Metadaten{{/text.headline}}
         {{/title.text}}
       {{/card.title}}
       {{#card.content}}
@@ -22,16 +22,24 @@
 
         {{!-- Kurzbeschreibung --}}
         <div layout="" layout-sm="column">
-          {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}          
+          {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}
         </div>
 
-        {{!-- exkursion array --}}
+        {{!-- Exkursionsroute --}}
         <h3>Stationen</h3>
+
         {{#each model.exkursion as |excursion|}}
         <div layout="" layout-sm="column">
-          {{paper-input textarea=true block=true flex=20 label="Stationsnummer" value=excursion.nr onChange=(action (mut excursion.nr))}}   
-          {{paper-input textarea=true block=true flex=30 label="Latitude" value=excursion.lat onChange=(action (mut excursion.lat))}}          
-          {{paper-input textarea=true block=true flex=30 label="Longitude" value=excursion.lon onChange=(action (mut excursion.lon))}}                      
+        {{#leaflet-map lat=excursion.lat lng=excursion.lon zoom=model.zoomstufe}}
+            {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+            {{#marker-layer draggable=true lat=excursion.lat lng=excursion.lon onDragend=(action "updateLocation" excursion)}}
+            {{/marker-layer}}
+          {{/leaflet-map}}
+        </div>
+        <div layout="" layout-sm="column">
+          {{paper-input textarea=true block=true flex=20 label="Stationsnummer" value=excursion.nr onChange=(action (mut excursion.nr))}}
+          {{paper-input textarea=true block=true flex=30 label="Latitude" value=excursion.lat onChange=(action (mut excursion.lat))}}
+          {{paper-input textarea=true block=true flex=30 label="Longitude" value=excursion.lon onChange=(action (mut excursion.lon))}}
           {{#paper-button mini=true raised=true onClick=(action "getExcursion" model.exkursion)}}
             {{paper-icon "add location"}}
           {{/paper-button}}
@@ -43,12 +51,12 @@
 
         {{!-- Literaturangaben --}}
         <div layout="" layout-sm="column">
-          {{paper-input textarea=true block=true flex=100 label="Literaturangaben" value=model.literaturangaben onChange=(action (mut model.literaturangaben))}}        
+          {{paper-input textarea=true block=true flex=100 label="Literaturangaben" value=model.literaturangaben onChange=(action (mut model.literaturangaben))}}
         </div>
-        
+
         {{!-- Bildnachweise --}}
         <div layout="" layout-sm="column">
-          {{paper-input textarea=true block=true flex=100 label="Bildnachweise" value=model.bildnachweise onChange=(action (mut model.bildnachweise))}}          
+          {{paper-input textarea=true block=true flex=100 label="Bildnachweise" value=model.bildnachweise onChange=(action (mut model.bildnachweise))}}
         </div>
 
         {{!-- VG Wort Code --}}
@@ -61,8 +69,8 @@
 
     {{#content-editor model=model}}
     {{/content-editor}}
- 
-</div>  
+
+</div>
 
 {{#editor-dock model=model updateExcursion=true deleteExcursion=true deleteExcursionAction="deletePage" updateExcursionAction="updatePage"}}
 {{/editor-dock}}
