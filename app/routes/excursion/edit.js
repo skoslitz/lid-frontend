@@ -5,9 +5,9 @@ export default Ember.Route.extend({
     	return this.store.findRecord('excursion', params.id);
   	},
 	actions: {
-	 //site nav actions
-		regionList() {
-      		this.transitionTo('/');
+    //site nav actions
+        regionList() {
+            this.transitionTo('/');
     	},
     // editor dock actions
     	updatePage() {
