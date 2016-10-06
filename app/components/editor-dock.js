@@ -3,7 +3,10 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 	deletePage: false,
 	actions: {
-		publishSite() {
+		publishSite(model) {
+			// TODO: check model.hasDirtyAttributes before upload
+			var store = this.get('model.store');
+			console.log(store);
 			console.log("send publishSite Action to bubble up ...")
 			this.sendAction('publishSiteAction');
 	    },
@@ -15,22 +18,25 @@ export default Ember.Component.extend({
 
 	    },
 	    deleteRegion(model) {
-	    	this.sendAction('deleteRegionAction', model);		
+	    	this.sendAction('deleteRegionAction', model);
 	    },
 	    updateRegion(model) {
-	    	this.sendAction('updateRegionAction', model);		
+	    	// TODO: set model.hasDirtyAttributes = false
+	    	this.sendAction('updateRegionAction', model);
 	    },
 	    deleteTopic(model) {
-	    	this.sendAction('deleteTopicAction', model);		
+	    	this.sendAction('deleteTopicAction', model);
 	    },
 	    updateTopic(model) {
-	    	this.sendAction('updateTopicAction', model);		
-	    },	
+	    	// TODO: set model.hasDirtyAttributes = false
+	    	this.sendAction('updateTopicAction', model);
+	    },
 	    deleteExcursion(model) {
-	    	this.sendAction('deleteExcursionAction', model);		
+	    	this.sendAction('deleteExcursionAction', model);
 	    },
 	    updateExcursion(model) {
-	    	this.sendAction('updateExcursionAction', model);		
-	    }	
+	    	// TODO: set model.hasDirtyAttributes = false
+	    	this.sendAction('updateExcursionAction', model);
+	    }
 	}
 });

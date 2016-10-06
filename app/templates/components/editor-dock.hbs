@@ -4,40 +4,40 @@
 
     {{#paper-button primary=true fab=true onClick=(action "publishSite")}}
       {{paper-icon "file upload"}}
-    {{/paper-button}} 
+    {{/paper-button}}
     <br>
-    
+
     {{#paper-button fab=true onClick=(action "previewSite")}}
-      {{paper-icon "pageview"}}      
+      {{paper-icon "pageview"}}
     {{/paper-button}}
     <br>
 
     {{#paper-button fab=true raised=true onClick=(action "openHelper")}}
       {{paper-icon "help outline"}}
-    {{/paper-button}}    
+    {{/paper-button}}
     <br>
-    
+
     {{#if updateRegion}}
       {{#paper-button fab=true onClick=(action "updateRegion" model)}}
         {{paper-icon "checkcircle"}}
-      {{/paper-button}}    
+      {{/paper-button}}
       <br>
     {{/if}}
 
     {{#if updateTopic}}
       {{#paper-button fab=true onClick=(action "updateTopic" model)}}
         {{paper-icon "checkcircle"}}
-      {{/paper-button}}    
+      {{/paper-button}}
       <br>
     {{/if}}
 
     {{#if updateExcursion}}
       {{#paper-button fab=true onClick=(action "updateExcursion" model)}}
         {{paper-icon "checkcircle"}}
-      {{/paper-button}}    
+      {{/paper-button}}
       <br>
-    {{/if}}    
-  
+    {{/if}}
+
     {{#if deleteRegion}}
       {{#paper-button warn=true fab=true onClick=(action "deleteRegion" model)}}
         {{paper-icon "delete forever"}}
@@ -58,6 +58,6 @@
       {{/paper-button}}
       <br>
     {{/if}}
-    
-  </div>    
+
+  </div>
 </div>

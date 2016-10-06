@@ -26,23 +26,51 @@
         </div>
 
         {{!-- Exkursionsroute --}}
-        <h3>Stationen</h3>
+        <h3 class="md-headline">Die Exkursionroute</h3>
 
-        {{#each model.exkursion as |excursion|}}
+        {{!-- Centroid, Zoomstufe, Exkursionsstationen --}}
         <div layout="" layout-sm="column">
-        {{#leaflet-map lat=excursion.lat lng=excursion.lon zoom=model.zoomstufe}}
+          {{#paper-button mini=true raised=true onClick=""}}
+            {{paper-icon "add location"}}
+          {{/paper-button}}
+          {{paper-input flex=33 label="Lat. Kartenmittelpunkt" value=model.centroidLat onChange=(action (mut model.centroidLat))}}
+          {{paper-input flex=33 label="Lon. Kartenmittelpunkt" value=model.centroidLon onChange=(action (mut model.centroidLon))}}
+          {{paper-input flex=33 label="Zoomstufe der Karte" value=model.zoomstufe type=number min=1 max=18 required=true onChange=(action (mut model.zoomstufe))}}
+          {{paper-input flex=20 label="Exkursionsstationen" value=model.exkursionsstationen type=number min=1 required=true onChange=(action (mut model.exkursionsstationen))}}
+        </div>
+
+
+        <div layout="" layout-sm="column">
+        {{#leaflet-map scrollWheelZoom=false lat=model.centroidLat lng=model.centroidLon zoom=model.zoomstufe}}
             {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
-            {{#marker-layer draggable=true lat=excursion.lat lng=excursion.lon onDragend=(action "updateLocation" excursion)}}
-            {{/marker-layer}}
+
+            {{#each model.exkursion as |excursion index|}}
+                {{#marker-layer draggable=true lat=excursion.lat lng=excursion.lon onDragend=(action "updateLocation" excursion index)}}
+                  {{#tooltip-layer direction='top'}}
+                    {{excursion.nr}}
+                  {{/tooltip-layer}}
+                {{/marker-layer}}
+            {{/each}}
+
           {{/leaflet-map}}
         </div>
+
+        {{#paper-list}}
+          {{#each model.exkursion as |excursion|}}
+            {{#paper-item class="md-3-line"}}
+              <div class="md-list-item-text">
+                <h3>Station {{excursion.nr}}, Koordinaten: {{excursion.lat}}, {{excursion.lon}}  </h3>
+              </div>
+              {{paper-divider}}
+            {{/paper-item}}
+          {{/each}}
+        {{/paper-list}}
+
+        {{#each model.exkursion as |excursion|}}
         <div layout="" layout-sm="column">
           {{paper-input textarea=true block=true flex=20 label="Stationsnummer" value=excursion.nr onChange=(action (mut excursion.nr))}}
           {{paper-input textarea=true block=true flex=30 label="Latitude" value=excursion.lat onChange=(action (mut excursion.lat))}}
           {{paper-input textarea=true block=true flex=30 label="Longitude" value=excursion.lon onChange=(action (mut excursion.lon))}}
-          {{#paper-button mini=true raised=true onClick=(action "getExcursion" model.exkursion)}}
-            {{paper-icon "add location"}}
-          {{/paper-button}}
         </div>
         {{/each}}
         <p>Weitere Station hinzufügen</p>
