@@ -30,13 +30,41 @@
 
         {{!-- Centroid, Zoomstufe, Exkursionsstationen --}}
         <div layout="" layout-sm="column">
-          {{#paper-button mini=true raised=true onClick=""}}
-            {{paper-icon "add location"}}
-          {{/paper-button}}
+
           {{paper-input flex=33 label="Lat. Kartenmittelpunkt" value=model.centroidLat onChange=(action (mut model.centroidLat))}}
           {{paper-input flex=33 label="Lon. Kartenmittelpunkt" value=model.centroidLon onChange=(action (mut model.centroidLon))}}
           {{paper-input flex=33 label="Zoomstufe der Karte" value=model.zoomstufe type=number min=1 max=18 required=true onChange=(action (mut model.zoomstufe))}}
           {{paper-input flex=20 label="Exkursionsstationen" value=model.exkursionsstationen type=number min=1 required=true onChange=(action (mut model.exkursionsstationen))}}
+          {{#paper-button class="button-bottom-margin" onClick=""}}
+            <p>Kartenausschnitt festlegen</p>
+            {{!-- {{paper-icon "add location"}} --}}
+          {{/paper-button}}
+
+          {{!-- Set map extent --}}
+              {{!-- {{#if showMapDialog}}
+                {{#paper-dialog fullscreen=fullscreen onClose=(action "closeMapDialog" "cancel") origin=dialogOrigin clickOutsideToClose=true}}
+
+                  {{#paper-toolbar}}
+                    <div class="md-toolbar-tools">
+                      <h2>Kartenausschnitt festlegen</h2>
+                      <span class="flex"></span>
+                      {{#paper-button iconButton=true onClick=(action "closeMapDialog" "cancel")}}{{paper-icon icon="close"}}{{/paper-button}}
+                    </div>
+                  {{/paper-toolbar}}
+
+                  {{#paper-dialog-content}}
+
+                  {{/paper-dialog-content}}
+
+                  {{#paper-dialog-actions class="layout-row"}}
+                    <span class="flex"></span>
+                    {{#paper-button primary=true onClick=(action "closeMapDialog" "cancel")}}Abbrechen{{/paper-button}}
+                    {{#paper-button primary=true onClick=(action "saveRegion" )}}Band erstellen{{/paper-button}}
+                  {{/paper-dialog-actions}}
+
+                {{/paper-dialog}}
+              {{/if}} --}}
+
         </div>
 
 
