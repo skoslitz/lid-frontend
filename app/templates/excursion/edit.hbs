@@ -25,6 +25,24 @@
           {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}
         </div>
 
+
+        {{!-- Literaturangaben --}}
+        <div layout="" layout-sm="column">
+          {{paper-input textarea=true block=true flex=100 label="Literaturangaben" value=model.literaturangaben onChange=(action (mut model.literaturangaben))}}
+        </div>
+
+        {{!-- Bildnachweise --}}
+        <div layout="" layout-sm="column">
+          {{paper-input textarea=true block=true flex=100 label="Bildnachweise" value=model.bildnachweise onChange=(action (mut model.bildnachweise))}}
+        </div>
+
+        {{!-- VG Wort Code --}}
+        <div layout="" layout-sm="column">
+          {{paper-input flex=70 label="VG Wort Code" value=model.vgWortCode onChange=(action (mut model.vgWortCode))}}
+        </div>
+
+
+
         {{!-- Exkursionsroute --}}
         <h3 class="md-headline">Die Exkursionroute</h3>
 
@@ -67,7 +85,7 @@
 
         </div>
 
-
+        {{!-- Karte mit Exkursionsstationen --}}
         <div layout="" layout-sm="column">
         {{#leaflet-map scrollWheelZoom=false lat=model.centroidLat lng=model.centroidLon zoom=model.zoomstufe}}
             {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
@@ -75,7 +93,9 @@
             {{#each model.exkursion as |excursion index|}}
                 {{#marker-layer draggable=true lat=excursion.lat lng=excursion.lon onDragend=(action "updateLocation" excursion index)}}
                   {{#tooltip-layer direction='top'}}
-                    {{excursion.nr}}
+                    Station {{excursion.nr}}
+                    <br>
+                    {{excursion.lat}}, {{excursion.lon}}
                   {{/tooltip-layer}}
                 {{/marker-layer}}
             {{/each}}
@@ -83,42 +103,6 @@
           {{/leaflet-map}}
         </div>
 
-        {{#paper-list}}
-          {{#each model.exkursion as |excursion|}}
-            {{#paper-item class="md-3-line"}}
-              <div class="md-list-item-text">
-                <h3>Station {{excursion.nr}}, Koordinaten: {{excursion.lat}}, {{excursion.lon}}  </h3>
-              </div>
-              {{paper-divider}}
-            {{/paper-item}}
-          {{/each}}
-        {{/paper-list}}
-
-        {{#each model.exkursion as |excursion|}}
-        <div layout="" layout-sm="column">
-          {{paper-input textarea=true block=true flex=20 label="Stationsnummer" value=excursion.nr onChange=(action (mut excursion.nr))}}
-          {{paper-input textarea=true block=true flex=30 label="Latitude" value=excursion.lat onChange=(action (mut excursion.lat))}}
-          {{paper-input textarea=true block=true flex=30 label="Longitude" value=excursion.lon onChange=(action (mut excursion.lon))}}
-        </div>
-        {{/each}}
-        <p>Weitere Station hinzufügen</p>
-
-        <hr>
-
-        {{!-- Literaturangaben --}}
-        <div layout="" layout-sm="column">
-          {{paper-input textarea=true block=true flex=100 label="Literaturangaben" value=model.literaturangaben onChange=(action (mut model.literaturangaben))}}
-        </div>
-
-        {{!-- Bildnachweise --}}
-        <div layout="" layout-sm="column">
-          {{paper-input textarea=true block=true flex=100 label="Bildnachweise" value=model.bildnachweise onChange=(action (mut model.bildnachweise))}}
-        </div>
-
-        {{!-- VG Wort Code --}}
-        <div layout="" layout-sm="column">
-          {{paper-input flex=70 label="VG Wort Code" value=model.vgWortCode onChange=(action (mut model.vgWortCode))}}
-        </div>
 
       {{/card.content}}
     {{/paper-card}}
