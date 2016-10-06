@@ -9,11 +9,13 @@ export default Ember.Controller.extend({
         lat: location.lat.toFixed(7),
         lon: location.lng.toFixed(7)
       });
-      // TODO
       // Get model.excursion from store and update model.excursion[index]
-      console.log(index);
-      console.log(this.get('store'));
-      // this.model.set('excursion', [location.lat.toFixed(7), location.lng.toFixed(7)]);
+      this.set(('model.exkursion')[index], {
+      	lat: location.lat.toFixed(7),
+        lon: location.lng.toFixed(7)
+      });
+     	// TODO
+      // set model.hasDirtyAttributes to true
     },
 		updateExcursion: function() {
 
