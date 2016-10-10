@@ -1,1 +1,20 @@
-<h5>this is an error page</h5>
+{{!-- placeholder  --}}
+<div class="flex-20">
+</div>
+
+{{!-- main --}}
+<div class="flex-60">
+  <div layout="row">
+
+        {{#paper-card as |card|}}
+          {{#card.title as |title|}}
+            {{#title.text as |text|}}
+              {{#text.headline}}Fehlermeldung{{/text.headline}}
+            {{/title.text}}
+          {{/card.title}}
+          {{#card.content}}
+            {{model}}
+          {{/card.content}}
+        {{/paper-card}}
+  </div>
+</div>
