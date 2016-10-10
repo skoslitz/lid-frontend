@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.JSONAPIAdapter.extend({
-	host: 'http://localhost:1313',
+	//host: 'http://localhost:1313',
 	namespace: 'api/dir',
 	pathForType: function(modelName) {
     	return "exkursionen";
@@ -10,6 +10,6 @@ export default DS.JSONAPIAdapter.extend({
   		let id = query.id;
   		// remove query, otherwise url contains query param
   		delete query.id;
-  		return `${this.host}/api/regionen/${id}/exkursionen`
+  		return `/api/regionen/${id}/exkursionen`
   	}
 });

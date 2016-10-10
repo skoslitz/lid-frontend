@@ -4,13 +4,13 @@ import Ember from 'ember';
 let { $ } = Ember;
 
 export default DS.JSONAPIAdapter.extend({
-	host: 'http://localhost:1313',
+	//host: 'http://localhost:1313',
 	namespace: 'api/page',
 	pathForType: function(modelName) {
     	return "regionen";
   },
   createRecord: function(store, type, snapshot) {
-      let url = `${this.host}/${this.namespace}/${snapshot.attr('path')}`;
+      let url = `/${this.namespace}/${snapshot.attr('path')}`;
       let data = {};
       let serializer = store.serializerFor(type.modelName);
       serializer.serializeIntoHash(data, type, snapshot);
@@ -21,7 +21,7 @@ export default DS.JSONAPIAdapter.extend({
       });
   },
   updateRecord: function(store, type, snapshot) {
-      let url = `${this.host}/${this.namespace}/${snapshot.attr('path')}`;
+      let url = `/${this.namespace}/${snapshot.attr('path')}`;
       let data = {};
       let serializer = store.serializerFor(type.modelName);
       serializer.serializeIntoHash(data, type, snapshot);
@@ -32,7 +32,7 @@ export default DS.JSONAPIAdapter.extend({
       });
   },
   deleteRecord(store, type, snapshot) {
-      let url = `${this.host}/${this.namespace}/${snapshot.attr('path')}`;
+      let url = `/${this.namespace}/${snapshot.attr('path')}`;
       return $.ajax({
         type: 'DELETE',
         url: url

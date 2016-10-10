@@ -50,8 +50,8 @@
         {{!-- Centroid, Zoomstufe, Exkursionsstationen --}}
         <div layout="" layout-sm="column">
 
-          {{paper-input flex=33 label="Lat. Kartenmittelpunkt" value=model.centroidLat onChange=(action (mut model.centroidLat))}}
-          {{paper-input flex=33 label="Lon. Kartenmittelpunkt" value=model.centroidLon onChange=(action (mut model.centroidLon))}}
+          {{paper-input flex=33 label="Kartenmittelpunkt Lat." value=model.centroidLat onChange=(action (mut model.centroidLat))}}
+          {{paper-input flex=33 label="Kartenmittelpunkt Lon." value=model.centroidLon onChange=(action (mut model.centroidLon))}}
           {{paper-input flex=33 label="Zoomstufe der Karte" value=model.zoomstufe type=number min=1 max=18 required=true onChange=(action (mut model.zoomstufe))}}
           {{paper-input flex=20 label="Exkursionsstationen" value=model.exkursionsstationen type=number min=1 required=true onChange=(action (mut model.exkursionsstationen))}}
           {{#paper-button class="button-bottom-margin" onClick=""}}
@@ -114,5 +114,5 @@
 
 </div>
 
-{{#editor-dock model=model updateExcursion=true deleteExcursion=true deleteExcursionAction="deletePage" updateExcursionAction="updatePage"}}
+{{#editor-dock model=model updateExcursion=true deleteExcursion=true deleteExcursionAction="deletePage" updateExcursionAction="updateExcursion"}}
 {{/editor-dock}}

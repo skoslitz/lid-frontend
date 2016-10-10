@@ -14,10 +14,10 @@ export default Ember.Component.extend({
 		});
 	},
 	actions: {
-		handleTrixAction() {
+		handleTrixAction(model) {
 			let element = document.querySelector("trix-editor");
-			// model.content = element.editor.getDocument().toString()
-			// console.log(element.editor.getDocument().toString());			
+			model.content = element.editor.getDocument().toString();
+			//console.log(element.editor.getDocument().toString());			
 		}						
 	}
 });

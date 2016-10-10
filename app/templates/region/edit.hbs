@@ -13,13 +13,13 @@
         {{#paper-card as |card|}}
           {{#card.title as |title|}}
             {{#title.text as |text|}}
-              {{#text.headline}}{{model.excursion.length}} Exkursionen{{/text.headline}}
+              {{#text.headline}}{{excursion.length}} Exkursionen{{/text.headline}}
             {{/title.text}}
           {{/card.title}}
           {{#card.content}}
-            {{#link-to "excursion.new" model.region.id}}Exkursion erstellen{{/link-to}}
-            {{#if model.excursion.length }}
-              {{#link-to "excursion-list" model.region.id}}Exkursionen auflisten{{/link-to}}
+            {{#link-to "excursion.new" region.id}}Exkursion erstellen{{/link-to}}
+            {{#if excursion.length }}
+              {{#link-to "excursion-list" region.id}}Exkursionen auflisten{{/link-to}}
             {{/if}}
           {{/card.content}}
         {{/paper-card}}
@@ -29,13 +29,13 @@
         {{#paper-card as |card|}}
           {{#card.title as |title|}}
             {{#title.text as |text|}}
-              {{#text.headline}}{{model.topic.length}} Themen{{/text.headline}}
+              {{#text.headline}}{{topic.length}} Themen{{/text.headline}}
             {{/title.text}}
           {{/card.title}}
           {{#card.content}}
-              {{#link-to "topic.new" model.region.id}}Thema erstellen{{/link-to}}
-            {{#if model.topic.length }}
-              {{#link-to "topic-list" model.region.id}}Themen auflisten{{/link-to}}
+              {{#link-to "topic.new" region.id}}Thema erstellen{{/link-to}}
+            {{#if topic.length }}
+              {{#link-to "topic-list" region.id}}Themen auflisten{{/link-to}}
             {{/if}}
               
           {{/card.content}}
@@ -48,47 +48,47 @@
       {{#card.title as |title|}}
         {{#title.text as |text|}}
           {{#text.subhead}}Frontmatter{{/text.subhead}}
-          {{#text.headline}}Band {{model.region.title}}{{/text.headline}}
+          {{#text.headline}}Band {{region.title}}{{/text.headline}}
         {{/title.text}}
       {{/card.title}}
       {{#card.content}}
 
         <div layout="row" layout-sm="column">
-    		  {{paper-input flex=70 label="Titel" value=model.region.title onChange=(action (mut model.region.title))}}
-    		  {{paper-input flex=30 label="Bandnummer" value=model.region.bandnummer onChange=(action (mut model.region.bandnummer))}}
+    		  {{paper-input flex=70 label="Titel" value=region.title onChange=(action (mut region.title))}}
+    		  {{paper-input flex=30 label="Bandnummer" value=region.bandnummer onChange=(action (mut region.bandnummer))}}
     	  </div>
 
         <div layout="row" layout-sm="column">
-          {{paper-input flex=100 label="Untertitel" value=model.region.subtitle onChange=(action (mut model.region.subtitle))}}
+          {{paper-input flex=100 label="Untertitel" value=region.subtitle onChange=(action (mut region.subtitle))}}
         </div>
 
         <div layout="row" layout-sm="column">
-          {{paper-input flex=70 label="Reihentitel" value=model.region.editionTitle onChange=(action (mut model.region.editionTitle))}}
-          {{paper-input flex=30 label="Erscheinungsjahr" value=model.region.dateOfPublication onChange=(action (mut model.region.dateOfPublication))}}
+          {{paper-input flex=70 label="Reihentitel" value=region.editionTitle onChange=(action (mut region.editionTitle))}}
+          {{paper-input flex=30 label="Erscheinungsjahr" value=region.dateOfPublication onChange=(action (mut region.dateOfPublication))}}
         </div>
 
         <div layout="row" layout-sm="column">
-          {{paper-input flex=70 label="Herausgeber" value=model.region.editor onChange=(action (mut model.region.editor))}}
-          {{paper-input flex=30 label="ISBN" value=model.region.isbn onChange=(action (mut model.region.isbn))}}
+          {{paper-input flex=70 label="Herausgeber" value=region.editor onChange=(action (mut region.editor))}}
+          {{paper-input flex=30 label="ISBN" value=region.isbn onChange=(action (mut region.isbn))}}
         </div>
 
         <div layout="row" layout-sm="column">
-          {{paper-input flex=100 label="Herausgeberinstitut" value=model.region.editorInstitut onChange=(action (mut model.region.editorInstitut))}}
+          {{paper-input flex=100 label="Herausgeberinstitut" value=region.editorInstitut onChange=(action (mut region.editorInstitut))}}
         </div>
 
 
         <div layout="row" layout-sm="column">
-          {{paper-input flex=30 label="Verlag" value=model.region.publisher onChange=(action (mut model.region.publisher))}}
-          {{paper-input flex=30 label="Ort" value=model.region.location onChange=(action (mut model.region.location))}}
-          {{paper-input flex=30 label="Seitenzahl" value=model.region.pagination onChange=(action (mut model.region.pagination))}}
+          {{paper-input flex=30 label="Verlag" value=region.publisher onChange=(action (mut region.publisher))}}
+          {{paper-input flex=30 label="Ort" value=region.location onChange=(action (mut region.location))}}
+          {{paper-input flex=30 label="Seitenzahl" value=region.pagination onChange=(action (mut region.pagination))}}
         </div>
 
         <div layout="row" layout-sm="column">
-          {{paper-input flex=60 label="Umfang" value=model.region.extent onChange=(action (mut model.region.extent))}}
+          {{paper-input flex=60 label="Umfang" value=region.extent onChange=(action (mut region.extent))}}
         </div>
 
-        {{#each model.region.bundesland as |bundesland|}}
-          {{paper-checkbox label=bundesland value=model.region.bundesland onChange=(action (mut model.region.bundesland))}}
+        {{#each region.bundesland as |bundesland|}}
+          {{paper-checkbox label=bundesland value=region.bundesland onChange=(action (mut region.bundesland))}}
         {{/each}}
 
       {{/card.content}}
@@ -99,7 +99,7 @@
       {{#card.content}}
 
         <div layout="" layout-sm="column">
-          {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.region.description onChange=(action (mut model.region.description))}}
+          {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=region.description onChange=(action (mut region.description))}}
         </div>
 
       {{/card.content}}
@@ -107,5 +107,5 @@
   
 </div>  
 
-{{#editor-dock model=model.region.id updateRegion=true deleteRegion=true deleteRegionAction="deletePage" updateRegionAction="updatePage"}}
+{{#editor-dock model=region.id updateRegion=true deleteRegion=true deleteRegionAction="deletePage" updateRegionAction="updateRegion"}}
 {{/editor-dock}}

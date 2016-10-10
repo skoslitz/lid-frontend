@@ -13,6 +13,12 @@ export default Ember.Controller.extend({
 				
 			this.transitionToRoute('index');		
 
-	    }
+	    },
+	    updateRegion: function() {
+			//console.log(this.get('model'));
+			this.get('model').save().then(()=>{
+				this.transitionToRoute('region.edit', this.get('model'))
+			});    
+		},
 	}
 });

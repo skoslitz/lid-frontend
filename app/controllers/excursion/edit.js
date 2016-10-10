@@ -18,7 +18,9 @@ export default Ember.Controller.extend({
       // set model.hasDirtyAttributes to true
     },
 		updateExcursion: function() {
-
+       this.get('model').save().then(()=>{
+        this.transitionToRoute('excursion.edit', this.get('model'))
+      })     
 		},
 		showRelatedRegion: function() {
 			this.transitionToRoute('region.edit', `${regionName}.md`);
