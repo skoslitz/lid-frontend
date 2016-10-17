@@ -12,9 +12,9 @@ export default Ember.Component.extend({
 	    closePromptDialog() {
 	    	this.set('showPromptDialog', false)
 	    },
-	    saveRegion(regionId, regionName) {
+	    createRegion(regionId, regionName) {
 	    	console.log("Dir-content component receive action and sends to route");
-	    	this.sendAction('saveRegionAction', regionId, regionName);
+	    	this.sendAction('createRegionAction', regionId, regionName);
 	    },
 	}
 });

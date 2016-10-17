@@ -9,11 +9,11 @@ export default Ember.Component.extend({
 	    closePromptDialog() {
 	    	this.set('showPromptDialog', false)
 	    },
-	    saveRegion() {
+	    createRegion() {
 	    	let regionId = this.get('model.id');
 			let regionName = this.get('model.title');
 			console.log("create region comp sends action");
-			this.sendAction('saveRegionAction', regionId, regionName);
+			this.sendAction('createRegionAction', regionId, regionName);
 	    },
 	}
 });

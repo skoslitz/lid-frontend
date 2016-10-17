@@ -14,15 +14,15 @@ export default Ember.Route.extend({
 		savePage(page) {
 			console.log("get savePage action from component", page)
 		},
-		saveRegion(regionId, regionName) {
+		createRegion(regionId, regionName) {
 	    	console.log("Route receive action with", regionId, regionName);
-
+	    	let sanitizeRegionName = regionName.dasherize().toLowerCase();
 	    	var store = this.get('store');
 	    	var newRegion = store.createRecord('region', {
-				id: `${regionId}-${regionName}.md`,
+				id: `${regionId}-${sanitizeRegionName}.md`,
 				bandnummer: regionId,
 				title: regionName,
-				path: `regionen/${regionId}-${regionName}.md`,
+				path: `regionen/${regionId}-${sanitizeRegionName}.md`,
 				subtitle: "",
 				description: "some text",
 				date: "",
@@ -41,15 +41,15 @@ export default Ember.Route.extend({
 
 	    	var self = this;
 
-			function transitionToPost(regionId, regionName) {
-			  self.transitionTo('region.edit', `${regionId}-${regionName}.md`);
+			function transitionToPost(regionId, sanitizeRegionName) {
+			  self.transitionTo('region.edit', `${regionId}-${sanitizeRegionName}.md`);
 			};
 
 			function failure(reason) {
 			  console.log(reason);
 			};
 
-			newRegion.save().then(transitionToPost(regionId, regionName)).catch(failure);
+			newRegion.save().then(transitionToPost(regionId, sanitizeRegionName)).catch(failure);
 	    },
 	}	
 });
