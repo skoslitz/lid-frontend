@@ -26,7 +26,7 @@ export default DS.JSONAPIAdapter.extend({
       let serializer = store.serializerFor(type.modelName);
       serializer.serializeIntoHash(data, type, snapshot);
       return $.ajax({
-        type: 'PUT',
+        type: 'OPTIONS',
         url: url,
         data: JSON.stringify(data)
       });

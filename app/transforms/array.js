@@ -2,7 +2,6 @@ import DS from 'ember-data';
 
 export default DS.Transform.extend({
   deserialize: function(serialized) {
-        console.log(Ember.typeOf(serialized));
         return serialized.split(',').map(function(item) {
             return jQuery.trim(item);
         });        

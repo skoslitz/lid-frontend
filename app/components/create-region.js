@@ -10,10 +10,10 @@ export default Ember.Component.extend({
 	    	this.set('showPromptDialog', false)
 	    },
 	    createRegion() {
-	    	let regionId = this.get('model.id');
+	    	let bandnummer = this.get('model.bandnummer');
 			let regionName = this.get('model.title');
 			console.log("create region comp sends action");
-			this.sendAction('createRegionAction', regionId, regionName);
+			this.sendAction('createRegionAction', bandnummer, regionName);
 	    },
 	}
 });

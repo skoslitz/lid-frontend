@@ -27,9 +27,21 @@ export default DS.JSONAPISerializer.extend({
 			"attributes": {
 				"path": snapshot.attr("path"),
 				"metadata": {
-					"title": snapshot.attr("title"),
 					"bandnummer": snapshot.attr("bandnummer"),
-					"kurzbeschreibung": snapshot.attr("description")
+					"title": snapshot.attr("title"),
+					"untertitel": snapshot.attr("subtitle"),					
+					"kurzbeschreibung": snapshot.attr("description"),
+					"date": snapshot.attr("date"),
+					"erscheinungsjahr": snapshot.attr("dateOfPublication"),
+					"herausgeber": snapshot.attr("editor"),
+					"herausgeberinstitut": snapshot.attr("editorInstitut"),
+					"isbn": snapshot.attr("isbn"),
+					"ort": snapshot.attr("location"),
+					"reihentitel": snapshot.attr("editionTitle"),
+					"seitenzahl": snapshot.attr("pagination"),
+					"umfang": snapshot.attr("extent"),
+					"verlag": snapshot.attr("publisher"),
+					"bundesland": snapshot.attr("bundesland"),				
 				},
 				"content": snapshot.attr("content")
 			}			

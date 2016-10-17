@@ -14,42 +14,44 @@ export default Ember.Route.extend({
 		savePage(page) {
 			console.log("get savePage action from component", page)
 		},
-		createRegion(regionId, regionName) {
-	    	console.log("Route receive action with", regionId, regionName);
+		createRegion(bandnummer, regionName) {
+	    	console.log("Route receive action with", bandnummer, regionName);
 	    	let sanitizeRegionName = regionName.dasherize().toLowerCase();
 	    	var store = this.get('store');
+	    	let actualDate = new Date();
+	    	
 	    	var newRegion = store.createRecord('region', {
-				id: `${regionId}-${sanitizeRegionName}.md`,
-				bandnummer: regionId,
+				id: `${bandnummer}-${sanitizeRegionName}.md`,
+				bandnummer: bandnummer,
 				title: regionName,
-				path: `regionen/${regionId}-${sanitizeRegionName}.md`,
-				subtitle: "",
-				description: "some text",
+				path: `regionen/${bandnummer}-${sanitizeRegionName}.md`,
+				subtitle: " ",
+				description: " ",
 				date: "",
-				dateOfPublication: "",
-				editor: "",
-				editorInstitut: "",
-				isbn: "",
-				location: "",	
-				editionTitle: "",
+				dateOfPublication: " ",
+				editor: " ",
+				editorInstitut: "Leibniz-Institut für Länderkunde e.V. und Sächsische Akademie der Wissenschaften zu Leipzig",
+				isbn: " ",
+				location: " ",	
+				editionTitle: "Landschaften in Deutschland",
 				pagination: 100,
 				extent: [],
-				publisher: "",
+				publisher: "Böhlau Verlag",
 				bundesland: ["Sachsen", "Thüringen"],
 				content: "some content text"
 			});
 
 	    	var self = this;
 
-			function transitionToPost(regionId, sanitizeRegionName) {
-			  self.transitionTo('region.edit', `${regionId}-${sanitizeRegionName}.md`);
+			function transitionToPost(bandnummer, sanitizeRegionName) {
+			  self.transitionTo('region.edit', `${bandnummer}-${sanitizeRegionName}.md`);
 			};
 
 			function failure(reason) {
 			  console.log(reason);
 			};
 
-			newRegion.save().then(transitionToPost(regionId, sanitizeRegionName)).catch(failure);
+			newRegion.save().then(transitionToPost(bandnummer, sanitizeRegionName)).catch(failure);
 	    },
 	}	
 });
