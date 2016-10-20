@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	model() {
-    	return this.store.findAll('region-list', { reload: true }); 
+    	return this.store.findAll('region-list', { reload: true });
   	},
 	actions: {
 		publishSite() {
@@ -16,10 +16,10 @@ export default Ember.Route.extend({
 		},
 		createRegion(bandnummer, regionName) {
 	    	console.log("Route receive action with", bandnummer, regionName);
-	    	let sanitizeRegionName = regionName.dasherize().toLowerCase();
+	    	let sanitizeRegionName = regionName.toLowerCase().trim().dasherize();
 	    	var store = this.get('store');
 	    	let actualDate = new Date();
-	    	
+
 	    	var newRegion = store.createRecord('region', {
 				id: `${bandnummer}-${sanitizeRegionName}.md`,
 				bandnummer: bandnummer,
@@ -32,7 +32,7 @@ export default Ember.Route.extend({
 				editor: " ",
 				editorInstitut: "Leibniz-Institut für Länderkunde e.V. und Sächsische Akademie der Wissenschaften zu Leipzig",
 				isbn: " ",
-				location: " ",	
+				location: " ",
 				editionTitle: "Landschaften in Deutschland",
 				pagination: 100,
 				extent: [],
@@ -53,5 +53,5 @@ export default Ember.Route.extend({
 
 			newRegion.save().then(transitionToPost(bandnummer, sanitizeRegionName)).catch(failure);
 	    },
-	}	
+	}
 });
