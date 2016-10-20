@@ -29,7 +29,7 @@ export default DS.JSONAPISerializer.extend({
 				"metadata": {
 					"bandnummer": snapshot.attr("bandnummer"),
 					"title": snapshot.attr("title"),
-					"untertitel": snapshot.attr("subtitle"),					
+					"untertitel": snapshot.attr("subtitle"),
 					"kurzbeschreibung": snapshot.attr("description"),
 					"date": snapshot.attr("date"),
 					"erscheinungsjahr": snapshot.attr("dateOfPublication"),
@@ -39,18 +39,18 @@ export default DS.JSONAPISerializer.extend({
 					"ort": snapshot.attr("location"),
 					"reihentitel": snapshot.attr("editionTitle"),
 					"seitenzahl": snapshot.attr("pagination"),
-					"umfang": snapshot.attr("extent"),
+					"umfang": [snapshot.attr("extent")],
 					"verlag": snapshot.attr("publisher"),
-					"bundesland": snapshot.attr("bundesland"),				
+					"bundesland": [snapshot.attr("bundesland")],
 				},
 				"content": snapshot.attr("content")
-			}			
+			}
 		};
 
 		if (snapshot.id) {
 			serializedData.id = snapshot.id;
 		};
-			
+
 		return serializedData;
 	}
 });
