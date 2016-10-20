@@ -1,26 +1,33 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	showDialog: false,
+	updateDialog: false,
+	deleteDialog: false,
+	shouldRemove: false,
 	actions: {
+
 		deleteRegion() {
-			console.log("Controller got Action from comp");
+			this.set('deleteDialog', true);
+
 			let regionId = this.get('model.region.id');
 			let store = this.get('store');
-			store.findRecord('region', regionId).then(function(region) {
-				region.deleteRecord();
-        		region.save();
-			});
-			this.transitionToRoute('index');
-	    },
+
+			if (this.get('shouldRemove')) {
+				store.findRecord('region', regionId).then(function(region) {
+					region.deleteRecord();
+      		region.save();
+				});
+				this.transitionToRoute('index');
+			}
+	  },
 	    updateRegion: function() {
-			this.set('showDialog', true);
+			this.set('updateDialog', true);
 
 			var self = this
 			this.get('region').save().then(()=>{
 				Ember.run.later((function() {
 			  	self.transitionToRoute('index')
-			  	self.set('showDialog', false);
+			  	self.set('updateDialog', false);
 				}), 1200);
 			});
 		},

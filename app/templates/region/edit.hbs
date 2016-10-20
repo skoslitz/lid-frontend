@@ -107,11 +107,16 @@
 
 </div>
 
-{{#editor-dock model=region.id updateRegion=true deleteRegion=true deleteRegionAction="deletePage" updateRegionAction="updateRegion"}}
+{{#editor-dock model=region.id updateRegion=true deleteRegion=true deleteRegionAction="deleteRegion" updateRegionAction="updateRegion"}}
 {{/editor-dock}}
 
-{{#if showDialog}}
+{{#if updateDialog}}
   {{#update-dialog message="Die Änderung wurde gespeichert."}}
+  {{/update-dialog}}
+{{/if}}
+
+{{#if deleteDialog}}
+  {{#update-dialog message="Die Region wird gelöscht."}}
   {{/update-dialog}}
 {{/if}}
 
