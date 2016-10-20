@@ -1,12 +1,12 @@
 {{!-- placeholder  --}}
 <div class="flex-20">
   {{#site-navigation showRegionListAction="regionList"}}
-  {{/site-navigation}}    
+  {{/site-navigation}}
 </div>
 
 {{!-- Region list --}}
 <div class="flex-60">
-    
+
     {{!-- Info Themen/Exkursionen --}}
     <div layout="row">
       <div class="flex-50">
@@ -37,12 +37,12 @@
             {{#if topic.length }}
               {{#link-to "topic-list" region.id}}Themen auflisten{{/link-to}}
             {{/if}}
-              
+
           {{/card.content}}
         {{/paper-card}}
       </div>
     </div>
-    
+
     {{!-- Frontmatter Region --}}
     {{#paper-card as |card|}}
       {{#card.title as |title|}}
@@ -93,7 +93,7 @@
 
       {{/card.content}}
     {{/paper-card}}
-    
+
     {{!-- Meta.Kurzbeschreibung Region --}}
     {{#paper-card as |card|}}
       {{#card.content}}
@@ -104,8 +104,14 @@
 
       {{/card.content}}
     {{/paper-card}}
-  
-</div>  
+
+</div>
 
 {{#editor-dock model=region.id updateRegion=true deleteRegion=true deleteRegionAction="deletePage" updateRegionAction="updateRegion"}}
 {{/editor-dock}}
+
+{{#if showDialog}}
+  {{#update-dialog message="Die Änderung wurde gespeichert."}}
+  {{/update-dialog}}
+{{/if}}
+

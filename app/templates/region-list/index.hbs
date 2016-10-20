@@ -1,0 +1,12 @@
+{{!-- placeholder  --}}
+<div class="flex-20"></div>
+
+<div class="flex-60">
+
+  {{#dir-content-list createRegion=true model=(reverse model) editURL="region.edit" contentType="Regionen" saveRegionAction="saveRegion"}}
+  {{/dir-content-list}}
+
+</div>
+
+{{#editor-dock publishSiteAction="publishSite" previewSiteAction="previewSite" savePageAction="savePage"}}
+{{/editor-dock}}
