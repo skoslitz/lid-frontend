@@ -12,9 +12,12 @@
 	    {{/create-topic}}
     {{/if}}
 
-    {{#if createExcursion}}
-    	{{#create-excursion model=model}}
-	    {{/create-excursion}}
+    {{#if createExcursionButton}}
+    	<div class="centered">
+			{{#paper-button raised=true primary=true onClick=(action "openCreateExcursionDialog") }}
+			  Erstelle ein neue Exkursion
+			{{/paper-button}}
+		</div>
     {{/if}}
 
 	{{#card.content}}

@@ -17,13 +17,18 @@
             {{/title.text}}
           {{/card.title}}
           {{#card.content}}
-            {{#link-to "excursion.new" region.id}}Exkursion erstellen{{/link-to}}
+            <a href="#" {{action "openCreateExcursionDialog"}}>Exkursion erstellen</a>
             {{#if excursion.length }}
               {{#link-to "excursion-list" region.id}}Exkursionen auflisten{{/link-to}}
             {{/if}}
           {{/card.content}}
         {{/paper-card}}
       </div>
+
+    {{#if createExcursion}}
+      {{#create-excursion closeCreateExcursionDialogAction="closeCreateExcursionDialog" createExcursionConfirmedAction="createExcursionConfirmed"}}
+      {{/create-excursion}}
+    {{/if}}
 
       <div class="flex-50">
         {{#paper-card as |card|}}

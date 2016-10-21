@@ -3,9 +3,11 @@ import Ember from 'ember';
 export default Ember.Component.extend({
 	createRegion: false,
 	createTopic: false,
-	createExcursion: false,
-	showPromptDialog: false,
+	createExcursion: false,	
 	actions: {
+		openCreateExcursionDialog() {
+			this.sendAction('createExcursionAction');			
+		},
 		openPromptDialog(){
 	    	this.set('showPromptDialog', true) 
 	    },

@@ -1,16 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	showPromptDialog: false,
 	actions: {
-		openPromptDialog(){
-	    	this.set('showPromptDialog', true) 
+		closeDialog() {    		
+    		this.sendAction('closeCreateExcursionDialogAction');
 	    },
-	    closePromptDialog() {
-	    	this.set('showPromptDialog', false)
+	    createExcursionConfirmed() {	    
+			this.sendAction('createExcursionConfirmedAction');
 	    },
-	    saveContent() {
-	    	console.log("save ...")
-	    },
-	}
+	}	
 });

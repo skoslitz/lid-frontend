@@ -1,10 +1,19 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+	createExcursion: false,
 	updateDialog: false,
-	deleteDialog: false,
-	shouldRemove: false,
+	deleteDialog: false,	
 	actions: {
+		openCreateExcursionDialog() {
+			this.set('createExcursion', true);
+		},
+		closeCreateExcursionDialog() {
+			this.set('createExcursion', false);
+		},
+		createExcursionConfirmed() {
+			console.log("create excursion");
+		},
 		updateRegion() {
 			this.set('updateDialog', true);
 
