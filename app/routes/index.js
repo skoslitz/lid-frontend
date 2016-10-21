@@ -11,9 +11,6 @@ export default Ember.Route.extend({
 		previewSite() {
 			console.log("get previewSite action from component")
 		},
-		savePage(page) {
-			console.log("get savePage action from component", page)
-		},
 		createRegion(bandnummer, regionName) {
 	    	console.log("Route receive action with", bandnummer, regionName);
 	    	let sanitizeRegionName = regionName.toLowerCase().trim().dasherize();

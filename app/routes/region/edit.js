@@ -19,20 +19,6 @@ export default Ember.Route.extend({
     //site nav actions
     regionList() {
       this.transitionTo('/');
-    },
-    // editor dock actions
-    deletePage(model) {
-      let store = this.get('store');
-      store.findRecord('region', model).then(function(region) {
-        //store.unloadRecord(region);
-        store.deleteRecord(region);
-        region.save();                  
-      });
-      
-      this.transitionTo('index');
-    },
-    updatePage(model) {
-      console.log('updateRegion action');
     }
   },  
 });

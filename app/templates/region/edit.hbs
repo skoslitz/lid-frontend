@@ -107,7 +107,7 @@
 
 </div>
 
-{{#editor-dock model=region.id updateRegion=true deleteRegion=true deleteRegionAction="deleteRegion" updateRegionAction="updateRegion"}}
+{{#editor-dock model=region.id updateRegion=true deleteRegion=true deleteRegionAction="openDeleteDialog" updateRegionAction="updateRegion"}}
 {{/editor-dock}}
 
 {{#if updateDialog}}
@@ -116,7 +116,7 @@
 {{/if}}
 
 {{#if deleteDialog}}
-  {{#update-dialog message="Die Region wird gelöscht."}}
-  {{/update-dialog}}
+  {{#delete-dialog message="Die Region wird gelöscht." closeDeleteDialogAction="closeDeleteDialog" deleteRegionConfirmedAction="deleteRegion"}}
+  {{/delete-dialog}}
 {{/if}}
 

@@ -5,22 +5,7 @@ export default Ember.Controller.extend({
 	deleteDialog: false,
 	shouldRemove: false,
 	actions: {
-
-		deleteRegion() {
-			this.set('deleteDialog', true);
-
-			let regionId = this.get('model.region.id');
-			let store = this.get('store');
-
-			if (this.get('shouldRemove')) {
-				store.findRecord('region', regionId).then(function(region) {
-					region.deleteRecord();
-      		region.save();
-				});
-				this.transitionToRoute('index');
-			}
-	  },
-	    updateRegion: function() {
+		updateRegion() {
 			this.set('updateDialog', true);
 
 			var self = this
@@ -31,5 +16,24 @@ export default Ember.Controller.extend({
 				}), 1200);
 			});
 		},
+		openDeleteDialog() {
+			this.set('deleteDialog', true);
+		},
+		closeDeleteDialog() {
+			this.set('deleteDialog', false);
+		},
+		deleteRegion() {
+			let regionId = this.get('region.id');
+			let store = this.get('store');
+			let self = this;
+
+			store.findRecord('region', regionId).then(function(region) {
+				region.deleteRecord();
+    	  		region.save().then(()=>{
+    	  			console.log("record deleted");
+    	  			self.transitionToRoute('index');	
+    	  		});    	  						
+			})
+		}	    
 	}
 });
