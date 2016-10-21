@@ -1,27 +1,27 @@
-{{#paper-dialog fullscreen=fullscreen onClose=(action "closeDialog") origin=dialogOrigin clickOutsideToClose=true}}
+{{#paper-dialog fullscreen=fullscreen onClose=(action "closeCreateExcursionDialog") origin=dialogOrigin clickOutsideToClose=true}}
 
 	{{#paper-toolbar}}
 	<div class="md-toolbar-tools">
 	  <h2>Neue Exkursion</h2>
 	  <span class="flex"></span>
-	  {{#paper-button iconButton=true onClick=(action "closeDialog")}}{{paper-icon icon="close"}}{{/paper-button}}
+	  {{#paper-button iconButton=true onClick=(action "closeCreateExcursionDialog")}}{{paper-icon icon="close"}}{{/paper-button}}
 	</div>
 	{{/paper-toolbar}}
 
 	{{#paper-dialog-content}}
 	<h5>Metadaten</h5>
 	<div layout="row">
-	  {{paper-input flex=100 value=model.id label="Id" required="true" required-errortext="Wichtig!" onChange=(action (mut model.id ))}}  
+	  {{paper-input flex=100 value=model.id label="Id" required="true" required-errortext="Wichtig!" onChange=(action (mut model.id ))}}
 	</div>
 	<div layout="row">
-	  {{paper-input flex=100 value=model.title label="Titel" onChange=(action (mut model.title))}}  
-	</div>        
+	  {{paper-input flex=100 value=model.title label="Titel" onChange=(action (mut model.title))}}
+	</div>
 	{{/paper-dialog-content}}
 
 	{{#paper-dialog-actions class="layout-row"}}
 	<span class="flex"></span>
-	{{#paper-button primary=true onClick=(action "closeDialog")}}Abbrechen{{/paper-button}}
-	{{#paper-button primary=true onClick=(action "createExcursionConfirmed" )}}Exkursion erstellen{{/paper-button}}
+	{{#paper-button primary=true onClick=(action "closeCreateExcursionDialog")}}Abbrechen{{/paper-button}}
+	{{#paper-button primary=true onClick=(action "createExcursionAction" )}}Exkursion erstellen{{/paper-button}}
 	{{/paper-dialog-actions}}
 
 {{/paper-dialog}}

@@ -1,14 +1,19 @@
 {{!-- placeholder  --}}
 <div class="flex-20">
 	{{#site-navigation showRegionListAction="regionList"}}
-	{{/site-navigation}}		
+	{{/site-navigation}}
 </div>
 
 {{!-- Exkursionen list --}}
 <div class="flex-60">
 	{{#dir-content-list createExcursionAction="openCreateExcursionDialog" createExcursionButton=true model=model editURL="excursion.edit" contentType="Exkursionen"}}
 	{{/dir-content-list}}
-</div>  
- 
+</div>
+
+{{#if createExcursion}}
+  {{#create-excursion model=model closeCreateExcursionDialogAction="closeCreateExcursionDialog" createExcursionConfirmedAction="createExcursion"}}
+  {{/create-excursion}}
+{{/if}}
+
 {{#editor-dock}}
 {{/editor-dock}}

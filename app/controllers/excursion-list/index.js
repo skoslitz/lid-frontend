@@ -10,8 +10,8 @@ export default Ember.Controller.extend({
 		closeCreateExcursionDialog() {
 			this.set('createExcursion', false);
 		},
-		createExcursionConfirmed() {
-			console.log("create excursion");
-		},			    
+		createExcursion() {
+			console.log("excursion-list ctrl creates excursion");
+		},
 	}
 });

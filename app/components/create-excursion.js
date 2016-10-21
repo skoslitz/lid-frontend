@@ -2,11 +2,11 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 	actions: {
-		closeDialog() {    		
+		closeCreateExcursionDialog() {
     		this.sendAction('closeCreateExcursionDialogAction');
-	    },
-	    createExcursionConfirmed() {	    
-			this.sendAction('createExcursionConfirmedAction');
-	    },
-	}	
+    },
+    createExcursionAction() {
+		    this.sendAction('createExcursionConfirmedAction');
+    },
+	}
 });

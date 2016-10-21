@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 	createExcursion: false,
 	updateDialog: false,
-	deleteDialog: false,	
+	deleteDialog: false,
 	actions: {
 		openCreateExcursionDialog() {
 			this.set('createExcursion', true);
@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
 			this.set('createExcursion', false);
 		},
 		createExcursionConfirmed() {
-			console.log("create excursion");
+			console.log("region-edit ctrl creates excursion");
 		},
 		updateRegion() {
 			this.set('updateDialog', true);
@@ -40,9 +40,9 @@ export default Ember.Controller.extend({
 				region.deleteRecord();
     	  		region.save().then(()=>{
     	  			console.log("record deleted");
-    	  			self.transitionToRoute('index');	
-    	  		});    	  						
+    	  			self.transitionToRoute('index');
+    	  		});
 			})
-		}	    
+		}
 	}
 });
