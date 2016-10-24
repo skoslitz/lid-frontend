@@ -14,11 +14,17 @@ export default Ember.Controller.extend({
       },
       updateExcursion: function() {
         this.set('updateDialog', true);
-        
+
+        var regionId;
+        this.get('model').get('region').then(function(region) {
+          regionId = region.get('id');
+        });
+
+
         var self = this
         this.get('model').save().then(()=>{
           Ember.run.later((function() {
-            self.transitionToRoute('index')
+            self.transitionToRoute('excursion-list', regionId)
             self.set('updateDialog', false);
           }), 1200);
         });
@@ -52,6 +58,6 @@ export default Ember.Controller.extend({
         });
        	// TODO
         // set model.hasDirtyAttributes to true
-      }      
+      }
     }
 });

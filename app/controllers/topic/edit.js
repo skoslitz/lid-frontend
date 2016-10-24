@@ -13,13 +13,17 @@ export default Ember.Controller.extend({
         this.set('deleteDialog', false);
       },
       updateTopic: function() {
-        console.log('updateTopic from ctrl');
         this.set('updateDialog', true);
-        
+
+        var regionId;
+        this.get('model').get('region').then(function(region) {
+          regionId = region.get('id');
+        });
+
         var self = this
         this.get('model').save().then(()=>{
           Ember.run.later((function() {
-            self.transitionToRoute('index')
+            self.transitionToRoute('topic-list', regionId)
             self.set('updateDialog', false);
           }), 1200);
         });
