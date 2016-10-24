@@ -1,10 +1,20 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+	createTopic: false,
 	createExcursion: false,
 	updateDialog: false,
 	deleteDialog: false,
 	actions: {
+		openCreateTopicDialog() {
+			this.set('createTopic', true);
+		},
+		closeCreateTopicDialog() {
+			this.set('createTopic', false);
+		},
+		createTopicConfirmed() {
+			console.log("region-edit ctrl creates Topic");
+		},
 		openCreateExcursionDialog() {
 			this.set('createExcursion', true);
 		},

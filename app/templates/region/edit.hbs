@@ -38,7 +38,7 @@
             {{/title.text}}
           {{/card.title}}
           {{#card.content}}
-              {{#link-to "topic.new" region.id}}Thema erstellen{{/link-to}}
+              <a href="#" {{action "openCreateTopicDialog"}}>Thema erstellen</a>
             {{#if topic.length }}
               {{#link-to "topic-list" region.id}}Themen auflisten{{/link-to}}
             {{/if}}
@@ -46,6 +46,12 @@
           {{/card.content}}
         {{/paper-card}}
       </div>
+
+    {{#if createTopic}}
+      {{#create-topic closeCreateTopicDialogAction="closeCreateTopicDialog" createTopicConfirmedAction="createTopicConfirmed"}}
+      {{/create-topic}}
+    {{/if}}
+
     </div>
 
     {{!-- Frontmatter Region --}}

@@ -6,9 +6,15 @@
 
 {{!-- Topic list --}}
 <div class="flex-60">
-	{{#dir-content-list createTopic=true model=(reverse model) editURL="topic.edit" contentType="Themen"}}
+	{{#dir-content-list createTopicAction="openCreateTopicDialog" createTopicButton=true createTopic=true model=(reverse model) editURL="topic.edit" contentType="Themen"}}
 	{{/dir-content-list}}
 </div>   
+
+{{#if createTopic}}
+  {{#create-topic model=model closeCreateTopicDialogAction="closeCreateTopicDialog" createTopicConfirmedAction="createTopic"}}
+  {{/create-topic}}
+{{/if}}
+
 
 {{#editor-dock}}
 {{/editor-dock}}

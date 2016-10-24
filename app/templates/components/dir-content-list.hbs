@@ -7,9 +7,12 @@
 	    {{/create-region}}
     {{/if}}
 
-    {{#if createTopic}}
-    	{{#create-topic model=model}}
-	    {{/create-topic}}
+    {{#if createTopicButton}}
+    	<div class="centered">
+			{{#paper-button raised=true primary=true onClick=(action "openCreateTopicDialog") }}
+			  Erstelle ein neues Thema
+			{{/paper-button}}
+		</div>
     {{/if}}
 
     {{#if createExcursionButton}}
