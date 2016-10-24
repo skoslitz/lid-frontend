@@ -3,7 +3,7 @@ import DS from 'ember-data';
 export default DS.Model.extend({
 	// Attributes
 	path: DS.attr('string'),
-	fremdexkursion: DS.attr('string'),
+	fremdexkursion: DS.attr('boolean'),
 	title: DS.attr('string'),
 	autor: DS.attr('string'),
 	date: DS.attr('string'),

@@ -41,8 +41,8 @@
           {{paper-input flex=70 label="VG Wort Code" value=model.vgWortCode onChange=(action (mut model.vgWortCode))}}
         </div>
 
-        {{!-- Fremdexkursionen ausschließen ! --}}
-        {{#if model.fremdexkursion }}
+      {{!-- Fremdexkursionen ausschließen ! --}}
+      {{#unless model.fremdexkursion }}
 
         {{!-- Exkursionsroute --}}
         <h3 class="md-headline">Die Exkursionroute</h3>
@@ -88,23 +88,23 @@
 
         {{!-- Karte mit Exkursionsstationen --}}
         <div layout="" layout-sm="column">
-        {{#leaflet-map scrollWheelZoom=false lat=model.centroidLat lng=model.centroidLon zoom=model.zoomstufe}}
-            {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+          {{#leaflet-map scrollWheelZoom=false lat=model.centroidLat lng=model.centroidLon zoom=model.zoomstufe}}
+              {{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
 
-            {{#each model.exkursion as |excursion index|}}
-                {{#marker-layer draggable=true lat=excursion.lat lng=excursion.lon onDragend=(action "updateLocation" excursion index)}}
-                  {{#tooltip-layer direction='top'}}
-                    Station {{excursion.nr}}
-                    <br>
-                    {{excursion.lat}}, {{excursion.lon}}
-                  {{/tooltip-layer}}
-                {{/marker-layer}}
-            {{/each}}
+              {{#each model.exkursion as |excursion index|}}
+                  {{#marker-layer draggable=true lat=excursion.lat lng=excursion.lon onDragend=(action "updateLocation" excursion index)}}
+                    {{#tooltip-layer direction='top'}}
+                      Station {{excursion.nr}}
+                      <br>
+                      {{excursion.lat}}, {{excursion.lon}}
+                    {{/tooltip-layer}}
+                  {{/marker-layer}}
+              {{/each}}
 
           {{/leaflet-map}}
         </div>
 
-        {{/if}}
+      {{/unless}}
 
       {{/card.content}}
     {{/paper-card}}
