@@ -1,12 +1,45 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	actions: {
-		updateExcursion: function() {
-			
-		},
-		showRelatedRegion: function() {
-			this.transitionToRoute('region.edit', `${regionName}.md`);
-		}
-	}
+    updateDialog: false,
+    deleteDialog: false,
+    actions: {
+      openDeleteDialog() {
+        console.log('open dialog from ctrl');
+        this.set('deleteDialog', true);
+      },
+      closeDeleteDialog() {
+        console.log('close dialog from ctrl');
+        this.set('deleteDialog', false);
+      },
+      updateTopic: function() {
+        console.log('updateTopic from ctrl');
+        this.set('updateDialog', true);
+        
+        /*var self = this
+        this.get('model').save().then(()=>{
+          Ember.run.later((function() {
+            self.transitionToRoute('index')
+            self.set('updateDialog', false);
+          }), 1200);
+        });*/
+      },
+      deleteTopic() {
+        console.log('delete topic from ctrl');
+        /*let topicId = this.get('model.id');
+        let store = this.get('store');
+        let self = this;
+
+        store.findRecord('topic', topicId).then(function(topic) {
+          topic.deleteRecord();
+              topic.save().then(()=>{
+                console.log("record deleted");
+                self.transitionToRoute('index');
+              });
+        })*/
+      },
+      showRelatedRegion: function() {
+        this.transitionToRoute('region.edit', `${regionName}.md`);
+      }
+    }
 });

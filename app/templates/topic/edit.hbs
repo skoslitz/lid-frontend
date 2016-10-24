@@ -31,6 +31,16 @@
  
 </div>  
 
-{{#editor-dock model=model updateTopic=true deleteTopic=true deleteTopicAction="deletePage" updateTopicAction="updatePage"}}
+{{#editor-dock model=model updateTopic=true deleteTopic=true deleteTopicAction="openDeleteDialog" updateTopicAction="updateTopic"}}
 {{/editor-dock}}
+
+{{#if updateDialog}}
+  {{#update-dialog message="Die Änderung wurde gespeichert."}}
+  {{/update-dialog}}
+{{/if}}
+
+{{#if deleteDialog}}
+  {{#delete-topic-dialog message="Das Thema wird gelöscht." closeDeleteDialogAction="closeDeleteDialog" deleteTopicConfirmedAction="deleteTopic"}}
+  {{/delete-topic-dialog}}
+{{/if}}
 

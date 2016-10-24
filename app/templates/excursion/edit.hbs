@@ -114,5 +114,15 @@
 
 </div>
 
-{{#editor-dock model=model updateExcursion=true deleteExcursion=true deleteExcursionAction="deletePage" updateExcursionAction="updateExcursion"}}
+{{#editor-dock model=model updateExcursion=true deleteExcursion=true deleteExcursionAction="openDeleteDialog" updateExcursionAction="updateExcursion"}}
 {{/editor-dock}}
+
+{{#if updateDialog}}
+  {{#update-dialog message="Die Änderung wurde gespeichert."}}
+  {{/update-dialog}}
+{{/if}}
+
+{{#if deleteDialog}}
+  {{#delete-excursion-dialog message="Die Exkursion wird gelöscht." closeDeleteDialogAction="closeDeleteDialog" deleteExcursionConfirmedAction="deleteExcursion"}}
+  {{/delete-excursion-dialog}}
+{{/if}}
