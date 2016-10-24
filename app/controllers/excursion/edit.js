@@ -13,20 +13,18 @@ export default Ember.Controller.extend({
         this.set('deleteDialog', false);
       },
       updateExcursion: function() {
-        console.log('updateExcursion from ctrl');
         this.set('updateDialog', true);
         
-        /*var self = this
+        var self = this
         this.get('model').save().then(()=>{
           Ember.run.later((function() {
             self.transitionToRoute('index')
             self.set('updateDialog', false);
           }), 1200);
-        });*/
+        });
       },
       deleteExcursion() {
-        console.log('delete exc from ctrl');
-        /*let excursionId = this.get('model.id');
+        let excursionId = this.get('model.id');
         let store = this.get('store');
         let self = this;
 
@@ -36,7 +34,7 @@ export default Ember.Controller.extend({
                 console.log("record deleted");
                 self.transitionToRoute('index');
               });
-        })*/
+        })
       },
       showRelatedRegion: function() {
         this.transitionToRoute('region.edit', `${regionName}.md`);

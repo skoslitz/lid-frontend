@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.JSONAPISerializer.extend({
-  	extractAttributes(modelClass, resourceHash){      
+    extractAttributes(modelClass, resourceHash){      
             resourceHash.attributes.autor = resourceHash.attributes.metadata.autor
             resourceHash.attributes.bildnachweise = resourceHash.attributes.metadata.bildnachweise
             resourceHash.attributes.literaturangaben = resourceHash.attributes.metadata.literaturangaben
@@ -20,40 +20,40 @@ export default DS.JSONAPISerializer.extend({
             resourceHash.attributes.vorschaubild = resourceHash.attributes.metadata.vorschaubild
             resourceHash.attributes.zoomstufe = resourceHash.attributes.metadata.zoomstufe
             return resourceHash.attributes;
-      },
-      serializeIntoHash(hash, typeClass, snapshot) {
-            hash["page"] = this.serialize(snapshot);
-      },
-      serialize(snapshot) {
-            let serializedData = {
-                  "attributes": {
-                        "path": snapshot.attr("path"),
-                        "metadata": {
-                              "autor": snapshot.attr("autor"),
-                              "bildnachweise": snapshot.attr("bildnachweise"),
-                              "literaturangaben": snapshot.attr("literaturangaben"),
-                              "centroid": snapshot.attr("centroid"),
-                              "date": snapshot.attr("date"),
-                              "description": snapshot.attr("description"),
-                              "exkursion": snapshot.attr("exkursion"),
-                              "exkursionsende": snapshot.attr("exkursionsende"),
-                              "exkursionslaenge": snapshot.attr("exkursionslaenge"),
-                              "exkursionsstart": snapshot.attr("exkursionsstart"),
-                              "exkursionsstationen": snapshot.attr("exkursionsstationen"),
-                              "exkursionstypen": snapshot.attr("exkursionstypen"),
-                              "fremdexkursion": snapshot.attr("fremdexkursion"),
-                              "vg_wort_code": snapshot.attr("vgWortCode"),
-                              "vorschaubild": snapshot.attr("vorschaubild"),
-                              "zoomstufe": snapshot.attr("zoomstufe"),
-                        },
-                        //"content": snapshot.attr("content")
-                  }                 
-            };
+    },
+    serializeIntoHash(hash, typeClass, snapshot) {
+        hash["page"] = this.serialize(snapshot);
+    },
+    serialize(snapshot) {
+      let serializedData = {
+            "attributes": {
+                  "path": snapshot.attr("path"),
+                  "metadata": {
+                        "autor": snapshot.attr("autor"),
+                        "bildnachweise": snapshot.attr("bildnachweise"),
+                        "literaturangaben": snapshot.attr("literaturangaben"),
+                        "centroid": snapshot.attr("centroid"),
+                        "date": snapshot.attr("date"),
+                        "description": snapshot.attr("description"),
+                        "exkursion": snapshot.attr("exkursion"),
+                        "exkursionsende": snapshot.attr("exkursionsende"),
+                        "exkursionslaenge": snapshot.attr("exkursionslaenge"),
+                        "exkursionsstart": snapshot.attr("exkursionsstart"),
+                        "exkursionsstationen": snapshot.attr("exkursionsstationen"),
+                        "exkursionstypen": snapshot.attr("exkursionstypen"),
+                        "fremdexkursion": snapshot.attr("fremdexkursion"),
+                        "vg_wort_code": snapshot.attr("vgWortCode"),
+                        "vorschaubild": snapshot.attr("vorschaubild"),
+                        "zoomstufe": snapshot.attr("zoomstufe"),
+                  },
+                  "content": snapshot.attr("content")
+            }                 
+      };
 
-            if (snapshot.id) {
-                  serializedData.id = snapshot.id;
-            };
-                  
-            return serializedData;
-      }   
+      if (snapshot.id) {
+            serializedData.id = snapshot.id;
+      };
+            
+      return serializedData;
+    }   
 });

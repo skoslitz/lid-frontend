@@ -16,17 +16,16 @@ export default Ember.Controller.extend({
         console.log('updateTopic from ctrl');
         this.set('updateDialog', true);
         
-        /*var self = this
+        var self = this
         this.get('model').save().then(()=>{
           Ember.run.later((function() {
             self.transitionToRoute('index')
             self.set('updateDialog', false);
           }), 1200);
-        });*/
+        });
       },
       deleteTopic() {
-        console.log('delete topic from ctrl');
-        /*let topicId = this.get('model.id');
+        let topicId = this.get('model.id');
         let store = this.get('store');
         let self = this;
 
@@ -36,7 +35,7 @@ export default Ember.Controller.extend({
                 console.log("record deleted");
                 self.transitionToRoute('index');
               });
-        })*/
+        })
       },
       showRelatedRegion: function() {
         this.transitionToRoute('region.edit', `${regionName}.md`);

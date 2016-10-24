@@ -16,10 +16,10 @@ export default DS.Model.extend({
 	centroid: DS.attr(),
 	centroidLat: Ember.computed('centroid', function() {
     	return `${this.get('centroid')[0]}`;
-  }),
-  centroidLon: Ember.computed('centroid', function() {
-    	return `${this.get('centroid')[1]}`;
-  }),
+ 	 }),
+	centroidLon: Ember.computed('centroid', function() {
+	  	return `${this.get('centroid')[1]}`;
+	}),
 	zoomstufe: DS.attr('number'),
 	exkursionsstart: DS.attr('string'),
 	exkursionsende: DS.attr('string'),

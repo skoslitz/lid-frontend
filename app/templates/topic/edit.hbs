@@ -4,7 +4,7 @@
   {{/site-navigation}}    
 </div>
 
-{{!-- Excursion edit --}}
+{{!-- Topic edit --}}
 <div class="flex-60">
 
     {{#paper-card class="meta-editor" as |card|}}
@@ -16,11 +16,11 @@
       {{/card.title}}
       {{#card.content}}
         <div layout="" layout-sm="column">
-          {{paper-input flex=70 label="Titel" value=model.title onChange=""}}
+          {{paper-input flex=70 label="Titel" value=model.title onChange=(action (mut model.title))}}
           {{paper-input flex=30 label="Id" value=model.id onChange=""}}
         </div>
         <div layout="" layout-sm="column">
-          {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=""}}
+          {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}
           
         </div>
       {{/card.content}}
