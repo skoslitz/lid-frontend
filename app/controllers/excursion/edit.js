@@ -3,6 +3,8 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
     updateDialog: false,
     deleteDialog: false,
+    setMapExtentDialog: false,
+    mapConfig: {},
     actions: {
       openDeleteDialog() {
         console.log('open dialog from ctrl');
@@ -11,6 +13,9 @@ export default Ember.Controller.extend({
       closeDeleteDialog() {
         console.log('close dialog from ctrl');
         this.set('deleteDialog', false);
+      },
+      closeSetMapExtentDialog() {
+        this.set('setMapExtentDialog', false);
       },
       updateExcursion: function() {
         this.set('updateDialog', true);
@@ -60,7 +65,22 @@ export default Ember.Controller.extend({
         // set model.hasDirtyAttributes to true
       },
       setMapExtent() {
-        console.log("set map extent");
+        this.set('setMapExtentDialog', true);
+      },
+      queryMapExtent(e) {
+        let location = e.target.getCenter();
+        let zoom = e.target.getZoom()
+        let _mapConfig = {
+          lat: location.lat.toFixed(7),
+          lon: location.lng.toFixed(7),
+          zoom: zoom
+        };
+        this.set('mapConfig', _mapConfig);
+      },
+      saveMapExtent() {
+        this.set('model.centroid', [this.get('mapConfig.lat'), this.get('mapConfig.lon')]);
+        this.set('model.zoomstufe', this.get('mapConfig.zoom'));
+        this.set('setMapExtentDialog', false);
       },
       addExcursionStation() {
         let e = this.get('model.exkursion')

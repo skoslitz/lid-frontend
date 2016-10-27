@@ -64,29 +64,34 @@
           <p class="flex" onClick={{action "setMapExtent"}}>Kartenausschnitt festlegen</p>
           
           {{!-- Set map extent --}}
-              {{!-- {{#if showMapDialog}}
-                {{#paper-dialog fullscreen=fullscreen onClose=(action "closeMapDialog" "cancel") origin=dialogOrigin clickOutsideToClose=true}}
+          {{#if setMapExtentDialog}}
+            {{#paper-dialog fullscreen=fullscreen onClose=(action "closeSetMapExtentDialog" "cancel") origin=dialogOrigin clickOutsideToClose=true}}
 
-                  {{#paper-toolbar}}
-                    <div class="md-toolbar-tools">
-                      <h2>Kartenausschnitt festlegen</h2>
-                      <span class="flex"></span>
-                      {{#paper-button iconButton=true onClick=(action "closeMapDialog" "cancel")}}{{paper-icon icon="close"}}{{/paper-button}}
-                    </div>
-                  {{/paper-toolbar}}
+              {{#paper-toolbar}}
+                <div class="md-toolbar-tools">
+                  <h2>Kartenausschnitt festlegen</h2>
+                  <span class="flex"></span>
+                  {{#paper-button iconButton=true onClick=(action "closeSetMapExtentDialog" "cancel")}}{{paper-icon icon="close"}}{{/paper-button}}
+                </div>
+              {{/paper-toolbar}}
 
-                  {{#paper-dialog-content}}
+              {{#paper-dialog-content}}
+              <div style="width:800px;height:400px;">
+                  {{#leaflet-map scrollWheelZoom=false lat=model.centroidLat lng=model.centroidLon zoom=model.zoomstufe onZoomend=(action "queryMapExtent") onDragend=(action "queryMapExtent")}}
+                  {{tile-layer url="https://api.tiles.mapbox.com/v4/ifl.lplpe32l/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaWZsIiwiYSI6IksxanctMkUifQ.sAHrtehStvROYTeXS20NRg"}}
 
-                  {{/paper-dialog-content}}
+                  {{/leaflet-map}}
+              </div>
+              {{/paper-dialog-content}}
 
-                  {{#paper-dialog-actions class="layout-row"}}
-                    <span class="flex"></span>
-                    {{#paper-button primary=true onClick=(action "closeMapDialog" "cancel")}}Abbrechen{{/paper-button}}
-                    {{#paper-button primary=true onClick=(action "saveRegion" )}}Band erstellen{{/paper-button}}
-                  {{/paper-dialog-actions}}
+              {{#paper-dialog-actions class="layout-row"}}
+                <span class="flex"></span>
+                {{#paper-button primary=true onClick=(action "closeSetMapExtentDialog" "cancel")}}Abbrechen{{/paper-button}}
+                {{#paper-button primary=true onClick=(action "saveMapExtent")}}Kartenausschnitt speichern{{/paper-button}}
+              {{/paper-dialog-actions}}
 
-                {{/paper-dialog}}
-              {{/if}} --}}
+            {{/paper-dialog}}
+          {{/if}}
 
         </div>
 
