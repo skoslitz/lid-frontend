@@ -2,6 +2,7 @@ import DS from 'ember-data';
 
 export default DS.JSONAPISerializer.extend({
   	extractAttributes(modelClass, resourceHash){      
+            resourceHash.attributes.hugoId = resourceHash.attributes.metadata.id
             resourceHash.attributes.autor = resourceHash.attributes.metadata.autor
             resourceHash.attributes.bildnachweise = resourceHash.attributes.metadata.bildnachweise
             resourceHash.attributes.date = resourceHash.attributes.metadata.date
@@ -29,12 +30,15 @@ export default DS.JSONAPISerializer.extend({
             "attributes": {
                   "path": snapshot.attr("path"),
                   "metadata": {
+                        "id": snapshot.attr('hugoId'),
                         "autor": snapshot.attr("autor"),
-                        "bildnachweise": snapshot.attr("bildnachweise"),
+                        "title": snapshot.attr("title"),
+                        "bildnachweise": [snapshot.attr("bildnachweise")],
                         "date": snapshot.attr("date"),
                         "description": snapshot.attr("description"),
                         "literaturangaben": snapshot.attr("literaturangaben"),
                         "subtitle": snapshot.attr("subtitle"),
+                        "rubriken": snapshot.attr("rubriken"),
                         "title": snapshot.attr("title"),                        
                         "vg_wort_code": snapshot.attr("vgWortCode"),
                         "vorschaubild": snapshot.attr("vorschaubild"),

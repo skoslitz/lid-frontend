@@ -2,6 +2,7 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
 	// Attributes
+	hugoId: DS.attr('string'),
 	path: DS.attr('string'),
 	fremdexkursion: DS.attr('boolean'),
 	actionbound: DS.attr('boolean'),

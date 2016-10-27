@@ -41,7 +41,7 @@
           {{paper-input flex=70 label="VG Wort Code" value=model.vgWortCode onChange=(action (mut model.vgWortCode))}}
         </div>
 
-      {{!-- Fremdexkursionen ausschließen ! --}}
+      {{!-- Fremdexkursionen/Actionbound ausschließen ! --}}
       {{#unless (or model.fremdexkursion model.actionbound) }}
 
         {{!-- Exkursionsroute --}}
@@ -50,15 +50,19 @@
         {{!-- Centroid, Zoomstufe, Exkursionsstationen --}}
         <div layout="" layout-sm="column">
 
-          {{paper-input flex=33 label="Kartenmittelpunkt Lat." value=model.centroidLat onChange=(action (mut model.centroidLat))}}
-          {{paper-input flex=33 label="Kartenmittelpunkt Lon." value=model.centroidLon onChange=(action (mut model.centroidLon))}}
-          {{paper-input flex=33 label="Zoomstufe der Karte" value=model.zoomstufe type=number min=1 max=18 required=true onChange=(action (mut model.zoomstufe))}}
-          {{paper-input flex=20 label="Exkursionsstationen" value=model.exkursionsstationen type=number min=1 required=true onChange=(action (mut model.exkursionsstationen))}}          
-          {{#paper-button class="button-bottom-margin" onClick=""}}
-            <p>Kartenausschnitt festlegen</p>
-            {{!-- {{paper-icon "add location"}} --}}
-          {{/paper-button}}
+          {{paper-input flex=25 label="Kartenmittelpunkt Lat." value=model.centroidLat onChange=(action (mut model.centroidLat))}}
+          {{paper-input flex=25 label="Kartenmittelpunkt Lon." value=model.centroidLon onChange=(action (mut model.centroidLon))}}
+          {{paper-input flex=25 label="Zoomstufe der Karte" value=model.zoomstufe type=number min=1 max=18 required=true onChange=(action (mut model.zoomstufe))}}
+          {{paper-input flex=25 label="Exkursionsstationen" value=model.exkursionsstationen type=number min=1 required=true onChange=(action (mut model.exkursionsstationen))}}          
+          
+        </div>
 
+        {{!-- Kartenausschnitt, Exkursionsstationen --}}
+        <div layout="" layout-sm="column">
+          <p class="flex" onClick={{action "addExcursionStation"}}>Station hinzufügen</p>
+          <p class="flex" onClick={{action "removeExcursionStation"}}>Letzte Station entfernen</p>
+          <p class="flex" onClick={{action "setMapExtent"}}>Kartenausschnitt festlegen</p>
+          
           {{!-- Set map extent --}}
               {{!-- {{#if showMapDialog}}
                 {{#paper-dialog fullscreen=fullscreen onClose=(action "closeMapDialog" "cancel") origin=dialogOrigin clickOutsideToClose=true}}

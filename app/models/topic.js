@@ -2,6 +2,7 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
 	// Attributes
+	hugoId: DS.attr('string'),	
 	path: DS.attr('string'),	
 	title: DS.attr('string'),
 	subtitle: DS.attr('string'),
@@ -16,7 +17,7 @@ export default DS.Model.extend({
 	titelbildQuelle: DS.attr('string'),
 	titelbildTitel: DS.attr('string'),
 	vorschaubild: DS.attr('string'),
-	categories: DS.attr('array'),
+	rubriken: DS.attr('string'),
 	video: DS.attr(''),
 	images: DS.attr(''),
 	

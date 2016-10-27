@@ -58,6 +58,23 @@ export default Ember.Controller.extend({
         });
        	// TODO
         // set model.hasDirtyAttributes to true
+      },
+      setMapExtent() {
+        console.log("set map extent");
+      },
+      addExcursionStation() {
+        let e = this.get('model.exkursion')
+        e.pushObject({
+          lat: this.get('model.centroidLat'),
+          lon: this.get('model.centroidLon'),
+          nr: (e.length + 1)
+        });
+        this.set('model.exkursionsstationen', e.length);        
+      },
+      removeExcursionStation() {
+        let e = this.get('model.exkursion')
+        e.popObject();
+        this.set('model.exkursionsstationen', e.length);        
       }
     }
 });

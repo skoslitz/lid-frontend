@@ -2,6 +2,8 @@ import DS from 'ember-data';
 
 export default DS.JSONAPISerializer.extend({
     extractAttributes(modelClass, resourceHash){      
+            resourceHash.attributes.hugoId = resourceHash.attributes.metadata.id
+            resourceHash.attributes.title = resourceHash.attributes.metadata.title
             resourceHash.attributes.autor = resourceHash.attributes.metadata.autor
             resourceHash.attributes.bildnachweise = resourceHash.attributes.metadata.bildnachweise
             resourceHash.attributes.literaturangaben = resourceHash.attributes.metadata.literaturangaben
@@ -16,7 +18,6 @@ export default DS.JSONAPISerializer.extend({
             resourceHash.attributes.exkursionstypen = resourceHash.attributes.metadata.exkursionstypen
             resourceHash.attributes.fremdexkursion = resourceHash.attributes.metadata.fremdexkursion
             resourceHash.attributes.actionbound = resourceHash.attributes.metadata.actionbound
-            resourceHash.attributes.title = resourceHash.attributes.metadata.title
             resourceHash.attributes.vgWortCode = resourceHash.attributes.metadata.vg_wort_code
             resourceHash.attributes.vorschaubild = resourceHash.attributes.metadata.vorschaubild
             resourceHash.attributes.zoomstufe = resourceHash.attributes.metadata.zoomstufe
@@ -30,7 +31,9 @@ export default DS.JSONAPISerializer.extend({
             "attributes": {
                   "path": snapshot.attr("path"),
                   "metadata": {
+                        "id": snapshot.attr("hugoId"),
                         "autor": snapshot.attr("autor"),
+                        "title": snapshot.attr("title"),
                         "bildnachweise": snapshot.attr("bildnachweise"),
                         "literaturangaben": snapshot.attr("literaturangaben"),
                         "centroid": snapshot.attr("centroid"),
