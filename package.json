@@ -42,6 +42,7 @@
     "ember-paper": "git://github.com/miguelcobain/ember-paper.git#9681a3f8d8a672b25221b1a06dd974bd1275d04f",
     "ember-resolver": "^2.0.3",
     "ember-trix-editor": "1.0.5",
+    "ember-truth-helpers": "1.2.0",
     "loader.js": "^4.0.1"
   }
 }
