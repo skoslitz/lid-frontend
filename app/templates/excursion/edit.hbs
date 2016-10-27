@@ -45,6 +45,8 @@
       {{#unless (or model.fremdexkursion model.actionbound) }}
 
         {{!-- Exkursionsroute --}}
+      <div id="dialog-container">
+
         <h3 class="md-headline">Die Exkursionroute</h3>
 
         {{!-- Centroid, Zoomstufe, Exkursionsstationen --}}
@@ -53,8 +55,8 @@
           {{paper-input flex=25 label="Kartenmittelpunkt Lat." value=model.centroidLat onChange=(action (mut model.centroidLat))}}
           {{paper-input flex=25 label="Kartenmittelpunkt Lon." value=model.centroidLon onChange=(action (mut model.centroidLon))}}
           {{paper-input flex=25 label="Zoomstufe der Karte" value=model.zoomstufe type=number min=1 max=18 required=true onChange=(action (mut model.zoomstufe))}}
-          {{paper-input flex=25 label="Exkursionsstationen" value=model.exkursionsstationen type=number min=1 required=true onChange=(action (mut model.exkursionsstationen))}}          
-          
+          {{paper-input flex=25 label="Exkursionsstationen" value=model.exkursionsstationen type=number min=1 required=true onChange=(action (mut model.exkursionsstationen))}}
+
         </div>
 
         {{!-- Kartenausschnitt, Exkursionsstationen --}}
@@ -62,10 +64,10 @@
           <p class="flex" onClick={{action "addExcursionStation"}}>Station hinzufügen</p>
           <p class="flex" onClick={{action "removeExcursionStation"}}>Letzte Station entfernen</p>
           <p class="flex" onClick={{action "setMapExtent"}}>Kartenausschnitt festlegen</p>
-          
+
           {{!-- Set map extent --}}
           {{#if setMapExtentDialog}}
-            {{#paper-dialog fullscreen=fullscreen onClose=(action "closeSetMapExtentDialog" "cancel") origin=dialogOrigin clickOutsideToClose=true}}
+            {{#paper-dialog fullscreen=true onClose=(action "closeSetMapExtentDialog" "cancel") parent="#dialog-container" clickOutsideToClose=true}}
 
               {{#paper-toolbar}}
                 <div class="md-toolbar-tools">
@@ -76,8 +78,8 @@
               {{/paper-toolbar}}
 
               {{#paper-dialog-content}}
-              <div style="width:800px;height:400px;">
-                  {{#leaflet-map scrollWheelZoom=false lat=model.centroidLat lng=model.centroidLon zoom=model.zoomstufe onZoomend=(action "queryMapExtent") onDragend=(action "queryMapExtent")}}
+              <div class="map-dialog">
+                  {{#leaflet-map  class="map-dialog-container" scrollWheelZoom=false lat=model.centroidLat lng=model.centroidLon zoom=model.zoomstufe onZoomend=(action "queryMapExtent") onDragend=(action "queryMapExtent")}}
                   {{tile-layer url="https://api.tiles.mapbox.com/v4/ifl.lplpe32l/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaWZsIiwiYSI6IksxanctMkUifQ.sAHrtehStvROYTeXS20NRg"}}
 
                   {{/leaflet-map}}
@@ -113,6 +115,7 @@
           {{/leaflet-map}}
         </div>
 
+      </div>
       {{/unless}}
 
       {{/card.content}}
