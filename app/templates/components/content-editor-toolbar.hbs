@@ -1,4 +1,5 @@
 <div class="content-editor-toolbar">
+
     <div class="button_groups">
 	  <span class="button_group">
 	  	<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
@@ -12,26 +13,42 @@
 	    <button type="button" class="strike" data-attribute="strike" title="Strikethrough">Strikethrough</button>
 	    <button type="button" class="link" data-attribute="href" data-action="link" data-key="k" title="Link">Link</button>
 	    <button type="button" class="undo" data-action="undo" data-key="z" title="Undo">Undo</button>
-    	<button type="button" class="redo" data-action="redo" data-key="shift+z" title="Redo">Redo</button>  
+    	<button type="button" class="redo" data-action="redo" data-key="shift+z" title="Redo">Redo</button>
 
 		{{!-- Image assets menu --}}
     	{{#paper-menu as |menu|}}
 			{{#menu.trigger}}
-			  <button type="button" {{action 'showImageAssets'}} class="code" title="Shortcode">Shortcode</button>		  
+			  <button type="button" {{action 'showImageAssets'}} class="code" title="Shortcode">Shortcode</button>
 			{{/menu.trigger}}
 
-			{{#menu.content width=6 as |content|}}
-			  {{#each model.images as |image|}}
-			    {{#content.menu-item onClick=(action "sendImageShortcode" image)}}
-			    	<img class="preview-img" src="{{image.src}}" alt="">
-			      	<p class="preview-title">{{image.filename}}</p>    				      	
-			    {{/content.menu-item}}
-			  {{/each}}
+			{{#menu.content width=5 as |content|}}
+
+			  {{#paper-list}}
+			  	{{#paper-item class="md-3-line"}}
+					    {{#paper-button primary=true raised=true}}Anhang hinzufügen{{/paper-button}}
+					  {{/paper-item}}
+					{{#each model.images as |image|}}
+					  {{#paper-item class="md-3-line"}}
+					    <div class="md-list-item-text">
+					      <img class="preview-img" src="{{image.src}}" alt="">
+					    </div>
+					    {{paper-divider}}
+					    <div class="md-list-item-text">
+						    <h4 class="light-blue">{{image.filename}}</h4>
+						    {{#paper-button onClick=(action "sendImageShortcode" image)}}Shortcode einfügen{{/paper-button}}
+						  </div>
+						  {{paper-divider}}
+						  {{#paper-button raised=true mini=true}}
+								{{paper-icon "delete forever"}}
+						  {{/paper-button}}
+					  {{/paper-item}}
+					{{/each}}
+				{{/paper-list}}
 
 			{{/menu.content}}
-		
+
 		{{/paper-menu}}
 
-	  </span>	 
+	  </span>
 	</div>
 </div>
