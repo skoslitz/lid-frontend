@@ -95,6 +95,7 @@ export default Ember.Controller.extend({
         let e = this.get('model.exkursion')
         e.popObject();
         this.set('model.exkursionsstationen', e.length);        
-      }
+      },
+      
     }
 });

@@ -5,12 +5,10 @@
         {{/title.text}}
       {{/card.title}}
       {{#card.content}}
-        {{content-editor-toolbar}}
-        {{trix-editor class="trix-editor-wrapper"
+        {{content-editor-toolbar model=model}}
+          {{trix-editor class="trix-editor-wrapper"
                   editorClass="trix-editor"
                   value=model.content
-                  trix-change=(action "handleTrixAction" model) }}
+                  trix-change=(action "handleTrixAction" model) }}        
       {{/card.content}}
 {{/paper-card}}
-
-

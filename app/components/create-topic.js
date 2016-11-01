@@ -7,7 +7,7 @@ export default Ember.Component.extend({
     		this.sendAction('closeCreateTopicDialogAction');
 	    },
 	    createTopicAction() {
-			    this.sendAction('createTopicConfirmedAction');
+			this.sendAction('createTopicConfirmedAction');
 	    },
 	}
 });

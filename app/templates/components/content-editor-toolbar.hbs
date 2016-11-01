@@ -2,7 +2,7 @@
     <div class="button_groups">
 	  <span class="button_group">
 	  	<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
-	  	<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
+	  	<button type="button" class="code" title="Shortcode" {{action 'showImageAssets'}}>Shortcode</button>
 	  	<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
 	  	<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
 	  	<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
@@ -13,6 +13,25 @@
 	    <button type="button" class="link" data-attribute="href" data-action="link" data-key="k" title="Link">Link</button>
 	    <button type="button" class="undo" data-action="undo" data-key="z" title="Undo">Undo</button>
     	<button type="button" class="redo" data-action="redo" data-key="shift+z" title="Redo">Redo</button>  
+
+		{{!-- Image assets menu --}}
+    	{{#paper-menu as |menu|}}
+			{{#menu.trigger}}
+			  <button type="button" {{action 'showImageAssets'}} class="code" title="Shortcode">Shortcode</button>		  
+			{{/menu.trigger}}
+
+			{{#menu.content width=6 as |content|}}
+			  {{#each model.images as |image|}}
+			    {{#content.menu-item onClick=(action "sendImageShortcode" image)}}
+			    	<img class="preview-img" src="{{image.src}}" alt="">
+			      	<p class="preview-title">{{image.filename}}</p>    				      	
+			    {{/content.menu-item}}
+			  {{/each}}
+
+			{{/menu.content}}
+		
+		{{/paper-menu}}
+
 	  </span>	 
 	</div>
 </div>

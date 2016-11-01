@@ -11,6 +11,13 @@ export default Ember.Component.extend({
 		insertShortcode() {
 			let element = document.querySelector("trix-editor");
 			element.editor.insertString("Hello")
+		},
+		openImage(image) {
+			console.log(image);			
+		},
+		sendImageShortcode(image) {
+			let element = document.querySelector("trix-editor");
+			element.editor.insertString(image.filename)
 		}				
 	}
 });
