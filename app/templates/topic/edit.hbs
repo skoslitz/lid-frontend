@@ -10,23 +10,57 @@
     {{#paper-card class="meta-editor" as |card|}}
       {{#card.title as |title|}}
         {{#title.text as |text|}}
-          {{#text.subhead}}Frontmatter{{/text.subhead}}   
+          {{#text.subhead}}{{model.id}}{{/text.subhead}}   
           {{#text.headline}}Metadaten{{/text.headline}}   
         {{/title.text}}
       {{/card.title}}
+
       {{#card.content}}
+
+        {{!-- Titel --}}
         <div layout="" layout-sm="column">
-          {{paper-input flex=70 label="Titel" value=model.title onChange=(action (mut model.title))}}
-          {{paper-input flex=30 label="Id" value=model.id onChange=""}}
+          {{paper-input flex=100 label="Titel" value=model.title onChange=(action (mut model.title))}}          
         </div>
+
+        {{!-- AutorIn --}}
         <div layout="" layout-sm="column">
-          {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}
-          
+          {{paper-input flex=60 label="AutorIn" value=model.autor onChange=(action (mut model.autor))}}
         </div>
+
+        {{!-- Kurzbeschreibung --}}
+        <div layout="" layout-sm="column">
+          {{paper-input textarea=true block=true passThru=(hash rows=4) flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}
+        </div>
+
+        {{!-- Literaturangaben --}}
+        <div layout="" layout-sm="column">
+          {{paper-input textarea=true block=true passThru=(hash rows=4) flex=100 label="Literaturangaben" value=model.literaturangaben onChange=(action (mut model.literaturangaben))}}
+        </div>
+
+        {{!-- Bildnachweise --}}
+        <div layout="" layout-sm="column">
+          {{paper-input textarea=true block=true flex=100 label="Bildnachweise" value=model.bildnachweise onChange=(action (mut model.bildnachweise))}}
+        </div>
+
+        {{!-- VG Wort Code --}}
+        <div layout="" layout-sm="column">
+          {{paper-input flex=70 label="VG Wort Code" value=model.vgWortCode onChange=(action (mut model.vgWortCode))}}
+        </div>
+
+        {{!-- Rubriken --}}
+        <div layout="" layout-sm="column">
+          {{paper-input flex=70 label="Rubriken" value=model.rubriken onChange=(action (mut model.rubriken))}}
+        </div>
+
+        {{!-- Video --}}
+        <div layout="" layout-sm="column">
+          {{paper-input flex=70 label="Video" value=model.video onChange=(action (mut model.video))}}
+        </div>
+
       {{/card.content}}
     {{/paper-card}}
 
-    {{#content-editor model=model}}
+    {{#content-editor model=model topic=true}}
     {{/content-editor}}
  
 </div>  

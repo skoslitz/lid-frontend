@@ -2,16 +2,28 @@
 
     <div class="button_groups">
 	  <span class="button_group">
-	  	<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
-	  	<button type="button" class="code" title="Shortcode" {{action 'showImageAssets'}}>Shortcode</button>
-	  	<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
-	  	<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
-	  	<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
-	  	<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
-	    <button type="button" class="bold" data-attribute="bold" data-key="b" title="Bold">Bold</button>
-	    <button type="button" class="italic" data-attribute="italic" data-key="i" title="Italic">Italic</button>
-	    <button type="button" class="strike" data-attribute="strike" title="Strikethrough">Strikethrough</button>
-	    <button type="button" class="link" data-attribute="href" data-action="link" data-key="k" title="Link">Link</button>
+	  	<button type="button" class="quote" title="Anführungszeichen" {{action 'insertShortcode'}}>Shortcode</button>
+	  	<button type="button" class="bold" title="Fett" {{action 'insertShortcode'}}>Shortcode</button>
+	  	<button type="button" class="italic" title="Kursiv" {{action 'insertShortcode'}}>Shortcode</button>
+
+	  	{{!-- Exkursion shortcodes --}}
+	  	{{#if excursion}}
+	  		<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
+		  	<button type="button" class="code" title="Shortcode" {{action 'showImageAssets'}}>Shortcode</button>
+		  	<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
+	  	{{/if}}
+
+	  	{{!-- Themen shortcodes --}}
+	  	{{#if topic}}
+	  		<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
+	  		<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
+	  	{{/if}}
+
+	  	{{!-- Regionen shortcodes --}}
+	  	{{#if region}}
+	  	
+	  	{{/if}}
+
 	    <button type="button" class="undo" data-action="undo" data-key="z" title="Undo">Undo</button>
     	<button type="button" class="redo" data-action="redo" data-key="shift+z" title="Redo">Redo</button>
     	{{!-- Image assets menu --}}

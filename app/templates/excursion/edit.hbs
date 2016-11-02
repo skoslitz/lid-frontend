@@ -10,25 +10,31 @@
     {{#paper-card class="meta-editor" as |card|}}
       {{#card.title as |title|}}
         {{#title.text as |text|}}
-          {{#text.subhead}}Frontmatter{{/text.subhead}}
-          {{#text.headline}}Metadaten{{/text.headline}}
+          {{#text.subhead}}{{model.id}}{{/text.subhead}}   
+          {{#text.headline}}Metadaten{{/text.headline}} 
         {{/title.text}}
       {{/card.title}}
+
       {{#card.content}}
+        
+        {{!-- Titel --}}
         <div layout="" layout-sm="column">
-    		  {{paper-input flex=70 label="Titel" value=model.title onChange=(action (mut model.title))}}
-    		  {{paper-input flex=30 label="Dateiname" value=model.id onChange=""}}
+    		  {{paper-input flex=100 label="Titel" value=model.title onChange=(action (mut model.title))}}    		  
     	  </div>
+
+        {{!-- AutorIn --}}
+        <div layout="" layout-sm="column">
+          {{paper-input flex=40 label="AutorIn" value=model.autor onChange=(action (mut model.autor))}}
+        </div>
 
         {{!-- Kurzbeschreibung --}}
         <div layout="" layout-sm="column">
-          {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}
+          {{paper-input textarea=true block=true passThru=(hash rows=4) flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}
         </div>
-
 
         {{!-- Literaturangaben --}}
         <div layout="" layout-sm="column">
-          {{paper-input textarea=true block=true flex=100 label="Literaturangaben" value=model.literaturangaben onChange=(action (mut model.literaturangaben))}}
+          {{paper-input textarea=true block=true passThru=(hash rows=4) flex=100 label="Literaturangaben" value=model.literaturangaben onChange=(action (mut model.literaturangaben))}}
         </div>
 
         {{!-- Bildnachweise --}}
@@ -40,6 +46,12 @@
         <div layout="" layout-sm="column">
           {{paper-input flex=70 label="VG Wort Code" value=model.vgWortCode onChange=(action (mut model.vgWortCode))}}
         </div>
+
+        {{!-- Exkursionstypen --}}
+        <div layout="" layout-sm="column">
+          {{paper-input flex=70 label="Exkursionstypen" value=model.exkursionstypen onChange=(action (mut model.exkursionstypen))}}
+        </div>
+
 
       {{!-- Fremdexkursionen/Actionbound ausschließen ! --}}
       {{#unless (or model.fremdexkursion model.actionbound) }}
@@ -121,7 +133,7 @@
       {{/card.content}}
     {{/paper-card}}
 
-    {{#content-editor model=model}}
+    {{#content-editor model=model excursion=true}}
     {{/content-editor}}
 
 </div>

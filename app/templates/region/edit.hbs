@@ -58,8 +58,8 @@
     {{#paper-card as |card|}}
       {{#card.title as |title|}}
         {{#title.text as |text|}}
-          {{#text.subhead}}Frontmatter{{/text.subhead}}
-          {{#text.headline}}Band {{region.title}}{{/text.headline}}
+          {{#text.subhead}}Band {{region.title}}{{/text.subhead}}
+          {{#text.headline}}Metadaten{{/text.headline}}
         {{/title.text}}
       {{/card.title}}
       {{#card.content}}
@@ -107,12 +107,8 @@
 
     {{!-- Meta.Kurzbeschreibung Region --}}
     {{#paper-card as |card|}}
-      {{#card.content}}
-
-        <div layout="" layout-sm="column">
-          {{paper-input textarea=true block=true flex=100 label="Kurzbeschreibung" value=region.description onChange=(action (mut region.description))}}
-        </div>
-
+      {{#card.content}}        
+          {{paper-input passThru=(hash rows=15) textarea=true block=true flex=100 label="Kurzbeschreibung" value=region.description onChange=(action (mut region.description))}}
       {{/card.content}}
     {{/paper-card}}
 
