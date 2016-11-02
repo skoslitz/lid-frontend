@@ -8,6 +8,16 @@ export default Ember.Component.extend({
 		
 	},
 	actions: {
+		insertQuote() {
+			let element = document.querySelector("trix-editor");
+			element.editor.insertString("„ZITAT“")
+			// TODO: Quotation mark for selected text
+		},
+		insertBold() {
+			let element = document.querySelector("trix-editor");
+			element.editor.insertString("**Fett**")
+			// TODO: Bold for selected text
+		},
 		insertShortcode() {
 			let element = document.querySelector("trix-editor");
 			element.editor.insertString("Hello")

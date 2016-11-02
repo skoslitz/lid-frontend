@@ -11,7 +11,7 @@ export default DS.Model.extend({
 	date: DS.attr('string'),
 	description: DS.attr('string'),
 	vgWortCode: DS.attr('string'),
-	bildnachweise: DS.attr('string'),
+	bildnachweise: DS.attr(),
 	literaturangaben: DS.attr(),
 	content: DS.attr('string'),
 	exkursion: DS.attr(),
