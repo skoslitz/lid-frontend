@@ -15,7 +15,9 @@ Router.map(function() {
     this.route('edit', {path: '/edit/:id'});
     this.route('new', {path: '/:id/new'});
   });
-  this.route('excursion-list', {path: '/excursion-list/:id'}, function() {});
+  this.route('excursion-list', function() {
+    this.route('index', {path: '/show/:id'});
+  });
   this.route('excursion',  function() {
   	this.route('edit', {path: '/edit/:id'});
   	this.route('new', {path: '/:id/new'});

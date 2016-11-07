@@ -19,7 +19,7 @@ export default Ember.Route.extend({
 
 	    	var newRegion = store.createRecord('region', {
 				id: `${bandnummer}-${sanitizeRegionName}.md`,
-				bandnummer: bandnummer,
+				bandnummer: parseInt(bandnummer),
 				title: regionName,
 				path: `regionen/${bandnummer}-${sanitizeRegionName}.md`,
 				subtitle: " ",
@@ -31,7 +31,7 @@ export default Ember.Route.extend({
 				isbn: " ",
 				location: " ",
 				editionTitle: "Landschaften in Deutschland",
-				pagination: 100,
+				pagination: parseInt(100),
 				extent: [],
 				publisher: "Böhlau Verlag",
 				bundesland: ["Sachsen", "Thüringen"],

@@ -6,13 +6,14 @@
 
 {{!-- Exkursionen list --}}
 <div class="flex-60">
-	{{#dir-content-list createExcursionAction="openCreateExcursionDialog" createExcursionButton=true model=model editURL="excursion.edit" contentType="Exkursionen"}}
+	{{#dir-content-list createExcursionAction="openCreateExcursionDialog" createExcursionButton=true model=excursionList editURL="excursion.edit" contentType="Exkursionen"}}
 	{{/dir-content-list}}
 </div>
 
 {{#if createExcursion}}
-  {{#create-excursion model=model closeCreateExcursionDialogAction="closeCreateExcursionDialog" createExcursionConfirmedAction="createExcursion"}}
+  {{#create-excursion bandnummer=region.bandnummer closeCreateExcursionDialogAction="closeCreateExcursionDialog" createExcursionConfirmedAction="createExcursionConfirmed"}}
   {{/create-excursion}}
+
 {{/if}}
 
 {{#editor-dock}}
