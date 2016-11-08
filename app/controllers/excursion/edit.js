@@ -89,13 +89,18 @@ export default Ember.Controller.extend({
           lon: this.get('model.centroidLon'),
           nr: (e.length + 1)
         });
-        this.set('model.exkursionsstationen', e.length);        
+        this.set('model.exkursionsstationen', e.length);
       },
       removeExcursionStation() {
         let e = this.get('model.exkursion')
         e.popObject();
-        this.set('model.exkursionsstationen', e.length);        
+        this.set('model.exkursionsstationen', e.length);
       },
-      
+      uploadImageAction() {
+        let hugoId = this.get('model.hugoId');
+        console.log("ctrl get uploadImage action for ", hugoId);
+
+      }
+
     }
 });

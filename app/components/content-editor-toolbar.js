@@ -5,7 +5,7 @@ export default Ember.Component.extend({
 		// remove trix-toolbar
 		let trixToolbar = $('trix-toolbar');
 		return trixToolbar.remove()
-		
+
 	},
 	actions: {
 		insertQuote() {
@@ -23,11 +23,15 @@ export default Ember.Component.extend({
 			element.editor.insertString("Hello")
 		},
 		openImage(image) {
-			console.log(image);			
+			console.log(image);
 		},
 		sendImageShortcode(image) {
 			let element = document.querySelector("trix-editor");
 			element.editor.insertString(image.filename)
-		}				
+		},
+		uploadImage() {
+			console.log("comp get uploadImage action")
+			this.sendAction('uploadImageAction');
+		}
 	}
 });

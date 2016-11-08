@@ -10,16 +10,16 @@
     {{#paper-card class="meta-editor" as |card|}}
       {{#card.title as |title|}}
         {{#title.text as |text|}}
-          {{#text.subhead}}{{model.id}}{{/text.subhead}}   
-          {{#text.headline}}Metadaten{{/text.headline}} 
+          {{#text.subhead}}{{model.id}}{{/text.subhead}}
+          {{#text.headline}}Metadaten{{/text.headline}}
         {{/title.text}}
       {{/card.title}}
 
       {{#card.content}}
-        
+
         {{!-- Titel --}}
         <div layout="" layout-sm="column">
-    		  {{paper-input flex=100 label="Titel" value=model.title onChange=(action (mut model.title))}}    		  
+    		  {{paper-input flex=100 label="Titel" value=model.title onChange=(action (mut model.title))}}
     	  </div>
 
         {{!-- AutorIn --}}
@@ -133,7 +133,7 @@
       {{/card.content}}
     {{/paper-card}}
 
-    {{#content-editor model=model excursion=true}}
+    {{#content-editor model=model excursion=true uploadImageAction="uploadImageAction"}}
     {{/content-editor}}
 
 </div>

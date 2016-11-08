@@ -1,35 +1,35 @@
 {{#paper-card as |card|}}
       {{#card.title as |title|}}
         {{#title.text as |text|}}
-          {{#text.subhead}}{{model.id}}{{/text.subhead}}   
+          {{#text.subhead}}{{model.id}}{{/text.subhead}}
           {{#text.headline}}Content{{/text.headline}}
         {{/title.text}}
       {{/card.title}}
       {{#card.content}}
         {{#if topic}}
-          {{content-editor-toolbar model=model topic=true}}
+          {{content-editor-toolbar model=model topic=true uploadImageAction="uploadImageAction"}}
             {{trix-editor class="trix-editor-wrapper"
                     editorClass="trix-editor"
                     value=model.content
                     trix-change=(action "handleTrixAction" model) }}
         {{else if excursion}}
-          {{content-editor-toolbar model=model excursion=true}}
+          {{content-editor-toolbar model=model excursion=true uploadImageAction="uploadImageAction"}}
             {{trix-editor class="trix-editor-wrapper"
                     editorClass="trix-editor"
                     value=model.content
                     trix-change=(action "handleTrixAction" model) }}
         {{else if region}}
-          {{content-editor-toolbar model=model region=true}}
+          {{content-editor-toolbar model=model region=true uploadImageAction="uploadImageAction"}}
             {{trix-editor class="trix-editor-wrapper"
                     editorClass="trix-editor"
                     value=model.content
                     trix-change=(action "handleTrixAction" model) }}
         {{else}}
-          {{content-editor-toolbar model=model}}
+          {{content-editor-toolbar model=model uploadImageAction="uploadImageAction"}}
           {{trix-editor class="trix-editor-wrapper"
                   editorClass="trix-editor"
                   value=model.content
                   trix-change=(action "handleTrixAction" model) }}
-        {{/if}}                
+        {{/if}}
       {{/card.content}}
 {{/paper-card}}

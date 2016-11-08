@@ -21,7 +21,7 @@
 
 	  	{{!-- Regionen shortcodes --}}
 	  	{{#if region}}
-	  	
+
 	  	{{/if}}
 
 	    <button type="button" class="undo" data-action="undo" data-key="z" title="Undo">Undo</button>
@@ -36,7 +36,7 @@
 
 				{{#paper-list}}
 				  	{{#paper-item class="md-3-line"}}
-						{{#paper-button primary=true raised=true}}Anhang hinzufügen{{/paper-button}}
+						{{#paper-button primary=true raised=true onClick=(action "uploadImage")}}Anhang hinzufügen{{/paper-button}}
 					{{/paper-item}}
 					{{#each model.images as |image|}}
 						{{#paper-item class="md-3-line"}}
@@ -45,7 +45,7 @@
 						    </div>
 						{{paper-divider}}
 						    <div class="md-list-item-text">
-							    <p>{{image.filename}}</p>							   
+							    <p>{{image.filename}}</p>
 							</div>
 						{{paper-divider}}
 							<div class="md-list-item-text">
