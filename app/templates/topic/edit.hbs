@@ -1,7 +1,7 @@
 {{!-- placeholder  --}}
 <div class="flex-20">
   {{#site-navigation showRegionListAction="regionList"}}
-  {{/site-navigation}}    
+  {{/site-navigation}}
 </div>
 
 {{!-- Topic edit --}}
@@ -10,8 +10,8 @@
     {{#paper-card class="meta-editor" as |card|}}
       {{#card.title as |title|}}
         {{#title.text as |text|}}
-          {{#text.subhead}}{{model.id}}{{/text.subhead}}   
-          {{#text.headline}}Metadaten{{/text.headline}}   
+          {{#text.subhead}}{{model.id}}{{/text.subhead}}
+          {{#text.headline}}Metadaten{{/text.headline}}
         {{/title.text}}
       {{/card.title}}
 
@@ -19,7 +19,7 @@
 
         {{!-- Titel --}}
         <div layout="" layout-sm="column">
-          {{paper-input flex=100 label="Titel" value=model.title onChange=(action (mut model.title))}}          
+          {{paper-input flex=100 label="Titel" value=model.title onChange=(action (mut model.title))}}
         </div>
 
         {{!-- AutorIn --}}
@@ -60,10 +60,10 @@
       {{/card.content}}
     {{/paper-card}}
 
-    {{#content-editor model=model topic=true}}
+    {{#content-editor model=model topic=true assetUrl=assetUrl}}
     {{/content-editor}}
- 
-</div>  
+
+</div>
 
 {{#editor-dock model=model updateTopic=true deleteTopic=true deleteTopicAction="openDeleteDialog" updateTopicAction="updateTopic"}}
 {{/editor-dock}}

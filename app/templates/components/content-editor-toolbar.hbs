@@ -9,7 +9,7 @@
 	  	{{!-- Exkursion shortcodes --}}
 	  	{{#if excursion}}
 	  		<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
-		  	<button type="button" class="code" title="Shortcode" {{action 'showImageAssets'}}>Shortcode</button>
+		  	<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
 		  	<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
 	  	{{/if}}
 
@@ -29,14 +29,14 @@
     	{{!-- Image assets menu --}}
     	{{#paper-menu as |menu|}}
 			{{#menu.trigger}}
-			  <button type="button" {{action 'showImageAssets'}} class="link" title="Anhang">Anhang</button>
+			  <button type="button" class="link" title="Anhang">Anhang</button>
 			{{/menu.trigger}}
 
 			{{#menu.content width=5 as |content|}}
 
 				{{#paper-list}}
 				  	{{#paper-item class="md-3-line"}}
-						{{#paper-button primary=true raised=true onClick=(action "uploadImage")}}Anhang hinzufügen{{/paper-button}}
+				  	{{file-upload url=assetUrl}}
 					{{/paper-item}}
 					{{#each model.images as |image|}}
 						{{#paper-item class="md-3-line"}}

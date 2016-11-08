@@ -1,10 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	createTopic: false,
+	// needs to be dynamically set
+  assetUrl: "/api/asset/img/78/reihe",
+  createTopic: false,
 	createExcursion: false,
 	updateDialog: false,
-	deleteDialog: false,	
+	deleteDialog: false,
 	actions: {
 		openCreateTopicDialog() {
 			this.set('createTopic', true);
@@ -26,7 +28,7 @@ export default Ember.Controller.extend({
 			console.log(excursionMeta);
 
 			let hugoId = bandnummer + "_E_" + excursionMeta.articleNumber
-	    	let sanitizeArticleName = excursionMeta.articleName.toLowerCase().trim().dasherize();	    	
+	    	let sanitizeArticleName = excursionMeta.articleName.toLowerCase().trim().dasherize();
 	    	var store = this.get('store');
 	    	let actualDate = new Date();
 

@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+    // needs to be dynamically set
+    assetUrl: "/api/asset/img/78/reihe",
     updateDialog: false,
     deleteDialog: false,
     setMapExtentDialog: false,
@@ -95,12 +97,6 @@ export default Ember.Controller.extend({
         let e = this.get('model.exkursion')
         e.popObject();
         this.set('model.exkursionsstationen', e.length);
-      },
-      uploadImageAction() {
-        let hugoId = this.get('model.hugoId');
-        console.log("ctrl get uploadImage action for ", hugoId);
-
       }
-
     }
 });

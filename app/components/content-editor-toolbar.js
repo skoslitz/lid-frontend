@@ -28,10 +28,6 @@ export default Ember.Component.extend({
 		sendImageShortcode(image) {
 			let element = document.querySelector("trix-editor");
 			element.editor.insertString(image.filename)
-		},
-		uploadImage() {
-			console.log("comp get uploadImage action")
-			this.sendAction('uploadImageAction');
 		}
 	}
 });
