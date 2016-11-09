@@ -14,17 +14,21 @@ export default DS.Model.extend({
 	editor: DS.attr('string'),
 	editorInstitut: DS.attr('string'),
 	isbn: DS.attr('string'),
-	location: DS.attr('string'),	
+	location: DS.attr('string'),
 	editionTitle: DS.attr('string'),
 	pagination: DS.attr('number'),
-	extent: DS.attr(),	
+	extent: DS.attr(),
 	publisher: DS.attr('string'),
 	bundesland: DS.attr('array'),
 	content: DS.attr('string'),
 	images: DS.attr(''),
-	
+	assetUrl: Ember.computed('bandnummer', function() {
+		let bandnummer = this.get('bandnummer');
+		return `${'api/asset/img/'+ bandnummer}`
+	}),
+
 	// Associations
 	excursions: DS.hasMany('excursion'),
 	topics: DS.hasMany('topic')
-	
+
 });

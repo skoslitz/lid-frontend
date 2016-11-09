@@ -55,7 +55,7 @@
     </div>
 
     {{!-- Frontmatter Region --}}
-    {{#paper-card as |card|}}
+    {{#paper-card class="meta-editor" as |card|}}
       {{#card.title as |title|}}
         {{#title.text as |text|}}
           {{#text.subhead}}Band {{region.title}}{{/text.subhead}}
@@ -107,10 +107,18 @@
 
     {{!-- Meta.Kurzbeschreibung Region --}}
     {{#paper-card as |card|}}
-      {{#card.content}}        
+      {{#card.content}}
           {{paper-input passThru=(hash rows=15) textarea=true block=true flex=100 label="Kurzbeschreibung" value=region.description onChange=(action (mut region.description))}}
       {{/card.content}}
     {{/paper-card}}
+
+    {{!--
+      TODO:
+      make sticky content-editor-toolbar working
+     --}}
+    {{!-- Content  --}}
+    {{#content-editor model=region region=true assetUrl=region.assetUrl}}
+    {{/content-editor}}
 
 </div>
 

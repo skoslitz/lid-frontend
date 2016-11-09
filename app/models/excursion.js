@@ -29,6 +29,12 @@ export default DS.Model.extend({
 	exkursionsstationen: DS.attr('number'),
 	exkursionstypen: DS.attr(),
 	images: DS.attr(),
+	assetUrl: Ember.computed('hugoId', function() {
+		let hugoId = this.get('hugoId');
+		let bandnummer = this.get('hugoId').substr(0,2);
+		let type = "exkursionen";
+		return `${'api/asset/img/'+ bandnummer + '/' + type + '/' + hugoId}`
+	}),
 	vorschaubild: DS.attr('string'),
 
 	// Associations

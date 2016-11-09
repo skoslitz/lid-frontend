@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
     // needs to be dynamically set
-    assetUrl: "/api/asset/img/78/reihe",
+    //assetUrl: this.get('model.assetUrl'),
     updateDialog: false,
     deleteDialog: false,
     setMapExtentDialog: false,

@@ -2,8 +2,8 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
 	// Attributes
-	hugoId: DS.attr('string'),	
-	path: DS.attr('string'),	
+	hugoId: DS.attr('string'),
+	path: DS.attr('string'),
 	title: DS.attr('string'),
 	subtitle: DS.attr('string'),
 	date: DS.attr('string'),
@@ -20,8 +20,14 @@ export default DS.Model.extend({
 	rubriken: DS.attr('string'),
 	video: DS.attr(''),
 	images: DS.attr(''),
-	
+	assetUrl: Ember.computed('hugoId', function() {
+		let hugoId = this.get('hugoId');
+		let bandnummer = this.get('hugoId').substr(0,2);
+		let type = "themen";
+		return `${'api/asset/img/'+ bandnummer + '/' + type + '/' + hugoId}`
+	}),
+
 	// Associations
 	region: DS.belongsTo('region')
-	
+
 });
