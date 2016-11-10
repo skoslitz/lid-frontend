@@ -1,18 +1,26 @@
 import Ember from 'ember';
+let { $ } = Ember;
+
 
 export default Ember.Component.extend({
 	deletePage: false,
 	actions: {
-		publishSite(model) {
+		publishSite() {
 			// TODO: check model.hasDirtyAttributes before upload
-			var store = this.get('model.store');
-			console.log(store);
-			console.log("send publishSite Action to bubble up ...")
-			this.sendAction('publishSiteAction');
+			console.log("Send cmd hugo with publish params");			
+	      	let url = "http://localhost:1313/api/site/publish";
+			return $.ajax({
+				type: 'POST',
+				url: url
+			});
 	    },
 	    previewSite() {
-	      	console.log("send previewSite Action to bubble up ...")
-			this.sendAction('previewSiteAction');
+	      	console.log("Send cmd hugo with preview params");			
+	      	let url = "http://localhost:1313/api/site/preview";
+			return $.ajax({
+				type: 'POST',
+				url: url
+			});
 	    },
 	    openHelper() {
 
