@@ -41,7 +41,7 @@
 					{{#each model.images as |image|}}
 						{{#paper-item class="md-3-line"}}
 						    <div class="md-list-item-text">
-						      <img class="preview-img" src="{{image.src}}" alt="">
+						      <img onclick={{action "openImage" image}} class="preview-img" src="{{image.src}}" alt="">
 						    </div>
 						{{paper-divider}}
 						    <div class="md-list-item-text">
@@ -52,7 +52,7 @@
 								{{#paper-button raised=true mini=true onClick=(action "sendImageShortcode" image)}}
 									{}
 							  	{{/paper-button}}
-							  	{{#paper-button warn=true raised=true mini=true}}
+							  	{{#paper-button warn=true raised=true mini=true onClick=(action "deleteImage" image)}}
 									{{paper-icon "delete forever"}}
 							  	{{/paper-button}}
 							</div>

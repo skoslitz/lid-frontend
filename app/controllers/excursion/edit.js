@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-    // needs to be dynamically set
-    //assetUrl: this.get('model.assetUrl'),
     updateDialog: false,
     deleteDialog: false,
     setMapExtentDialog: false,

@@ -23,11 +23,26 @@ export default Ember.Component.extend({
 			element.editor.insertString("Hello")
 		},
 		openImage(image) {
-			console.log(image);
+			window.open(image.src, '_blank');
 		},
 		sendImageShortcode(image) {
 			let element = document.querySelector("trix-editor");
 			element.editor.insertString(image.filename)
+		},
+		deleteImage(image) {			
+			// build asset url from image properties
+			let _previewFilepath = image.src.replace(image.filename, ("_vorschaubilder/" + image.filename))
+			let previewFilepath = _previewFilepath.replace('assets', 'api/asset')
+			let filepath = image.src.replace('assets', 'api/asset')
+					
+			$.ajax({
+				type: 'DELETE',				
+				url: previewFilepath
+			});
+			$.ajax({
+				type: 'DELETE',
+				url: filepath
+			});					   	
 		}
 	}
 });
