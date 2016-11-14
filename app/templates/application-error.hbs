@@ -1,0 +1,41 @@
+<div class="container">
+  
+  {{!-- Navbar --}}
+  <div class="layout-row layout-margin nav-logo-text">  
+
+  {{#link-to "index"}}
+    <h1><img src="/img/LiD-online_logo_wi_transpi.png" class="lid-icon" alt="LiD">Online Editor</h1>
+  {{/link-to}}
+
+  </div>
+  
+  {{!-- Main --}}
+  <div class="layout-row flex">
+
+        {{!-- placeholder  --}}
+    <div class="flex-20">
+    </div>
+
+    {{!-- main --}}
+    <div class="flex-60">
+      <div layout="row">
+
+            {{#paper-card as |card|}}
+              {{#card.title as |title|}}
+                {{#title.text as |text|}}
+                  {{#text.headline}}Keinen Zutritt{{/text.headline}}                 
+                {{/title.text}}
+              {{/card.title}}
+              {{#card.content}}
+                {{#each model.errors as |error|}} 
+                  <p>Fehlermeldung {{error.status}}</p>
+                  <code>{{error.title}}</code>                  
+                {{/each}}
+              {{/card.content}}
+            {{/paper-card}}
+      </div>
+    </div>
+  </div>
+
+</div> {{!-- end container --}}
+
