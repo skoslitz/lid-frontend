@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 			this.sendAction('showRegionListAction');
 	    },
 	    historyBack() {
-	    	console.log("tbd");
+	    	window.history.back();
 	    },
 	    relatedRegion() {
 	    	console.log("tbd");
