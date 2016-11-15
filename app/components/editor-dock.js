@@ -1,7 +1,6 @@
 import Ember from 'ember';
 let { $ } = Ember;
 
-
 export default Ember.Component.extend({
 	deletePage: false,
 	actions: {
@@ -23,7 +22,7 @@ export default Ember.Component.extend({
 			});
 	    },
 	    openHelper() {
-
+	    	console.log('tbd');	    	
 	    },
 	    deleteRegion(model) {
 	    	this.sendAction('deleteRegionAction', model);
