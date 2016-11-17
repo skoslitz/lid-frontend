@@ -3,9 +3,7 @@ import DS from 'ember-data';
 export default DS.Model.extend({
 	// Attributes
 	hugoId: DS.attr('string'),
-	path: DS.attr('string'),
-	fremdexkursion: DS.attr('boolean'),
-	actionbound: DS.attr('boolean'),
+	path: DS.attr('string'),	
 	title: DS.attr('string'),
 	autor: DS.attr('string'),
 	date: DS.attr('string'),
@@ -35,8 +33,12 @@ export default DS.Model.extend({
 		let type = "exkursionen";
 		return `${'api/asset/img/'+ bandnummer + '/' + type + '/' + hugoId}`
 	}),
+	actionbound: DS.attr('boolean'),
+	fremdexkursion: DS.attr('boolean'),
+	exkursionsAnbieter: DS.attr('string'),
+	exkursionsUrl: DS.attr('string'),	
 	vorschaubild: DS.attr('string'),
-
+	vorschaubildTitel: DS.attr('string'),	
 	// Associations
 	region: DS.belongsTo('region')
 });

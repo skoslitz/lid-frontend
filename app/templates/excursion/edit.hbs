@@ -10,11 +10,18 @@
     {{#paper-card class="meta-editor" as |card|}}
       {{#card.title as |title|}}
         {{#title.text as |text|}}
-          {{#text.subhead}}{{model.id}}{{/text.subhead}}
+          {{#text.subhead}}
+            {{model.id}}
+            {{#if model.fremdexkursion}}
+             <mark>Fremdexkursion</mark>
+            {{/if}}
+          {{/text.subhead}}
           {{#text.headline}}Metadaten{{/text.headline}}
         {{/title.text}}
       {{/card.title}}
-
+      
+      {{!-- Fremdexkursion ausschließen --}}
+      {{#unless model.fremdexkursion}}
       {{#card.content}}
 
         {{!-- Titel --}}
@@ -53,88 +60,135 @@
         </div>
 
 
-      {{!-- Fremdexkursionen/Actionbound ausschließen ! --}}
-      {{#unless (or model.fremdexkursion model.actionbound) }}
+        {{!-- Fremdexkursionen/Actionbound ausschließen ! --}}
+        {{#unless (or model.fremdexkursion model.actionbound) }}
 
         {{!-- Exkursionsroute --}}
-      <div id="dialog-container">
+        <div id="dialog-container">
 
-        <h3 class="md-headline">Die Exkursionroute</h3>
+          <h3 class="md-headline">Die Exkursionroute</h3>
 
-        {{!-- Centroid, Zoomstufe, Exkursionsstationen --}}
-        <div layout="" layout-sm="column">
+          {{!-- Centroid, Zoomstufe, Exkursionsstationen --}}
+          <div layout="" layout-sm="column">
 
-          {{paper-input flex=25 label="Kartenmittelpunkt Lat." value=model.centroidLat onChange=(action (mut model.centroidLat))}}
-          {{paper-input flex=25 label="Kartenmittelpunkt Lon." value=model.centroidLon onChange=(action (mut model.centroidLon))}}
-          {{paper-input flex=25 label="Zoomstufe der Karte" value=model.zoomstufe type=number min=1 max=18 required=true onChange=(action (mut model.zoomstufe))}}
-          {{paper-input flex=25 label="Exkursionsstationen" value=model.exkursionsstationen type=number min=1 required=true onChange=(action (mut model.exkursionsstationen))}}
+            {{paper-input flex=25 label="Kartenmittelpunkt Lat." value=model.centroidLat onChange=(action (mut model.centroidLat))}}
+            {{paper-input flex=25 label="Kartenmittelpunkt Lon." value=model.centroidLon onChange=(action (mut model.centroidLon))}}
+            {{paper-input flex=25 label="Zoomstufe der Karte" value=model.zoomstufe type=number min=1 max=18 required=true onChange=(action (mut model.zoomstufe))}}
+            {{paper-input flex=25 label="Exkursionsstationen" value=model.exkursionsstationen type=number min=1 required=true onChange=(action (mut model.exkursionsstationen))}}
 
-        </div>
+          </div>
 
-        {{!-- Kartenausschnitt, Exkursionsstationen --}}
-        <div layout="" layout-sm="column">
-          <p class="flex" onClick={{action "addExcursionStation"}}>Station hinzufügen</p>
-          <p class="flex" onClick={{action "removeExcursionStation"}}>Letzte Station entfernen</p>
-          <p class="flex" onClick={{action "setMapExtent"}}>Kartenausschnitt festlegen</p>
+          {{!-- Kartenausschnitt, Exkursionsstationen --}}
+          <div layout="" layout-sm="column">
+            <p class="flex" onClick={{action "addExcursionStation"}}>Station hinzufügen</p>
+            <p class="flex" onClick={{action "removeExcursionStation"}}>Letzte Station entfernen</p>
+            <p class="flex" onClick={{action "setMapExtent"}}>Kartenausschnitt festlegen</p>
 
-          {{!-- Set map extent --}}
-          {{#if setMapExtentDialog}}
-            {{#paper-dialog fullscreen=true onClose=(action "closeSetMapExtentDialog" "cancel") parent="#dialog-container" clickOutsideToClose=true}}
+            {{!-- Set map extent --}}
+            {{#if setMapExtentDialog}}
+              {{#paper-dialog fullscreen=true onClose=(action "closeSetMapExtentDialog" "cancel") parent="#dialog-container" clickOutsideToClose=true}}
 
-              {{#paper-toolbar}}
-                <div class="md-toolbar-tools">
-                  <h2>Kartenausschnitt festlegen</h2>
-                  <span class="flex"></span>
-                  {{#paper-button iconButton=true onClick=(action "closeSetMapExtentDialog" "cancel")}}{{paper-icon icon="close"}}{{/paper-button}}
+                {{#paper-toolbar}}
+                  <div class="md-toolbar-tools">
+                    <h2>Kartenausschnitt festlegen</h2>
+                    <span class="flex"></span>
+                    {{#paper-button iconButton=true onClick=(action "closeSetMapExtentDialog" "cancel")}}{{paper-icon icon="close"}}{{/paper-button}}
+                  </div>
+                {{/paper-toolbar}}
+
+                {{#paper-dialog-content}}
+                <div class="map-dialog">
+                    {{#leaflet-map  class="map-dialog-container" scrollWheelZoom=false lat=model.centroidLat lng=model.centroidLon zoom=model.zoomstufe onZoomend=(action "queryMapExtent") onDragend=(action "queryMapExtent")}}
+                    {{tile-layer url="https://api.tiles.mapbox.com/v4/ifl.lplpe32l/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaWZsIiwiYSI6IksxanctMkUifQ.sAHrtehStvROYTeXS20NRg"}}
+
+                    {{/leaflet-map}}
                 </div>
-              {{/paper-toolbar}}
+                {{/paper-dialog-content}}
 
-              {{#paper-dialog-content}}
-              <div class="map-dialog">
-                  {{#leaflet-map  class="map-dialog-container" scrollWheelZoom=false lat=model.centroidLat lng=model.centroidLon zoom=model.zoomstufe onZoomend=(action "queryMapExtent") onDragend=(action "queryMapExtent")}}
-                  {{tile-layer url="https://api.tiles.mapbox.com/v4/ifl.lplpe32l/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaWZsIiwiYSI6IksxanctMkUifQ.sAHrtehStvROYTeXS20NRg"}}
+                {{#paper-dialog-actions class="layout-row"}}
+                  <span class="flex"></span>
+                  {{#paper-button primary=true onClick=(action "closeSetMapExtentDialog" "cancel")}}Abbrechen{{/paper-button}}
+                  {{#paper-button primary=true onClick=(action "saveMapExtent")}}Kartenausschnitt speichern{{/paper-button}}
+                {{/paper-dialog-actions}}
 
-                  {{/leaflet-map}}
-              </div>
-              {{/paper-dialog-content}}
+              {{/paper-dialog}}
+            {{/if}}
 
-              {{#paper-dialog-actions class="layout-row"}}
-                <span class="flex"></span>
-                {{#paper-button primary=true onClick=(action "closeSetMapExtentDialog" "cancel")}}Abbrechen{{/paper-button}}
-                {{#paper-button primary=true onClick=(action "saveMapExtent")}}Kartenausschnitt speichern{{/paper-button}}
-              {{/paper-dialog-actions}}
+          </div>
 
-            {{/paper-dialog}}
-          {{/if}}
+          {{!-- Karte mit Exkursionsstationen --}}
+          <div layout="" layout-sm="column">
+            {{#leaflet-map scrollWheelZoom=false lat=model.centroidLat lng=model.centroidLon zoom=model.zoomstufe}}
+                {{tile-layer url="https://api.tiles.mapbox.com/v4/ifl.lplpe32l/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaWZsIiwiYSI6IksxanctMkUifQ.sAHrtehStvROYTeXS20NRg"}}
+
+                {{#each model.exkursion as |excursion index|}}
+                    {{#marker-layer draggable=true lat=excursion.lat lng=excursion.lon onDragend=(action "updateLocation" excursion index)}}
+                      {{#tooltip-layer direction='top'}}
+                        Station {{excursion.nr}}
+                        <br>
+                        {{excursion.lat}}, {{excursion.lon}}
+                      {{/tooltip-layer}}
+                    {{/marker-layer}}
+                {{/each}}
+
+            {{/leaflet-map}}
+          </div>
 
         </div>
-
-        {{!-- Karte mit Exkursionsstationen --}}
-        <div layout="" layout-sm="column">
-          {{#leaflet-map scrollWheelZoom=false lat=model.centroidLat lng=model.centroidLon zoom=model.zoomstufe}}
-              {{tile-layer url="https://api.tiles.mapbox.com/v4/ifl.lplpe32l/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaWZsIiwiYSI6IksxanctMkUifQ.sAHrtehStvROYTeXS20NRg"}}
-
-              {{#each model.exkursion as |excursion index|}}
-                  {{#marker-layer draggable=true lat=excursion.lat lng=excursion.lon onDragend=(action "updateLocation" excursion index)}}
-                    {{#tooltip-layer direction='top'}}
-                      Station {{excursion.nr}}
-                      <br>
-                      {{excursion.lat}}, {{excursion.lon}}
-                    {{/tooltip-layer}}
-                  {{/marker-layer}}
-              {{/each}}
-
-          {{/leaflet-map}}
-        </div>
-
-      </div>
-      {{/unless}}
+        {{/unless}}
 
       {{/card.content}}
-    {{/paper-card}}
+      {{/unless}}
 
-    {{#content-editor model=model excursion=true assetUrl=model.assetUrl}}
-    {{/content-editor}}
+      {{!-- Fremdexkursion Metadaten --}}
+      {{#if model.fremdexkursion}}
+      {{#card.content}}
+
+          {{!-- Titel --}}
+          <div layout="" layout-sm="column">
+            {{paper-input flex=100 label="Titel" value=model.title onChange=(action (mut model.title))}}
+          </div>
+
+          {{!-- Exkursionsanbieter --}}
+          <div layout="" layout-sm="column">
+            {{paper-input flex=100 label="Exkursionsanbieter" value=model.exkursionsAnbieter onChange=(action (mut model.exkursionsAnbieter))}}
+          </div>
+
+          {{!-- ExkursionsUrl --}}
+          <div layout="" layout-sm="column">
+            {{paper-input flex=100 label="Exkursions Url" value=model.exkursionsUrl onChange=(action (mut model.exkursionsUrl))}}
+          </div>
+          
+          {{!-- Vorschaubild --}}
+          <div layout="" layout-sm="column">
+            {{paper-input textarea=true block=true flex=100 label="Vorschaubild" value=model.vorschaubild onChange=(action (mut model.vorschaubild))}}
+          </div>
+
+          {{!-- Titel Vorschaubild --}}
+          <div layout="" layout-sm="column">
+            {{paper-input textarea=true block=true flex=100 label="Titel Vorschaubild" value=model.vorschaubildTitel onChange=(action (mut model.vorschaubildTitel))}}
+          </div>
+
+          {{!-- Exkursionstypen --}}
+          <div layout="" layout-sm="column">
+            {{paper-input flex=70 label="Exkursionstypen" value=model.exkursionstypen onChange=(action (mut model.exkursionstypen))}}
+          </div>
+
+          <div layout="" layout-sm="column">
+            {{paper-input flex=50 label="Exkursionsstattionen" value=model.exkursionsstationen onChange=(action (mut model.exkursionsstationen))}}
+            {{paper-input flex=50 label="Exkursionslänge in km" value=model.exkursionslaenge onChange=(action (mut model.exkursionslaenge))}}
+          </div>
+
+      {{/card.content}}
+      {{/if}}
+
+    {{/paper-card}}
+    
+    {{!-- Fremdexkursion ausschließen --}}
+    {{#unless model.fremdexkursion}}
+      {{#content-editor model=model excursion=true assetUrl=model.assetUrl}}
+      {{/content-editor}}
+    {{/unless}}
 
 </div>
 

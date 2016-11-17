@@ -16,11 +16,14 @@ export default DS.JSONAPISerializer.extend({
             resourceHash.attributes.exkursionsstart = resourceHash.attributes.metadata.exkursionsstart
             resourceHash.attributes.exkursionsstationen = resourceHash.attributes.metadata.exkursionsstationen
             resourceHash.attributes.exkursionstypen = resourceHash.attributes.metadata.exkursionstypen
-            resourceHash.attributes.fremdexkursion = resourceHash.attributes.metadata.fremdexkursion
-            resourceHash.attributes.actionbound = resourceHash.attributes.metadata.actionbound
             resourceHash.attributes.vgWortCode = resourceHash.attributes.metadata.vg_wort_code
             resourceHash.attributes.vorschaubild = resourceHash.attributes.metadata.vorschaubild
             resourceHash.attributes.zoomstufe = resourceHash.attributes.metadata.zoomstufe
+            resourceHash.attributes.actionbound = resourceHash.attributes.metadata.actionbound
+            resourceHash.attributes.fremdexkursion = resourceHash.attributes.metadata.fremdexkursion          
+            resourceHash.attributes.exkursionsAnbieter = resourceHash.attributes.metadata.exkursions_anbieter          
+            resourceHash.attributes.exkursionsUrl = resourceHash.attributes.metadata.exkursions_url          
+            resourceHash.attributes.vorschaubildTitel = resourceHash.attributes.metadata.vorschaubild_titel          
             return resourceHash.attributes;
     },
     serializeIntoHash(hash, typeClass, snapshot) {
@@ -44,12 +47,15 @@ export default DS.JSONAPISerializer.extend({
                         "exkursionslaenge": snapshot.attr("exkursionslaenge"),
                         "exkursionsstart": snapshot.attr("exkursionsstart"),
                         "exkursionsstationen": snapshot.attr("exkursionsstationen"),
-                        "exkursionstypen": snapshot.attr("exkursionstypen"),
-                        "fremdexkursion": snapshot.attr("fremdexkursion"),
-                        "actionbound": snapshot.attr("actionbound"),
-                        "vg_wort_code": snapshot.attr("vgWortCode"),
-                        "vorschaubild": snapshot.attr("vorschaubild"),
+                        "exkursionstypen": snapshot.attr("exkursionstypen"),                        
+                        "vg_wort_code": snapshot.attr("vgWortCode"),                        
                         "zoomstufe": snapshot.attr("zoomstufe"),
+                        "actionbound": snapshot.attr("actionbound"),
+                        "fremdexkursion": snapshot.attr("fremdexkursion"),
+                        "exkursions_anbieter": snapshot.attr("exkursionsAnbieter"),
+                        "exkursions_url": snapshot.attr("exkursionsUrl"),
+                        "vorschaubild": snapshot.attr("vorschaubild"),
+                        "vorschaubild_titel": snapshot.attr("vorschaubildTitel"),
                   },
                   "content": snapshot.attr("content")
             }                 
