@@ -93,6 +93,7 @@ export default Ember.Controller.extend({
 				region.deleteRecord();
     	  		region.save().then(()=>{
     	  			console.log("record deleted");
+    	  			self.set('deleteDialog', false);
     	  			self.transitionToRoute('index');
     	  		});
 			})

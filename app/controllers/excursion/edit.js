@@ -43,6 +43,7 @@ export default Ember.Controller.extend({
           excursion.deleteRecord();
               excursion.save().then(()=>{
                 console.log("record deleted");
+                self.set('deleteDialog', false);
                 self.transitionToRoute('index');
               });
         })

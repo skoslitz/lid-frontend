@@ -37,6 +37,7 @@ export default Ember.Controller.extend({
           topic.deleteRecord();
               topic.save().then(()=>{
                 console.log("record deleted");
+                self.set('deleteDialog', false);
                 self.transitionToRoute('index');
               });
         })
