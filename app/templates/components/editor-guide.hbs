@@ -1,0 +1,26 @@
+{{#paper-button fab=true raised=true onClick=(action "openGuide")}}
+  {{paper-icon "help outline"}}
+{{/paper-button}}
+
+{{#if showGuide}}
+	{{#paper-dialog fullscreen=fullscreen onClose=(action "closeGuide") origin=dialogOrigin clickOutsideToClose=true}}
+
+		{{#paper-toolbar}}
+		<div class="md-toolbar-tools">
+		  <h2>LiD Online Kompendium</h2>
+		  <span class="flex"></span>
+		  {{#paper-button iconButton=true onClick=(action "closeGuide")}}{{paper-icon icon="close"}}{{/paper-button}}
+		</div>
+		{{/paper-toolbar}}
+		
+		{{!-- Leitfadeninhalt --}}
+		{{#paper-dialog-content}}	
+
+			<h2>Leitfaden zur Contenterstellung</h2>
+			<br>
+			<h3>Metadaten (Frontmatter) bearbeiten</h3>
+
+		{{/paper-dialog-content}}
+
+	{{/paper-dialog}}
+{{/if}}

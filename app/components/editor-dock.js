@@ -21,9 +21,6 @@ export default Ember.Component.extend({
 				url: url
 			});
 	    },
-	    openHelper() {
-	    	console.log('tbd');	    	
-	    },
 	    deleteRegion(model) {
 	    	this.sendAction('deleteRegionAction', model);
 	    },
