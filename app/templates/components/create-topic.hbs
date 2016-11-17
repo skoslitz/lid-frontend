@@ -9,13 +9,15 @@
 	{{/paper-toolbar}}
 
 	{{#paper-dialog-content}}
-	<h5>Metadaten</h5>
 	<div layout="row">
-	  {{paper-input flex=100 value=model.id label="Id" required="true" required-errortext="Wichtig!" onChange=(action (mut model.id ))}}
+		{{!-- Artikelnummer muss höher gleich 500 sein --}}
+	  	{{paper-input flex=100 type="number" value=articleNumber label="Beitragsnummer (>= 100)" required="true" required-errortext="Wichtig!" onChange=(action (mut articleNumber ))}}
 	</div>
-	<div layout="row">
-	  {{paper-input flex=100 value=model.title label="Titel" onChange=(action (mut model.title))}}
+	<div layout="row">  		
+	  	{{paper-input flex=100 type="text" value=articleName label="Beitragstitel" onChange=(action (mut articleName))}}
 	</div>
+
+	<h5>{{bandnummer}}_E_{{articleNumber}}-{{dasherize articleName}}.md</h5>
 	{{/paper-dialog-content}}
 
 	{{#paper-dialog-actions class="layout-row"}}

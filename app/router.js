@@ -10,7 +10,9 @@ Router.map(function() {
   	this.route('edit', {path: '/edit/:id'});
   	this.route('new');
   });
-  this.route('topic-list', {path: '/topic-list/:id'}, function() {});
+  this.route('topic-list', function() {
+    this.route('index', {path: '/show/:id'});
+  });
   this.route('topic',  function() {
     this.route('edit', {path: '/edit/:id'});
     this.route('new', {path: '/:id/new'});

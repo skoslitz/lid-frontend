@@ -10,8 +10,44 @@ export default Ember.Controller.extend({
 		closeCreateTopicDialog() {
 			this.set('createTopic', false);
 		},
-		createTopic() {
-			console.log("Topic-list ctrl creates Topic");
+		createTopicConfirmed(topicMeta) {
+			console.log("Topic-list ctrl creates Topic", topicMeta);
+			let bandnummer = this.get('region.bandnummer');
+			
+			let hugoId = bandnummer + "_E_" + topicMeta.articleNumber
+	    	let sanitizeArticleName = topicMeta.articleName.toLowerCase().trim().dasherize();
+	    	var store = this.get('store');
+	    	let actualDate = new Date();
+
+	    	var newTopic = store.createRecord('topic', {
+				"id": `${hugoId}-${sanitizeArticleName}.md`,
+				"path": `themen/${hugoId}-${sanitizeArticleName}.md`,
+				"hugoId": hugoId,
+                "autor": "",
+                "title": topicMeta.articleName,
+                "bildnachweise": [],
+                "literaturangaben": [],
+                "date": actualDate,
+                "description": "",
+                "vg_wort_code": "",
+                "vorschaubild": "",
+                "content": ""
+            });
+
+	    	var self = this;
+
+			function transitionToPost(hugoId, sanitizeArticleName) {
+			  self.transitionToRoute('topic.edit', `${hugoId}-${sanitizeArticleName}.md`);
+			};
+
+			function failure(reason) {
+			  console.log(reason);
+			};
+
+			newTopic.save().then(function() {
+		        transitionToPost(hugoId, sanitizeArticleName);
+		        self.set('createTopic', false);
+		    }).catch(failure);
 		},
 	}
 });

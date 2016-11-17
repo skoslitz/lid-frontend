@@ -1,13 +1,18 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	showPromptDialog: false,
+	articleNumber: null,
+	articleName: "",
 	actions: {
 		closeCreateTopicDialog() {
     		this.sendAction('closeCreateTopicDialogAction');
 	    },
 	    createTopicAction() {
-			this.sendAction('createTopicConfirmedAction');
+	    	let topicMeta = {
+				"articleNumber": parseInt(this.get('articleNumber')),
+				"articleName": this.get('articleName')
+			};
+			this.sendAction('createTopicConfirmedAction', topicMeta);
 	    },
 	}
 });

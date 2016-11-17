@@ -10,15 +10,6 @@ export default Ember.Controller.extend({
 		closeCreateExcursionDialog() {
 			this.set('createExcursion', false);
 		},
-		createExcursion() {
-			console.log("excursion-list ctrl creates excursion");
-		},
-		openCreateExcursionDialog() {
-			this.set('createExcursion', true);
-		},
-		closeCreateExcursionDialog() {
-			this.set('createExcursion', false);
-		},
 		createExcursionConfirmed(excursionMeta) {
 			let bandnummer = this.get('region.bandnummer');
 			console.log(excursionMeta);
@@ -64,9 +55,9 @@ export default Ember.Controller.extend({
 			};
 
 			newExcursion.save().then(function() {
-        transitionToPost(hugoId, sanitizeArticleName);
-        self.set('createExcursion', false);
-      }).catch(failure);
+		        transitionToPost(hugoId, sanitizeArticleName);
+		        self.set('createExcursion', false);
+		    }).catch(failure);
 		},
 	}
 });

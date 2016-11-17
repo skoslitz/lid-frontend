@@ -6,12 +6,12 @@
 
 {{!-- Topic list --}}
 <div class="flex-60">
-	{{#dir-content-list createTopicAction="openCreateTopicDialog" createTopicButton=true createTopic=true model=(reverse model) editURL="topic.edit" contentType="Themen"}}
+	{{#dir-content-list createTopicAction="openCreateTopicDialog" createTopicButton=true createTopic=true model=(reverse topicList) editURL="topic.edit" contentType="Themen"}}
 	{{/dir-content-list}}
 </div>   
 
 {{#if createTopic}}
-  {{#create-topic model=model closeCreateTopicDialogAction="closeCreateTopicDialog" createTopicConfirmedAction="createTopic"}}
+  {{#create-topic bandnummer=region.bandnummer closeCreateTopicDialogAction="closeCreateTopicDialog" createTopicConfirmedAction="createTopicConfirmed"}}
   {{/create-topic}}
 {{/if}}
 

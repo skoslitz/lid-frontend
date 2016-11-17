@@ -6,7 +6,7 @@
 
 {{!-- Exkursionen list --}}
 <div class="flex-60">
-	{{#dir-content-list createExcursionAction="openCreateExcursionDialog" createExcursionButton=true model=excursionList editURL="excursion.edit" contentType="Exkursionen"}}
+	{{#dir-content-list createExcursionAction="openCreateExcursionDialog" createExcursionButton=true model=(reverse excursionList) editURL="excursion.edit" contentType="Exkursionen"}}
 	{{/dir-content-list}}
 </div>
 
