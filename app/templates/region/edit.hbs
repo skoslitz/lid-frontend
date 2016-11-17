@@ -25,32 +25,32 @@
         {{/paper-card}}
       </div>
 
-    {{#if createExcursion}}
-      {{#create-excursion bandnummer=region.bandnummer closeCreateExcursionDialogAction="closeCreateExcursionDialog" createExcursionConfirmedAction="createExcursionConfirmed"}}
-      {{/create-excursion}}
-    {{/if}}
+      {{#if createExcursion}}
+        {{#create-excursion bandnummer=region.bandnummer closeCreateExcursionDialogAction="closeCreateExcursionDialog" createExcursionConfirmedAction="createExcursionConfirmed"}}
+        {{/create-excursion}}
+      {{/if}}
 
-      <div class="flex-50">
-        {{#paper-card as |card|}}
-          {{#card.title as |title|}}
-            {{#title.text as |text|}}
-              {{#text.headline}}{{topic.length}} Themen{{/text.headline}}
-            {{/title.text}}
-          {{/card.title}}
-          {{#card.content}}
-              <a href="#" {{action "openCreateTopicDialog"}}>Thema erstellen</a>
-            {{#if topic.length }}
-              {{#link-to "topic-list" region.id}}Themen auflisten{{/link-to}}
-            {{/if}}
+        <div class="flex-50">
+          {{#paper-card as |card|}}
+            {{#card.title as |title|}}
+              {{#title.text as |text|}}
+                {{#text.headline}}{{topic.length}} Themen{{/text.headline}}
+              {{/title.text}}
+            {{/card.title}}
+            {{#card.content}}
+                <a href="#" {{action "openCreateTopicDialog"}}>Thema erstellen</a>
+              {{#if topic.length }}
+                {{#link-to "topic-list" region.id}}Themen auflisten{{/link-to}}
+              {{/if}}
 
-          {{/card.content}}
-        {{/paper-card}}
-      </div>
+            {{/card.content}}
+          {{/paper-card}}
+        </div>
 
-    {{#if createTopic}}
-      {{#create-topic closeCreateTopicDialogAction="closeCreateTopicDialog" createTopicConfirmedAction="createTopicConfirmed"}}
-      {{/create-topic}}
-    {{/if}}
+      {{#if createTopic}}
+        {{#create-topic closeCreateTopicDialogAction="closeCreateTopicDialog" createTopicConfirmedAction="createTopicConfirmed"}}
+        {{/create-topic}}
+      {{/if}}
 
     </div>
 
@@ -63,41 +63,53 @@
         {{/title.text}}
       {{/card.title}}
       {{#card.content}}
-
+        
+        {{!-- Titel / Bandnummer --}}
         <div layout="row" layout-sm="column">
     		  {{paper-input flex=70 label="Titel" value=region.title onChange=(action (mut region.title))}}
     		  {{paper-input flex=30 label="Bandnummer" value=region.bandnummer onChange=(action (mut region.bandnummer))}}
     	  </div>
-
+        
+        {{!-- Untertitel --}}
         <div layout="row" layout-sm="column">
           {{paper-input flex=100 label="Untertitel" value=region.subtitle onChange=(action (mut region.subtitle))}}
         </div>
-
+        
+        {{!-- Reihentitel / Erscheinungsjahr --}}
         <div layout="row" layout-sm="column">
           {{paper-input flex=70 label="Reihentitel" value=region.editionTitle onChange=(action (mut region.editionTitle))}}
           {{paper-input flex=30 label="Erscheinungsjahr" value=region.dateOfPublication onChange=(action (mut region.dateOfPublication))}}
         </div>
-
+        
+        {{!-- Herausgeber / ISBN --}}
         <div layout="row" layout-sm="column">
           {{paper-input flex=70 label="Herausgeber" value=region.editor onChange=(action (mut region.editor))}}
           {{paper-input flex=30 label="ISBN" value=region.isbn onChange=(action (mut region.isbn))}}
         </div>
-
+        
+        {{!-- Herausgeberinstitut --}}
         <div layout="row" layout-sm="column">
           {{paper-input flex=100 label="Herausgeberinstitut" value=region.editorInstitut onChange=(action (mut region.editorInstitut))}}
         </div>
 
-
+        {{!-- Verlag / Ort / Seitenzahl --}}
         <div layout="row" layout-sm="column">
           {{paper-input flex=30 label="Verlag" value=region.publisher onChange=(action (mut region.publisher))}}
           {{paper-input flex=30 label="Ort" value=region.location onChange=(action (mut region.location))}}
           {{paper-input flex=30 label="Seitenzahl" value=region.pagination onChange=(action (mut region.pagination))}}
         </div>
-
+        
+        {{!-- Umfang --}}
         <div layout="row" layout-sm="column">
           {{paper-input flex=60 label="Umfang" value=region.extent onChange=(action (mut region.extent))}}
         </div>
-
+        
+        {{!-- Kurzbeschreibung --}}
+        <div layout="row" layout-sm="column">
+          {{paper-input passThru=(hash rows=15) textarea=true block=true flex=100 label="Kurzbeschreibung" value=region.description onChange=(action (mut region.description))}}
+        </div>
+        
+        {{!-- Bundesland --}}
         {{#each region.bundesland as |bundesland|}}
           {{paper-checkbox label=bundesland value=region.bundesland onChange=(action (mut region.bundesland))}}
         {{/each}}
@@ -105,17 +117,7 @@
       {{/card.content}}
     {{/paper-card}}
 
-    {{!-- Meta.Kurzbeschreibung Region --}}
-    {{#paper-card as |card|}}
-      {{#card.content}}
-          {{paper-input passThru=(hash rows=15) textarea=true block=true flex=100 label="Kurzbeschreibung" value=region.description onChange=(action (mut region.description))}}
-      {{/card.content}}
-    {{/paper-card}}
 
-    {{!--
-      TODO:
-      make sticky content-editor-toolbar working
-     --}}
     {{!-- Content  --}}
     {{#content-editor model=region region=true assetUrl=region.assetUrl}}
     {{/content-editor}}

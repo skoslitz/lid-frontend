@@ -198,6 +198,11 @@
           <div layout="" layout-sm="column">
             {{paper-input flex=100 label="Autor" value=model.autor onChange=(action (mut model.autor))}}
           </div>
+
+           {{!-- Kurzbeschreibung --}}
+          <div layout="" layout-sm="column">
+            {{paper-input textarea=true block=true passThru=(hash rows=4) flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}
+          </div>
           
           {{!-- Vorschaubild --}}
           <div layout="" layout-sm="column">
