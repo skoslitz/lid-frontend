@@ -1,66 +1,133 @@
 <div class="content-editor-toolbar">
-
-    <div class="button_groups">
-	  <span class="button_group">
-	  	<button type="button" class="quote" title="Anführungszeichen" {{action 'insertQuote'}}>Shortcode</button>
-	  	<button type="button" class="bold" title="Fett" {{action 'insertBold'}}>Shortcode</button>
-	  	<button type="button" class="italic" title="Kursiv" {{action 'insertShortcode'}}>Shortcode</button>
-
-	  	{{!-- Exkursion shortcodes --}}
-	  	{{#if excursion}}
-	  		<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
-		  	<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
-		  	<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
-	  	{{/if}}
-
-	  	{{!-- Themen shortcodes --}}
-	  	{{#if topic}}
-	  		<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
-	  		<button type="button" class="code" title="Shortcode" {{action 'insertShortcode'}}>Shortcode</button>
-	  	{{/if}}
-
-	  	{{!-- Regionen shortcodes --}}
-	  	{{#if region}}
-
-	  	{{/if}}
-
-	    <button type="button" class="undo" data-action="undo" data-key="z" title="Undo">Undo</button>
-    	<button type="button" class="redo" data-action="redo" data-key="shift+z" title="Redo">Redo</button>
-    	{{!-- Image assets menu --}}
+	{{!-- Shortcode menu --}}
     	{{#paper-menu as |menu|}}
-			{{#menu.trigger}}
-			  <button type="button" class="link" title="Anhang">Anhang</button>
-			{{/menu.trigger}}
+				{{#menu.trigger}}
+				  {{#paper-button raised=true}}Shortcode einfügen{{/paper-button}}
+				{{/menu.trigger}}
 
-			{{#menu.content width=5 as |content|}}
+				{{#menu.content width=3 as |content|}}
+					<p class="centered">Wähle einen Shortcode aus</p>
+					{{#paper-list}}
+							{{#paper-item class="md-3-line"}}
+							    <div class="md-list-item-text">
+							      <p>Anführungszeichen einsetzen</p>
+							    </div>
+								{{paper-divider}}
+									<div class="md-list-item-text">
+										{{#paper-button raised=true mini=true onClick=(action "insertQuote")}}
+											{{paper-icon "format bold"}}
+										{{/paper-button}}
+									</div>
+							{{/paper-item}}
 
-				{{#paper-list}}
-				  	{{#paper-item class="md-3-line"}}
-				  	{{file-upload url=assetUrl}}
-					{{/paper-item}}
-					{{#each model.images as |image|}}
-						{{#paper-item class="md-3-line"}}
-						    <div class="md-list-item-text">
-						      <img onclick={{action "openImage" image}} class="preview-img" src="{{image.src}}" alt="">
-						    </div>
-						{{paper-divider}}
-						    <div class="md-list-item-text">
-							    <p>{{image.filename}}</p>
-							</div>
-						{{paper-divider}}
-							<div class="md-list-item-text">
-								{{#paper-button raised=true mini=true onClick=(action "sendImageShortcode" image)}}
-									{}
-							  	{{/paper-button}}
-							  	{{#paper-button warn=true raised=true mini=true onClick=(action "deleteImage" image)}}
-									{{paper-icon "delete forever"}}
-							  	{{/paper-button}}
-							</div>
+					  	{{#paper-item class="md-3-line"}}
+							    <div class="md-list-item-text">
+							      <p>Fett einsetzen</p>
+							    </div>
+								{{paper-divider}}
+									<div class="md-list-item-text">
+										{{#paper-button raised=true mini=true onClick=(action "insertBold")}}
+											{{paper-icon "format italic"}}
+										{{/paper-button}}
+									</div>
+							{{/paper-item}}
+
+							{{#paper-item class="md-3-line"}}
+							    <div class="md-list-item-text">
+							      <p>Kursiv einsetzen</p>
+							    </div>
+								{{paper-divider}}
+									<div class="md-list-item-text">
+										{{#paper-button raised=true mini=true onClick=(action "insertShortcode")}}
+											{{paper-icon "format quote"}}
+									  {{/paper-button}}
+									</div>
+							{{/paper-item}}
+
+							{{#paper-item class="md-3-line"}}
+							    <div class="md-list-item-text">
+							      <p>Zeilenumbruch</p>
+							    </div>
+								{{paper-divider}}
+									<div class="md-list-item-text">
+										{{#paper-button raised=true mini=true onClick=(action "insertShortcode")}}
+											{{paper-icon "wrap text"}}
+									  {{/paper-button}}
+									</div>
+							{{/paper-item}}
+
+
+							{{!-- Exkursion shortcodes --}}
+							{{#if excursion}}
+								{{#paper-item class="md-3-line"}}
+							    <div class="md-list-item-text">
+							      <p>Exkursion Stationstitel</p>
+							    </div>
+								{{paper-divider}}
+									<div class="md-list-item-text">
+										{{#paper-button raised=true mini=true onClick=(action "insertShortcode")}}
+											{{paper-icon "title"}}
+									  {{/paper-button}}
+									</div>
+								{{/paper-item}}
+							{{/if}}
+
+							{{!-- Themen shortcodes --}}
+							{{#if topic}}
+
+							{{/if}}
+
+							{{!-- Regionen shortcodes --}}
+							{{#if region}}
+
+							{{/if}}
+					{{/paper-list}}
+				{{/menu.content}}
+			{{/paper-menu}}
+
+
+  {{!-- Image assets menu --}}
+    	{{#paper-menu as |menu|}}
+				{{#menu.trigger}}
+				  {{#paper-button raised=true}}Anhänge organisieren{{/paper-button}}
+				{{/menu.trigger}}
+
+				{{#menu.content width=5 as |content|}}
+					<p class="centered">Anhänge dieses Beitrages</p>
+					{{#paper-list}}
+					  {{#paper-item class="md-3-line"}}
+					  	{{file-upload url=assetUrl}}
 						{{/paper-item}}
-					{{/each}}
-				{{/paper-list}}
-			{{/menu.content}}
-		{{/paper-menu}}
-	  </span>
-	</div>
+						<br>
+						{{#each model.images as |image|}}
+							{{#paper-item class="md-3-line"}}
+							    <div class="md-list-item-text">
+							      <img onclick={{action "openImage" image}} class="preview-img" src="{{image.src}}" alt="">
+							    </div>
+							{{paper-divider}}
+							    <div class="md-list-item-text">
+								    <p>{{image.filename}}</p>
+								</div>
+							{{paper-divider}}
+								<div class="md-list-item-text">
+									{{#paper-button raised=true mini=true onClick=(action "sendImageShortcode" image)}}
+										{{paper-icon "image"}}
+									{{/paper-button}}
+								  	{{#paper-button warn=true raised=true mini=true onClick=(action "deleteImage" image)}}
+										{{paper-icon "delete forever"}}
+								  	{{/paper-button}}
+								</div>
+							{{/paper-item}}
+						{{/each}}
+					{{/paper-list}}
+				{{/menu.content}}
+			{{/paper-menu}}
+
+			{{#paper-button raised=true mini=true onClick=(action "undo")}}
+				{{paper-icon "undo"}}
+			{{/paper-button}}
+
+			{{#paper-button raised=true mini=true onClick=(action "redo")}}
+				{{paper-icon "redo"}}
+			{{/paper-button}}
 </div>

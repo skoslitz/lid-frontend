@@ -1,3 +1,7 @@
+md-list-item.md-3-line, md-list-item.md-3-line > .md-no-style {
+    height: auto;
+    min-height: 0;
+}
 .content-editor-toolbar * {
   box-sizing: border-box; }
 .content-editor-toolbar .button_group {
