@@ -6,7 +6,7 @@ export default Ember.Component.extend({
 	actions: {
 		publishSite() {
 			// TODO: check model.hasDirtyAttributes before upload
-			console.log("Send cmd hugo with publish params");			
+			console.log("Send cmd hugo with publish params");
 	      	let url = "http://localhost:1313/api/site/publish";
 			return $.ajax({
 				type: 'POST',
@@ -14,7 +14,7 @@ export default Ember.Component.extend({
 			});
 	    },
 	    previewSite() {
-	      	console.log("Send cmd hugo with preview params");			
+	      	console.log("Send cmd hugo with preview params");
 	      	let url = "http://localhost:1313/api/site/preview";
 			return $.ajax({
 				type: 'POST',
@@ -26,6 +26,7 @@ export default Ember.Component.extend({
 	    },
 	    updateRegion(model) {
 	    	// TODO: set model.hasDirtyAttributes = false
+	    	window.scrollTo(0, 0);
 	    	this.sendAction('updateRegionAction', model);
 	    },
 	    deleteTopic(model) {
@@ -33,6 +34,7 @@ export default Ember.Component.extend({
 	    },
 	    updateTopic(model) {
 	    	// TODO: set model.hasDirtyAttributes = false
+	    	window.scrollTo(0, 0);
 	    	this.sendAction('updateTopicAction', model);
 	    },
 	    deleteExcursion(model) {
@@ -40,6 +42,7 @@ export default Ember.Component.extend({
 	    },
 	    updateExcursion(model) {
 	    	// TODO: set model.hasDirtyAttributes = false
+	    	window.scrollTo(0, 0);
 	    	this.sendAction('updateExcursionAction', model);
 	    }
 	}
