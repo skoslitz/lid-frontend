@@ -6,7 +6,7 @@ export default Ember.Component.extend({
 		let trixToolbar = $('trix-toolbar');
 		return trixToolbar.remove()
 
-	},
+	},	
 	actions: {
 		undo() {
 			let element = document.querySelector("trix-editor");
@@ -37,20 +37,31 @@ export default Ember.Component.extend({
 			let element = document.querySelector("trix-editor");
 			element.editor.insertString(image.filename)
 		},
+		updateAction() {
+			// send action to update model
+			this.sendAction('updateAction');
+		},
 		deleteImage(image) {
 			// build asset url from image properties
 			let _previewFilepath = image.src.replace(image.filename, ("_vorschaubilder/" + image.filename))
 			let previewFilepath = _previewFilepath.replace('assets', 'api/asset')
 			let filepath = image.src.replace('assets', 'api/asset')
 
-			$.ajax({
+			let answer = confirm (`Die Datei ${image.filename} unwiederbringlich löschen?`)
+			if (answer) {
+				$.ajax({
 				type: 'DELETE',
 				url: previewFilepath
-			});
-			$.ajax({
-				type: 'DELETE',
-				url: filepath
-			});
+				});
+				$.ajax({
+					type: 'DELETE',
+					url: filepath
+				});
+
+			this.sendAction('updateAction');
+			}
+			    
+			
 		}
 	}
 });

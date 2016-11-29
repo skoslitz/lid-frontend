@@ -231,7 +231,7 @@
     
     {{!-- Fremdexkursion ausschließen --}}
     {{#unless model.fremdexkursion}}
-      {{#content-editor model=model excursion=true assetUrl=model.assetUrl}}
+      {{#content-editor model=model excursion=true assetUrl=model.assetUrl updateAction="refreshRoute"}}
       {{/content-editor}}
     {{/unless}}
 

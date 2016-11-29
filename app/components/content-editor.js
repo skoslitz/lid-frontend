@@ -23,6 +23,10 @@ export default Ember.Component.extend({
 		uploadImageAction() {
 			console.log("editor comp get action");
 			this.sendAction("uploadImageAction");
+		},
+		updateAction() {
+			// send action to update model
+			this.sendAction('updateAction');
 		}
 	}
 });

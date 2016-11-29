@@ -7,25 +7,25 @@
       {{/card.title}}
       {{#card.content}}
         {{#if topic}}
-          {{content-editor-toolbar model=model topic=true assetUrl=assetUrl}}
+          {{content-editor-toolbar model=model topic=true assetUrl=assetUrl updateAction="updateAction"}}
             {{trix-editor class="trix-editor-wrapper"
                     editorClass="trix-editor"
                     value=model.content
                     trix-change=(action "handleTrixAction" model) }}
         {{else if excursion}}
-          {{content-editor-toolbar model=model excursion=true assetUrl=assetUrl}}
+          {{content-editor-toolbar model=model excursion=true assetUrl=assetUrl updateAction="updateAction"}}
             {{trix-editor class="trix-editor-wrapper"
                     editorClass="trix-editor"
                     value=model.content
                     trix-change=(action "handleTrixAction" model) }}
         {{else if region}}
-          {{content-editor-toolbar model=model region=true assetUrl=assetUrl}}
+          {{content-editor-toolbar model=model region=true assetUrl=assetUrl updateAction="updateAction"}}
             {{trix-editor class="trix-editor-wrapper"
                     editorClass="trix-editor"
                     value=model.content
                     trix-change=(action "handleTrixAction" model) }}
         {{else}}
-          {{content-editor-toolbar model=model assetUrl=assetUrl}}
+          {{content-editor-toolbar model=model assetUrl=assetUrl updateAction="updateAction"}}
           {{trix-editor class="trix-editor-wrapper"
                   editorClass="trix-editor"
                   value=model.content

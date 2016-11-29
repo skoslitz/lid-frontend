@@ -88,46 +88,47 @@
 
   {{!-- Image assets menu --}}
     	{{#paper-menu as |menu|}}
-				{{#menu.trigger}}
-				  {{#paper-button raised=true}}Anhänge organisieren{{/paper-button}}
-				{{/menu.trigger}}
+			{{#menu.trigger}}
+			  {{#paper-button raised=true}}Anhänge organisieren{{/paper-button}}
+			{{/menu.trigger}}
 
-				{{#menu.content width=5 as |content|}}
-					<p class="centered">Anhänge dieses Beitrages</p>
-					{{#paper-list}}
-					  {{#paper-item class="md-3-line"}}
-					  	{{file-upload url=assetUrl}}
+			{{#menu.content width=5 as |content|}}
+				<p class="centered">Anhänge dieses Beitrages</p>
+				{{#paper-list}}
+				  {{#paper-item class="md-3-line"}}
+				  	{{file-upload url=assetUrl updateAction="updateAction"}}
+					{{/paper-item}}
+					<br>
+					{{#each model.images as |image|}}
+						{{#paper-item class="md-3-line"}}
+						    <div class="md-list-item-text">
+						      <img onclick={{action "openImage" image}} class="preview-img" src="{{image.src}}" alt="">
+						    </div>
+						{{paper-divider}}
+						    <div class="md-list-item-text">
+							    <p>{{image.filename}}</p>
+							</div>
+						{{paper-divider}}
+							<div class="md-list-item-text">
+								{{#paper-button raised=true mini=true onClick=(action "sendImageShortcode" image)}}
+									{{paper-icon "image"}}
+								{{/paper-button}}
+							  	{{#paper-button warn=true raised=true mini=true onClick=(action "deleteImage" image)}}
+									{{paper-icon "delete forever"}}
+							  	{{/paper-button}}
+							</div>
 						{{/paper-item}}
-						<br>
-						{{#each model.images as |image|}}
-							{{#paper-item class="md-3-line"}}
-							    <div class="md-list-item-text">
-							      <img onclick={{action "openImage" image}} class="preview-img" src="{{image.src}}" alt="">
-							    </div>
-							{{paper-divider}}
-							    <div class="md-list-item-text">
-								    <p>{{image.filename}}</p>
-								</div>
-							{{paper-divider}}
-								<div class="md-list-item-text">
-									{{#paper-button raised=true mini=true onClick=(action "sendImageShortcode" image)}}
-										{{paper-icon "image"}}
-									{{/paper-button}}
-								  	{{#paper-button warn=true raised=true mini=true onClick=(action "deleteImage" image)}}
-										{{paper-icon "delete forever"}}
-								  	{{/paper-button}}
-								</div>
-							{{/paper-item}}
-						{{/each}}
-					{{/paper-list}}
-				{{/menu.content}}
-			{{/paper-menu}}
+					{{/each}}
+				{{/paper-list}}
+			{{/menu.content}}
 
-			{{#paper-button raised=true mini=true onClick=(action "undo")}}
-				{{paper-icon "undo"}}
-			{{/paper-button}}
+		{{/paper-menu}}
 
-			{{#paper-button raised=true mini=true onClick=(action "redo")}}
-				{{paper-icon "redo"}}
-			{{/paper-button}}
+		{{#paper-button raised=true mini=true onClick=(action "undo")}}
+			{{paper-icon "undo"}}
+		{{/paper-button}}
+
+		{{#paper-button raised=true mini=true onClick=(action "redo")}}
+			{{paper-icon "redo"}}
+		{{/paper-button}}
 </div>
