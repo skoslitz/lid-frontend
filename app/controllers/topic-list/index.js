@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
 			console.log("Topic-list ctrl creates Topic", topicMeta);
 			let bandnummer = this.get('region.bandnummer');
 			
-			let hugoId = bandnummer + "_E_" + topicMeta.articleNumber
+			let hugoId = bandnummer + "_B_" + topicMeta.articleNumber
 	    	let sanitizeArticleName = topicMeta.articleName.toLowerCase().trim().dasherize();
 	    	var store = this.get('store');
 	    	let actualDate = new Date();
