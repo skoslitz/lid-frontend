@@ -94,6 +94,7 @@ export default Ember.Controller.extend({
 
 			function transitionToPost(hugoId, sanitizeArticleName) {
 			  self.transitionToRoute('excursion.edit', `${hugoId}-${sanitizeArticleName}.md`);
+			  self.set('createExcursion', false);
 			};
 
 			function failure(reason) {
@@ -124,7 +125,7 @@ export default Ember.Controller.extend({
 			let store = this.get('store');
 			let self = this;
 
-			store.findRecord('region', regionId).then(function(region) {
+			store.findRecord('region', regionId, { backgroundReload: false }).then(function(region) {
 				region.deleteRecord();
     	  		region.save().then(()=>{
     	  			console.log("record deleted");

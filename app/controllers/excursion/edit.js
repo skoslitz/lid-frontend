@@ -29,7 +29,7 @@ export default Ember.Controller.extend({
         var self = this
         this.get('model').save().then(()=>{
           Ember.run.later((function() {
-            self.transitionToRoute('excursion-list', regionId)
+            self.transitionToRoute('excursion-list', regionId);
             self.set('updateDialog', false);
           }), 1200);
         });
@@ -37,14 +37,18 @@ export default Ember.Controller.extend({
       deleteExcursion() {
         let excursionId = this.get('model.id');
         let store = this.get('store');
+        var regionId;
+        this.get('model').get('region').then(function(region) {
+          regionId = region.get('id');
+        });
         let self = this;
 
-        store.findRecord('excursion', excursionId).then(function(excursion) {
+        store.findRecord('excursion', excursionId, { backgroundReload: false }).then(function(excursion) {
           excursion.deleteRecord();
               excursion.save().then(()=>{
                 console.log("record deleted");
                 self.set('deleteDialog', false);
-                self.transitionToRoute('index');
+                 self.transitionToRoute('excursion-list', regionId);
               });
         })
       },

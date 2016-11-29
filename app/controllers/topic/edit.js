@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
         var self = this
         this.get('model').save().then(()=>{
           Ember.run.later((function() {
-            self.transitionToRoute('topic-list', regionId)
+            self.transitionToRoute('topic-list', regionId);
             self.set('updateDialog', false);
           }), 1200);
         });
@@ -31,14 +31,18 @@ export default Ember.Controller.extend({
       deleteTopic() {
         let topicId = this.get('model.id');
         let store = this.get('store');
+        var regionId;
+        this.get('model').get('region').then(function(region) {
+          regionId = region.get('id');
+        });
         let self = this;
 
-        store.findRecord('topic', topicId).then(function(topic) {
+        store.findRecord('topic', topicId, { backgroundReload: false }).then(function(topic) {
           topic.deleteRecord();
               topic.save().then(()=>{
                 console.log("record deleted");
                 self.set('deleteDialog', false);
-                self.transitionToRoute('index');
+                self.transitionToRoute('topic-list', regionId);
               });
         })
       },
