@@ -17,7 +17,7 @@ export default DS.Model.extend({
 	titelbildQuelle: DS.attr('string'),
 	titelbildTitel: DS.attr('string'),
 	vorschaubild: DS.attr('string'),
-	rubriken: DS.attr('string'),
+	rubriken: DS.attr(),
 	video: DS.attr(''),
 	images: DS.attr(''),
 	assetUrl: Ember.computed('hugoId', function() {
