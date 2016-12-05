@@ -28,6 +28,8 @@ export default Ember.Controller.extend({
                 "title": topicMeta.articleName,
                 "bildnachweise": [],
                 "literaturangaben": [],
+                "rubriken": [],
+                "video": [],
                 "date": actualDate,
                 "description": "",
                 "vg_wort_code": "",
