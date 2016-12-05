@@ -18,25 +18,32 @@
       {{#card.content}}
 
         {{!-- Titel --}}
-        <div layout="" layout-sm="column">
+        <div class="layout layout-sm-column">
           {{paper-input flex=100 label="Titel" value=model.title onChange=(action (mut model.title))}}
         </div>
 
         {{!-- AutorIn --}}
-        <div layout="" layout-sm="column">
+        <div layout="row" layout-sm="column">
           {{paper-input flex=60 label="AutorIn" value=model.autor onChange=(action (mut model.autor))}}
         </div>
 
         {{!-- Kurzbeschreibung --}}
-        <div layout="" layout-sm="column">
+        <div layout="row" layout-sm="column">
           {{paper-input textarea=true block=true passThru=(hash rows=4) flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}
         </div>
 
         {{!-- Literaturangaben --}}
-        <div layout="" layout-sm="column">
-          {{paper-input textarea=true block=true passThru=(hash rows=4) flex=100 label="Literaturangaben" value=model.literaturangaben onChange=(action (mut model.literaturangaben))}}
+        <h4>Literaturangaben</h4>
+        {{#each model.literaturangaben as |literaturangabe|}}
+          <div layout="row" layout-sm="column">
+          {{paper-input textarea=true block=true flex=100 label="Literaturangabe" value=literaturangabe onChange=(action (mut literaturangabe))}}
+          </div>           
+        {{/each}}
+        <div class="layout-row">
+          {{#paper-button primary=true onClick=(action "addReference")}}Literaturangabe hinzufügen{{/paper-button}}
+          {{#paper-button primary=true onClick=(action "removeReference")}}Letzte Literaturangabe löschen{{/paper-button}}
         </div>
-
+     
         {{!-- Bildnachweise --}}
         <div layout="" layout-sm="column">
           {{paper-input textarea=true block=true flex=100 label="Bildnachweise" value=model.bildnachweise onChange=(action (mut model.bildnachweise))}}

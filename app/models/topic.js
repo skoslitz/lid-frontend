@@ -11,7 +11,7 @@ export default DS.Model.extend({
 	description: DS.attr('string'),
 	vgWortCode: DS.attr('string'),
 	bildnachweise: DS.attr('string'),
-	literaturangaben: DS.attr(),
+	literaturangaben: DS.attr('array'),
 	rubriken: DS.attr('array'),
 	video: DS.attr(''),
 	content: DS.attr('string'),

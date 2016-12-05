@@ -64,5 +64,14 @@ export default Ember.Controller.extend({
         let rubriken = this.get('model.rubriken');
         rubriken.pushObject(item);        
       },
+      addReference() {
+        let literaturangaben = this.get('model.literaturangaben');
+        let literaturangabe = "AutorIn (Jahr): Titel";
+        literaturangaben.pushObject(literaturangabe);
+      },
+      removeReference() {
+        let literaturangaben = this.get('model.literaturangaben');        
+        literaturangaben.removeObject(literaturangaben.get('lastObject'));
+      },
     }
 });
