@@ -6,6 +6,8 @@ module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     // Add options here
     fingerprint: {
+      prepend: 'frontend/',
+      // copy the images folder to lidRepo/static/
       exclude: [
         'images/layers-2x.png',
         'images/layers.png',
