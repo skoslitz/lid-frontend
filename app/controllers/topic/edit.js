@@ -3,6 +3,13 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
     updateDialog: false,
     deleteDialog: false,
+    rubriken: [
+      "Siedlung & Bevölkerung",
+      "Wirtschaft & Verkehr",
+      "Natur & Landschaft",
+      "Vergangenheit & Erinnerung",
+      "Kultur & Soziales"
+    ],
     actions: {
       openDeleteDialog() {
         console.log('open dialog from ctrl');
@@ -48,6 +55,14 @@ export default Ember.Controller.extend({
       },
       showRelatedRegion: function() {
         this.transitionToRoute('region.edit', `${regionName}.md`);
-      }
+      },
+      removeItem(item) {
+        let rubriken = this.get('model.rubriken');
+        rubriken.removeObject(item); 
+      },
+      addItem(item) {
+        let rubriken = this.get('model.rubriken');
+        rubriken.pushObject(item);        
+      },
     }
 });

@@ -7,13 +7,12 @@ export default Ember.Component.extend({
 	statusPending: true,
 	deletePage: false,
 	actions: {
-		publishSite() {
-			// TODO: check model.hasDirtyAttributes before upload			      	
+		publishSite() {		      	
 			let self = this;
 	      	window.scrollTo(0, 0);
-	      	self.set('statusPending', true);
+	      	this.set('statusPending', true);
 	      	this.set('showDialog', true);
-	      	this.set('statusMessage', "Seiten werden publiziert.");
+	      
 	      	let url = "http://localhost:1313/api/site/publish";
 			return $.ajax({
 				type: 'POST',
@@ -29,9 +28,9 @@ export default Ember.Component.extend({
 	    previewSite() {
 	      	let self = this;
 	      	window.scrollTo(0, 0);
-	      	self.set('statusPending', true);
+	      	this.set('statusPending', true);
 	      	this.set('showDialog', true);
-	      	this.set('statusMessage', "Vorschau wird erstellt.");
+	      
 	      	let url = "http://localhost:1313/api/site/preview";
 			return $.ajax({
 				type: 'POST',

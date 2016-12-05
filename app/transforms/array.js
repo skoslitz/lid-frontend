@@ -2,9 +2,7 @@ import DS from 'ember-data';
 
 export default DS.Transform.extend({
   deserialize: function(serialized) {
-        return serialized.split(',').map(function(item) {
-            return jQuery.trim(item);
-        });        
+        return (Ember.typeOf(serialized) == "array") ? serialized : []        
     },  
   serialize: function(deserialized) {
         return deserialized;

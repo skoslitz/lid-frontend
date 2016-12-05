@@ -38,7 +38,7 @@ export default DS.JSONAPISerializer.extend({
                         "description": snapshot.attr("description"),
                         "literaturangaben": snapshot.attr("literaturangaben"),
                         "subtitle": snapshot.attr("subtitle"),
-                        "rubriken": [snapshot.attr("rubriken")],
+                        "rubriken": snapshot.attr("rubriken"),
                         "title": snapshot.attr("title"),                        
                         "vg_wort_code": snapshot.attr("vgWortCode"),
                         "vorschaubild": snapshot.attr("vorschaubild"),

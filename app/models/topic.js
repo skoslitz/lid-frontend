@@ -12,13 +12,13 @@ export default DS.Model.extend({
 	vgWortCode: DS.attr('string'),
 	bildnachweise: DS.attr('string'),
 	literaturangaben: DS.attr(),
+	rubriken: DS.attr('array'),
+	video: DS.attr(''),
 	content: DS.attr('string'),
 	titelbild: DS.attr('string'),
 	titelbildQuelle: DS.attr('string'),
 	titelbildTitel: DS.attr('string'),
-	vorschaubild: DS.attr('string'),
-	rubriken: DS.attr(),
-	video: DS.attr(''),
+	vorschaubild: DS.attr('string'),	
 	images: DS.attr(''),
 	assetUrl: Ember.computed('hugoId', function() {
 		let hugoId = this.get('hugoId');
