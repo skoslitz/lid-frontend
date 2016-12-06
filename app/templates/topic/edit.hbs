@@ -33,17 +33,16 @@
         </div>
 
         {{!-- Literaturangaben --}}
-        <h4>Literaturangaben</h4>
-        {{#each model.literaturangaben as |literaturangabe|}}
+        <h4>Literaturangaben
+        <span class="meta-editor-button" onclick={{action "addReference"}}>neue hinzufügen</span>
+        <span class="meta-editor-button" onclick={{action "removeReference"}}>letzte verwerfen</span> </h4>
+        {{#each (reverse model.literaturangaben) as |literaturangabe|}}
           <div layout="row" layout-sm="column">
-          {{paper-input textarea=true block=true flex=100 label="Literaturangabe" value=literaturangabe onChange=(action (mut literaturangabe))}}
-          </div>           
+          {{paper-input textarea=true block=true flex=100 label="Quelle" value=literaturangabe onChange=(action (mut literaturangabe))}}
+          </div>
         {{/each}}
-        <div class="layout-row">
-          {{#paper-button primary=true onClick=(action "addReference")}}Literaturangabe hinzufügen{{/paper-button}}
-          {{#paper-button primary=true onClick=(action "removeReference")}}Letzte Literaturangabe löschen{{/paper-button}}
-        </div>
-     
+
+
         {{!-- Bildnachweise --}}
         <div layout="" layout-sm="column">
           {{paper-input textarea=true block=true flex=100 label="Bildnachweise" value=model.bildnachweise onChange=(action (mut model.bildnachweise))}}
@@ -57,7 +56,7 @@
         {{!-- Rubriken --}}
         <div layout="" layout-sm="column">
         <h4>Rubriken</h4>
-          {{paper-chips content=model.rubriken  
+          {{paper-chips content=model.rubriken
             removeItem=(action "removeItem")
             addItem=(action "addItem")
             options=rubriken

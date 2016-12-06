@@ -88,6 +88,16 @@ html, body {
 	color: color("light-green", '500');
 }
 
+// meta editor
+
+.meta-editor-button {
+	font-size: 0.75em;
+	padding-left: 0.9em;
+}
+.meta-editor-button:hover {
+	text-decoration: underline;
+}
+
 // trix editor toolbar
 .content-editor {
 	display: block;
