@@ -4,6 +4,9 @@ export default Ember.Controller.extend({
 	createExcursionButton: true,
 	createExcursion: false,
 	actions: {
+		relatedRegion() {
+			this.transitionToRoute('region.edit', this.get('region.id'));
+        }, 
 		openCreateExcursionDialog() {
 			this.set('createExcursion', true);
 		},

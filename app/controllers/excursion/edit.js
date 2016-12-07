@@ -6,6 +6,22 @@ export default Ember.Controller.extend({
     setMapExtentDialog: false,
     mapConfig: {},
     actions: {
+      excursionList() {
+        var regionId;
+        var self = this;
+        this.get('model').get('region').then(function(region) {
+          regionId = region.get('id');
+          self.transitionToRoute('excursion-list', regionId);
+        });        
+      },
+      relatedRegion() {
+        var regionId;
+        var self = this;
+        this.get('model').get('region').then(function(region) {
+          regionId = region.get('id');
+          self.transitionToRoute('region.edit', regionId);
+        });   
+      },
       openDeleteDialog() {
         console.log('open dialog from ctrl');
         this.set('deleteDialog', true);
@@ -18,12 +34,7 @@ export default Ember.Controller.extend({
         this.set('setMapExtentDialog', false);
       },
       updateExcursion: function() {
-        this.set('updateDialog', true);
-
-        var regionId;
-        this.get('model').get('region').then(function(region) {
-          regionId = region.get('id');
-        });
+        this.set('updateDialog', true);       
 
         let excursionId = this.get('model.id');
 

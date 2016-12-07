@@ -19,12 +19,6 @@ export default Ember.Route.extend({
     //site nav actions
     regionList() {
       this.transitionTo('/');
-    },
-    refreshRoute() {
-      let self = this;
-      Ember.run.later((function() {
-        self.refresh();
-      }), 1000);
     }
   },  
 });

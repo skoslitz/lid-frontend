@@ -11,6 +11,22 @@ export default Ember.Controller.extend({
       "Kultur & Soziales"
     ],
     actions: {
+      topicList() {
+        var regionId;
+        var self = this;
+        this.get('model').get('region').then(function(region) {
+          regionId = region.get('id');
+          self.transitionToRoute('topic-list', regionId);
+        });        
+      },
+      relatedRegion() {
+        var regionId;
+        var self = this;
+        this.get('model').get('region').then(function(region) {
+          regionId = region.get('id');
+          self.transitionToRoute('region.edit', regionId);
+        });   
+      },
       openDeleteDialog() {
         console.log('open dialog from ctrl');
         this.set('deleteDialog', true);

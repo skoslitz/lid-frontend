@@ -4,6 +4,9 @@ export default Ember.Controller.extend({
 	createTopicButton: true,
 	createTopic: false,
 	actions: {
+		relatedRegion() {
+			this.transitionToRoute('region.edit', this.get('region.id'));
+        }, 
 		openCreateTopicDialog() {
 			this.set('createTopic', true);
 		},
