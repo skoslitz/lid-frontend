@@ -27,10 +27,13 @@ export default Ember.Controller.extend({
           regionId = region.get('id');
         });
 
+         let topicId = this.get('model.id');
+
         var self = this
         this.get('model').save().then(()=>{
           Ember.run.later((function() {
-            self.transitionToRoute('topic-list', regionId);
+            //self.transitionToRoute('topic-list', regionId);
+            self.transitionToRoute('topic.edit', topicId);
             self.set('updateDialog', false);
           }), 1200);
         });

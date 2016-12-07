@@ -25,11 +25,13 @@ export default Ember.Controller.extend({
           regionId = region.get('id');
         });
 
+        let excursionId = this.get('model.id');
 
         var self = this
         this.get('model').save().then(()=>{
           Ember.run.later((function() {
-            self.transitionToRoute('excursion-list', regionId);
+            //self.transitionToRoute('excursion-list', regionId);
+            self.transitionToRoute('excursion.edit', excursionId)
             self.set('updateDialog', false);
           }), 1200);
         });

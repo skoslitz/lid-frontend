@@ -107,11 +107,13 @@ export default Ember.Controller.extend({
 		},
 		updateRegion() {
 			this.set('updateDialog', true);
+			let regionId = this.get('region.id');
 
 			var self = this
 			this.get('region').save().then(()=>{
 				Ember.run.later((function() {
-			  	self.transitionToRoute('index')
+			  	//self.transitionToRoute('index')
+			  	self.transitionToRoute('region.edit', regionId)
 			  	self.set('updateDialog', false);
 				}), 1200);
 			});

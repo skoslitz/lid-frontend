@@ -36,9 +36,9 @@
         <h4>Literaturangaben
         <span class="meta-editor-button" onclick={{action "addReference"}}>neue hinzufügen</span>
         <span class="meta-editor-button" onclick={{action "removeReference"}}>letzte verwerfen</span> </h4>
-        {{#each (reverse model.literaturangaben) as |literaturangabe|}}
+        {{#each (reverse model.literaturangaben) as |literaturangabe index|}}
           <div layout="row" layout-sm="column">
-          {{paper-input textarea=true block=true flex=100 label="Quelle" value=literaturangabe onChange=(action (mut literaturangabe))}}
+          {{paper-input textarea=true block=true flex=100 label="Quelle" value=literaturangabe onChange=(action (mut this.model.literaturangaben.[index]))}}
           </div>
         {{/each}}
 
