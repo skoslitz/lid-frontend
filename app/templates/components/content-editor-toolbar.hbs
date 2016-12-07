@@ -93,7 +93,7 @@
 			{{/menu.trigger}}
 
 			{{#menu.content width=5 as |content|}}
-				<p class="centered">Anhänge dieses Beitrages</p>
+				<p class="centered">Anhänge für {{model.id}}</p>
 				{{#paper-list}}
 				  {{#paper-item class="md-3-line"}}
 				  	{{file-upload url=assetUrl updateAction="updateAction"}}
