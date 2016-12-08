@@ -17,28 +17,46 @@
 
       {{#card.content}}
 
-        {{!-- Titel --}}
-        <div class="layout layout-sm-column">
-          {{paper-input flex=100 label="Titel" value=model.title onChange=(action (mut model.title))}}
-        </div>
-
+        {{!-- Titel --}}       
+        {{paper-input block=true label="Titel" value=model.title onChange=(action (mut model.title))}}
+       
         {{!-- AutorIn --}}
-        <div layout="row" layout-sm="column">
-          {{paper-input flex=60 label="AutorIn" value=model.autor onChange=(action (mut model.autor))}}
-        </div>
+        {{paper-input block=true label="AutorIn" value=model.autor onChange=(action (mut model.autor))}}
+       
+        {{!-- Kurzbeschreibung --}}
+        {{paper-input textarea=true block=true passThru=(hash rows=4) flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}
 
         {{!-- VG Wort Code --}}
-        <div layout="" layout-sm="column">
-          {{paper-input flex=70 label="VG Wort Code" value=model.vgWortCode onChange=(action (mut model.vgWortCode))}}
-        </div>
-
-        {{!-- Kurzbeschreibung --}}
-        <div layout="row" layout-sm="column">
-          {{paper-input textarea=true block=true passThru=(hash rows=4) flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}
-        </div>
+        {{paper-input block=true label="VG Wort Code" value=model.vgWortCode onChange=(action (mut model.vgWortCode))}}
+        
+        {{!-- Video --}}
+        {{#if model.video}}
+        <h4>Video</h4>
+          {{#each model.video as |video|}}
+            <div class="layout-row flex">
+            <div class="flex-50">
+              {{paper-input block=true label="Quelle" value=video.quelle onChange=(action (mut video.quelle))}}
+            </div>
+            <div class="flex-50">
+              {{paper-input block=true label="Titel" value=video.titel onChange=(action (mut video.titel))}}
+            </div>            
+            </div>
+            <div class="layout-row flex">
+            <div class="flex-50">
+              {{paper-input block=true label="Länge" value=video.laenge onChange=(action (mut video.laenge))}}
+            </div>
+            <div class="flex-50">
+                {{paper-input block=true label="Vimeo Id" value=video.id onChange=(action (mut video.id))}}
+            </div>            
+            </div>
+            {{paper-input textarea=true block=true label="Beschreibung" value=video.beschreibung onChange=(action (mut video.beschreibung))}}
+          {{/each}}          
+        {{else}}
+          <p>Video hinzufügen</p>
+        {{/if}}
+   
 
         {{!-- Literaturangaben --}}
-        <div layout="" layout-sm="column">
         <h4>Literaturangaben
         <span class="meta-editor-button" onclick={{action "showReference" model.literaturangaben}}>alle anzeigen</span>
         </h4>
@@ -46,20 +64,15 @@
             removeItem=(action "removeReference")
             addItem=(action "addReference")            
             placeholder="Neue Quelle"}}
-        </div>
-
 
         {{!-- Bildnachweise --}}
-        <div layout="" layout-sm="column">
         <h4>Bildnachweise</h4>
           {{paper-chips content=model.bildnachweise
             removeItem=(action "removeImgRef")
             addItem=(action "addImgRef")
             placeholder="Neuer Bildnachweis"}}
-        </div>
         
         {{!-- Rubriken --}}
-        <div layout="" layout-sm="column">
         <h4>Rubriken</h4>
           {{paper-chips content=model.rubriken
             removeItem=(action "removeCategory")
@@ -67,12 +80,7 @@
             options=rubriken
             placeholder="Füge eine Rubrik hinzu"
             noMatchesMessage="Rubrik existiert nicht"}}
-        </div>
 
-        {{!-- Video --}}
-        <div layout="" layout-sm="column">
-          {{paper-input flex=70 label="Video" value=model.video onChange=(action (mut model.video))}}
-        </div>
 
       {{/card.content}}
     {{/paper-card}}
