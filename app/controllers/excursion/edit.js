@@ -5,6 +5,10 @@ export default Ember.Controller.extend({
     deleteDialog: false,
     setMapExtentDialog: false,
     mapConfig: {},
+    exkursionstypen: [
+      "Fahrrad",
+      "Fuß"
+    ],
     actions: {
       excursionList() {
         var regionId;
@@ -113,6 +117,33 @@ export default Ember.Controller.extend({
         let e = this.get('model.exkursion')
         e.popObject();
         this.set('model.exkursionsstationen', e.length);
+      },
+      removeCategory(item) {
+        let exkursionstypen = this.get('model.exkursionstypen');
+        exkursionstypen.removeObject(item); 
+      },
+      addCategory(item) {
+        let exkursionstypen = this.get('model.exkursionstypen');
+        exkursionstypen.pushObject(item);        
+      },
+      addReference(item) {
+        let literaturangaben = this.get('model.literaturangaben');        
+        literaturangaben.pushObject(item);
+      },
+      removeReference(item) {
+        let literaturangaben = this.get('model.literaturangaben');        
+        literaturangaben.removeObject(item); 
+      },
+      removeImgRef(item) {
+        let bildnachweise = this.get('model.bildnachweise');
+        bildnachweise.removeObject(item);       
+      },
+      addImgRef(item) {
+        let bildnachweise = this.get('model.bildnachweise');
+        bildnachweise.pushObject(item);        
+      },
+      showReference(model) {
+        console.log(model);
       }
     }
 });

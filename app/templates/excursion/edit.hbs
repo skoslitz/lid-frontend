@@ -28,65 +28,65 @@
       {{#card.content}}
 
         {{!-- Titel --}}
-        <div layout="" layout-sm="column">
-    		  {{paper-input flex=100 label="Titel" value=model.title onChange=(action (mut model.title))}}
-    	  </div>
-
-        {{!-- AutorIn --}}
-        <div layout="" layout-sm="column">
-          {{paper-input flex=40 label="AutorIn" value=model.autor onChange=(action (mut model.autor))}}
-        </div>
-
+        {{paper-input block=true label="Titel" value=model.title onChange=(action (mut model.title))}}
+        
+        {{!-- AutorIn --}}        
+        {{paper-input block=true label="AutorIn" value=model.autor onChange=(action (mut model.autor))}}
+        
         {{!-- Kurzbeschreibung --}}
-        <div layout="" layout-sm="column">
-          {{paper-input textarea=true block=true passThru=(hash rows=4) flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}
-        </div>
-
+        {{paper-input textarea=true block=true passThru=(hash rows=4) flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}
+     
+        {{!-- VG Wort Code --}}
+        {{paper-input block=true label="VG Wort Code" value=model.vgWortCode onChange=(action (mut model.vgWortCode))}}
+        
         {{!-- Literaturangaben --}}
-        <div layout="" layout-sm="column">
-          {{paper-input textarea=true block=true passThru=(hash rows=4) flex=100 label="Literaturangaben" value=model.literaturangaben onChange=(action (mut model.literaturangaben))}}
-        </div>
+        <h4>Literaturangaben
+        <span class="meta-editor-button" onclick={{action "showReference" model.literaturangaben}}>alle anzeigen</span>
+        </h4>
+          {{paper-chips content=model.literaturangaben
+            removeItem=(action "removeReference")
+            addItem=(action "addReference")            
+            placeholder="Neue Quelle"}}
 
         {{!-- Bildnachweise --}}
-        <div layout="" layout-sm="column">
-          {{paper-input textarea=true block=true flex=100 label="Bildnachweise" value=model.bildnachweise onChange=(action (mut model.bildnachweise))}}
-        </div>
-
-        {{!-- VG Wort Code --}}
-        <div layout="" layout-sm="column">
-          {{paper-input flex=70 label="VG Wort Code" value=model.vgWortCode onChange=(action (mut model.vgWortCode))}}
-        </div>
-
+        <h4>Bildnachweise</h4>
+          {{paper-chips content=model.bildnachweise
+            removeItem=(action "removeImgRef")
+            addItem=(action "addImgRef")
+            placeholder="Neuer Bildnachweis"}}
+        
         {{!-- Exkursionstypen --}}
-        <div layout="" layout-sm="column">
-          {{paper-input flex=70 label="Exkursionstypen" value=model.exkursionstypen onChange=(action (mut model.exkursionstypen))}}
-        </div>
-
-        <div layout="" layout-sm="column">
-            {{paper-input flex=50 label="Exkursionsstattionen" value=model.exkursionsstationen onChange=(action (mut model.exkursionsstationen))}}
-            {{paper-input flex=50 label="Exkursionslänge in km" value=model.exkursionslaenge onChange=(action (mut model.exkursionslaenge))}}
-        </div>
+        <h4>Exkursionstypen</h4>
+          {{paper-chips content=model.exkursionstypen
+            removeItem=(action "removeCategory")
+            addItem=(action "addCategory")
+            options=exkursionstypen
+            placeholder="Füge einen Typ hinzu"
+            noMatchesMessage="Typ existiert nicht"}}
+        
       
-        {{!-- Exkursionsroute --}}
+      {{!-- Exkursionsroute --}}
         <div id="dialog-container">
-
-          <h3 class="md-headline">Die Exkursionroute</h3>
-
-          {{!-- Centroid, Zoomstufe, Exkursionsstationen --}}
-          <div layout="" layout-sm="column">
-
-            {{paper-input flex=25 label="Kartenmittelpunkt Lat." value=model.centroidLat onChange=(action (mut model.centroidLat))}}
-            {{paper-input flex=25 label="Kartenmittelpunkt Lon." value=model.centroidLon onChange=(action (mut model.centroidLon))}}
-            {{paper-input flex=25 label="Zoomstufe der Karte" value=model.zoomstufe type=number min=1 max=18 required=true onChange=(action (mut model.zoomstufe))}}
-            {{paper-input flex=25 label="Exkursionsstationen" value=model.exkursionsstationen type=number min=1 required=true onChange=(action (mut model.exkursionsstationen))}}
+          
+          {{!-- Stationen hinzufügen/entfernen, Kartenausschnitt --}}
+          <h3 class="md-headline">Die Exkursionroute
+          <span class="meta-excursion-editor-button" onClick={{action "addExcursionStation"}}>Station hinzufügen</span>
+          <span class="meta-excursion-editor-button" onClick={{action "removeExcursionStation"}}>Letzte Station entfernen</span>
+          <span class="meta-excursion-editor-button" onClick={{action "setMapExtent"}}>Kartenausschnitt festlegen</span>
+          </h3>
+           
+          {{!-- Centroid, Zoomstufe, Exkursionsstationen, Exkursionslänge --}}
+          <div class="layout-row">
+            {{!-- {{paper-input flex=33 label="Kartenmittelpunkt Lat." value=model.centroidLat onChange=(action (mut model.centroidLat))}}
+            {{paper-input flex=33 label="Kartenmittelpunkt Lon." value=model.centroidLon onChange=(action (mut model.centroidLon))}} --}}
+            {{paper-input flex=33 label="Zoomstufe der Karte" value=model.zoomstufe type=number min=1 max=18 required=true onChange=(action (mut model.zoomstufe))}}
+            {{paper-input flex=33 label="Exkursionsstationen" value=model.exkursionsstationen type=number min=1 required=true onChange=(action (mut model.exkursionsstationen))}}
+            {{paper-input flex=33 label="Exkursionslänge in km" value=model.exkursionslaenge onChange=(action (mut model.exkursionslaenge))}}
 
           </div>
 
           {{!-- Kartenausschnitt, Exkursionsstationen --}}
-          <div layout="" layout-sm="column">
-            <p class="flex" onClick={{action "addExcursionStation"}}>Station hinzufügen</p>
-            <p class="flex" onClick={{action "removeExcursionStation"}}>Letzte Station entfernen</p>
-            <p class="flex" onClick={{action "setMapExtent"}}>Kartenausschnitt festlegen</p>
+          <div layout="" layout-sm="column">          
 
             {{!-- Set map extent --}}
             {{#if setMapExtentDialog}}
@@ -148,39 +148,34 @@
       {{#card.content}}
 
           {{!-- Titel --}}
-          <div layout="" layout-sm="column">
-            {{paper-input flex=100 label="Titel" value=model.title onChange=(action (mut model.title))}}
-          </div>
-
+          {{paper-input block=true label="Titel" value=model.title onChange=(action (mut model.title))}}
+          
           {{!-- Exkursionsanbieter --}}
-          <div layout="" layout-sm="column">
-            {{paper-input flex=100 label="Exkursionsanbieter" value=model.exkursionsAnbieter onChange=(action (mut model.exkursionsAnbieter))}}
-          </div>
-
-          {{!-- ExkursionsUrl --}}
-          <div layout="" layout-sm="column">
-            {{paper-input flex=100 label="Exkursions Url" value=model.exkursionsUrl onChange=(action (mut model.exkursionsUrl))}}
-          </div>
+          {{paper-input block=true label="Exkursionsanbieter" value=model.exkursionsAnbieter onChange=(action (mut model.exkursionsAnbieter))}}
+          
+          {{!-- ExkursionsUrl --}}          
+          {{paper-input block=true label="Exkursions Url" value=model.exkursionsUrl onChange=(action (mut model.exkursionsUrl))}}
           
           {{!-- Vorschaubild --}}
-          <div layout="" layout-sm="column">
-            {{paper-input textarea=true block=true flex=100 label="Vorschaubild" value=model.vorschaubild onChange=(action (mut model.vorschaubild))}}
-          </div>
-
+          {{paper-input textarea=true block=true flex=100 label="Vorschaubild" value=model.vorschaubild onChange=(action (mut model.vorschaubild))}}
+          
           {{!-- Titel Vorschaubild --}}
-          <div layout="" layout-sm="column">
-            {{paper-input textarea=true block=true flex=100 label="Titel Vorschaubild" value=model.vorschaubildTitel onChange=(action (mut model.vorschaubildTitel))}}
+          {{paper-input textarea=true block=true flex=100 label="Titel Vorschaubild" value=model.vorschaubildTitel onChange=(action (mut model.vorschaubildTitel))}}
+                    
+          {{!-- Exkursionsstationen und -länge --}}
+          <div class="layout-row">
+            {{paper-input flex=50 label="Exkursionsstationen" value=model.exkursionsstationen type=number min=1 required=true onChange=(action (mut model.exkursionsstationen))}}
+            {{paper-input flex=50 label="Exkursionslänge in km" value=model.exkursionslaenge onChange=(action (mut model.exkursionslaenge))}}
           </div>
 
           {{!-- Exkursionstypen --}}
-          <div layout="" layout-sm="column">
-            {{paper-input flex=70 label="Exkursionstypen" value=model.exkursionstypen onChange=(action (mut model.exkursionstypen))}}
-          </div>
-
-          <div layout="" layout-sm="column">
-            {{paper-input flex=50 label="Exkursionsstattionen" value=model.exkursionsstationen onChange=(action (mut model.exkursionsstationen))}}
-            {{paper-input flex=50 label="Exkursionslänge in km" value=model.exkursionslaenge onChange=(action (mut model.exkursionslaenge))}}
-          </div>
+          <h4>Exkursionstypen</h4>
+          {{paper-chips content=model.exkursionstypen
+            removeItem=(action "removeCategory")
+            addItem=(action "addCategory")
+            options=exkursionstypen
+            placeholder="Füge einen Typ hinzu"
+            noMatchesMessage="Typ existiert nicht"}}
 
       {{/card.content}}
       {{/if}}
@@ -188,41 +183,36 @@
        {{!-- Actionbound Metadaten --}}
       {{#if model.actionbound}}
       {{#card.content}}
-
-          {{!-- Titel --}}
-          <div layout="" layout-sm="column">
-            {{paper-input flex=100 label="Titel" value=model.title onChange=(action (mut model.title))}}
-          </div>
-
-          {{!-- Autor --}}
-          <div layout="" layout-sm="column">
-            {{paper-input flex=100 label="Autor" value=model.autor onChange=(action (mut model.autor))}}
-          </div>
-
-           {{!-- Kurzbeschreibung --}}
-          <div layout="" layout-sm="column">
-            {{paper-input textarea=true block=true passThru=(hash rows=4) flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}
-          </div>
           
-          {{!-- Vorschaubild --}}
-          <div layout="" layout-sm="column">
-            {{paper-input textarea=true block=true flex=100 label="Vorschaubild" value=model.vorschaubild onChange=(action (mut model.vorschaubild))}}
-          </div>
+        {{!-- Titel --}}
+        {{paper-input block=true label="Titel" value=model.title onChange=(action (mut model.title))}}
+        
+        {{!-- AutorIn --}}        
+        {{paper-input block=true label="AutorIn" value=model.autor onChange=(action (mut model.autor))}}
+        
+        {{!-- Kurzbeschreibung --}}
+        {{paper-input textarea=true block=true passThru=(hash rows=4) flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}
+          
+        {{!-- Vorschaubild --}}
+        {{paper-input textarea=true block=true flex=100 label="Vorschaubild" value=model.vorschaubild onChange=(action (mut model.vorschaubild))}}
+        
+        {{!-- Titel Vorschaubild --}}
+        {{paper-input textarea=true block=true flex=100 label="Titel Vorschaubild" value=model.vorschaubildTitel onChange=(action (mut model.vorschaubildTitel))}}
+                  
+        {{!-- Exkursionsstationen und -länge --}}
+        <div class="layout-row">
+          {{paper-input flex=50 label="Exkursionsstationen" value=model.exkursionsstationen type=number min=1 required=true onChange=(action (mut model.exkursionsstationen))}}
+          {{paper-input flex=50 label="Exkursionslänge in km" value=model.exkursionslaenge onChange=(action (mut model.exkursionslaenge))}}
+        </div>
 
-          {{!-- Titel Vorschaubild --}}
-          <div layout="" layout-sm="column">
-            {{paper-input textarea=true block=true flex=100 label="Titel Vorschaubild" value=model.vorschaubildTitel onChange=(action (mut model.vorschaubildTitel))}}
-          </div>
-
-          {{!-- Exkursionstypen --}}
-          <div layout="" layout-sm="column">
-            {{paper-input flex=70 label="Exkursionstypen" value=model.exkursionstypen onChange=(action (mut model.exkursionstypen))}}
-          </div>
-
-          <div layout="" layout-sm="column">
-            {{paper-input flex=50 label="Exkursionsstattionen" value=model.exkursionsstationen onChange=(action (mut model.exkursionsstationen))}}
-            {{paper-input flex=50 label="Exkursionslänge in km" value=model.exkursionslaenge onChange=(action (mut model.exkursionslaenge))}}
-          </div>
+        {{!-- Exkursionstypen --}}
+        <h4>Exkursionstypen</h4>
+        {{paper-chips content=model.exkursionstypen
+          removeItem=(action "removeCategory")
+          addItem=(action "addCategory")
+          options=exkursionstypen
+          placeholder="Füge einen Typ hinzu"
+          noMatchesMessage="Typ existiert nicht"}}
 
       {{/card.content}}
       {{/if}}
