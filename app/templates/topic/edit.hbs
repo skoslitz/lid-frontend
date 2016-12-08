@@ -17,18 +17,18 @@
 
       {{#card.content}}
 
-        {{!-- Titel --}}       
+        {{!-- Titel --}}
         {{paper-input block=true label="Titel" value=model.title onChange=(action (mut model.title))}}
-       
+
         {{!-- AutorIn --}}
         {{paper-input block=true label="AutorIn" value=model.autor onChange=(action (mut model.autor))}}
-       
+
         {{!-- Kurzbeschreibung --}}
         {{paper-input textarea=true block=true passThru=(hash rows=4) flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}
 
         {{!-- VG Wort Code --}}
         {{paper-input block=true label="VG Wort Code" value=model.vgWortCode onChange=(action (mut model.vgWortCode))}}
-        
+
         {{!-- Video --}}
         {{#if model.video}}
         <h4>Video</h4>
@@ -39,7 +39,7 @@
             </div>
             <div class="flex-50">
               {{paper-input block=true label="Titel" value=video.titel onChange=(action (mut video.titel))}}
-            </div>            
+            </div>
             </div>
             <div class="layout-row flex">
             <div class="flex-50">
@@ -47,31 +47,33 @@
             </div>
             <div class="flex-50">
                 {{paper-input block=true label="Vimeo Id" value=video.id onChange=(action (mut video.id))}}
-            </div>            
+            </div>
             </div>
             {{paper-input textarea=true block=true label="Beschreibung" value=video.beschreibung onChange=(action (mut video.beschreibung))}}
-          {{/each}}          
+          {{/each}}
         {{else}}
           <p>Video hinzufügen</p>
         {{/if}}
-   
+
 
         {{!-- Literaturangaben --}}
         <h4>Literaturangaben
-        <span class="meta-editor-button" onclick={{action "showReference" model.literaturangaben}}>alle anzeigen</span>
+        <span class="meta-editor-button-inline">{{show-references model=model references=model.literaturangaben}}</span>
         </h4>
           {{paper-chips content=model.literaturangaben
             removeItem=(action "removeReference")
-            addItem=(action "addReference")            
+            addItem=(action "addReference")
             placeholder="Neue Quelle"}}
 
         {{!-- Bildnachweise --}}
-        <h4>Bildnachweise</h4>
+        <h4>Bildnachweise
+        <span class="meta-editor-button-inline">{{show-references model=model references=model.bildnachweise}}</span>
+        </h4>
           {{paper-chips content=model.bildnachweise
             removeItem=(action "removeImgRef")
             addItem=(action "addImgRef")
             placeholder="Neuer Bildnachweis"}}
-        
+
         {{!-- Rubriken --}}
         <h4>Rubriken</h4>
           {{paper-chips content=model.rubriken

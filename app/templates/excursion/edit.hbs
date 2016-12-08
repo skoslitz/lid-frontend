@@ -41,7 +41,7 @@
 
         {{!-- Literaturangaben --}}
         <h4>Literaturangaben
-        <span class="meta-editor-button-inline">{{show-references model=model}}</span>
+        <span class="meta-editor-button-inline">{{show-references model=model references=model.literaturangaben}}</span>
         </h4>
           {{paper-chips content=model.literaturangaben
             removeItem=(action "removeReference")
@@ -49,7 +49,9 @@
             placeholder="Neue Quelle"}}
 
         {{!-- Bildnachweise --}}
-        <h4>Bildnachweise</h4>
+        <h4>Bildnachweise
+        <span class="meta-editor-button-inline">{{show-references model=model references=model.bildnachweise}}</span>
+        </h4>
           {{paper-chips content=model.bildnachweise
             removeItem=(action "removeImgRef")
             addItem=(action "addImgRef")
