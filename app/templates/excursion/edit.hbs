@@ -11,15 +11,15 @@
     {{#paper-card class="meta-editor" as |card|}}
       {{#card.title as |title|}}
         {{#title.text as |text|}}
-          {{#text.subhead}}
+          {{#text.subhead}}Metadaten{{/text.subhead}}
+          {{#text.headline}}
             {{model.id}}
             {{#if model.fremdexkursion}}
               <mark>Fremdexkursion</mark>
             {{else if model.actionbound}}
               <mark>Actionbound</mark>
             {{/if}}
-          {{/text.subhead}}
-          {{#text.headline}}Metadaten{{/text.headline}}
+          {{/text.headline}}
         {{/title.text}}
       {{/card.title}}
 
