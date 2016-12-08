@@ -2,57 +2,57 @@
 	{{!-- Shortcode menu --}}
     	{{#paper-menu as |menu|}}
 				{{#menu.trigger}}
-				  {{#paper-button raised=true}}Shortcode einfügen{{/paper-button}}
+				  {{#paper-button raised=true primary=true}}Shortcode einfügen{{/paper-button}}
 				{{/menu.trigger}}
 
 				{{#menu.content width=3 as |content|}}
-					<p class="centered">Wähle einen Shortcode aus</p>
+					<p class="centered">Verfügbare Shortcodes</p>
 					{{#paper-list}}
 							{{#paper-item class="md-3-line"}}
-							    <div class="md-list-item-text">
-							      <p>Anführungszeichen einsetzen</p>
-							    </div>
-								{{paper-divider}}
-									<div class="md-list-item-text">
+							  	<div class="md-list-item-text">
 										{{#paper-button raised=true mini=true onClick=(action "insertQuote")}}
 											{{paper-icon "format bold"}}
 										{{/paper-button}}
 									</div>
+								{{paper-divider}}
+									<div class="md-list-item-text">
+							      <p onClick={{action "insertQuote"}}>Anführungszeichen einsetzen</p>
+							    </div>
 							{{/paper-item}}
 
 					  	{{#paper-item class="md-3-line"}}
 							    <div class="md-list-item-text">
-							      <p>Fett einsetzen</p>
-							    </div>
-								{{paper-divider}}
-									<div class="md-list-item-text">
-										{{#paper-button raised=true mini=true onClick=(action "insertBold")}}
+							      {{#paper-button raised=true mini=true onClick=(action "insertBold")}}
 											{{paper-icon "format italic"}}
 										{{/paper-button}}
+							    </div>
+								{{paper-divider}}
+									<div class="md-list-item-text">
+										<p>Fett einsetzen</p>
 									</div>
 							{{/paper-item}}
 
 							{{#paper-item class="md-3-line"}}
 							    <div class="md-list-item-text">
-							      <p>Kursiv einsetzen</p>
-							    </div>
-								{{paper-divider}}
-									<div class="md-list-item-text">
-										{{#paper-button raised=true mini=true onClick=(action "insertShortcode")}}
+							      {{#paper-button raised=true mini=true onClick=(action "insertShortcode")}}
 											{{paper-icon "format quote"}}
 									  {{/paper-button}}
+							    </div>
+								{{paper-divider}}
+									<div class="md-list-item-text">
+										<p>Kursiv einsetzen</p>
 									</div>
 							{{/paper-item}}
 
 							{{#paper-item class="md-3-line"}}
 							    <div class="md-list-item-text">
-							      <p>Zeilenumbruch</p>
+							      {{#paper-button raised=true mini=true onClick=(action "insertShortcode")}}
+											{{paper-icon "wrap text"}}
+									  {{/paper-button}}
 							    </div>
 								{{paper-divider}}
 									<div class="md-list-item-text">
-										{{#paper-button raised=true mini=true onClick=(action "insertShortcode")}}
-											{{paper-icon "wrap text"}}
-									  {{/paper-button}}
+										<p>Zeilenumbruch</p>
 									</div>
 							{{/paper-item}}
 
@@ -61,13 +61,13 @@
 							{{#if excursion}}
 								{{#paper-item class="md-3-line"}}
 							    <div class="md-list-item-text">
-							      <p>Exkursion Stationstitel</p>
+							      {{#paper-button raised=true mini=true onClick=(action "insertStationstitel")}}
+											{{paper-icon "title"}}
+									  {{/paper-button}}
 							    </div>
 								{{paper-divider}}
 									<div class="md-list-item-text">
-										{{#paper-button raised=true mini=true onClick=(action "insertShortcode")}}
-											{{paper-icon "title"}}
-									  {{/paper-button}}
+										<p>Exkursion Stationstitel</p>
 									</div>
 								{{/paper-item}}
 							{{/if}}
@@ -89,7 +89,7 @@
   {{!-- Image assets menu --}}
     	{{#paper-menu as |menu|}}
 			{{#menu.trigger}}
-			  {{#paper-button raised=true}}Anhänge organisieren{{/paper-button}}
+			  {{#paper-button raised=true primary=true}}Anhänge organisieren{{/paper-button}}
 			{{/menu.trigger}}
 
 			{{#menu.content width=5 as |content|}}
@@ -124,11 +124,12 @@
 
 		{{/paper-menu}}
 
-		{{#paper-button raised=true mini=true onClick=(action "undo")}}
+		{{!-- Undo/Redo actiond --}}
+		{{!-- {{#paper-button raised=true mini=true onClick=(action "undo")}}
 			{{paper-icon "undo"}}
 		{{/paper-button}}
 
 		{{#paper-button raised=true mini=true onClick=(action "redo")}}
 			{{paper-icon "redo"}}
-		{{/paper-button}}
+		{{/paper-button}} --}}
 </div>

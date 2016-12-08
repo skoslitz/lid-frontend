@@ -6,8 +6,12 @@ export default Ember.Component.extend({
 		let trixToolbar = $('trix-toolbar');
 		return trixToolbar.remove()
 
-	},	
+	},
 	actions: {
+		insertStationstitel() {
+			let element = document.querySelector("trix-editor");
+			element.editor.insertString("{{% stationstitel titel=\"__Titel eintragen__\" nummer=\"__Standortnummer__\" %}}")
+		},
 		undo() {
 			let element = document.querySelector("trix-editor");
 			element.editor.undo()
@@ -60,8 +64,8 @@ export default Ember.Component.extend({
 
 			this.sendAction('updateAction');
 			}
-			    
-			
+
+
 		}
 	}
 });
