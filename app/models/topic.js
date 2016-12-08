@@ -10,7 +10,7 @@ export default DS.Model.extend({
 	autor: DS.attr('string'),
 	description: DS.attr('string'),
 	vgWortCode: DS.attr('string'),
-	bildnachweise: DS.attr('string'),
+	bildnachweise: DS.attr('array'),
 	literaturangaben: DS.attr('array'),
 	rubriken: DS.attr('array'),
 	video: DS.attr(''),

@@ -33,7 +33,7 @@ export default DS.JSONAPISerializer.extend({
                         "id": snapshot.attr('hugoId'),
                         "autor": snapshot.attr("autor"),
                         "title": snapshot.attr("title"),
-                        "bildnachweise": [snapshot.attr("bildnachweise")],
+                        "bildnachweise": snapshot.attr("bildnachweise"),
                         "date": snapshot.attr("date"),
                         "description": snapshot.attr("description"),
                         "literaturangaben": snapshot.attr("literaturangaben"),

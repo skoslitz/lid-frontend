@@ -27,38 +27,43 @@
           {{paper-input flex=60 label="AutorIn" value=model.autor onChange=(action (mut model.autor))}}
         </div>
 
+        {{!-- VG Wort Code --}}
+        <div layout="" layout-sm="column">
+          {{paper-input flex=70 label="VG Wort Code" value=model.vgWortCode onChange=(action (mut model.vgWortCode))}}
+        </div>
+
         {{!-- Kurzbeschreibung --}}
         <div layout="row" layout-sm="column">
           {{paper-input textarea=true block=true passThru=(hash rows=4) flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}
         </div>
 
         {{!-- Literaturangaben --}}
+        <div layout="" layout-sm="column">
         <h4>Literaturangaben
-        <span class="meta-editor-button" onclick={{action "addReference"}}>neue hinzufügen</span>
-        <span class="meta-editor-button" onclick={{action "removeReference"}}>letzte verwerfen</span> </h4>
-        {{#each (reverse model.literaturangaben) as |literaturangabe index|}}
-          <div layout="row" layout-sm="column">
-          {{paper-input textarea=true block=true flex=100 label="Quelle" value=literaturangabe onChange=(action (mut this.model.literaturangaben.[index]))}}
-          </div>
-        {{/each}}
+        <span class="meta-editor-button" onclick={{action "showReference" model.literaturangaben}}>alle anzeigen</span>
+        </h4>
+          {{paper-chips content=model.literaturangaben
+            removeItem=(action "removeReference")
+            addItem=(action "addReference")            
+            placeholder="Neue Quelle"}}
+        </div>
 
 
         {{!-- Bildnachweise --}}
         <div layout="" layout-sm="column">
-          {{paper-input textarea=true block=true flex=100 label="Bildnachweise" value=model.bildnachweise onChange=(action (mut model.bildnachweise))}}
+        <h4>Bildnachweise</h4>
+          {{paper-chips content=model.bildnachweise
+            removeItem=(action "removeImgRef")
+            addItem=(action "addImgRef")
+            placeholder="Neuer Bildnachweis"}}
         </div>
-
-        {{!-- VG Wort Code --}}
-        <div layout="" layout-sm="column">
-          {{paper-input flex=70 label="VG Wort Code" value=model.vgWortCode onChange=(action (mut model.vgWortCode))}}
-        </div>
-
+        
         {{!-- Rubriken --}}
         <div layout="" layout-sm="column">
         <h4>Rubriken</h4>
           {{paper-chips content=model.rubriken
-            removeItem=(action "removeItem")
-            addItem=(action "addItem")
+            removeItem=(action "removeCategory")
+            addItem=(action "addCategory")
             options=rubriken
             placeholder="Füge eine Rubrik hinzu"
             noMatchesMessage="Rubrik existiert nicht"}}

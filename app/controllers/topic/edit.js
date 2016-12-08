@@ -75,22 +75,32 @@ export default Ember.Controller.extend({
       showRelatedRegion: function() {
         this.transitionToRoute('region.edit', `${regionName}.md`);
       },
-      removeItem(item) {
+      removeCategory(item) {
         let rubriken = this.get('model.rubriken');
         rubriken.removeObject(item); 
       },
-      addItem(item) {
+      addCategory(item) {
         let rubriken = this.get('model.rubriken');
         rubriken.pushObject(item);        
       },
-      addReference() {
-        let literaturangaben = this.get('model.literaturangaben');
-        let literaturangabe = "AutorIn (Jahr): Titel";
-        literaturangaben.pushObject(literaturangabe);
-      },
-      removeReference() {
+      addReference(item) {
         let literaturangaben = this.get('model.literaturangaben');        
-        literaturangaben.removeObject(literaturangaben.get('lastObject'));
+        literaturangaben.pushObject(item);
       },
+      removeReference(item) {
+        let literaturangaben = this.get('model.literaturangaben');        
+        literaturangaben.removeObject(item); 
+      },
+      removeImgRef(item) {
+        let bildnachweise = this.get('model.bildnachweise');
+        bildnachweise.removeObject(item);       
+      },
+      addImgRef(item) {
+        let bildnachweise = this.get('model.bildnachweise');
+        bildnachweise.pushObject(item);        
+      },
+      showReference(model) {
+        console.log(model);
+      }
     }
 });
