@@ -164,5 +164,13 @@ export default Ember.Controller.extend({
 			let bundesland = this.get('region.bundesland');
 			bundesland.pushObject(item);        
 		},
+		removeExtent(item) {
+	        let extent = this.get('region.extent');
+	        extent.removeObject(item); 
+      	},
+		addExtent(item) {
+			let extent = this.get('region.extent');
+			extent.pushObject(item);        
+		}
 	}
 });

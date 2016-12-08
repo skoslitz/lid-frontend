@@ -41,7 +41,7 @@ export default DS.JSONAPISerializer.extend({
 				"ort": snapshot.attr("location"),
 				"reihentitel": snapshot.attr("editionTitle"),
 				"seitenzahl": snapshot.attr("pagination"),
-				"umfang": [snapshot.attr("extent")],
+				"umfang": snapshot.attr("extent"),
 				"verlag": snapshot.attr("publisher"),
 				"bundesland": snapshot.attr("bundesland"),
 			},

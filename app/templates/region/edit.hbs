@@ -101,9 +101,14 @@
         
         {{!-- Umfang --}}
         <div layout="row" layout-sm="column">
-          {{paper-input flex=60 label="Umfang" value=region.extent onChange=(action (mut region.extent))}}
-        </div>
-        
+         <h4>Umfang</h4>
+          {{paper-chips content=region.extent
+            removeItem=(action "removeExtent")
+            addItem=(action "addExtent")            
+            placeholder="Füge ein Element hinzu"}}
+          
+        </div>     
+            
         {{!-- Kurzbeschreibung --}}
         <div layout="row" layout-sm="column">
           {{paper-input passThru=(hash rows=15) textarea=true block=true flex=100 label="Kurzbeschreibung" value=region.description onChange=(action (mut region.description))}}
