@@ -22,30 +22,30 @@
           {{#text.headline}}Metadaten{{/text.headline}}
         {{/title.text}}
       {{/card.title}}
-      
+
       {{!-- Metadaten ohne Fremdexkursion/actionbound --}}
       {{#unless (or model.fremdexkursion model.actionbound)}}
       {{#card.content}}
 
         {{!-- Titel --}}
         {{paper-input block=true label="Titel" value=model.title onChange=(action (mut model.title))}}
-        
-        {{!-- AutorIn --}}        
+
+        {{!-- AutorIn --}}
         {{paper-input block=true label="AutorIn" value=model.autor onChange=(action (mut model.autor))}}
-        
+
         {{!-- Kurzbeschreibung --}}
         {{paper-input textarea=true block=true passThru=(hash rows=4) flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}
-     
+
         {{!-- VG Wort Code --}}
         {{paper-input block=true label="VG Wort Code" value=model.vgWortCode onChange=(action (mut model.vgWortCode))}}
-        
+
         {{!-- Literaturangaben --}}
         <h4>Literaturangaben
-        <span class="meta-editor-button" onclick={{action "showReference" model.literaturangaben}}>alle anzeigen</span>
+        <span class="meta-editor-button-inline">{{show-references model=model}}</span>
         </h4>
           {{paper-chips content=model.literaturangaben
             removeItem=(action "removeReference")
-            addItem=(action "addReference")            
+            addItem=(action "addReference")
             placeholder="Neue Quelle"}}
 
         {{!-- Bildnachweise --}}
@@ -54,7 +54,7 @@
             removeItem=(action "removeImgRef")
             addItem=(action "addImgRef")
             placeholder="Neuer Bildnachweis"}}
-        
+
         {{!-- Exkursionstypen --}}
         <h4>Exkursionstypen</h4>
           {{paper-chips content=model.exkursionstypen
@@ -63,18 +63,18 @@
             options=exkursionstypen
             placeholder="Füge einen Typ hinzu"
             noMatchesMessage="Typ existiert nicht"}}
-        
-      
+
+
       {{!-- Exkursionsroute --}}
         <div id="dialog-container">
-          
+
           {{!-- Stationen hinzufügen/entfernen, Kartenausschnitt --}}
           <h3 class="md-headline">Die Exkursionroute
           <span class="meta-excursion-editor-button" onClick={{action "addExcursionStation"}}>Station hinzufügen</span>
           <span class="meta-excursion-editor-button" onClick={{action "removeExcursionStation"}}>Letzte Station entfernen</span>
           <span class="meta-excursion-editor-button" onClick={{action "setMapExtent"}}>Kartenausschnitt festlegen</span>
           </h3>
-           
+
           {{!-- Centroid, Zoomstufe, Exkursionsstationen, Exkursionslänge --}}
           <div class="layout-row">
             {{!-- {{paper-input flex=33 label="Kartenmittelpunkt Lat." value=model.centroidLat onChange=(action (mut model.centroidLat))}}
@@ -86,7 +86,7 @@
           </div>
 
           {{!-- Kartenausschnitt, Exkursionsstationen --}}
-          <div layout="" layout-sm="column">          
+          <div layout="" layout-sm="column">
 
             {{!-- Set map extent --}}
             {{#if setMapExtentDialog}}
@@ -139,7 +139,7 @@
           </div>
 
         </div>
- 
+
       {{/card.content}}
       {{/unless}}
 
@@ -149,19 +149,19 @@
 
           {{!-- Titel --}}
           {{paper-input block=true label="Titel" value=model.title onChange=(action (mut model.title))}}
-          
+
           {{!-- Exkursionsanbieter --}}
           {{paper-input block=true label="Exkursionsanbieter" value=model.exkursionsAnbieter onChange=(action (mut model.exkursionsAnbieter))}}
-          
-          {{!-- ExkursionsUrl --}}          
+
+          {{!-- ExkursionsUrl --}}
           {{paper-input block=true label="Exkursions Url" value=model.exkursionsUrl onChange=(action (mut model.exkursionsUrl))}}
-          
+
           {{!-- Vorschaubild --}}
           {{paper-input textarea=true block=true flex=100 label="Vorschaubild" value=model.vorschaubild onChange=(action (mut model.vorschaubild))}}
-          
+
           {{!-- Titel Vorschaubild --}}
           {{paper-input textarea=true block=true flex=100 label="Titel Vorschaubild" value=model.vorschaubildTitel onChange=(action (mut model.vorschaubildTitel))}}
-                    
+
           {{!-- Exkursionsstationen und -länge --}}
           <div class="layout-row">
             {{paper-input flex=50 label="Exkursionsstationen" value=model.exkursionsstationen type=number min=1 required=true onChange=(action (mut model.exkursionsstationen))}}
@@ -183,22 +183,22 @@
        {{!-- Actionbound Metadaten --}}
       {{#if model.actionbound}}
       {{#card.content}}
-          
+
         {{!-- Titel --}}
         {{paper-input block=true label="Titel" value=model.title onChange=(action (mut model.title))}}
-        
-        {{!-- AutorIn --}}        
+
+        {{!-- AutorIn --}}
         {{paper-input block=true label="AutorIn" value=model.autor onChange=(action (mut model.autor))}}
-        
+
         {{!-- Kurzbeschreibung --}}
         {{paper-input textarea=true block=true passThru=(hash rows=4) flex=100 label="Kurzbeschreibung" value=model.description onChange=(action (mut model.description))}}
-          
+
         {{!-- Vorschaubild --}}
         {{paper-input textarea=true block=true flex=100 label="Vorschaubild" value=model.vorschaubild onChange=(action (mut model.vorschaubild))}}
-        
+
         {{!-- Titel Vorschaubild --}}
         {{paper-input textarea=true block=true flex=100 label="Titel Vorschaubild" value=model.vorschaubildTitel onChange=(action (mut model.vorschaubildTitel))}}
-                  
+
         {{!-- Exkursionsstationen und -länge --}}
         <div class="layout-row">
           {{paper-input flex=50 label="Exkursionsstationen" value=model.exkursionsstationen type=number min=1 required=true onChange=(action (mut model.exkursionsstationen))}}
@@ -218,7 +218,7 @@
       {{/if}}
 
     {{/paper-card}}
-    
+
     {{!-- Fremdexkursion ausschließen --}}
     {{#unless model.fremdexkursion}}
       {{#content-editor model=model excursion=true assetUrl=model.assetUrl updateAction="refreshRoute"}}
