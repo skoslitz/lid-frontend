@@ -58,62 +58,69 @@
     {{#paper-card class="meta-editor" as |card|}}
       {{#card.title as |title|}}
         {{#title.text as |text|}}
-          {{#text.subhead}}Band {{region.title}}{{/text.subhead}}
-          {{#text.headline}}Metadaten{{/text.headline}}
+          {{#text.subhead}}Metadaten{{/text.subhead}}
+          {{#text.headline}}Band {{region.bandnummer}} {{region.title}}{{/text.headline}}
         {{/title.text}}
       {{/card.title}}
       {{#card.content}}
-        
+
         {{!-- Titel / Bandnummer --}}
-        <div layout="row" layout-sm="column">
-    		  {{paper-input flex=70 label="Titel" value=region.title onChange=(action (mut region.title))}}
-    		  {{paper-input flex=30 label="Bandnummer" value=region.bandnummer onChange=(action (mut region.bandnummer))}}
-    	  </div>
-        
+        {{paper-input block=true label="Titel" value=region.title onChange=(action (mut region.title))}}
+
         {{!-- Untertitel --}}
-        <div layout="row" layout-sm="column">
-          {{paper-input flex=100 label="Untertitel" value=region.subtitle onChange=(action (mut region.subtitle))}}
-        </div>
-        
+        {{paper-input block=true label="Untertitel" value=region.subtitle onChange=(action (mut region.subtitle))}}
+
+
         {{!-- Reihentitel / Erscheinungsjahr --}}
-        <div layout="row" layout-sm="column">
-          {{paper-input flex=70 label="Reihentitel" value=region.editionTitle onChange=(action (mut region.editionTitle))}}
-          {{paper-input flex=30 label="Erscheinungsjahr" value=region.dateOfPublication onChange=(action (mut region.dateOfPublication))}}
-        </div>
-        
-        {{!-- Herausgeber / ISBN --}}
-        <div layout="row" layout-sm="column">
-          {{paper-input flex=70 label="Herausgeber" value=region.editor onChange=(action (mut region.editor))}}
-          {{paper-input flex=30 label="ISBN" value=region.isbn onChange=(action (mut region.isbn))}}
-        </div>
-        
-        {{!-- Herausgeberinstitut --}}
-        <div layout="row" layout-sm="column">
-          {{paper-input flex=100 label="Herausgeberinstitut" value=region.editorInstitut onChange=(action (mut region.editorInstitut))}}
+        <div class="layout-row">
+        <span class="flex-70">
+          {{paper-input block=true label="Reihentitel" value=region.editionTitle onChange=(action (mut region.editionTitle))}}
+        </span>
+        <span class="flex-30">
+          {{paper-input label="Erscheinungsjahr" value=region.dateOfPublication onChange=(action (mut region.dateOfPublication))}}
+        </span>
         </div>
 
-        {{!-- Verlag / Ort / Seitenzahl --}}
-        <div layout="row" layout-sm="column">
-          {{paper-input flex=30 label="Verlag" value=region.publisher onChange=(action (mut region.publisher))}}
-          {{paper-input flex=30 label="Ort" value=region.location onChange=(action (mut region.location))}}
-          {{paper-input flex=30 label="Seitenzahl" value=region.pagination onChange=(action (mut region.pagination))}}
+        {{!-- Herausgeber / ISBN --}}
+        <div class="layout-row">
+        <span class="flex-70">
+          {{paper-input block=true label="Herausgeber" value=region.editor onChange=(action (mut region.editor))}}
+        </span>
+        <span class="flex-30">
+          {{paper-input flex=30 label="ISBN" value=region.isbn onChange=(action (mut region.isbn))}}
+        </span>
         </div>
-        
-        {{!-- Umfang --}}
-        <div layout="row" layout-sm="column">
-         <h4>Umfang</h4>
-          {{paper-chips content=region.extent
-            removeItem=(action "removeExtent")
-            addItem=(action "addExtent")            
-            placeholder="Füge ein Element hinzu"}}
-          
-        </div>     
-            
+
+        {{!-- Herausgeberinstitut --}}
+        {{paper-input block=true label="Herausgeberinstitut" value=region.editorInstitut onChange=(action (mut region.editorInstitut))}}
+
+        {{!-- Verlag / Ort / Seitenzahl --}}
+        <div class="layout-row">
+        <span class="flex-50">
+          {{paper-input block=true label="Ort" value=region.location onChange=(action (mut region.location))}}
+        </span>
+        <span class="flex-25">
+          {{paper-input block=true label="Verlag" value=region.publisher onChange=(action (mut region.publisher))}}
+        </span>
+        <span class="flex-25">
+          {{paper-input block=true label="Seitenzahl" value=region.pagination onChange=(action (mut region.pagination))}}
+        </span>
+        </div>
+
+
+
         {{!-- Kurzbeschreibung --}}
         <div layout="row" layout-sm="column">
           {{paper-input passThru=(hash rows=15) textarea=true block=true flex=100 label="Kurzbeschreibung" value=region.description onChange=(action (mut region.description))}}
         </div>
-        
+
+        {{!-- Umfang --}}
+         <h4>Umfang</h4>
+          {{paper-chips content=region.extent
+            removeItem=(action "removeExtent")
+            addItem=(action "addExtent")
+            placeholder="Füge ein Element hinzu"}}
+
         {{!-- Bundesland --}}
         <div layout="" layout-sm="column">
         <h4>Bundesland</h4>
@@ -123,7 +130,7 @@
             options=bundeslaender
             placeholder="Füge ein Bundesland hinzu"
             noMatchesMessage="Dieses Bundesland existiert nicht"}}
-          
+
         </div>
 
 
