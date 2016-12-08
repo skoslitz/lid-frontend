@@ -1,19 +1,10 @@
 import DS from 'ember-data';
 
 export default DS.Transform.extend({
-  deserialize: function(serialized) {
+  serialize: function(serialized) {
         return (Ember.typeOf(serialized) == "array") ? serialized : []        
-    },  
-  serialize: function(deserialized) {
-        return deserialized;
-  } 
-
-  // previous version
-  /*deserialize: function(serialized) {
-    return (Ember.typeOf(serialized) == "array") ? serialized : [];
-  },
-
-  serialize: function(deserialized) {
+  },  
+  deserialize: function(deserialized) {
     var type = Ember.typeOf(deserialized);
     if (type == 'array') {
         return deserialized;
@@ -24,5 +15,6 @@ export default DS.Transform.extend({
     } else {
         return [];
     }
-  }*/
+  }
+  
 });

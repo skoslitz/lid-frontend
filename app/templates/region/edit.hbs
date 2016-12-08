@@ -110,9 +110,17 @@
         </div>
         
         {{!-- Bundesland --}}
-        {{#each region.bundesland as |bundesland|}}
-          {{paper-checkbox label=bundesland value=region.bundesland onChange=(action (mut region.bundesland))}}
-        {{/each}}
+        <div layout="" layout-sm="column">
+        <h4>Bundesland</h4>
+          {{paper-chips content=region.bundesland
+            removeItem=(action "removeItem")
+            addItem=(action "addItem")
+            options=bundeslaender
+            placeholder="Füge ein Bundesland hinzu"
+            noMatchesMessage="Dieses Bundesland existiert nicht"}}
+          
+        </div>
+
 
       {{/card.content}}
     {{/paper-card}}

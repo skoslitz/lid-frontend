@@ -5,6 +5,24 @@ export default Ember.Controller.extend({
 	createExcursion: false,
 	updateDialog: false,
 	deleteDialog: false,
+	bundeslaender: [
+      "Baden-Württemberg",
+      "Bayern",
+      "Berlin",
+      "Brandenburg",
+      "Bremen",
+      "Hamburg",
+      "Hessen",
+      "Mecklenburg-Vorpommern",
+      "Niedersachsen",
+      "Nordrhein-Westfalen",
+      "Rheinland-Pfalz",
+      "Saarland",
+      "Sachsen",
+      "Sachsen-Anhalt",
+      "Schleswig-Holstein",
+      "Thüringen"
+    ],
 	actions: {
 		openCreateTopicDialog() {
 			this.set('createTopic', true);
@@ -137,6 +155,14 @@ export default Ember.Controller.extend({
     	  			self.transitionToRoute('index');
     	  		});
 			})
-		}
+		},
+		removeItem(item) {
+	        let bundesland = this.get('region.bundesland');
+	        bundesland.removeObject(item); 
+      	},
+		addItem(item) {
+			let bundesland = this.get('region.bundesland');
+			bundesland.pushObject(item);        
+		},
 	}
 });
