@@ -32,7 +32,7 @@ export default Ember.Controller.extend({
 		},
 		createTopicConfirmed(topicMeta) {
 			let bandnummer = this.get('region.bandnummer');
-			
+
 			let hugoId = bandnummer + "_B_" + topicMeta.articleNumber
 	    	let sanitizeArticleName = topicMeta.articleName.toLowerCase().trim().dasherize();
 	    	var store = this.get('store');
@@ -136,10 +136,8 @@ export default Ember.Controller.extend({
 				}), 1200);
 			});
 		},
-		updateCover(file) {
-			let bandnummer = this.get('region.bandnummer');
-			let cover = `${bandnummer}/${file}`
-			this.set('region.cover', cover)			
+		updateCover(image) {
+			this.set('region.cover', image.filename)
 		},
 		openDeleteDialog() {
 			this.set('deleteDialog', true);
@@ -163,19 +161,19 @@ export default Ember.Controller.extend({
 		},
 		removeItem(item) {
 	        let bundesland = this.get('region.bundesland');
-	        bundesland.removeObject(item); 
+	        bundesland.removeObject(item);
       	},
 		addItem(item) {
 			let bundesland = this.get('region.bundesland');
-			bundesland.pushObject(item);        
+			bundesland.pushObject(item);
 		},
 		removeExtent(item) {
 	        let extent = this.get('region.extent');
-	        extent.removeObject(item); 
+	        extent.removeObject(item);
       	},
 		addExtent(item) {
 			let extent = this.get('region.extent');
-			extent.pushObject(item);        
+			extent.pushObject(item);
 		}
 	}
 });

@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
         this.get('model').get('region').then(function(region) {
           regionId = region.get('id');
           self.transitionToRoute('excursion-list', regionId);
-        });        
+        });
       },
       relatedRegion() {
         var regionId;
@@ -24,7 +24,7 @@ export default Ember.Controller.extend({
         this.get('model').get('region').then(function(region) {
           regionId = region.get('id');
           self.transitionToRoute('region.edit', regionId);
-        });   
+        });
       },
       openDeleteDialog() {
         console.log('open dialog from ctrl');
@@ -38,7 +38,7 @@ export default Ember.Controller.extend({
         this.set('setMapExtentDialog', false);
       },
       updateExcursion: function() {
-        this.set('updateDialog', true);       
+        this.set('updateDialog', true);
 
         let excursionId = this.get('model.id');
 
@@ -50,6 +50,9 @@ export default Ember.Controller.extend({
             self.set('updateDialog', false);
           }), 1200);
         });
+      },
+      updateCover(image) {
+        this.set('model.cover', image.filename)
       },
       deleteExcursion() {
         let excursionId = this.get('model.id');
@@ -120,27 +123,27 @@ export default Ember.Controller.extend({
       },
       removeCategory(item) {
         let exkursionstypen = this.get('model.exkursionstypen');
-        exkursionstypen.removeObject(item); 
+        exkursionstypen.removeObject(item);
       },
       addCategory(item) {
         let exkursionstypen = this.get('model.exkursionstypen');
-        exkursionstypen.pushObject(item);        
+        exkursionstypen.pushObject(item);
       },
       addReference(item) {
-        let literaturangaben = this.get('model.literaturangaben');        
+        let literaturangaben = this.get('model.literaturangaben');
         literaturangaben.pushObject(item);
       },
       removeReference(item) {
-        let literaturangaben = this.get('model.literaturangaben');        
-        literaturangaben.removeObject(item); 
+        let literaturangaben = this.get('model.literaturangaben');
+        literaturangaben.removeObject(item);
       },
       removeImgRef(item) {
         let bildnachweise = this.get('model.bildnachweise');
-        bildnachweise.removeObject(item);       
+        bildnachweise.removeObject(item);
       },
       addImgRef(item) {
         let bildnachweise = this.get('model.bildnachweise');
-        bildnachweise.pushObject(item);        
+        bildnachweise.pushObject(item);
       },
       showReference(model) {
         console.log(model);

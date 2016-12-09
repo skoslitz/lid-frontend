@@ -3,7 +3,7 @@ import DS from 'ember-data';
 export default DS.Model.extend({
 	// Attributes
 	hugoId: DS.attr('string'),
-	path: DS.attr('string'),	
+	path: DS.attr('string'),
 	title: DS.attr('string'),
 	autor: DS.attr('string'),
 	date: DS.attr('string'),
@@ -27,6 +27,12 @@ export default DS.Model.extend({
 	exkursionsstationen: DS.attr('number'),
 	exkursionstypen: DS.attr(),
 	images: DS.attr(),
+	staticUrl: Ember.computed('hugoId', function() {
+		let hugoId = this.get('hugoId');
+		let bandnummer = this.get('hugoId').substr(0,2);
+		let type = "exkursionen";
+		return `${'assets/img/'+ bandnummer + '/' + type + '/' + hugoId}`
+	}),
 	assetUrl: Ember.computed('hugoId', function() {
 		let hugoId = this.get('hugoId');
 		let bandnummer = this.get('hugoId').substr(0,2);
@@ -36,9 +42,9 @@ export default DS.Model.extend({
 	actionbound: DS.attr('boolean'),
 	fremdexkursion: DS.attr('boolean'),
 	exkursionsAnbieter: DS.attr('string'),
-	exkursionsUrl: DS.attr('string'),	
+	exkursionsUrl: DS.attr('string'),
 	vorschaubild: DS.attr('string'),
-	vorschaubildTitel: DS.attr('string'),	
+	vorschaubildTitel: DS.attr('string'),
 	// Associations
 	region: DS.belongsTo('region')
 });

@@ -13,19 +13,34 @@
           {{#text.subhead}}Metadaten{{/text.subhead}}
           {{#text.headline}}{{model.id}}{{/text.headline}}
         {{/title.text}}
-        
-        {{#if model.cover}}
-          {{#title.media size="md"}}                 
-           <img src="http://localhost:1313/{{model.staticUrl}}/{{model.cover}}"
-              alt="{{model.title}} Cover != {{model.cover}}"
-              title="{{model.title}} Cover">
-          {{/title.media}}          
-        {{else}}
-          <div>
-            <h4>Coverbild hinzufügen</h4>
-            {{file-upload url=model.assetUrl updateAction="updateCover"}}  
-          </div>        
-        {{/if}} 
+
+        {{#title.media size="lg"}}
+        {{#paper-menu as |menu|}}
+          {{#menu.trigger}}
+            <p class="meta-editor-button">Neues Cover auswählen</p>
+          {{/menu.trigger}}
+
+          {{#menu.content width=5 as |content|}}
+            {{#paper-list}}
+            {{#each model.images as |image|}}
+              {{#paper-item onClick=null as |controls|}}
+                <img class="preview-img" src="{{image.src}}" alt="">
+                <div class="md-list-item-text asset-viewer-list-item">
+                  <h4>{{image.filename}}</h4>
+                </div>
+                {{#controls.button secondary=true iconButton=true onClick=(action "updateCover" image)}}
+                  {{paper-icon "image"}}
+                {{/controls.button}}
+              {{/paper-item}}
+            {{/each}}
+            {{/paper-list}}
+          {{/menu.content}}
+        {{/paper-menu}}
+         <img src="http://localhost:1313/{{model.staticUrl}}/{{model.cover}}"
+            alt="Kein Cover ausgewählt"
+            title="{{model.title}} Cover">
+        {{/title.media}}
+
 
       {{/card.title}}
 
@@ -62,8 +77,8 @@
               {{paper-input block=true label="Quelle" value=video.quelle onChange=(action (mut video.quelle))}}
             </div>
             <div class="flex-30">
-              {{paper-input block=true label="Länge" value=video.laenge onChange=(action (mut video.laenge))}}              
-            </div>            
+              {{paper-input block=true label="Länge" value=video.laenge onChange=(action (mut video.laenge))}}
+            </div>
             </div>
             {{paper-input textarea=true block=true label="Beschreibung" value=video.beschreibung onChange=(action (mut video.beschreibung))}}
           {{/each}}

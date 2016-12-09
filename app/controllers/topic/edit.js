@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
         this.get('model').get('region').then(function(region) {
           regionId = region.get('id');
           self.transitionToRoute('topic-list', regionId);
-        });        
+        });
       },
       relatedRegion() {
         var regionId;
@@ -25,7 +25,7 @@ export default Ember.Controller.extend({
         this.get('model').get('region').then(function(region) {
           regionId = region.get('id');
           self.transitionToRoute('region.edit', regionId);
-        });   
+        });
       },
       openDeleteDialog() {
         console.log('open dialog from ctrl');
@@ -54,8 +54,8 @@ export default Ember.Controller.extend({
           }), 1200);
         });
       },
-      updateCover(file) {
-        this.set('model.cover', file)     
+      updateCover(image) {
+        this.set('model.cover', image.filename)
       },
       deleteTopic() {
         let topicId = this.get('model.id');
@@ -80,27 +80,27 @@ export default Ember.Controller.extend({
       },
       removeCategory(item) {
         let rubriken = this.get('model.rubriken');
-        rubriken.removeObject(item); 
+        rubriken.removeObject(item);
       },
       addCategory(item) {
         let rubriken = this.get('model.rubriken');
-        rubriken.pushObject(item);        
+        rubriken.pushObject(item);
       },
       addReference(item) {
-        let literaturangaben = this.get('model.literaturangaben');        
+        let literaturangaben = this.get('model.literaturangaben');
         literaturangaben.pushObject(item);
       },
       removeReference(item) {
-        let literaturangaben = this.get('model.literaturangaben');        
-        literaturangaben.removeObject(item); 
+        let literaturangaben = this.get('model.literaturangaben');
+        literaturangaben.removeObject(item);
       },
       removeImgRef(item) {
         let bildnachweise = this.get('model.bildnachweise');
-        bildnachweise.removeObject(item);       
+        bildnachweise.removeObject(item);
       },
       addImgRef(item) {
         let bildnachweise = this.get('model.bildnachweise');
-        bildnachweise.pushObject(item);        
+        bildnachweise.pushObject(item);
       },
       addVideo() {
         let newVideo = [
@@ -112,7 +112,7 @@ export default Ember.Controller.extend({
             "titel": "",
             }
         ];
-        this.set('model.video', newVideo);        
+        this.set('model.video', newVideo);
       },
       removeVideo() {
         this.set('model.video', undefined);
