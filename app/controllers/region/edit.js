@@ -136,6 +136,11 @@ export default Ember.Controller.extend({
 				}), 1200);
 			});
 		},
+		updateCover(file) {
+			let bandnummer = this.get('region.bandnummer');
+			let cover = `${bandnummer}/${file}`
+			this.set('region.cover', cover)			
+		},
 		openDeleteDialog() {
 			this.set('deleteDialog', true);
 		},

@@ -18,6 +18,7 @@ export default DS.JSONAPISerializer.extend({
 		resourceHash.attributes.extent = `${resourceHash.attributes.metadata.umfang}`
 		resourceHash.attributes.publisher = `${resourceHash.attributes.metadata.verlag}`
 		resourceHash.attributes.bundesland = `${resourceHash.attributes.metadata.bundesland}`
+		resourceHash.attributes.cover = `${resourceHash.attributes.metadata.titelbild}`
 		return this._super(...arguments)
 	},
 	serializeIntoHash(hash, typeClass, snapshot) {
@@ -44,6 +45,7 @@ export default DS.JSONAPISerializer.extend({
 				"umfang": snapshot.attr("extent"),
 				"verlag": snapshot.attr("publisher"),
 				"bundesland": snapshot.attr("bundesland"),
+				"titelbild": snapshot.attr("cover"),
 			},
 			"content": snapshot.attr("content")
 		}

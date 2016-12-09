@@ -21,11 +21,13 @@ export default DS.Model.extend({
 	publisher: DS.attr('string'),
 	bundesland: DS.attr('array'),
 	content: DS.attr('string'),
+	cover: DS.attr('string'),
 	images: DS.attr(''),
 	assetUrl: Ember.computed('bandnummer', function() {
 		let bandnummer = this.get('bandnummer');
 		return `${'api/asset/img/'+ bandnummer}`
 	}),
+	staticUrl: "api/asset/img",
 
 	// Associations
 	excursions: DS.hasMany('excursion'),

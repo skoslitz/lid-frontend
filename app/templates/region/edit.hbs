@@ -56,12 +56,29 @@
 
     {{!-- Frontmatter Region --}}
     {{#paper-card class="meta-editor" as |card|}}
+      
       {{#card.title as |title|}}
         {{#title.text as |text|}}
           {{#text.subhead}}Metadaten{{/text.subhead}}
           {{#text.headline}}Band {{region.bandnummer}} {{region.title}}{{/text.headline}}
         {{/title.text}}
+
+        {{#if (eq region.cover "undefined")}}
+        <div>
+          <h4>Coverbild hinzufügen</h4>
+          {{file-upload url=region.assetUrl updateAction="updateCover"}}  
+        </div>          
+        {{else}}
+        {{#title.media size="md"}}                 
+         <img src="http://localhost:1313/assets/img/{{region.cover}}"
+            alt="{{region.title}} Cover"
+            title="{{region.title}} Cover">
+        {{/title.media}}
+        {{/if}}          
+                      
+        
       {{/card.title}}
+      
       {{#card.content}}
 
         {{!-- Titel / Bandnummer --}}
