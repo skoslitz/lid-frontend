@@ -12,7 +12,6 @@ export default Ember.Route.extend({
 			console.log("get previewSite action from component")
 		},
 		createRegion(bandnummer, regionName) {
-	    	console.log("Route receive action with", bandnummer, regionName);
 	    	let sanitizeRegionName = regionName.toLowerCase().trim().dasherize();
 	    	var store = this.get('store');
 	    	let actualDate = new Date();
@@ -22,20 +21,20 @@ export default Ember.Route.extend({
 				bandnummer: parseInt(bandnummer),
 				title: regionName,
 				path: `regionen/${bandnummer}-${sanitizeRegionName}.md`,
-				subtitle: " ",
-				description: " ",
-				date: "",
-				dateOfPublication: " ",
-				editor: " ",
+				subtitle: "",
+				description: "",
+				date: actualDate,
+				dateOfPublication: "",
+				editor: "",
 				editorInstitut: "Leibniz-Institut für Länderkunde e.V. und Sächsische Akademie der Wissenschaften zu Leipzig",
-				isbn: " ",
-				location: " ",
+				isbn: "",
+				location: "",
 				editionTitle: "Landschaften in Deutschland",
 				pagination: parseInt(100),
 				extent: [],
 				publisher: "Böhlau Verlag",
-				bundesland: ["Sachsen", "Thüringen"],
-				content: "some content text"
+				bundesland: [],
+				content: ""
 			});
 
 	    	var self = this;
