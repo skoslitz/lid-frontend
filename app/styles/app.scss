@@ -1,6 +1,6 @@
 $primary: "light-green";
 $accent: "blue";
-$warn: "deep-orange";
+$warn: "red";
 $background: "grey";
 $link: "yellow";
 
@@ -52,6 +52,10 @@ html, body {
 
 .centered {
 	text-align: center;
+}
+
+.text-underline:hover {
+	text-decoration: underline;
 }
 
 .padding-top {
@@ -125,6 +129,10 @@ html, body {
 .preview-img {
 	width: 80px;
 	height: 80px;
+}
+
+.asset-viewer-list-item {
+	padding-left: 0.3em;
 }
 
 // excursion edit leaflet map
