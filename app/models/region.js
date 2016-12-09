@@ -26,8 +26,7 @@ export default DS.Model.extend({
 	assetUrl: Ember.computed('bandnummer', function() {
 		let bandnummer = this.get('bandnummer');
 		return `${'api/asset/img/'+ bandnummer}`
-	}),
-	staticUrl: "api/asset/img",
+	})	
 
 	// Associations
 	excursions: DS.hasMany('excursion'),
