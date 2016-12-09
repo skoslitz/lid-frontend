@@ -31,28 +31,32 @@
 
         {{!-- Video --}}
         {{#if model.video}}
-        <h4>Video</h4>
+        <h4>Video
+        <span class="meta-editor-button" onclick={{action "removeVideo"}}>löschen</span>
+        </h4>
           {{#each model.video as |video|}}
             <div class="layout-row flex">
-            <div class="flex-50">
-              {{paper-input block=true label="Quelle" value=video.quelle onChange=(action (mut video.quelle))}}
-            </div>
-            <div class="flex-50">
+            <div class="flex-70">
               {{paper-input block=true label="Titel" value=video.titel onChange=(action (mut video.titel))}}
+            </div>
+            <div class="flex-30">
+                {{paper-input block=true label="Vimeo Id" value=video.id onChange=(action (mut video.id))}}
             </div>
             </div>
             <div class="layout-row flex">
-            <div class="flex-50">
-              {{paper-input block=true label="Länge" value=video.laenge onChange=(action (mut video.laenge))}}
+            <div class="flex-70">
+              {{paper-input block=true label="Quelle" value=video.quelle onChange=(action (mut video.quelle))}}
             </div>
-            <div class="flex-50">
-                {{paper-input block=true label="Vimeo Id" value=video.id onChange=(action (mut video.id))}}
-            </div>
+            <div class="flex-30">
+              {{paper-input block=true label="Länge" value=video.laenge onChange=(action (mut video.laenge))}}              
+            </div>            
             </div>
             {{paper-input textarea=true block=true label="Beschreibung" value=video.beschreibung onChange=(action (mut video.beschreibung))}}
           {{/each}}
         {{else}}
-          <p>Video hinzufügen</p>
+          <h4>Video
+          <span class="meta-editor-button" onclick={{action "addVideo"}}>neues hinzufügen</span>
+          </h4>
         {{/if}}
 
 

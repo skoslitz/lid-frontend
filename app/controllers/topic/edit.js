@@ -99,8 +99,20 @@ export default Ember.Controller.extend({
         let bildnachweise = this.get('model.bildnachweise');
         bildnachweise.pushObject(item);        
       },
-      showReference(model) {
-        console.log(model);
+      addVideo() {
+        let newVideo = [
+          {
+            "beschreibung": "",
+            "id": "",
+            "laenge": "",
+            "quelle": "",
+            "titel": "",
+            }
+        ];
+        this.set('model.video', newVideo);        
+      },
+      removeVideo() {
+        this.set('model.video', undefined);
       }
     }
 });
