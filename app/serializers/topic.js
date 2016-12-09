@@ -9,17 +9,14 @@ export default DS.JSONAPISerializer.extend({
             resourceHash.attributes.description = resourceHash.attributes.metadata.description
               resourceHash.attributes.literaturangaben = resourceHash.attributes.metadata.literaturangaben
             resourceHash.attributes.rubriken = resourceHash.attributes.metadata.rubriken
-            resourceHash.attributes.subtitle = resourceHash.attributes.metadata.subtitle
-           
+            resourceHash.attributes.subtitle = resourceHash.attributes.metadata.subtitle           
             resourceHash.attributes.title = resourceHash.attributes.metadata.title
             resourceHash.attributes.vgWortCode = resourceHash.attributes.metadata.vg_wort_code
-            resourceHash.attributes.vorschaubild = resourceHash.attributes.metadata.vorschaubild
-            resourceHash.attributes.titelbild = resourceHash.attributes.metadata.titelbild
-            resourceHash.attributes.titelbildQuelle = resourceHash.attributes.metadata.titelbild_quelle
-            resourceHash.attributes.titelbildTitel = resourceHash.attributes.metadata.titelbild_titel
-            resourceHash.attributes.video = resourceHash.attributes.metadata.video
-            resourceHash.attributes.vorschaubild = resourceHash.attributes.metadata.vorschaubild    
-           
+            resourceHash.attributes.previewCover = resourceHash.attributes.metadata.vorschaubild
+            resourceHash.attributes.cover = resourceHash.attributes.metadata.titelbild
+            resourceHash.attributes.coverSrc = resourceHash.attributes.metadata.titelbild_quelle
+            resourceHash.attributes.coverTitle = resourceHash.attributes.metadata.titelbild_titel
+            resourceHash.attributes.video = resourceHash.attributes.metadata.video           
             return resourceHash.attributes;
     },
     serializeIntoHash(hash, typeClass, snapshot) {
@@ -41,12 +38,11 @@ export default DS.JSONAPISerializer.extend({
                         "rubriken": snapshot.attr("rubriken"),
                         "title": snapshot.attr("title"),                        
                         "vg_wort_code": snapshot.attr("vgWortCode"),
-                        "vorschaubild": snapshot.attr("vorschaubild"),
-                        "titelbild": snapshot.attr("titelbild"),
-                        "titelbild_quelle": snapshot.attr("titelbildQuelle"),
-                        "titelbild_titel": snapshot.attr("titelbildTitel"),
+                        "vorschaubild": snapshot.attr("previewCover"),
+                        "titelbild": snapshot.attr("cover"),
+                        "titelbild_quelle": snapshot.attr("coverSrc"),
+                        "titelbild_titel": snapshot.attr("coverTitle"),
                         "video": snapshot.attr("video"),
-                        "vorschaubild": snapshot.attr("vorschaubild"),
                   },
                   "content": snapshot.attr("content")
             }                 

@@ -54,6 +54,9 @@ export default Ember.Controller.extend({
           }), 1200);
         });
       },
+      updateCover(file) {
+        this.set('model.cover', file)     
+      },
       deleteTopic() {
         let topicId = this.get('model.id');
         let store = this.get('store');

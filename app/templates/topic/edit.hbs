@@ -13,6 +13,20 @@
           {{#text.subhead}}Metadaten{{/text.subhead}}
           {{#text.headline}}{{model.id}}{{/text.headline}}
         {{/title.text}}
+        
+        {{#if model.cover}}
+          {{#title.media size="md"}}                 
+           <img src="http://localhost:1313/{{model.staticUrl}}/{{model.cover}}"
+              alt="{{model.title}} Cover != {{model.cover}}"
+              title="{{model.title}} Cover">
+          {{/title.media}}          
+        {{else}}
+          <div>
+            <h4>Coverbild hinzufügen</h4>
+            {{file-upload url=model.assetUrl updateAction="updateCover"}}  
+          </div>        
+        {{/if}} 
+
       {{/card.title}}
 
       {{#card.content}}
