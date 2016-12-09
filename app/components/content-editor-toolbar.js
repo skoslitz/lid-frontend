@@ -39,7 +39,7 @@ export default Ember.Component.extend({
 		},
 		sendImageShortcode(image) {
 			let element = document.querySelector("trix-editor");
-			element.editor.insertString(image.filename)
+			element.editor.insertString(`{{% bild pfad="${image.filename}" clickable="true" titel="Bildtitel" quellenangaben="Quelle: "%}}`);
 		},
 		updateAction() {
 			// send action to update model
