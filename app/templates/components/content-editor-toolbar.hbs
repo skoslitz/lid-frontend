@@ -1,74 +1,50 @@
 <div class="content-editor-toolbar">
 	{{!-- Shortcode menu --}}
     	{{#paper-menu as |menu|}}
+
 				{{#menu.trigger}}
 				  {{#paper-button raised=true primary=true}}Shortcode einfügen{{/paper-button}}
 				{{/menu.trigger}}
 
-				{{#menu.content width=3 as |content|}}
+				{{#menu.content width=5 as |content|}}
 					<p class="centered">Verfügbare Shortcodes</p>
 					{{#paper-list}}
-							{{#paper-item class="md-3-line"}}
-							  	<div class="md-list-item-text">
-										{{#paper-button raised=true mini=true onClick=(action "insertQuote")}}
-											{{paper-icon "format bold"}}
-										{{/paper-button}}
-									</div>
-								{{paper-divider}}
-									<div class="md-list-item-text">
-							      <p onClick={{action "insertQuote"}}>Anführungszeichen einsetzen</p>
-							    </div>
+
+							{{#paper-item as |controls|}}
+				        <p>Anführungszeichen einsetzen</p>
+				        {{#controls.button secondary=true onClick=(action "insertQuote")}}
+				          {{paper-icon "format italic"}}
+				        {{/controls.button}}
+				      {{/paper-item}}
+
+							{{paper-divider}}
+
+							{{#paper-item as |controls|}}
+				        <p>Fett einsetzen</p>
+				        {{#controls.button secondary=true onClick=(action "insertQuote")}}
+				          {{paper-icon "format bold"}}
+				        {{/controls.button}}
+				      {{/paper-item}}
+
+							{{paper-divider}}
+
+
+							{{#paper-item as |controls|}}
+							  {{#controls.button secondary=true onClick=(action "insertQuote")}}
+				          {{paper-icon "wrap text"}}
+				        {{/controls.button}}
+							  <p>Zeilenumbruch</p>
 							{{/paper-item}}
 
-					  	{{#paper-item class="md-3-line"}}
-							    <div class="md-list-item-text">
-							      {{#paper-button raised=true mini=true onClick=(action "insertBold")}}
-											{{paper-icon "format italic"}}
-										{{/paper-button}}
-							    </div>
-								{{paper-divider}}
-									<div class="md-list-item-text">
-										<p>Fett einsetzen</p>
-									</div>
-							{{/paper-item}}
-
-							{{#paper-item class="md-3-line"}}
-							    <div class="md-list-item-text">
-							      {{#paper-button raised=true mini=true onClick=(action "insertShortcode")}}
-											{{paper-icon "format quote"}}
-									  {{/paper-button}}
-							    </div>
-								{{paper-divider}}
-									<div class="md-list-item-text">
-										<p>Kursiv einsetzen</p>
-									</div>
-							{{/paper-item}}
-
-							{{#paper-item class="md-3-line"}}
-							    <div class="md-list-item-text">
-							      {{#paper-button raised=true mini=true onClick=(action "insertShortcode")}}
-											{{paper-icon "wrap text"}}
-									  {{/paper-button}}
-							    </div>
-								{{paper-divider}}
-									<div class="md-list-item-text">
-										<p>Zeilenumbruch</p>
-									</div>
-							{{/paper-item}}
-
+							{{paper-divider}}
 
 							{{!-- Exkursion shortcodes --}}
 							{{#if excursion}}
-								{{#paper-item class="md-3-line"}}
-							    <div class="md-list-item-text">
-							      {{#paper-button raised=true mini=true onClick=(action "insertStationstitel")}}
-											{{paper-icon "title"}}
-									  {{/paper-button}}
-							    </div>
-								{{paper-divider}}
-									<div class="md-list-item-text">
-										<p>Exkursion Stationstitel</p>
-									</div>
+								{{#paper-item as |controls|}}
+								  {{#controls.button secondary=true onClick=(action "insertStationstitel")}}
+					          {{paper-icon "title"}}
+					        {{/controls.button}}
+								  <p>Exkursion Stationstitel</p>
 								{{/paper-item}}
 							{{/if}}
 
