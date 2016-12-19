@@ -8,15 +8,15 @@
 	</div>
 	{{/paper-toolbar}}
 
-	{{#paper-dialog-content}}	
+	{{#paper-dialog-content}}
 	<div layout="row">
 		{{!-- Artikelnummer muss höher gleich 500 sein --}}
-	  	{{paper-input flex=100 type="number" value=articleNumber label="Beitragsnummer (>= 500)" required="true" required-errortext="Wichtig!" onChange=(action (mut articleNumber ))}}
+	  	{{paper-input block=true type="number" value=articleNumber label="Beitragsnummer (>= 500)" required="true" required-errortext="Wichtig!" onChange=(action (mut articleNumber ))}}
 	</div>
-	<div layout="row">  		
-	  	{{paper-input flex=100 type="text" value=articleName label="Beitragstitel" onChange=(action (mut articleName))}}
+	<div layout="row">
+	  	{{paper-input block=true type="text" value=articleName label="Beitragstitel" onChange=(action (mut articleName))}}
 	</div>
-	<div layout="row">  		
+	<div layout="row">
 		{{#paper-checkbox value=externalExcursion onChange=(action (mut externalExcursion))}}
 			Fremdexkursion
 		{{/paper-checkbox}}
@@ -25,7 +25,7 @@
 		{{/paper-checkbox}}
 	</div>
 
-	<h5>{{bandnummer}}_E_{{articleNumber}}-{{dasherize articleName}}.md</h5>
+	<h5>Dateiname: {{bandnummer}}_E_{{articleNumber}}-{{dasherize articleName}}.md</h5>
 	{{/paper-dialog-content}}
 
 	{{#paper-dialog-actions class="layout-row"}}

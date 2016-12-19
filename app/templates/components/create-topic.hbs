@@ -2,7 +2,7 @@
 
 	{{#paper-toolbar}}
 	<div class="md-toolbar-tools">
-	  <h2>Neues Thema</h2>
+	  <h2>Thema erstellen</h2>
 	  <span class="flex"></span>
 	  {{#paper-button iconButton=true onClick=(action "closeCreateTopicDialog")}}{{paper-icon icon="close"}}{{/paper-button}}
 	</div>
@@ -11,13 +11,13 @@
 	{{#paper-dialog-content}}
 	<div layout="row">
 		{{!-- Artikelnummer muss höher gleich 500 sein --}}
-	  	{{paper-input flex=100 type="number" value=articleNumber label="Beitragsnummer (>= 100)" required="true" required-errortext="Wichtig!" onChange=(action (mut articleNumber ))}}
+	  	{{paper-input block=true type="number" value=articleNumber label="Beitragsnummer (>= 100)" required="true" required-errortext="Wichtig!" onChange=(action (mut articleNumber ))}}
 	</div>
-	<div layout="row">  		
-	  	{{paper-input flex=100 type="text" value=articleName label="Beitragstitel" onChange=(action (mut articleName))}}
+	<div layout="row">
+	  	{{paper-input block=true type="text" value=articleName label="Beitragstitel" onChange=(action (mut articleName))}}
 	</div>
 
-	<h5>{{bandnummer}}_B_{{articleNumber}}-{{dasherize articleName}}.md</h5>
+	<h5>Dateiname: {{bandnummer}}_B_{{articleNumber}}-{{dasherize articleName}}.md</h5>
 	{{/paper-dialog-content}}
 
 	{{#paper-dialog-actions class="layout-row"}}
