@@ -76,7 +76,12 @@
 					{{/paper-item}}
 					<br>
 
+				{{#if model.images.length}}
 			  {{#paper-subheader}}Anhänge für {{model.id}}{{/paper-subheader}}
+			  {{else}}
+			  {{#paper-subheader}}Keine Anhänge für {{model.id}}{{/paper-subheader}}
+			  {{/if}}
+
         {{#each model.images as |image|}}
           {{#paper-item class="md-2-line" onClick=null as |controls|}}
             <img onclick={{action "openImage" image}} class="preview-img" src="{{image.src}}" alt="">
