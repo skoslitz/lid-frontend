@@ -14,7 +14,7 @@
 	  	{{paper-input block=true type="number" value=articleNumber label="Beitragsnummer (>= 100)" required="true" required-errortext="Wichtig!" onChange=(action (mut articleNumber ))}}
 	</div>
 	<div layout="row">
-	  	{{paper-input block=true type="text" value=articleName label="Beitragstitel" onChange=(action (mut articleName))}}
+	  	{{paper-input block=true type="text" value=articleName label="Beitragstitel" onKeyDown=(action "umlautCheck") onChange=(action (mut articleName))}}
 	</div>
 
 	<h5>Dateiname: {{bandnummer}}_B_{{articleNumber}}-{{dasherize articleName}}.md</h5>
