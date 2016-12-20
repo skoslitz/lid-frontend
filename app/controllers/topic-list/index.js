@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
 	actions: {
 		relatedRegion() {
 			this.transitionToRoute('region.edit', this.get('region.id'));
-        }, 
+        },
 		openCreateTopicDialog() {
 			this.set('createTopic', true);
 		},
@@ -16,9 +16,30 @@ export default Ember.Controller.extend({
 		createTopicConfirmed(topicMeta) {
 			console.log("Topic-list ctrl creates Topic", topicMeta);
 			let bandnummer = this.get('region.bandnummer');
-			
+
 			let hugoId = bandnummer + "_B_" + topicMeta.articleNumber
-	    	let sanitizeArticleName = topicMeta.articleName.toLowerCase().trim().dasherize();
+	    	let sanitizeArticleName = topicMeta.articleName.toLowerCase().trim().dasherize()
+          .replace(/ä|ö|ü|ß/gi, function(keyValue) {
+            switch (keyValue) {
+              // ä Umlaut to ae
+              case "ä":
+                return "ae"
+                break;
+              // ö Umlaut to oe
+              case "ö":
+                return "oe"
+                break;
+              // ü Umlaut to ue
+              case "ü":
+                return "ue"
+                break;
+              case "ß":
+                return "ss"
+                break;
+              default:
+                return
+            }
+          });
 	    	var store = this.get('store');
 	    	let actualDate = new Date();
 

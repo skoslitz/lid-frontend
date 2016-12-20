@@ -21,7 +21,7 @@
 		      {{paper-input block=true value=model.bandnummer label="Bandnummer" required="true" required-errortext="Wichtig!" onChange=(action (mut model.bandnummer ))}}
 		    </div>
 		    <div layout="row">
-		      {{paper-input block=true value=model.title label="Titel" onKeyDown=(action "umlautCheck") onChange=(action (mut model.title))}}
+		      {{paper-input block=true value=model.title label="Titel" onChange=(action (mut model.title))}}
 		    </div>
 		  {{/paper-dialog-content}}
 

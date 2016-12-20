@@ -12,7 +12,29 @@ export default Ember.Route.extend({
 			console.log("get previewSite action from component")
 		},
 		createRegion(bandnummer, regionName) {
-	    	let sanitizeRegionName = regionName.toLowerCase().trim().dasherize();
+	    	let sanitizeRegionName = regionName.toLowerCase().trim().dasherize()
+		    	.replace(/ä|ö|ü|ß/gi, function(keyValue) {
+		    		switch (keyValue) {
+						// ä Umlaut to ae
+						case "ä":
+							return "ae"
+							break;
+						// ö Umlaut to oe
+						case "ö":
+							return "oe"
+							break;
+						// ü Umlaut to ue
+						case "ü":
+							return "ue"
+							break;
+						case "ß":
+                return "ss"
+                break;
+						default:
+							return
+					}
+	    	});
+
 	    	var store = this.get('store');
 	    	let actualDate = new Date();
 
