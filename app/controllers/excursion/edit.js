@@ -54,6 +54,9 @@ export default Ember.Controller.extend({
       updateCover(image) {
         this.set('model.cover', image.filename)
       },
+      updatePreviewCover(image) {
+        this.set('model.previewCover', image.filename)
+      },
       deleteExcursion() {
         let excursionId = this.get('model.id');
         let store = this.get('store');

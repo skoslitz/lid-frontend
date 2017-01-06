@@ -58,6 +58,34 @@
         {{!-- VG Wort Code --}}
         {{paper-input block=true label="VG Wort Code" value=model.vgWortCode onChange=(action (mut model.vgWortCode))}}
 
+        {{!-- Vorschaubild --}}
+        {{#paper-menu as |menu|}}
+          <h4>Vorschaubild</h4>
+          {{#menu.trigger}}
+            <p class="meta-editor-button">Neues Vorschaubild auswählen</p>
+          {{/menu.trigger}}
+          <img src="http://localhost:1313/{{model.staticUrl}}/{{model.previewCover}}"
+            alt="Kein Vorschaubild ausgewählt"
+            title="{{model.title}} Cover">
+
+          {{#menu.content width=5 as |content|}}
+            {{#paper-list}}
+            {{#each model.images as |image|}}
+              {{#paper-item onClick=null as |controls|}}
+                <img class="preview-img" src="{{image.src}}" alt="">
+                <div class="md-list-item-text asset-viewer-list-item">
+                  <h4>{{image.filename}}</h4>
+                </div>
+
+                {{#controls.button secondary=true iconButton=true onClick=(action "updatePreviewCover" image)}}
+                  {{paper-icon "image"}}
+                {{/controls.button}}
+              {{/paper-item}}
+            {{/each}}
+            {{/paper-list}}
+          {{/menu.content}}
+        {{/paper-menu}}
+
         {{!-- Video --}}
         {{#if model.video}}
         <h4>Video
