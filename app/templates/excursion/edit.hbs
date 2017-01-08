@@ -318,11 +318,10 @@
 
     {{/paper-card}}
 
-    {{!-- Fremdexkursion ausschließen --}}
-    {{#unless model.fremdexkursion}}
-      {{#content-editor model=model excursion=true assetUrl=model.assetUrl updateAction="refreshRoute"}}
-      {{/content-editor}}
-    {{/unless}}
+
+    {{#content-editor model=model excursion=true assetUrl=model.assetUrl updateAction="refreshRoute"}}
+    {{/content-editor}}
+
 
 </div>
 
