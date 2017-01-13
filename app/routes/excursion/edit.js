@@ -14,6 +14,9 @@ export default Ember.Route.extend({
 	      Ember.run.later((function() {
 	        self.refresh();
 	      }), 1000);
-	    }   	    	
-    }    
+	    },
+        refreshPage() {
+          window.location.reload(true);
+        }
+    }
 });

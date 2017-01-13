@@ -1,14 +1,14 @@
 {{!-- placeholder  --}}
 <div class="flex-20">
 	{{#site-navigation showRegionListAction="regionList" relatedRegion="true" relatedRegionAction="relatedRegion"}}
-	{{/site-navigation}}		
+	{{/site-navigation}}
 </div>
 
 {{!-- Topic list --}}
 <div class="flex-60">
 	{{#dir-content-list createTopicAction="openCreateTopicDialog" createTopicButton=true createTopic=true model=(reverse topicList) editURL="topic.edit" contentType="Themen"}}
 	{{/dir-content-list}}
-</div>   
+</div>
 
 {{#if createTopic}}
   {{#create-topic bandnummer=region.bandnummer closeCreateTopicDialogAction="closeCreateTopicDialog" createTopicConfirmedAction="createTopicConfirmed"}}
@@ -16,5 +16,5 @@
 {{/if}}
 
 
-{{#editor-dock}}
+{{#editor-dock refreshPageAction="refreshPage"}}
 {{/editor-dock}}

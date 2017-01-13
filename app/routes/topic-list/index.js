@@ -14,7 +14,10 @@ export default Ember.Route.extend({
   },
   actions: {
     regionList() {
-          this.transitionTo('/');
-      },
+      this.transitionTo('/');
+    },
+    refreshPage() {
+      window.location.reload(true);
+    }
   }
 });

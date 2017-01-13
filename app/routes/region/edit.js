@@ -5,8 +5,8 @@ export default Ember.Route.extend({
       return Ember.RSVP.hash({
         region: this.store.findRecord('region', params.id),
         excursion: this.store.query('excursion-list', {id: params.id}),
-        topic: this.store.query('topic-list', {id: params.id})       
-      });      
+        topic: this.store.query('topic-list', {id: params.id})
+      });
   },
   setupController(controller, models) {
     controller.set('region', models.region);
@@ -25,7 +25,10 @@ export default Ember.Route.extend({
         Ember.run.later((function() {
           self.refresh();
         }), 1000);
+    },
+    refreshPage() {
+      window.location.reload(true);
     }
-  },  
+  },
 });
 

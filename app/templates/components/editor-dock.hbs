@@ -10,38 +10,44 @@
               <p>{{statusMessage}}</p>
             {{/if}}
         </div>
-        
+
         <div layout="row">
-          {{#unless statusPending}}                       
-            <h4><a target="_blank" href="http://localhost:1313/preview/">Zur Vorschauversion</a></h4> 
+          {{#unless statusPending}}
+            <h4><a target="_blank" href="http://localhost:1313/preview/">Zur Vorschauversion</a></h4>
           {{/unless}}
-        </div>       
+        </div>
       {{/paper-dialog-content}}
-      
+
       {{#unless statusPending}}
       {{#paper-dialog-actions class="layout-row"}}
          {{#paper-button raised=true onClick=(action "closeDialog")}}Ok, schliessen{{/paper-button}}
       {{/paper-dialog-actions}}
       {{/unless}}
-  
+
   {{/paper-dialog}}
 {{/if}}
 
 {{!-- Editor dock --}}
 <div class="flex-20">
   <div class="editor-dock">
-  
+
     {{#paper-button primary=true fab=true onClick=(action "publishSite")}}
       {{paper-icon "file upload"}}
     {{/paper-button}}
     <br>
-    
+
     {{#paper-button fab=true onClick=(action "previewSite")}}
       {{paper-icon "pageview"}}
     {{/paper-button}}
     <br>
 
+
     {{editor-guide}}
+    <br>
+
+    {{#paper-button fab=true raised=true onClick=(action "refreshPage")}}
+      {{paper-icon "refresh"}}
+    {{/paper-button}}
     <br>
 
     {{#if updateRegion}}

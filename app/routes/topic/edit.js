@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
 	model: function(params) {
-    	return this.store.findRecord('topic', params.id); 
+    	return this.store.findRecord('topic', params.id);
   	},
 	actions: {
 		//site nav actions
@@ -14,6 +14,9 @@ export default Ember.Route.extend({
 	      Ember.run.later((function() {
 	        self.refresh();
 	      }), 1000);
-	    }
-	},	
+	    },
+      refreshPage() {
+        window.location.reload(true);
+      }
+	},
 });
