@@ -95,11 +95,17 @@ export default Ember.Controller.extend({
       },
       removeReference(item) {
         let literaturangaben = this.get('model.literaturangaben');
-        literaturangaben.removeObject(item);
+        let answer = confirm (`${item} unwiederbringlich löschen?`)
+        if (answer) {
+          literaturangaben.removeObject(item);
+        }
       },
       removeImgRef(item) {
         let bildnachweise = this.get('model.bildnachweise');
-        bildnachweise.removeObject(item);
+        let answer = confirm (`${item} unwiederbringlich löschen?`)
+        if (answer) {
+          bildnachweise.removeObject(item);
+        }
       },
       addImgRef(item) {
         let bildnachweise = this.get('model.bildnachweise');
