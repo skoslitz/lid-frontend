@@ -122,7 +122,7 @@
             <img onclick={{action "openImage" image}} class="preview-img" src="{{image.src}}" alt="">
             <div class="md-list-item-text asset-viewer-list-item">
               <h4>{{image.filename}}</h4>
-              <p class="text-underline" onclick={{action "deleteImage" image}}>Abbildung löschen</p>
+              <p class="text-underline" onclick={{action "deleteImage" image}}>Datei löschen</p>
             </div>
             {{#controls.button secondary=true iconButton=true onClick=(action "sendImageShortcode" image)}}
               {{paper-icon "image"}}
