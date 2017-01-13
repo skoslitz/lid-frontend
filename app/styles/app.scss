@@ -118,6 +118,11 @@ html, body {
 	text-decoration: underline;
 }
 
+.meta-image {
+	max-width: 400px;
+  max-height: 200px;
+}
+
 // trix editor toolbar
 .content-editor {
 	display: block;
