@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
     exkursionstypen: [
       "Fahrrad",
       "Fuß",
-      "Auto/Bus"
+      "Auto"
     ],
     actions: {
       excursionList() {
