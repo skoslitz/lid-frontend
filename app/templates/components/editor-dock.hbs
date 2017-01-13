@@ -45,10 +45,12 @@
     {{editor-guide}}
     <br>
 
-    {{#paper-button fab=true raised=true onClick=(action "refreshPage")}}
-      {{paper-icon "settings backup restore"}}
-    {{/paper-button}}
-    <br>
+    {{#if refreshButton}}
+      {{#paper-button fab=true raised=true onClick=(action "refreshPage")}}
+        {{paper-icon "settings backup restore"}}
+      {{/paper-button}}
+      <br>
+    {{/if}}
 
     {{#if updateRegion}}
       {{#paper-button fab=true onClick=(action "updateRegion" model)}}
