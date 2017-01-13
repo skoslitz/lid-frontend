@@ -20,26 +20,40 @@ export default Ember.Component.extend({
 			let element = document.querySelector("trix-editor");
 			element.editor.redo()
 		},
-		insertQuote() {
+		insertClear() {
 			let element = document.querySelector("trix-editor");
-			element.editor.insertString("„ZITAT“")
-			// TODO: Quotation mark for selected text
+			element.editor.insertString("{{% clear %}}")
 		},
-		insertBold() {
+		insertHyperlink() {
 			let element = document.querySelector("trix-editor");
-			element.editor.insertString("**Fett**")
-			// TODO: Bold for selected text
+			element.editor.insertString("[Linktitel](http://lid-online.de)")
 		},
-		insertShortcode() {
+		insertRelref() {
 			let element = document.querySelector("trix-editor");
-			element.editor.insertString("Hello")
+			element.editor.insertString("[Linktitel]({{< relref \"themen/78_B_159-urbane-natur.md\" >}})")
+		},
+		insertComment() {
+			let element = document.querySelector("trix-editor");
+			element.editor.insertString("{{% kommentar text=\"Hinweis: muss überarbeitet werden\" %}}")
+		},
+		insertDownload() {
+			let element = document.querySelector("trix-editor");
+			element.editor.insertString("{{% download pfad=\"mitte.csv\" titel=\"Mitte\" stand=\"31.12 2014\" lizenz=\"Lizenz\" format=\"Dateiformat\" size=\"Dateigrösse\" %}}")
+		},
+		insertTable() {
+			let element = document.querySelector("trix-editor");
+			element.editor.insertString("{{% tabellentitel text=\"Tabelle 1\" %}}\n\n| Element 1 | Element 2 | Element 3\n|----------------------------------------|-----------------------|-------------------|\n| Text Spalte 1 Reihe 1 | Text Spalte 2 Reihe 1 | Text Spalte 3 Reihe 1\n| Text Spalte 1 Reihe 2 | | Text Spalte 3 Reihe 2\n| Text Spalte 1 Reihe 3   | Text Spalte 2 Reihe 3  | Text Spalte 3 Reihe 3")
+		},
+		insertCompareImg() {
+			let element = document.querySelector("trix-editor");
+			element.editor.insertString("{{% bildervergleich pfad-1=\"img.jpg\" pfad-2=\"img.jpg\" label-1=\"label\" label-2=\"label\" quelle-1=\"Quelle\" quelle-2=\"Quelle\" %}}")
 		},
 		openImage(image) {
 			window.open(image.src, '_blank');
 		},
 		sendImageShortcode(image) {
 			let element = document.querySelector("trix-editor");
-			element.editor.insertString(`{{% bild pfad="${image.filename}" clickable="true" titel="Bildtitel" quellenangaben="Quelle: "%}}`);
+			element.editor.insertString("{{% bild pfad=\"${image.filename}\" clickable=\"true\" titel=\"Bildtitel\" quellenangaben=\"Quelle: \"%}}");
 		},
 		updateAction() {
 			// send action to update model

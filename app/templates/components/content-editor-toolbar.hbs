@@ -6,39 +6,12 @@
 				  {{#paper-button raised=true primary=true}}Shortcode einfügen{{/paper-button}}
 				{{/menu.trigger}}
 
+{{!-- Shortcodes --}}
 				{{#menu.content width=5 as |content|}}
 					<p class="centered">Verfügbare Shortcodes</p>
 					{{#paper-list}}
 
-							{{#paper-item as |controls|}}
-				        <p>Anführungszeichen einsetzen</p>
-				        {{#controls.button secondary=true onClick=(action "insertQuote")}}
-				          {{paper-icon "format italic"}}
-				        {{/controls.button}}
-				      {{/paper-item}}
-
-							{{paper-divider}}
-
-							{{#paper-item as |controls|}}
-				        <p>Fett einsetzen</p>
-				        {{#controls.button secondary=true onClick=(action "insertQuote")}}
-				          {{paper-icon "format bold"}}
-				        {{/controls.button}}
-				      {{/paper-item}}
-
-							{{paper-divider}}
-
-
-							{{#paper-item as |controls|}}
-							  {{#controls.button secondary=true onClick=(action "insertQuote")}}
-				          {{paper-icon "wrap text"}}
-				        {{/controls.button}}
-							  <p>Zeilenumbruch</p>
-							{{/paper-item}}
-
-							{{paper-divider}}
-
-							{{!-- Exkursion shortcodes --}}
+					{{!-- Exkursion shortcodes --}}
 							{{#if excursion}}
 								{{#paper-item as |controls|}}
 								  {{#controls.button secondary=true onClick=(action "insertStationstitel")}}
@@ -50,13 +23,75 @@
 
 							{{!-- Themen shortcodes --}}
 							{{#if topic}}
-
+								{{#paper-item as |controls|}}
+								  {{#controls.button secondary=true onClick=(action "insertTable")}}
+					          {{paper-icon "border all"}}
+					        {{/controls.button}}
+								  <p>Tabelle einsetzen</p>
+								{{/paper-item}}
 							{{/if}}
 
 							{{!-- Regionen shortcodes --}}
 							{{#if region}}
 
 							{{/if}}
+
+							{{#paper-item as |controls|}}
+				        <p>Absatz erzwingen</p>
+				        {{#controls.button secondary=true onClick=(action "insertClear")}}
+				          {{paper-icon "wrap text"}}
+				        {{/controls.button}}
+				      {{/paper-item}}
+
+							{{paper-divider}}
+
+							{{#paper-item as |controls|}}
+				        <p>Querverlinkung einsetzen</p>
+				        {{#controls.button secondary=true onClick=(action "insertRelref")}}
+				          {{paper-icon "link"}}
+				        {{/controls.button}}
+				      {{/paper-item}}
+
+							{{paper-divider}}
+
+							{{#paper-item as |controls|}}
+				        <p>Hyperlink einsetzen</p>
+				        {{#controls.button secondary=true onClick=(action "insertHyperlink")}}
+				          {{paper-icon "link"}}
+				        {{/controls.button}}
+				      {{/paper-item}}
+
+							{{paper-divider}}
+
+
+							{{#paper-item as |controls|}}
+							  <p>Kommentar einsetzen</p>
+							  {{#controls.button secondary=true onClick=(action "insertComment")}}
+				          {{paper-icon "insert comment"}}
+				        {{/controls.button}}
+							{{/paper-item}}
+
+							{{paper-divider}}
+
+							{{#paper-item as |controls|}}
+							  <p>Download einsetzen</p>
+							  {{#controls.button secondary=true onClick=(action "insertDownload")}}
+				          {{paper-icon "file download"}}
+				        {{/controls.button}}
+							{{/paper-item}}
+
+							{{paper-divider}}
+
+							{{#paper-item as |controls|}}
+							  <p>Bildervergleich einsetzen</p>
+							  {{#controls.button secondary=true onClick=(action "insertCompareImg")}}
+				          {{paper-icon "flip"}}
+				        {{/controls.button}}
+							{{/paper-item}}
+
+							{{paper-divider}}
+
+
 					{{/paper-list}}
 				{{/menu.content}}
 			{{/paper-menu}}
