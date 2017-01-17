@@ -41,8 +41,13 @@
     {{/paper-button}}
     <br>
 
-
-    {{editor-guide}}
+    {{#if exkursion}}
+      {{editor-guide exkursion=true}}
+    {{else if themen}}
+      {{editor-guide themen=true}}
+    {{else if region}}
+      {{editor-guide region=true}}
+    {{/if}}
     <br>
 
     {{#if refreshButton}}

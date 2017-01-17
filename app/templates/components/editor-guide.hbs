@@ -7,18 +7,26 @@
 
 		{{#paper-toolbar}}
 		<div class="md-toolbar-tools">
-		  <h2>LiD Online Kompendium</h2>
+		  <h2>LiD Online Hilfe</h2>
 		  <span class="flex"></span>
 		  {{#paper-button iconButton=true onClick=(action "closeGuide")}}{{paper-icon icon="close"}}{{/paper-button}}
 		</div>
 		{{/paper-toolbar}}
-		
-		{{!-- Leitfadeninhalt --}}
-		{{#paper-dialog-content}}	
 
-			<h2>Leitfaden zur Contenterstellung</h2>
-			<br>
-			<h3>Metadaten (Frontmatter) bearbeiten</h3>
+		{{!-- Leitfadeninhalt --}}
+		{{#paper-dialog-content}}
+
+		{{#if exkursion}}
+			<h5>Die Exkursionsroute erstellen</h5>
+			<p>Den Onlineservice <a target="_blank" href="http://geojson.io">geojson.io</a> aufrufen und den gezeichneten Pfad als geojson exportieren. Die Datei nach dem Schema: <code>78_E_557.json</code> umbenennen. Speicherort ist im <code>static/paths</code> Ordner des LiD Repos.</p>
+			<p>Abbildungen für den Leipzigband/Exkursionen müssen zwingend nach folgendem Schema benannt werden: <code>78_E_556-bildname.jpg</code>. Im Shortcode ist die Beitrags Id wegzulassen (pfad=bild.jpg)</p>
+		{{else if themen}}
+			<h5>Themenhilfe</h5>
+			<p>Abbildungen für den Leipzigband/Themen müssen zwingend nach folgendem Schema benannt werden: <code>78_B_106-bildname.jpg</code>. Im Shortcode ist die Beitrags Id wegzulassen (pfad=bild.jpg)</p>
+		{{else if region}}
+			<h5>Regionenhilfe</h5>
+			<p>Der Shortcode für Abbildungen des Bandes lautet bild_alt</p>
+		{{/if}}
 
 		{{/paper-dialog-content}}
 
