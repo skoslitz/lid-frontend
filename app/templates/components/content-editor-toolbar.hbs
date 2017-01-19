@@ -124,9 +124,15 @@
               <h4>{{image.filename}}</h4>
               <p class="text-underline" onclick={{action "deleteImage" image}}>Datei löschen</p>
             </div>
-            {{#controls.button secondary=true iconButton=true onClick=(action "sendImageShortcode" image)}}
+            {{#if region}}
+            	{{#controls.button secondary=true iconButton=true onClick=(action "sendRegionImageShortcode" image)}}
               {{paper-icon "image"}}
             {{/controls.button}}
+            {{else}}
+            	{{#controls.button secondary=true iconButton=true onClick=(action "sendImageShortcode" image)}}
+              	{{paper-icon "image"}}
+            	{{/controls.button}}
+            {{/if}}
           {{/paper-item}}
         {{/each}}
 

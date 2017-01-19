@@ -10,10 +10,13 @@ export default Ember.Component.extend({
 	    	this.set('showPromptDialog', false)
 	    },
 	    createRegion() {
-	    	let bandnummer = this.get('model.bandnummer');
-			let regionName = this.get('model.title');
-			console.log("create region comp sends action");
-			this.sendAction('createRegionAction', bandnummer, regionName);
+		    let bandnummer = this.get('model.bandnummer');
+				let regionName = this.get('model.title');
+				if (bandnummer != undefined) {
+					this.sendAction('createRegionAction', bandnummer, regionName);
+				} else {
+					alert('Bitte eine Bandnummer vergeben.');
+				}
 	    },
 	}
 });

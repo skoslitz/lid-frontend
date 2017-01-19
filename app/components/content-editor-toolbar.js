@@ -53,7 +53,12 @@ export default Ember.Component.extend({
 		},
 		sendImageShortcode(image) {
 			let element = document.querySelector("trix-editor");
-			element.editor.insertString(`{{% bild pfad="${image.filename}" clickable="true" titel="Bildtitel" quellenangaben="Quelle: "%}}`);
+			element.editor.insertString(`{{% bild clickable="true" pfad="${image.filename}" titel="Bildtitel" quellenangaben="Quelle: " %}}`);
+		},
+		sendRegionImageShortcode(image) {
+			let bandnummer = this.get('model.bandnummer');
+			let element = document.querySelector("trix-editor");
+			element.editor.insertString(`{{% bild_alt flow="preview" clickable="true" pfad="/${bandnummer}/${image.filename}" %}}`);
 		},
 		updateAction() {
 			// send action to update model
