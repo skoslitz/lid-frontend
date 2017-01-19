@@ -17,15 +17,17 @@
 		{{#paper-dialog-content}}
 
 		{{#if exkursion}}
-			<h5>Die Exkursionsroute erstellen</h5>
-			<p>Den Onlineservice <a target="_blank" href="http://geojson.io">geojson.io</a> aufrufen und den gezeichneten Pfad als geojson exportieren. Die Datei nach dem Schema: <code>78_E_557.json</code> umbenennen. Speicherort ist im <code>static/paths</code> Ordner des LiD Repos.</p>
-			<p>Abbildungen für den Leipzigband/Exkursionen müssen zwingend nach folgendem Schema benannt werden: <code>78_E_556-bildname.jpg</code>. Im Shortcode ist die Beitrags Id wegzulassen (pfad=bild.jpg)</p>
+      <h2>Die Exkursionsroute erstellen</h2>
+			<p>Den Onlineservice <a target="_blank" href="http://geojson.io">geojson.io</a> aufrufen und den gezeichneten Pfad als geojson exportieren. Die Datei nach der Beitrags Id benennen <i>78_E_557.json</i>, Dateiendung <i>.json</i>. Speicherort ist im <i>static/paths</i> Ordner des LiD Repos.</p>
+      {{image-guide}}
+      {{markdown-guide}}
 		{{else if themen}}
-			<h5>Themenhilfe</h5>
-			<p>Abbildungen für den Leipzigband/Themen müssen zwingend nach folgendem Schema benannt werden: <code>78_B_106-bildname.jpg</code>. Im Shortcode ist die Beitrags Id wegzulassen (pfad=bild.jpg)</p>
+      {{image-guide}}
+      {{markdown-guide}}
 		{{else if region}}
-			<h5>Regionenhilfe</h5>
-			<p>Der Shortcode für Abbildungen des Bandes lautet bild_alt</p>
+			<h4>Der Shortcode für Abbildungen des Bandes lautet bild_alt</h4>
+      {{image-guide}}
+      {{markdown-guide}}
 		{{/if}}
 
 		{{/paper-dialog-content}}
