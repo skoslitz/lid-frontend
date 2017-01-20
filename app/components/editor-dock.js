@@ -2,52 +2,31 @@ import Ember from 'ember';
 let { $ } = Ember;
 
 export default Ember.Component.extend({
-	showDialog: false,
+  showDialog: false,
+  publishGuide: false,
+	previewGuide: false,
 	statusMessage: "",
-	statusPending: true,
 	deletePage: false,
 	actions: {
 		publishSite() {
 				let self = this;
       	window.scrollTo(0, 0);
-      	this.set('statusPending', true);
-      	this.set('showDialog', true);
-
-      	let url = "http://localhost:1313/api/site/publish";
-				return $.ajax({
-					type: 'POST',
-					url: url
-				}).done(function(data, textStatus, jqXHR) {
-					self.set('statusMessage', jqXHR.responseJSON.output);
-					self.set('statusPending', false);
-				}).fail(function(jqXHR) {
-					self.set('statusMessage', jqXHR.responseText);
-					self.set('statusPending', false);
-				});
+        this.set('showDialog', true);
+      	this.set('publishGuide', true);
 	  },
     previewSite() {
       	let self = this;
       	window.scrollTo(0, 0);
-      	this.set('statusPending', true);
-      	this.set('showDialog', true);
-
-      	let url = "http://localhost:1313/api/site/preview";
-				return $.ajax({
-					type: 'POST',
-					url: url
-				}).done(function(data, textStatus, jqXHR) {
-					self.set('statusMessage', jqXHR.responseJSON.output);
-					self.set('statusPending', false);
-				}).fail(function(jqXHR) {
-					self.set('statusMessage', jqXHR.responseText);
-					self.set('statusPending', false);
-				});
+        this.set('showDialog', true);
+      	this.set('previewGuide', true);
     },
     refreshPage() {
     	this.sendAction('refreshPageAction');
     },
     closeDialog() {
     	this.set('showDialog', false);
+      this.set('publishGuide', false);
+      this.set('previewGuide', false);
     },
     deleteRegion(model) {
     	this.sendAction('deleteRegionAction', model);

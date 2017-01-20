@@ -1,29 +1,14 @@
 {{!-- Dialog --}}
 {{#if showDialog}}
   {{#paper-dialog fullscreen=fullscreen clickOutsideToClose=true onClose=(action "closeDialog")}}
-
-      {{#paper-dialog-content}}
-        <div layout="row">
-            {{#if statusPending}}
-              <div id="load"></div>
-            {{else}}
-              <p>{{statusMessage}}</p>
-            {{/if}}
-        </div>
-
-        <div layout="row">
-          {{#unless statusPending}}
-            <h4><a target="_blank" href="http://localhost:1313/preview/">Zur Vorschauversion</a></h4>
-          {{/unless}}
-        </div>
-      {{/paper-dialog-content}}
-
-      {{#unless statusPending}}
-      {{#paper-dialog-actions class="layout-row"}}
-         {{#paper-button raised=true onClick=(action "closeDialog")}}Ok, schliessen{{/paper-button}}
-      {{/paper-dialog-actions}}
-      {{/unless}}
-
+    {{#paper-dialog-content}}
+      {{#if previewGuide}}
+        {{preview-guide}}
+      {{/if}}
+      {{#if publishGuide}}
+        {{publish-guide}}
+      {{/if}}
+    {{/paper-dialog-content}}
   {{/paper-dialog}}
 {{/if}}
 
