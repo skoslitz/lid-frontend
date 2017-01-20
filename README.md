@@ -1,6 +1,10 @@
-# Lid-frontend
+# lid-frontend
 
-## Prerequisites
+## the frontend of lid online editor
+
+Only works with running lid-backend on predefined host: `localhost:1313`
+
+### Development
 
 You will need the following things properly installed on your computer.
 
@@ -17,7 +21,7 @@ You will need the following things properly installed on your computer.
 * `npm install`
 * `bower install`
 * make sure lid-backend (content api) is running on `http://localhost:1313`
-  
+
 **NOTE**: if bower or npm installation procedures run into problems, try this
 - `sudo bower update -a`
 - fix permissions with `sudo -R 777 /path/node_modules` etc.

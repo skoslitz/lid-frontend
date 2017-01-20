@@ -1,7 +1,7 @@
 {
   "name": "lid-frontend",
-  "version": "0.0.0",
-  "description": "Small description for lid-frontend goes here",
+  "version": "1.0.0",
+  "description": "Frontend of lid online editor",
   "private": true,
   "directories": {
     "doc": "doc",
