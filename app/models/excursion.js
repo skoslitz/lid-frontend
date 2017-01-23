@@ -48,6 +48,11 @@ export default DS.Model.extend({
 	fremdexkursion: DS.attr('boolean'),
 	exkursionsAnbieter: DS.attr('string'),
 	exkursionsUrl: DS.attr('string'),
+	mapBanner: Ember.computed('mapBanner', function() {
+		let centroidLon = this.get('centroidLon')
+		let centroidLat = this.get('centroidLat')
+		return `${'http://api.tiles.mapbox.com/v4/ifl.lplp8117/'+centroidLon+','+centroidLat+',15/1000x300.png?access_token=pk.eyJ1IjoiYWN0YWdlbyIsImEiOiJoVlhuYlB3In0.XrKXsQ7frSP_HBFp3mnldw'}`
+	}),
 
 	// Associations
 	region: DS.belongsTo('region')

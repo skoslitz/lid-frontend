@@ -17,8 +17,10 @@
 		{{#paper-dialog-content}}
 
 		{{#if exkursion}}
-      <h2>Die Exkursionsroute erstellen</h2>
+      <h2>Die Exkursionsroute als Pfad erstellen</h2>
 			<p>Den Onlineservice <a target="_blank" href="http://geojson.io">geojson.io</a> aufrufen und den gezeichneten Pfad als geojson exportieren. Die Datei nach der Beitrags Id benennen <i>78_E_557.json</i>, Dateiendung <i>.json</i>. Speicherort ist im <i>static/paths</i> Ordner des LiD Repos.</p>
+      <h2>Titelbild (Mapbanner) erstellen</h2>
+      <p>Sobald ein Kartenausschnitt festgelegt wurde, wird über den Link "Mapbanner generieren" ein Titelbild erstellt. Dieses kann nun gespeichert und als Anhang der Exkursion hochgeladen werden. Anschließend erfolgt die Zuweisung via "Neues Cover auswählen"</p>
       {{image-guide}}
       {{markdown-guide}}
 		{{else if themen}}

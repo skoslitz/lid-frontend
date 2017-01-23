@@ -29,7 +29,6 @@
             {{else}}
               <p class="meta-editor-button">Neues Cover auswählen</p>
             {{/if}}
-
           {{/menu.trigger}}
 
           {{#menu.content width=5 as |content|}}
@@ -150,6 +149,9 @@
           <span class="meta-excursion-editor-button" onClick={{action "addExcursionStation"}}>Station hinzufügen</span>
           <span class="meta-excursion-editor-button" onClick={{action "removeExcursionStation"}}>Letzte Station entfernen</span>
           <span class="meta-excursion-editor-button" onClick={{action "setMapExtent"}}>Kartenausschnitt festlegen</span>
+          <a target="_blank" href={{model.mapBanner}} class="meta-excursion-editor-button">
+            Mapbanner generieren
+          </a>
           </h3>
 
           {{!-- Centroid, Zoomstufe, Exkursionsstationen, Exkursionslänge --}}
