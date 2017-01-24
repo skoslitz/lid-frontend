@@ -118,12 +118,17 @@
 			  {{/if}}
 
         {{#each model.images as |image|}}
-          {{#paper-item class="md-2-line" onClick=null as |controls|}}
+          {{#paper-item class="md-3-line" onClick=null as |controls|}}
             <img onclick={{action "openImage" image}} class="preview-img" src="{{image.src}}" alt="">
             <div class="md-list-item-text asset-viewer-list-item">
               <h4>{{image.filename}}</h4>
               <p class="text-underline" onclick={{action "deleteImage" image}}>Datei löschen</p>
+              {{#unless region}}
+            	<button class="meta-editor-button" onClick={{action "sendImageShortcodeFlowPreview" image}}>FLOW PREVIEW</button>
+	            <button class="meta-editor-button" onClick={{action "sendImageShortcodeFlowAround" image}}>FLOW AROUND</button>
+            {{/unless}}
             </div>
+
             {{#if region}}
             	{{#controls.button secondary=true iconButton=true onClick=(action "sendRegionImageShortcode" image)}}
               {{paper-icon "image"}}

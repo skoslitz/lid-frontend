@@ -10,7 +10,7 @@ export default Ember.Component.extend({
 	actions: {
 		insertStationstitel() {
 			let element = document.querySelector("trix-editor");
-			element.editor.insertString("{{% stationstitel titel=\"__Titel eintragen__\" nummer=\"__Standortnummer__\" %}}")
+			element.editor.insertString("{{% stationstitel titel=\"__Titel eintragen__\" nummer=\"__Standortnummer__\" %}}\n")
 		},
 		undo() {
 			let element = document.querySelector("trix-editor");
@@ -22,7 +22,7 @@ export default Ember.Component.extend({
 		},
 		insertClear() {
 			let element = document.querySelector("trix-editor");
-			element.editor.insertString("{{% clear %}}")
+			element.editor.insertString("{{% clear %}}\n")
 		},
 		insertHyperlink() {
 			let element = document.querySelector("trix-editor");
@@ -34,11 +34,11 @@ export default Ember.Component.extend({
 		},
 		insertComment() {
 			let element = document.querySelector("trix-editor");
-			element.editor.insertString("{{% kommentar text=\"Hinweis: muss überarbeitet werden\" %}}")
+			element.editor.insertString("{{% kommentar text=\"Hinweis: muss überarbeitet werden\" %}}\n")
 		},
 		insertDownload() {
 			let element = document.querySelector("trix-editor");
-			element.editor.insertString("{{% download pfad=\"mitte.csv\" titel=\"Mitte\" stand=\"31.12 2014\" lizenz=\"Lizenz\" format=\"Dateiformat\" size=\"Dateigrösse\" %}}")
+			element.editor.insertString("{{% download pfad=\"mitte.csv\" titel=\"Mitte\" stand=\"31.12 2014\" lizenz=\"Lizenz\" format=\"Dateiformat\" size=\"Dateigrösse\" %}}\n")
 		},
 		insertTable() {
 			let element = document.querySelector("trix-editor");
@@ -46,19 +46,27 @@ export default Ember.Component.extend({
 		},
 		insertCompareImg() {
 			let element = document.querySelector("trix-editor");
-			element.editor.insertString("{{% bildervergleich pfad-1=\"img.jpg\" pfad-2=\"img.jpg\" label-1=\"label\" label-2=\"label\" quelle-1=\"Quelle\" quelle-2=\"Quelle\" %}}")
+			element.editor.insertString("{{% bildervergleich pfad-1=\"img.jpg\" pfad-2=\"img.jpg\" label-1=\"label\" label-2=\"label\" quelle-1=\"Quelle\" quelle-2=\"Quelle\" %}}\n")
 		},
 		openImage(image) {
 			window.open(image.src, '_blank');
 		},
 		sendImageShortcode(image) {
 			let element = document.querySelector("trix-editor");
-			element.editor.insertString(`{{% bild clickable="true" pfad="${image.filename}" titel="Bildtitel" quellenangaben="Quelle: " %}}`);
+			element.editor.insertString(`{{% bild clickable="true" pfad="${image.filename}" titel="Bildtitel" quellenangaben="Quelle: " %}}\n`);
+		},
+		sendImageShortcodeFlowPreview(image) {
+			let element = document.querySelector("trix-editor");
+			element.editor.insertString(`{{% bild flow="preview" clickable="true" pfad="${image.filename}" titel="Bildtitel" quellenangaben="Quelle: " %}}\n`);
+		},
+		sendImageShortcodeFlowAround(image) {
+			let element = document.querySelector("trix-editor");
+			element.editor.insertString(`{{% bild flow="around" clickable="true" pfad="${image.filename}" titel="Bildtitel" quellenangaben="Quelle: " %}}\n`);
 		},
 		sendRegionImageShortcode(image) {
 			let bandnummer = this.get('model.bandnummer');
 			let element = document.querySelector("trix-editor");
-			element.editor.insertString(`{{% bild_alt flow="preview" clickable="true" pfad="/${bandnummer}/${image.filename}" %}}`);
+			element.editor.insertString(`{{% bild_alt flow="preview" clickable="true" pfad="/${bandnummer}/${image.filename}" %}}\n`);
 		},
 		updateAction() {
 			// send action to update model

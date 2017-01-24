@@ -50,6 +50,10 @@ html, body {
 	font-family: monospace;
 }
 
+.reminder {
+	background-color: color("yellow", "600");
+}
+
 .centered {
 	text-align: center;
 }
@@ -113,7 +117,7 @@ html, body {
 
 .meta-excursion-editor-button {
 	font-size: 0.5em;
-	padding-left: 0.9em;	
+	padding-left: 0.9em;
 }
 
 .meta-excursion-editor-button:hover {

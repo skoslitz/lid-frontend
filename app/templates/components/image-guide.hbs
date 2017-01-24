@@ -1,7 +1,14 @@
 <h2>Bildparameter <span>(gelten nicht für Bildervergleich)</span></h2>
-<p>Alle Parameter zum formatieren der Bilder sind optional. Wird kein Parameter gewählt, wird das Bild in voller Grösse eingebettet. Der <b>flow</b> Parameter hat die Attribute <b>preview</b> und <b>around</b>. Somit erscheint für <i>flow="preview"</i> ein Bild in 300px Grösse. Kombiniert mit <i>flow="around"</i> führt das zu umfließenden Text.</p>
-<p>Der Parameter <i><b>clickable</b>="true"</i> sorgt für die Möglichkeit über dieses Bild in die Slideshow zu allen Bildern des Beitrages zu gelangen.</p>
+<h4>FLOW PREVIEW (<i><b>flow="preview"</b></i>)</h4>
+<p>Das Bild wird im Vorschauformat (300px Breite) eingebettet. Es können so bis zu drei Bilder nebeneinander gesetzt werden. Bilder im Vorschauformat werden vom Text umflossen. Das ist mit dem <i>clear Shortcode</i> zu ändern.</p>
+<h4>FLOW AROUND (<i><b>flow="around"</b></i>)</h4>
+<p>Das Bild wird vom Text umflossen. Die Bildgrösse wird je nach Bildschirmgrösse skaliert.</p>
+<h4>Bilder in Slideshow (<i><b>clickable</b>="true"</i>)</h4>
+<p>Alle Beitragsbilder sind automatisch in einer Slideshow verfügbar. Der Parameter <i>clickable</i> definiert, ob ein Bild per Mausklick die Slideshow öffnet.</p>
 <p>Falls Bilder nur in der Slideshow erscheinen sollen, jedoch nicht im Text: <i><b>hidden</b>="true"</i></p>
-<h4>Abbildungen für den Leipzigband</h4>
-<p><b>Dateiname:</b> <i>78_E_556-bildname.jpg</i>, mit vorangestellter Beitrags Id</p>
-<p><b>Shortcode Pfad:</b> <i>pfad=bild.jpg</i>, die Beitrags Id ist wegzulassen</p>
+<div class="reminder">
+  <h4>Abbildungen für den Leipzigband</h4>
+  Für die Dateinamen und deren Pfadangabe im Shortcode gelten Besonderheiten.
+  <p><b>Name der Bilddatei mit vorangestellter Beitrags Id:</b> <i>78_E_556-bildname.jpg</i>, Vorschaubilder(300px): <i>78_E_556-300px-bildname.jpg</i></p>
+  <p><b>Pfadangabe Shortcode ohne Beitrags Id:</b> <i>pfad=bild.jpg</i></p>
+</div>
