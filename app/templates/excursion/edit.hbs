@@ -113,6 +113,13 @@
           {{/menu.content}}
         {{/paper-menu}}
 
+        {{!-- Mapbanner --}}
+        <h4>Mapbanner (Cover)
+          <a class="meta-editor-button" target="_blank" href={{model.mapBanner}}>
+            generieren
+          </a>
+        </h4>
+
         {{!-- Literaturangaben --}}
         <h4>Literaturangaben
         <span class="meta-editor-button-inline">{{show-references model=model references=model.literaturangaben}}</span>
@@ -148,10 +155,7 @@
           <h3 class="md-headline">Die Exkursionroute
           <span class="meta-excursion-editor-button" onClick={{action "addExcursionStation"}}>Station hinzufügen</span>
           <span class="meta-excursion-editor-button" onClick={{action "removeExcursionStation"}}>Letzte Station entfernen</span>
-          <span class="meta-excursion-editor-button" onClick={{action "setMapExtent"}}>Kartenausschnitt festlegen</span>
-          <a target="_blank" href={{model.mapBanner}} class="meta-excursion-editor-button">
-            Mapbanner generieren
-          </a>
+          <span class="meta-excursion-editor-button" onClick={{action "setMapExtent"}}>Kartenausschnitt festlegen</span>          
           </h3>
 
           {{!-- Centroid, Zoomstufe, Exkursionsstationen, Exkursionslänge --}}
@@ -160,8 +164,7 @@
             {{paper-input flex=33 label="Kartenmittelpunkt Lon." value=model.centroidLon onChange=(action (mut model.centroidLon))}} --}}
             {{paper-input flex=33 label="Zoomstufe der Karte" value=model.zoomstufe type=number min=1 max=18 required=true onChange=(action (mut model.zoomstufe))}}
             {{paper-input flex=33 label="Exkursionsstationen" value=model.exkursionsstationen type=number min=1 required=true onChange=(action (mut model.exkursionsstationen))}}
-            {{paper-input flex=33 label="Exkursionslänge in km" value=model.exkursionslaenge onChange=(action (mut model.exkursionslaenge))}}
-
+            {{paper-input flex=33 label="Exkursionslänge in km" value=model.exkursionslaenge onChange=(action (mut model.exkursionslaenge))}}            
           </div>
 
           {{!-- Kartenausschnitt, Exkursionsstationen --}}
