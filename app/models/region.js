@@ -25,11 +25,11 @@ export default DS.Model.extend({
 	images: DS.attr(''),
 	staticUrl: Ember.computed('hugoId', function() {
 		let bandnummer = this.get('bandnummer');
-		return `${'assets/img/'+ bandnummer}`
+		return `${'assets/img/'+ bandnummer}`;
 	}),
 	assetUrl: Ember.computed('bandnummer', function() {
 		let bandnummer = this.get('bandnummer');
-		return `${'api/asset/img/'+ bandnummer}`
+		return `${'api/asset/img/'+ bandnummer}`;
 	}),
 
 	// Associations

@@ -2,27 +2,27 @@ import DS from 'ember-data';
 
 export default DS.JSONAPISerializer.extend({
 	extractAttributes(modelClass, resourceHash){
-		resourceHash.attributes.hugoId = resourceHash.attributes.metadata.id
-		resourceHash.attributes.bandnummer = resourceHash.attributes.metadata.bandnummer
-		resourceHash.attributes.title = resourceHash.attributes.metadata.title
-		resourceHash.attributes.subtitle = resourceHash.attributes.metadata.untertitel
-		resourceHash.attributes.description = resourceHash.attributes.metadata.kurzbeschreibung
-		resourceHash.attributes.date = resourceHash.attributes.metadata.date
-		resourceHash.attributes["date-of-publication"] = resourceHash.attributes.metadata.erscheinungsjahr
-		resourceHash.attributes.editor = resourceHash.attributes.metadata.herausgeber
-		resourceHash.attributes["editor-institut"] = resourceHash.attributes.metadata.herausgeberinstitut
-		resourceHash.attributes.isbn = resourceHash.attributes.metadata.isbn
-		resourceHash.attributes.location = resourceHash.attributes.metadata.ort
-		resourceHash.attributes["edition-title"] = resourceHash.attributes.metadata.reihentitel
-		resourceHash.attributes.pagination = resourceHash.attributes.metadata.seitenzahl
-		resourceHash.attributes.extent = resourceHash.attributes.metadata.umfang
-		resourceHash.attributes.publisher = resourceHash.attributes.metadata.verlag
-		resourceHash.attributes.bundesland = resourceHash.attributes.metadata.bundesland
-		resourceHash.attributes.cover = resourceHash.attributes.metadata.titelbild
+		resourceHash.attributes.hugoId = resourceHash.attributes.metadata.id;
+		resourceHash.attributes.bandnummer = resourceHash.attributes.metadata.bandnummer;
+		resourceHash.attributes.title = resourceHash.attributes.metadata.title;
+		resourceHash.attributes.subtitle = resourceHash.attributes.metadata.untertitel;
+		resourceHash.attributes.description = resourceHash.attributes.metadata.kurzbeschreibung;
+		resourceHash.attributes.date = resourceHash.attributes.metadata.date;
+		resourceHash.attributes["date-of-publication"] = resourceHash.attributes.metadata.erscheinungsjahr;
+		resourceHash.attributes.editor = resourceHash.attributes.metadata.herausgeber;
+		resourceHash.attributes["editor-institut"] = resourceHash.attributes.metadata.herausgeberinstitut;
+		resourceHash.attributes.isbn = resourceHash.attributes.metadata.isbn;
+		resourceHash.attributes.location = resourceHash.attributes.metadata.ort;
+		resourceHash.attributes["edition-title"] = resourceHash.attributes.metadata.reihentitel;
+		resourceHash.attributes.pagination = resourceHash.attributes.metadata.seitenzahl;
+		resourceHash.attributes.extent = resourceHash.attributes.metadata.umfang;
+		resourceHash.attributes.publisher = resourceHash.attributes.metadata.verlag;
+		resourceHash.attributes.bundesland = resourceHash.attributes.metadata.bundesland;
+		resourceHash.attributes.cover = resourceHash.attributes.metadata.titelbild;
 		return resourceHash.attributes;
 	},
 	serializeIntoHash(hash, typeClass, snapshot) {
-	hash["page"] = this.serialize(snapshot);
+	hash.page = this.serialize(snapshot);
 	},
 	serialize(snapshot) {
 	let serializedData = {
@@ -53,7 +53,7 @@ export default DS.JSONAPISerializer.extend({
 
 	if (snapshot.id) {
 		serializedData.id = snapshot.id;
-	};
+	}
 
 	return serializedData;
 	}

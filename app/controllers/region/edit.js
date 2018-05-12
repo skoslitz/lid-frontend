@@ -33,7 +33,7 @@ export default Ember.Controller.extend({
 		createTopicConfirmed(topicMeta) {
 			let bandnummer = this.get('region.bandnummer');
 
-			let hugoId = bandnummer + "_B_" + topicMeta.articleNumber
+			let hugoId = bandnummer + "_B_" + topicMeta.articleNumber;
 	    	let sanitizeArticleName = topicMeta.articleName.toLowerCase().trim().dasherize()
           .replace(/ä|ö|ü|ß/gi, function(keyValue) {
             switch (keyValue) {
@@ -53,7 +53,7 @@ export default Ember.Controller.extend({
                 return "ss"
                 break;
               default:
-                return
+                return;
             }
           });
 	    	var store = this.get('store');
@@ -80,11 +80,11 @@ export default Ember.Controller.extend({
 
 			function transitionToPost(hugoId, sanitizeArticleName) {
 			  self.transitionToRoute('topic.edit', `${hugoId}-${sanitizeArticleName}.md`);
-			};
+			}
 
 			function failure(reason) {
 			  console.log(reason);
-			};
+			}
 
 			newTopic.save().then(function() {
 		        transitionToPost(hugoId, sanitizeArticleName);
@@ -101,7 +101,7 @@ export default Ember.Controller.extend({
 			let bandnummer = this.get('region.bandnummer');
 			console.log(excursionMeta);
 
-			let hugoId = bandnummer + "_E_" + excursionMeta.articleNumber
+			let hugoId = bandnummer + "_E_" + excursionMeta.articleNumber;
 	    	let sanitizeArticleName = excursionMeta.articleName.toLowerCase().trim().dasherize().replace(/ä|ö|ü|ß/gi, function(keyValue) {
             switch (keyValue) {
               // ä Umlaut to ae
@@ -120,7 +120,7 @@ export default Ember.Controller.extend({
                 return "ss"
                 break;
               default:
-                return
+                return;
             }
           });
 	    	var store = this.get('store');
@@ -156,11 +156,11 @@ export default Ember.Controller.extend({
 			function transitionToPost(hugoId, sanitizeArticleName) {
 			  self.transitionToRoute('excursion.edit', `${hugoId}-${sanitizeArticleName}.md`);
 			  self.set('createExcursion', false);
-			};
+			}
 
 			function failure(reason) {
 			  console.log(reason);
-			};
+			}
 
 			newExcursion.save().then(transitionToPost(hugoId, sanitizeArticleName)).catch(failure);
 		},
@@ -168,17 +168,17 @@ export default Ember.Controller.extend({
 			this.set('updateDialog', true);
 			let regionId = this.get('region.id');
 
-			var self = this
+			var self = this;
 			this.get('region').save().then(()=>{
 				Ember.run.later((function() {
 			  	//self.transitionToRoute('index')
-			  	self.transitionToRoute('region.edit', regionId)
+			  	self.transitionToRoute('region.edit', regionId);
 			  	self.set('updateDialog', false);
 				}), 1200);
 			});
 		},
 		updateCover(image) {
-			this.set('region.cover', image.filename)
+			this.set('region.cover', image.filename);
 		},
 		openDeleteDialog() {
 			this.set('deleteDialog', true);
@@ -198,7 +198,7 @@ export default Ember.Controller.extend({
     	  			self.set('deleteDialog', false);
     	  			self.transitionToRoute('index');
     	  		});
-			})
+			});
 		},
 		removeItem(item) {
 	        let bundesland = this.get('region.bundesland');

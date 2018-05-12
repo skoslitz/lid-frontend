@@ -6,13 +6,13 @@ export default Ember.Route.extend({
     },
   actions: {
     publishSite() {
-      console.log("get action from component")
+      console.log("get action from component");
     },
     previewSite() {
-      console.log("get previewSite action from component")
+      console.log("get previewSite action from component");
     },
     savePage(page) {
-      console.log("get savePage action from component", page)
+      console.log("get savePage action from component", page);
     },
     saveRegion(regionId, regionName) {
         console.log("Route receive action with", regionId, regionName);
@@ -43,11 +43,11 @@ export default Ember.Route.extend({
 
       function transitionToPost(regionId, regionName) {
         self.transitionTo('region.edit', `${regionId}-${regionName}.md`);
-      };
+      }
 
       function failure(reason) {
         console.log(reason);
-      };
+      }
 
       newRegion.save().then(transitionToPost(regionId, regionName)).catch(failure);
       },

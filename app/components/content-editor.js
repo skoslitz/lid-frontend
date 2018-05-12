@@ -1,5 +1,6 @@
 import Ember from 'ember';
-const {$}= Ember
+const {$}= Ember;
+
 export default Ember.Component.extend({
 	didInsertElement: function() {
 		// stick trix editor toolbar to top dynamically

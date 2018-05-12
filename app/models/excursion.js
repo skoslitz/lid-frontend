@@ -22,13 +22,13 @@ export default DS.Model.extend({
 		let hugoId = this.get('hugoId');
 		let bandnummer = this.get('hugoId').substr(0,2);
 		let type = "exkursionen";
-		return `${'assets/img/'+ bandnummer + '/' + type + '/' + hugoId}`
+		return `${'assets/img/'+ bandnummer + '/' + type + '/' + hugoId}`;
 	}),
 	assetUrl: Ember.computed('hugoId', function() {
 		let hugoId = this.get('hugoId');
 		let bandnummer = this.get('hugoId').substr(0,2);
 		let type = "exkursionen";
-		return `${'api/asset/img/'+ bandnummer + '/' + type + '/' + hugoId}`
+		return `${'api/asset/img/'+ bandnummer + '/' + type + '/' + hugoId}`;
 	}),
 	exkursion: DS.attr(),
 	centroid: DS.attr(),
@@ -49,9 +49,9 @@ export default DS.Model.extend({
 	exkursionsAnbieter: DS.attr('string'),
 	exkursionsUrl: DS.attr('string'),
 	mapBanner: Ember.computed('mapBanner', function() {
-		let centroidLon = this.get('centroidLon')
-		let centroidLat = this.get('centroidLat')
-		return `${'http://api.tiles.mapbox.com/v4/ifl.lplp8117/'+centroidLon+','+centroidLat+',15/1000x300.png?access_token=pk.eyJ1IjoiYWN0YWdlbyIsImEiOiJoVlhuYlB3In0.XrKXsQ7frSP_HBFp3mnldw'}`
+		let centroidLon = this.get('centroidLon');
+		let centroidLat = this.get('centroidLat');
+		return `${'http://api.tiles.mapbox.com/v4/ifl.lplp8117/'+centroidLon+','+centroidLat+',15/1000x300.png?access_token=pk.eyJ1IjoiYWN0YWdlbyIsImEiOiJoVlhuYlB3In0.XrKXsQ7frSP_HBFp3mnldw'}`;
 	}),
 
 	// Associations

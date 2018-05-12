@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
 			console.log("Topic-list ctrl creates Topic", topicMeta);
 			let bandnummer = this.get('region.bandnummer');
 
-			let hugoId = bandnummer + "_B_" + topicMeta.articleNumber
+			let hugoId = bandnummer + "_B_" + topicMeta.articleNumber;
 	    	let sanitizeArticleName = topicMeta.articleName.toLowerCase().trim().dasherize()
           .replace(/ä|ö|ü|ß/gi, function(keyValue) {
             switch (keyValue) {
@@ -37,7 +37,7 @@ export default Ember.Controller.extend({
                 return "ss"
                 break;
               default:
-                return
+                return;
             }
           });
 	    	var store = this.get('store');
@@ -64,11 +64,11 @@ export default Ember.Controller.extend({
 
 			function transitionToPost(hugoId, sanitizeArticleName) {
 			  self.transitionToRoute('topic.edit', `${hugoId}-${sanitizeArticleName}.md`);
-			};
+			}
 
 			function failure(reason) {
 			  console.log(reason);
-			};
+			}
 
 			newTopic.save().then(function() {
 		        transitionToPost(hugoId, sanitizeArticleName);

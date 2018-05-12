@@ -45,7 +45,7 @@ export default Ember.Controller.extend({
 
          let topicId = this.get('model.id');
 
-        var self = this
+        var self = this;
         this.get('model').save().then(()=>{
           Ember.run.later((function() {
             //self.transitionToRoute('topic-list', regionId);
@@ -55,10 +55,10 @@ export default Ember.Controller.extend({
         });
       },
       updateCover(image) {
-        this.set('model.cover', image.filename)
+        this.set('model.cover', image.filename);
       },
       updatePreviewCover(image) {
-        this.set('model.previewCover', image.filename)
+        this.set('model.previewCover', image.filename);
       },
       deleteTopic() {
         let topicId = this.get('model.id');
@@ -76,7 +76,7 @@ export default Ember.Controller.extend({
                 self.set('deleteDialog', false);
                 self.transitionToRoute('topic-list', regionId);
               });
-        })
+        });
       },
       showRelatedRegion: function() {
         this.transitionToRoute('region.edit', `${regionName}.md`);
@@ -95,14 +95,14 @@ export default Ember.Controller.extend({
       },
       removeReference(item) {
         let literaturangaben = this.get('model.literaturangaben');
-        let answer = confirm (`${item} unwiederbringlich löschen?`)
+        let answer = confirm (`${item} unwiederbringlich löschen?`);
         if (answer) {
           literaturangaben.removeObject(item);
         }
       },
       removeImgRef(item) {
         let bildnachweise = this.get('model.bildnachweise');
-        let answer = confirm (`${item} unwiederbringlich löschen?`)
+        let answer = confirm (`${item} unwiederbringlich löschen?`);
         if (answer) {
           bildnachweise.removeObject(item);
         }

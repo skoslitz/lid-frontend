@@ -10,6 +10,6 @@ export default DS.JSONAPIAdapter.extend({
   		let id = query.id;
   		// remove query, otherwise url contains query param
   		delete query.id;
-  		return `/api/regionen/${id}/exkursionen`
+  		return `/api/regionen/${id}/exkursionen`;
   	}
 });

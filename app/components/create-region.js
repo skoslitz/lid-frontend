@@ -4,10 +4,10 @@ export default Ember.Component.extend({
 	showPromptDialog: false,
 	actions: {
 			openPromptDialog(){
-	    	this.set('showPromptDialog', true)
+	    	this.set('showPromptDialog', true);
 	    },
 	    closePromptDialog() {
-	    	this.set('showPromptDialog', false)
+	    	this.set('showPromptDialog', false);
 	    },
 	    createRegion() {
 		    let bandnummer = this.get('model.bandnummer');

@@ -43,20 +43,20 @@ export default Ember.Controller.extend({
 
         let excursionId = this.get('model.id');
 
-        var self = this
+        var self = this;
         this.get('model').save().then(()=>{
           Ember.run.later((function() {
             //self.transitionToRoute('excursion-list', regionId);
-            self.transitionToRoute('excursion.edit', excursionId)
+            self.transitionToRoute('excursion.edit', excursionId);
             self.set('updateDialog', false);
           }), 1200);
         });
       },
       updateCover(image) {
-        this.set('model.cover', image.filename)
+        this.set('model.cover', image.filename);
       },
       updatePreviewCover(image) {
-        this.set('model.previewCover', image.filename)
+        this.set('model.previewCover', image.filename);
       },
       deleteExcursion() {
         let excursionId = this.get('model.id');
@@ -74,7 +74,7 @@ export default Ember.Controller.extend({
                 self.set('deleteDialog', false);
                  self.transitionToRoute('excursion-list', regionId);
               });
-        })
+        });
       },
       showRelatedRegion: function() {
         this.transitionToRoute('region.edit', `${regionName}.md`);
@@ -98,7 +98,7 @@ export default Ember.Controller.extend({
       },
       queryMapExtent(e) {
         let location = e.target.getCenter();
-        let zoom = e.target.getZoom()
+        let zoom = e.target.getZoom();
         let _mapConfig = {
           lat: location.lat.toFixed(7),
           lon: location.lng.toFixed(7),
@@ -112,7 +112,7 @@ export default Ember.Controller.extend({
         this.set('setMapExtentDialog', false);
       },
       addExcursionStation() {
-        let e = this.get('model.exkursion')
+        let e = this.get('model.exkursion');
         e.pushObject({
           lat: this.get('model.centroidLat'),
           lon: this.get('model.centroidLon'),
@@ -121,7 +121,7 @@ export default Ember.Controller.extend({
         this.set('model.exkursionsstationen', e.length);
       },
       removeExcursionStation() {
-        let e = this.get('model.exkursion')
+        let e = this.get('model.exkursion');
         e.popObject();
         this.set('model.exkursionsstationen', e.length);
       },
@@ -139,7 +139,7 @@ export default Ember.Controller.extend({
       },
       removeReference(item) {
         let literaturangaben = this.get('model.literaturangaben');
-        let answer = confirm (`${item} unwiederbringlich löschen?`)
+        let answer = confirm (`${item} unwiederbringlich löschen?`);
         if (answer) {
           literaturangaben.removeObject(item);
         }
@@ -147,7 +147,7 @@ export default Ember.Controller.extend({
       },
       removeImgRef(item) {
         let bildnachweise = this.get('model.bildnachweise');
-        let answer = confirm (`${item} unwiederbringlich löschen?`)
+        let answer = confirm (`${item} unwiederbringlich löschen?`);
         if (answer) {
           bildnachweise.removeObject(item);
         }

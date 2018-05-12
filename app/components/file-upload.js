@@ -15,10 +15,10 @@ export default EmberUploader.FileField.extend({
     // Handle progress changes
     uploader.on('progress', e => {
       // after upload send model update action
-      if (e.percent = 100) {
+      if (e.percent == 100) {
         let filename = files[0].name;
-        this.sendAction('updateAction', filename)
-      }    
+        this.sendAction('updateAction', filename);
+      }
     });
   }
 });

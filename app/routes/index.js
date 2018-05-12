@@ -6,10 +6,10 @@ export default Ember.Route.extend({
   	},
 	actions: {
 		publishSite() {
-			console.log("get action from component")
+			console.log("get action from component");
 		},
 		previewSite() {
-			console.log("get previewSite action from component")
+			console.log("get previewSite action from component");
 		},
 		createRegion(bandnummer, regionName) {
 	    	let sanitizeRegionName = regionName.toLowerCase().trim().dasherize()
@@ -31,7 +31,7 @@ export default Ember.Route.extend({
                 return "ss"
                 break;
 						default:
-							return
+							return;
 					}
 	    	});
 
@@ -63,11 +63,11 @@ export default Ember.Route.extend({
 
 			function transitionToPost(bandnummer, sanitizeRegionName) {
 			  self.transitionTo('region.edit', `${bandnummer}-${sanitizeRegionName}.md`);
-			};
+			}
 
 			function failure(reason) {
 			  console.log(reason);
-			};
+			}
 
 			newRegion.save().then(transitionToPost(bandnummer, sanitizeRegionName)).catch(failure);
 	    },

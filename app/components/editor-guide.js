@@ -5,10 +5,10 @@ export default Ember.Component.extend({
 	actions: {
 		openGuide() {
 			window.scrollTo(0, 0);
-      this.set('showGuide', true)
+      this.set('showGuide', true);
 		},
 		closeGuide() {
-			this.set('showGuide', false)
+			this.set('showGuide', false);
 		}
 	}
 });

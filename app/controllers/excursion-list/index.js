@@ -17,7 +17,7 @@ export default Ember.Controller.extend({
 			let bandnummer = this.get('region.bandnummer');
 			console.log(excursionMeta);
 
-			let hugoId = bandnummer + "_E_" + excursionMeta.articleNumber
+			let hugoId = bandnummer + "_E_" + excursionMeta.articleNumber;
 	    	let sanitizeArticleName = excursionMeta.articleName.toLowerCase().trim().dasherize().replace(/ä|ö|ü|ß/gi, function(keyValue) {
             switch (keyValue) {
               // ä Umlaut to ae
@@ -36,7 +36,7 @@ export default Ember.Controller.extend({
                 return "ss"
                 break;
               default:
-                return
+                return;
             }
           });
 	    	var store = this.get('store');
@@ -71,11 +71,11 @@ export default Ember.Controller.extend({
 
 			function transitionToPost(hugoId, sanitizeArticleName) {
 			  self.transitionToRoute('excursion.edit', `${hugoId}-${sanitizeArticleName}.md`);
-			};
+			}
 
 			function failure(reason) {
 			  console.log(reason);
-			};
+			}
 
 			newExcursion.save().then(function() {
 		        transitionToPost(hugoId, sanitizeArticleName);
